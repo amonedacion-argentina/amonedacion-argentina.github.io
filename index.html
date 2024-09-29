@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amonedacion Argentina</title>
+    <title>AMONEDACION ARGENTINA</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Amonedacion Argentina</h1>
-        <button id="connectButton">Conectar a MetaMask</button>
-        <div id="nftDetails" class="nft-details">
-            <!-- Detalles de la moneda NFT se mostrarán aquí -->
+        <h1>AMONEDACION ARGENTINA</h1>
+        <button id="connectButton">Conectar con MetaMask</button>
+        <div id="nftData" class="nft-data" style="display:none;">
+            <h2 id="nftName"></h2>
+            <img id="nftImage" alt="NFT Image" />
+            <p id="nftDescription"></p>
+            <div id="nftAttributes"></div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
