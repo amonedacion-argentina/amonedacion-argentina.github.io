@@ -22,8 +22,10 @@ async function loadNFTData(provider) {
     
     try {
         const data = await contract.uri(nftId);
-        const jsonData = await fetch(data.replace("ipfs://", "https://ipfs.io/ipfs/"));
-        const nftData = await jsonData.json();
+        // Cambia aquí para construir correctamente la URL
+        const jsonDataUrl = data.replace("ipfs://", "https://ipfs.io/ipfs/") + nftId; // Añade el ID al final
+        const jsonResponse = await fetch(jsonDataUrl);
+        const nftData = await jsonResponse.json();
         displayNFTData(nftData);
     } catch (error) {
         console.error("Error cargando datos del NFT:", error);
