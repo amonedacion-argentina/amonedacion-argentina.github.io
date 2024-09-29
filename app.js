@@ -22,15 +22,21 @@ async function loadNFTData() {
     const contract = new ethers.Contract(contractAddress, abi, provider);
 
     try {
-        // Cambia 'tokenURI' por 'uri'
+        // Llama a la función uri para obtener el URI de la NFT
         const nftData = await contract.uri(tokenId);
-        const metadata = await fetch(nftData.replace("ipfs://", "https://ipfs.io/ipfs/")).then(res => res.json());
+        
+        // Asegúrate de que el URI esté bien formado
+        const metadataUrl = nftData.replace("ipfs://", "https://ipfs.io/ipfs/") + tokenId;
+
+        // Obtener los metadatos
+        const metadata = await fetch(metadataUrl).then(res => res.json());
         displayNFT(metadata);
     } catch (error) {
         console.error("Error fetching NFT data:", error);
         alert("No se pudo obtener la información de la NFT. Verifica el ABI y el contrato.");
     }
 }
+
 
 function displayNFT(metadata) {
     document.getElementById("nftImage").src = metadata.image.replace("ipfs://", "https://ipfs.io/ipfs/");
