@@ -27,10 +27,13 @@ async function loadNFTData(provider) {
         
         // Reemplazar el esquema IPFS
         const validTokenURI = tokenURI.replace("ipfs://", "https://ipfs.io/ipfs/");
-        console.log("Token URI después de la conversión:", validTokenURI); // Mostrar tokenURI convertido
+        
+        // Reemplazar {id} en la URL con el ID real del NFT
+        const finalTokenURI = validTokenURI.replace("{id}", nftId);
+        console.log("Token URI después de la conversión:", finalTokenURI); // Mostrar tokenURI convertido
         
         // Fetch los datos desde el tokenURI modificado
-        const response = await fetch(validTokenURI);
+        const response = await fetch(finalTokenURI);
         
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
