@@ -34,6 +34,7 @@ function displayNFTData(data) {
     document.getElementById('nftName').innerText = data.name;
     document.getElementById('nftDescription').innerText = data.description || "No hay descripción disponible";
     
+    // Reemplazar el esquema IPFS en la URL de la imagen
     const imageUrl = data.image.replace("ipfs://", "https://ipfs.io/ipfs/");
     document.getElementById('nftImage').src = imageUrl;
 
