@@ -22,11 +22,13 @@ async function loadNFTData() {
     const contract = new ethers.Contract(contractAddress, abi, provider);
 
     try {
-        const nftData = await contract.tokenURI(tokenId);
+        // Cambia 'tokenURI' por 'uri'
+        const nftData = await contract.uri(tokenId);
         const metadata = await fetch(nftData.replace("ipfs://", "https://ipfs.io/ipfs/")).then(res => res.json());
         displayNFT(metadata);
     } catch (error) {
         console.error("Error fetching NFT data:", error);
+        alert("No se pudo obtener la información de la NFT. Verifica el ABI y el contrato.");
     }
 }
 
