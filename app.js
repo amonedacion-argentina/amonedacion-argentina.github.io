@@ -1,64 +1,62 @@
+const contractAddress = '0x199f5418551db3afa002470c11c2f7eba5154a43';
+const nftId = 1;
+let provider;
+let signer;
+let contract;
+
 async function connectMetaMask() {
-    if (window.ethereum) {
+    if (typeof window.ethereum !== 'undefined') {
         try {
-            await ethereum.request({ method: 'eth_requestAccounts' });
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            loadNFTData(provider);
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            provider = new ethers.providers.Web3Provider(window.ethereum);
+            signer = provider.getSigner();
+            contract = new ethers.Contract(contractAddress, await getABI(), signer);
+            getNFTDetails(nftId);
         } catch (error) {
-            console.error("Error al conectar MetaMask:", error);
+            console.error("Error connecting to MetaMask:", error);
         }
     } else {
-        alert('MetaMask no está instalado.');
+        alert('MetaMask no está instalado. Por favor, instálalo para continuar.');
     }
 }
 
-async function loadNFTData(provider) {
-    const nftId = 1; // ID del NFT
-    const contractAddress = "0x199f5418551db3afa002470c11c2f7eba5154a43"; // Dirección del contrato
-    const abiResponse = await fetch('abi.json');
-    const abi = await abiResponse.json();
-    const contract = new ethers.Contract(contractAddress, abi, provider);
+async function getABI() {
+    const response = await fetch('abi.json');
+    return await response.json();
+}
 
+async function getNFTDetails(id) {
     try {
-        const data = await contract.uri(nftId);
-        const ipfsUrl = data.replace("ipfs://", "https://ipfs.io/ipfs/");
-
-        const jsonResponse = await fetch(ipfsUrl);
-        if (!jsonResponse.ok) {
-            throw new Error('Error en la respuesta de la red');
-        }
-
-        const nftData = await jsonResponse.json();
-        displayNFTData(nftData);
+        const uri = await contract.uri(id);
+        const response = await fetch(uri);
+        const data = await response.json();
+        displayNFTDetails(data);
     } catch (error) {
-        console.error("Error cargando datos del NFT:", error);
+        console.error("Error fetching NFT details:", error);
     }
 }
 
-function displayNFTData(nftData) {
-    document.getElementById('nftName').textContent = nftData.name;
+function displayNFTDetails(data) {
+    const nftDetails = document.getElementById('nftDetails');
+    nftDetails.innerHTML = `
+        <h2>${data.name}</h2>
+        <img src="${data.image.replace('ipfs://', 'https://ipfs.io/ipfs/')}/${id}" alt="${data.name}">
+        <p><strong>Año:</strong> ${getAttributeValue(data, 'AÑO')}</p>
+        <p><strong>Tirada:</strong> ${getAttributeValue(data, 'TIRADA')}</p>
+        <p><strong>Rareza:</strong> ${getAttributeValue(data, 'RAREZA')}</p>
+        <p><strong>Composición:</strong> ${getAttributeValue(data, 'COMPOSICIÓN')}</p>
+        <p><strong>Alineación:</strong> ${getAttributeValue(data, 'ALINEACIÓN')}</p>
+        <p><strong>Canto:</strong> ${getAttributeValue(data, 'CANTO')}</p>
+        <p><strong>Forma:</strong> ${getAttributeValue(data, 'FORMA')}</p>
+        <p><strong>Ceca:</strong> ${getAttributeValue(data, 'CECA')}</p>
+        <p><strong>Peso:</strong> ${getAttributeValue(data, 'PESO')}</p>
+        <p><strong>Diámetro:</strong> ${getAttributeValue(data, 'DIÁMETRO')}</p>
+    `;
+}
 
-    const imageUrl = nftData.image.replace("ipfs://", "https://ipfs.io/ipfs/");
-    const nftImage = document.getElementById('nftImage');
-    nftImage.src = imageUrl;
-    nftImage.classList.add('responsive-img'); // Clase para imagen pequeña y responsiva
-
-    // Mostrar la descripción solo si existe
-    const nftDescription = document.getElementById('nftDescription');
-    if (nftData.description) {
-        nftDescription.textContent = nftData.description;
-    } else {
-        nftDescription.style.display = 'none';
-    }
-
-    // Mostrar atributos
-    const nftAttributesList = document.getElementById('nftAttributes');
-    nftAttributesList.innerHTML = ''; // Limpiar antes de mostrar
-    nftData.attributes.forEach(attr => {
-        const li = document.createElement('li');
-        li.textContent = `${attr.trait_type}: ${attr.value}`;
-        nftAttributesList.appendChild(li);
-    });
+function getAttributeValue(data, traitType) {
+    const attribute = data.attributes.find(attr => attr.trait_type === traitType);
+    return attribute ? attribute.value : 'N/A';
 }
 
 document.getElementById('connectButton').addEventListener('click', connectMetaMask);
