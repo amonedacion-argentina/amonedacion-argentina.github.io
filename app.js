@@ -23,9 +23,11 @@ async function loadNFTData(provider) {
     try {
         // Obtener el tokenURI
         const tokenURI = await contract.uri(nftId);
+        console.log("Token URI antes de la conversión:", tokenURI); // Mostrar tokenURI original
         
         // Reemplazar el esquema IPFS
         const validTokenURI = tokenURI.replace("ipfs://", "https://ipfs.io/ipfs/");
+        console.log("Token URI después de la conversión:", validTokenURI); // Mostrar tokenURI convertido
         
         // Fetch los datos desde el tokenURI modificado
         const response = await fetch(validTokenURI);
