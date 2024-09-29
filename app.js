@@ -29,7 +29,7 @@ async function loadNFTData() {
         const metadataUrl = nftData
             .replace("ipfs://", "https://ipfs.io/ipfs/")
             .replace("{id}", tokenId);
-
+ 
         // Obtener los metadatos
         const metadata = await fetch(metadataUrl).then(res => res.json());
         displayNFT(metadata);
