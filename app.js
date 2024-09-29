@@ -21,8 +21,19 @@ async function loadNFTData(provider) {
     const contract = new ethers.Contract(contractAddress, abi, provider);
     
     try {
+        // Obtener el tokenURI
         const tokenURI = await contract.uri(nftId);
-        const response = await fetch(tokenURI);
+        
+        // Reemplazar el esquema IPFS
+        const validTokenURI = tokenURI.replace("ipfs://", "https://ipfs.io/ipfs/");
+        
+        // Fetch los datos desde el tokenURI modificado
+        const response = await fetch(validTokenURI);
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        
         const data = await response.json();
         displayNFTData(data);
     } catch (error) {
