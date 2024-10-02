@@ -1,59 +1,140 @@
-const contractAddress = "0x199f5418551db3afa002470c11c2f7eba5154a43";
-const tokenId = 1;
+// Dirección del contrato y ABI
+const contractAddress = "0x199F5418551DB3aFA002470c11C2f7EbA5154A43";
+const abi = [
+    "function uri(uint256 tokenId) external view returns (string memory)"
+];
 
-async function connectMetaMask() {
-    if (typeof window.ethereum !== 'undefined') {
-        try {
-            await window.ethereum.request({ method: 'eth_requestAccounts' });
-            loadNFTData();
-        } catch (error) {
-            console.error("Error connecting to MetaMask:", error);
-        }
-    } else {
-        alert("Por favor, instala MetaMask!");
-    }
-}
-
-async function loadNFTData() {
-    const response = await fetch("abi.json");
-    const abi = await response.json();
-
+// Verificar si MetaMask está instalado
+if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const contract = new ethers.Contract(contractAddress, abi, provider);
+    
+    // Solicitar al usuario que conecte su cuenta
+    async function connectWallet() {
+        try {
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(contractAddress, abi, signer);
 
-    try {
-        // Llama a la función uri para obtener el URI de la NFT
-        const nftData = await contract.uri(tokenId);
-        
-        // Reemplaza "ipfs://" por "https://ipfs.io/ipfs/" y "{{id}}" por el tokenId
-        const metadataUrl = nftData
-            .replace("ipfs://", "https://ipfs.io/ipfs/")
-            .replace("{id}", tokenId);
- 
-        // Obtener los metadatos
-        const metadata = await fetch(metadataUrl).then(res => res.json());
-        displayNFT(metadata);
-    } catch (error) {
-        console.error("Error fetching NFT data:", error);
+            // Llamar a la función para obtener datos de los NFTs con IDs del 1 al 10
+            await getNFTData(contract, 1, 10);
+        } catch (error) {
+            console.error("Error al conectar a MetaMask:", error);
+            alert("No se pudo conectar a MetaMask. Asegúrate de que MetaMask esté instalado y configurado.");
+        }
     }
+
+    async function getNFTData(contract, startId, count) {
+        try {
+            const nfts = {}; // Objeto para almacenar grupos de NFTs
+
+            for (let i = startId; i < startId + count; i++) {
+                // Obtener el URI del NFT
+                const tokenURI = await contract.uri(i);
+                
+                // Reemplazar {id} por el ID específico (i en este caso)
+                const formattedTokenURI = tokenURI.replace("{id}", i.toString());
+                console.log("Token URI:", formattedTokenURI); // Esto debe mostrar la URL completa
+
+                // Convertir la URL de IPFS
+                const ipfsUrl = formattedTokenURI.replace("ipfs://", "https://ipfs.io/ipfs/");
+                
+                // Obtener los metadatos desde el URI (IPFS)
+                const metadataResponse = await fetch(ipfsUrl);
+                const metadata = await metadataResponse.json();
+                console.log(metadata);
+
+                // Agrupar las monedas según su AH#
+                const ahValue = metadata.attributes.find(attr => attr.trait_type === "AH#").value;
+
+                let groupName = "";
+                if (ahValue.startsWith("AR")) {
+                    groupName = "Pesos Argentinos";
+                } else if (ahValue.startsWith("AU")) {
+                    groupName = "Australes";
+                } else if (ahValue.startsWith("PS")) {
+                    groupName = "Pesos";
+                } else if (ahValue.startsWith("MN")) {
+                    groupName = "Pesos Moneda Nacional";
+                } else if (ahValue.startsWith("PL")) {
+                    groupName = "Pesos Ley 18.188";
+                }
+
+                // Agregar el NFT al grupo correspondiente
+                if (!nfts[groupName]) {
+                    nfts[groupName] = [];
+                }
+                nfts[groupName].push(metadata);
+            }
+
+            // Mostrar los NFTs agrupados
+            displayGroupedNFTs(nfts);
+        } catch (error) {
+            console.error("Error al obtener datos:", error);
+        }
+    }
+
+    function displayGroupedNFTs(nfts) {
+        const nftContainer = document.getElementById("nft-container");
+        nftContainer.innerHTML = ""; // Limpiar el contenedor
+
+        for (const [group, items] of Object.entries(nfts)) {
+            const groupDiv = document.createElement("div");
+            const groupHeader = document.createElement("h2");
+            groupHeader.textContent = group;
+            groupDiv.appendChild(groupHeader);
+
+            items.forEach(item => {
+                displayNFT(item, groupDiv);
+            });
+
+            nftContainer.appendChild(groupDiv);
+        }
+    }
+
+    function displayNFT(metadata, container) {
+        const nftDiv = document.createElement("div");
+        nftDiv.className = "nft";
+
+        const nameElement = document.createElement("h3");
+        nameElement.textContent = metadata.name;
+        nftDiv.appendChild(nameElement);
+
+        if (metadata.description) {
+            const descriptionElement = document.createElement("p");
+            descriptionElement.textContent = metadata.description;
+            nftDiv.appendChild(descriptionElement);
+        }
+
+        // Asegurarse de que la propiedad de imagen exista
+        if (metadata.image) {
+            // Convertir el URI de IPFS a un formato que funcione en el navegador
+            const imageUrl = metadata.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+            const imageElement = document.createElement("img");
+            imageElement.src = imageUrl; // URL de la imagen
+            imageElement.alt = "Imagen del NFT"; // Texto alternativo
+            imageElement.style.maxWidth = "200px"; // Estilo opcional para la imagen
+            imageElement.style.height = "auto"; // Mantener la relación de aspecto
+            nftDiv.appendChild(imageElement);
+        } else {
+            console.log("No se encontró la propiedad 'image' en los metadatos.");
+        }
+
+        // Agregar atributos
+        if (metadata.attributes) {
+            metadata.attributes.forEach(attr => {
+                if (attr.value) {
+                    const attrElement = document.createElement("p");
+                    attrElement.textContent = `${attr.trait_type}: ${attr.value}`;
+                    nftDiv.appendChild(attrElement);
+                }
+            });
+        }
+
+        container.appendChild(nftDiv);
+    }
+
+    // Conectar a la cartera al cargar la página
+    connectWallet();
+} else {
+    alert("Por favor, instala MetaMask para continuar.");
 }
-
-
-function displayNFT(metadata) {
-    document.getElementById("nftImage").src = metadata.image.replace("ipfs://", "https://ipfs.io/ipfs/");
-    document.getElementById("nftName").textContent = metadata.name;
-    document.getElementById("nftDescription").textContent = metadata.description;
-
-    const attributesDiv = document.getElementById("attributes");
-    attributesDiv.innerHTML = '';
-
-    metadata.attributes.forEach(attr => {
-        const p = document.createElement("p");
-        p.textContent = `${attr.trait_type}: ${attr.value}`;
-        attributesDiv.appendChild(p);
-    });
-
-    document.getElementById("nftDetails").classList.remove("hidden");
-}
-
-document.getElementById("connectButton").addEventListener("click", connectMetaMask);
