@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AMONEDACION ARGENTINA - Colección digital NFT de monedas argentinas" />
-  <meta name="keywords" content="NFT, monedas argentinas, numismática, colección digital, blockchain" />
-  <title>AMONEDACION ARGENTINA</title>
+  <meta name="description" content="" data-i18n="meta.description" />
+  <meta name="keywords" content="" data-i18n="meta.keywords" />
+  <title data-i18n="title">AMONEDACION ARGENTINA</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header>
     <div class="header-container">
       <img src="img/fondo.png" alt="AMONEDACION ARGENTINA Fondo" id="fondo" />
-      <div id=presentacion>
+      <div id="presentacion">
         <img src="img/logo.png" alt="AMONEDACION ARGENTINA Logo" id="logo" />
-        <h1 id="titulo">AMONEDACION<br>ARGENTINA</h1>
+        <h1 id="titulo" data-i18n="header.titulo">AMONEDACION<br>ARGENTINA</h1>
       </div>
       <select id="lang-select" aria-label="Seleccionar idioma">
         <option value="en">EN</option>
@@ -25,30 +26,31 @@
 
   <nav>
     <ul id="nav-list">
-      <li><button data-section="inicio" class="nav-btn active">Inicio</button></li>
-      <li><button data-section="catalogo" class="nav-btn">Catálogo de Monedas</button></li>
-      <li><button data-section="whitepaper" class="nav-btn">Whitepaper</button></li>
-      <li><button data-section="marketplaces" class="nav-btn">Mercados NFT</button></li>
-      <li><button data-section="galerias" class="nav-btn">Galerías NFT</button></li>
-      <li><button data-section="redes" class="nav-btn">Redes Sociales</button></li>
+      <li><button data-section="inicio" class="nav-btn active" data-i18n="nav.inicio">Inicio</button></li>
+      <li><button data-section="catalogo" class="nav-btn" data-i18n="nav.catalogo">Catálogo de Monedas</button></li>
+      <li><button data-section="whitepaper" class="nav-btn" data-i18n="nav.whitepaper">Whitepaper</button></li>
+      <li><button data-section="marketplaces" class="nav-btn" data-i18n="nav.marketplaces">Mercados</button></li>
+      <li><button data-section="galerias" class="nav-btn" data-i18n="nav.galerias">Galerías NFT</button></li>
+      <li><button data-section="analisis" class="nav-btn" data-i18n="nav.analisis">Análisis NFT</button></li>
+      <li><button data-section="redes" class="nav-btn" data-i18n="nav.redes">Redes Sociales</button></li>
     </ul>
   </nav>
 
   <main>
     <section id="inicio" class="section active">
-      <h1>AMONEDACION ARGENTINA</h1>
-      <p>
-        Los invitamos a explorar la riqueza histórica y cultural de las monedas argentinas a través de nuestro catálogo de monedas exclusivo, vinculado a una colección de NFTs pensada para coleccionistas, entusiastas e inversores.
+      <h1 data-i18n="inicio.titulo">AMONEDACION ARGENTINA</h1>
+      <p data-i18n="inicio.p-1">
+        Los invitamos a explorar la riqueza histórica y cultural de las monedas argentinas...
       </p>
     </section>
 
     <section id="catalogo" class="section">
-      <h2>Catálogo de Monedas</h2>
-      <p>
-        Nuestro catálogo incluye monedas digitales con alto valor histórico y artístico, cuidadosamente seleccionadas para coleccionistas y entusiastas. Cada moneda representa una pieza cultural y numismática única digitalizada en formato NFT.
+      <h2 data-i18n="catalogo.titulo">Catálogo de Monedas</h2>
+      <p data-i18n="catalogo.p-1">
+        Nuestro catálogo incluye monedas digitales con alto valor histórico y artístico...
       </p>
-      <div id=catalogo2>
-        <a href="https://drive.google.com/file/d/1Jq8C3LzIZ4IGluXjIVUHoI-3aVqwUxgK/view" target="_blank" rel="noopener noreferrer" class="btn">
+      <div id="catalogo2">
+        <a href="https://drive.google.com/file/d/1Jq8C3LzIZ4IGluXjIVUHoI-3aVqwUxgK/view" target="_blank" rel="noopener noreferrer" class="btn" data-i18n="catalogo.btn">
           Descargar Catálogo (PDF)
         </a>
         <br>
@@ -57,12 +59,12 @@
     </section>
 
     <section id="whitepaper" class="section">
-      <h2>Whitepaper (Documento Técnico)</h2>
-      <p>
-        Descubre la visión y los detalles técnicos del proyecto AMONEDACION ARGENTINA, incluyendo objetivos, tecnología y beneficios para coleccionistas y la comunidad blockchain.
+      <h2 data-i18n="whitepaper.titulo">Whitepaper (Documento Técnico)</h2>
+      <p data-i18n="whitepaper.p-1">
+        Descubre la visión y los detalles técnicos del proyecto AMONEDACION ARGENTINA...
       </p>
-      <div id=whitepaper2>
-        <a href="https://drive.google.com/file/d/1OoIJx-18Z3Mm1zuxBkjgQllQVDpbj-tW/view" target="_blank" rel="noopener noreferrer" class="btn">
+      <div id="whitepaper2">
+        <a href="https://drive.google.com/file/d/1OoIJx-18Z3Mm1zuxBkjgQllQVDpbj-tW/view" target="_blank" rel="noopener noreferrer" class="btn" data-i18n="whitepaper.btn">
           Descargar Whitepaper (PDF)
         </a>
         <br>
@@ -71,90 +73,63 @@
     </section>
 
     <section id="marketplaces" class="section">
-      <h2>Colección NFT en Marketplaces</h2>
-      <ul class="link-list">
-        <li>
-          <a href="https://opensea.io/collection/amonedacion-argentina" target="_blank" rel="noopener noreferrer">
-            <img src="img/opensea.png" alt="OpenSea" /> OpenSea
-          </a>
-        </li>
-        <li>
-          <a href="https://rarible.com/monedas-argentinas" target="_blank" rel="noopener noreferrer">
-            <img src="img/rarible.png" alt="Rarible" /> Rarible
-          </a>
-        </li>
-        <li>
-          <a href="https://www.okx.com/es-es/web3/marketplace/nft/collection/eth/amonedacion-argentina" target="_blank" rel="noopener noreferrer">
-            <img src="img/okx.png" alt="OKX" /> OKX
-          </a>
-        </li>
-        <li>
-          <a href="https://looksrare.org/es/collections/0x199F5418551DB3aFA002470c11C2f7EbA5154A43" target="_blank" rel="noopener noreferrer">
-            <img src="img/looksrare.png" alt="LooksRare" /> LooksRare
-          </a>
-        </li>
-        <li>
-          <a href="https://magiceden.io/collections/ethereum/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer">
-            <img src="img/magiceden.png" alt="Magic Eden" /> Magic Eden
-          </a>
-        </li>
+      <h2 data-i18n="marketplaces.titulo-1">Mercados NFT</h2>
+      <p data-i18n="marketplaces.p-1">
+        Explora nuestra colección de monedas digitales en las principales plataformas
+      </p>
+      <ul id="nft-marketplaces" class="link-list">
+        <li><a href="https://opensea.io/collection/amonedacion-argentina" target="_blank" rel="noopener noreferrer"><img src="img/opensea.png" alt="OpenSea" /> OpenSea</a></li>
+        <li><a href="https://rarible.com/monedas-argentinas" target="_blank" rel="noopener noreferrer"><img src="img/rarible.png" alt="Rarible" /> Rarible</a></li>
+        <li><a href="https://www.okx.com/es-es/web3/marketplace/nft/collection/eth/amonedacion-argentina" target="_blank" rel="noopener noreferrer"><img src="img/okx.png" alt="OKX" /> OKX</a></li>
+        <li><a href="https://looksrare.org/es/collections/0x199F5418551DB3aFA002470c11C2f7EbA5154A43" target="_blank" rel="noopener noreferrer"><img src="img/looksrare.png" alt="LooksRare" /> LooksRare</a></li>
+        <li><a href="https://magiceden.io/collections/ethereum/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/magiceden.png" alt="Magic Eden" /> Magic Eden</a></li>
       </ul>
+      <h2 data-i18n="marketplaces.titulo-2">Mercado de Monedas Físicas</h2>
+      <p data-i18n="marketplaces.p-2">
+        Explora nuestras monedas físicas disponibles en MercadoLibre
+      </p>
+      <ul class="link-list">
+        <li><a href="https://listado.mercadolibre.com.ar/antiguedades-colecciones/monedas-billetes/_CustId_89431632" target="_blank" rel="noopener noreferrer"><img src="img/mercadolibre.png" alt="MercadoLibre" /> MercadoLibre</a></li>
+      </ul>
+      
     </section>
 
     <section id="galerias" class="section">
-      <h2>Galerías NFT</h2>
-      <p>
-        Plataformas especializadas donde se exhiben NFTs de AMONEDACION ARGENTINA, permitiendo que coleccionistas y público conozcan esta colección única.
-      </p>
+      <h2 data-i18n="galerias.titulo">Galerías NFT</h2>
+      <p data-i18n="galerias.p-1">Plataformas especializadas donde se exhiben NFTs de AMONEDACION ARGENTINA...</p>
       <ul class="link-list">
-        <li>
-          <a href="https://gallery.so/argentine_coins/galleries" target="_blank" rel="noopener noreferrer">
-            <img src="img/galleryso.png" alt="Gallery.so" /> Gallery.so
-          </a>
-        </li>
-        <li>
-          <a href="https://lazy.com/aguirre_horn" target="_blank" rel="noopener noreferrer">
-            <img src="img/lazy.png" alt="Lazy" /> Lazy
-          </a>
-        </li>
+        <li><a href="https://gallery.so/argentine_coins/galleries" target="_blank" rel="noopener noreferrer"><img src="img/gallery.png" alt="Gallery" /> Gallery</a></li>
+        <li><a href="https://lazy.com/aguirre_horn" target="_blank" rel="noopener noreferrer"><img src="img/lazy.png" alt="Lazy" /> Lazy</a></li>
+      </ul>
+    </section>
+
+    <section id="analisis" class="section">
+      <h2 data-i18n="analisis.titulo">Análisis NFT</h2>
+      <p data-i18n="analisis.p-1">Plataformas especializadas para análisis de NFTs.</p>
+      <ul class="link-list">
+        <li><a href="https://etherscan.io/token/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/etherscan.png" alt="Etherscan" /> Etherscan</a></li>
+        <li><a href="https://coinmarketcap.com/nft/collections/eth/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/coinmarketcap.png" alt="CoinMarketCap" /> CoinMarketCap</a></li>
+        <li><a href="https://eth.nftscan.com/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/nftscan.png" alt="NFTScan" /> NFTScan</a></li>
+        <li><a href="https://zapper.xyz/es/nft/ethereum/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/zapper.png" alt="Zapper" /> Zapper</a></li>
+        <li><a href="https://app.nansen.ai/nft-god-mode?address=0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/nansen.png" alt="Nansen" /> Nansen</a></li>
       </ul>
     </section>
 
     <section id="redes" class="section">
-      <h2>Redes Sociales</h2>
-      <p>Conecta con nosotros en nuestras redes oficiales y mantente al día con las novedades.</p>
+      <h2 data-i18n="redes.titulo">Redes Sociales</h2>
+      <p data-i18n="redes.p-1">Conecta con nosotros en nuestras redes oficiales y mantente al día con las novedades.</p>
       <ul class="link-list">
-        <li>
-          <a href="https://www.instagram.com/amonedacion_argentina" target="_blank" rel="noopener noreferrer">
-            <img src="img/instagram.png" alt="Instagram" /> Instagram
-          </a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/profile.php?id=61566517487487" target="_blank" rel="noopener noreferrer">
-            <img src="img/facebook.png" alt="Facebook" /> Facebook
-          </a>
-        </li>
-        <li>
-          <a href="https://x.com/AMON_ARG_NFT" target="_blank" rel="noopener noreferrer">
-            <img src="img/x.png" alt="X" /> X
-          </a>
-        </li>
-        <li>
-          <a href="https://www.threads.net/@amonedacion_argentina" target="_blank" rel="noopener noreferrer">
-            <img src="img/threads.png" alt="Threads" /> Threads
-          </a>
-        </li>
-        <li>
-          <a href="https://t.me/AMONEDACIONARGENTINA" target="_blank" rel="noopener noreferrer">
-            <img src="img/telegram.png" alt="Telegram" /> Telegram
-          </a>
-        </li>
+        <li><a href="https://www.instagram.com/amonedacion_argentina" target="_blank" rel="noopener noreferrer"><img src="img/instagram.png" alt="Instagram" /> Instagram</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61566517487487" target="_blank" rel="noopener noreferrer"><img src="img/facebook.png" alt="Facebook" /> Facebook</a></li>
+        <li><a href="https://x.com/AMON_ARG_NFT" target="_blank" rel="noopener noreferrer"><img src="img/x.png" alt="X" /> X</a></li>
+        <li><a href="https://www.threads.net/@amonedacion_argentina" target="_blank" rel="noopener noreferrer"><img src="img/threads.png" alt="Threads" /> Threads</a></li>
+        <li><a href="https://t.me/AMONEDACIONARGENTINA" target="_blank" rel="noopener noreferrer"><img src="img/telegram.png" alt="Telegram" /> Telegram</a></li>
       </ul>
     </section>
   </main>
 
   <footer id="footer">
-    <p>© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados.</p>
+    <p data-i18n="footer.p-1">© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados.</p>
   </footer>
 
   <script src="js/script.js"></script>
