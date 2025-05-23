@@ -57,7 +57,11 @@
       "email": "Email",
       "mensaje": "Write your message here",
       "submit": "Submit"
-    }
+    },
+    "error_campos": "Please complete all required fields.",
+    "enviando": "Sending...",
+    "error_envio": "There was a problem submitting the form.",
+    "error_conexion": "Connection error. Please try again later.."
   },
   "gracias": {
     "titulo": "Thank you for contacting us!",
