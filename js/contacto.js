@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", function(event) {
     event.preventDefault();
     statusDiv.textContent = "";
-    
+
     let valid = true;
     [...form.elements].forEach(input => {
       if (input.required && !input.value.trim()) {
