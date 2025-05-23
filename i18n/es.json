@@ -1,0 +1,54 @@
+{
+  "title": "AMONEDACION ARGENTINA",
+  "meta": {
+    "description": "AMONEDACION ARGENTINA - Colección digital NFT de monedas argentinas",
+    "keywords": "NFT, monedas argentinas, numismática, colección digital, blockchain"
+  },
+  "header": {
+    "titulo": "AMONEDACION<br>ARGENTINA"
+  },
+  "nav": {
+    "inicio": "Inicio",
+    "catalogo": "Catálogo de Monedas",
+    "whitepaper": "Whitepaper",
+    "marketplaces": "Mercados",
+    "galerias": "Galerías NFT",
+    "analisis": "Análisis NFT",
+    "redes": "Redes Sociales"
+  },
+  "inicio": {
+    "titulo": "AMONEDACION ARGENTINA",
+    "p-1": "Los invitamos a explorar la riqueza histórica y cultural de las monedas argentinas a través de nuestra plataforma digital."
+  },
+  "catalogo": {
+    "titulo": "Catálogo de Monedas",
+    "p-1": "Nuestro catálogo incluye monedas digitales con alto valor histórico y artístico, acompañadas de sus detalles técnicos y fotografías.",
+    "btn": "Descargar Catálogo (PDF)"
+  },
+  "whitepaper": {
+    "titulo": "Whitepaper (Documento Técnico)",
+    "p-1": "Descubre la visión y los detalles técnicos del proyecto AMONEDACION ARGENTINA, incluyendo tecnología blockchain y NFT.",
+    "btn": "Descargar Whitepaper (PDF)"
+  },
+  "marketplaces": {
+    "titulo-1": "Mercados NFT",
+    "p-1": "Explora nuestra colección de monedas digitales en las principales plataformas.",
+    "titulo-2": "Mercado de Monedas Físicas",
+    "p-2": "Explora nuestras monedas físicas disponibles en MercadoLibre."
+  },
+  "galerias": {
+    "titulo": "Galerías NFT",
+    "p-1": "Plataformas especializadas donde se exhiben NFTs de AMONEDACION ARGENTINA para coleccionistas y entusiastas."
+  },
+  "analisis": {
+    "titulo": "Análisis NFT",
+    "p-1": "Plataformas especializadas para análisis de NFTs."
+  },
+  "redes": {
+    "titulo": "Redes Sociales",
+    "p-1": "Conecta con nosotros en nuestras redes oficiales y mantente al día con las novedades y eventos."
+  },
+  "footer": {
+    "p-1": "© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados."
+  }
+}

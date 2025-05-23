@@ -1,0 +1,54 @@
+{
+  "title": "AMONEDACION ARGENTINA",
+  "meta": {
+    "description": "AMONEDACION ARGENTINA - NFT digital collection of Argentine coins",
+    "keywords": "NFT, Argentine coins, numismatics, digital collection, blockchain"
+  },
+  "header": {
+    "titulo": "AMONEDACION<br>ARGENTINA"
+  },
+  "nav": {
+    "inicio": "Home",
+    "catalogo": "Coin Catalog",
+    "whitepaper": "Whitepaper",
+    "marketplaces": "Marketplaces",
+    "galerias": "NFT Galleries",
+    "analisis": "NFT Analytics",
+    "redes": "Social Media"
+  },
+  "inicio": {
+    "titulo": "AMONEDACION ARGENTINA",
+    "p-1": "We invite you to explore the historical and cultural richness of Argentine coins through our digital platform."
+  },
+  "catalogo": {
+    "titulo": "Coin Catalog",
+    "p-1": "Our catalog includes digital coins with high historical and artistic value, accompanied by technical details and photographs.",
+    "btn": "Download Catalog (PDF)"
+  },
+  "whitepaper": {
+    "titulo": "Whitepaper (Technical Document)",
+    "p-1": "Discover the vision and technical details of the AMONEDACION ARGENTINA project, including blockchain and NFT technology.",
+    "btn": "Download Whitepaper (PDF)"
+  },
+  "marketplaces": {
+    "titulo-1": "NFT Marketplaces",
+    "p-1": "Explore our collection of digital coins on all major platforms.",
+    "titulo-2": "Physical Coins Market",
+    "p-2": "Explore our physical coins available on MercadoLibre."
+  },
+  "galerias": {
+    "titulo": "NFT Galleries",
+    "p-1": "Specialized platforms showcasing AMONEDACION ARGENTINA NFTs for collectors and enthusiasts."
+  },
+  "analisis": {
+    "titulo": "NFT Analytics",
+    "p-1": "Specialized platforms for NFT analysis."
+  },
+  "redes": {
+    "titulo": "Social Media",
+    "p-1": "Connect with us on our official social networks and stay updated with news and events."
+  },
+  "footer": {
+    "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
+  }
+}
