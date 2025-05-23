@@ -218,6 +218,59 @@ p {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* CONTACTO */
+#contacto-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#contacto-form input[type="text"],
+#contacto-form input[type="email"],
+#contacto-form textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+#contacto-form input[type="text"]:focus,
+#contacto-form input[type="email"]:focus,
+#contacto-form textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+#contacto-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#contacto-form button[type="submit"] {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contacto-form button[type="submit"]:hover {
+  background-color: #004999;
+}
+
 /* FOOTER */
 footer {
   background-color: #154360;
@@ -248,17 +301,4 @@ footer p {
   #logo {
     max-height: 60px;
   }
-  /*
-  nav #nav-list {
-    flex-direction: column;
-    gap: 8px;
-  }
-  main {
-    margin: 20px 10px;
-  }
-  .link-list {
-    flex-direction: column;
-    gap: 12px;
-  }
-  */
 }
