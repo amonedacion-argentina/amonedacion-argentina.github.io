@@ -14,7 +14,8 @@
     "marketplaces": "Marketplaces",
     "galerias": "NFT Galleries",
     "analisis": "NFT Analytics",
-    "redes": "Social Media"
+    "redes": "Social Media",
+    "contacto": "Contact"
   },
   "inicio": {
     "titulo": "AMONEDACION ARGENTINA",
@@ -47,6 +48,20 @@
   "redes": {
     "titulo": "Social Media",
     "p-1": "Connect with us on our official social networks and stay updated with news and events."
+  },
+  "contacto": {
+    "titulo": "Contact",
+    "p-1": "For inquiries or more information, please write to us at <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a> or use the following form:",
+    "form": {
+      "nombre": "Full Name",
+      "email": "Email",
+      "mensaje": "Write your message here",
+      "submit": "Submit"
+    }
+  },
+  "gracias": {
+    "titulo": "Thank you for contacting us!",
+    "p-1": "We have successfully received your message. Here is a summary:"
   },
   "footer": {
     "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
