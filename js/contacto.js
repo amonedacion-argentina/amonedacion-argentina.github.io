@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const graciasSection = document.getElementById("gracias");
   const volverBtn = document.getElementById("volver-form");
   const statusDiv = document.getElementById("form-status");
+  const jsonDisplay = document.getElementById("jsonDisplay");
+
+  graciasSection.style.display = "none";
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
     statusDiv.textContent = "";
     
-    // Validación simple
     let valid = true;
     [...form.elements].forEach(input => {
       if (input.required && !input.value.trim()) {
@@ -21,12 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (!valid) {
-      statusDiv.textContent = "Por favor, completa todos los campos obligatorios.";
+      statusDiv.textContent = i18nData.contacto.error_campos;
       statusDiv.style.color = "red";
       return;
     }
 
-    statusDiv.textContent = "Enviando...";
+    statusDiv.textContent = i18nData.contacto.enviando;
     statusDiv.style.color = "black";
 
     fetch(this.action, {
@@ -37,15 +39,23 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.ok) {
         contactoSection.style.display = "none";
         graciasSection.style.display = "block";
-        form.reset();
         statusDiv.textContent = "";
+
+        const datos = {
+          nombre: form.nombre.value,
+          email: form.email.value,
+          mensaje: form.mensaje.value
+        };
+        jsonDisplay.textContent = JSON.stringify(datos, null, 2);
+
+        form.reset();
       } else {
         return response.json().then(data => {
-          throw new Error(data.message || "Hubo un problema enviando el formulario.");
+          throw new Error(data.message || i18nData.contacto.error_envio);
         });
       }
     }).catch(error => {
-      statusDiv.textContent = error.message || "Error de conexión. Intenta de nuevo más tarde.";
+      statusDiv.textContent = error.message || i18nData.contacto.error_conexion;
       statusDiv.style.color = "red";
     });
   });
@@ -53,5 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
   volverBtn.addEventListener("click", () => {
     graciasSection.style.display = "none";
     contactoSection.style.display = "block";
+    statusDiv.textContent = "";
   });
 });
