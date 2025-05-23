@@ -175,6 +175,10 @@ p {
 .link-list {
   list-style: none;
 }
+#nft-marketplaces {
+  margin-bottom: 20px;
+}
+
 .link-list a {
   display: flex;
   align-items: center;
