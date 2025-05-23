@@ -33,6 +33,7 @@
       <li><button data-section="galerias" class="nav-btn" data-i18n="nav.galerias">Galerías NFT</button></li>
       <li><button data-section="analisis" class="nav-btn" data-i18n="nav.analisis">Análisis NFT</button></li>
       <li><button data-section="redes" class="nav-btn" data-i18n="nav.redes">Redes Sociales</button></li>
+      <li><button data-section="contacto" class="nav-btn" data-i18n="nav.contacto">Contacto</button></li>
     </ul>
   </nav>
 
@@ -126,6 +127,43 @@
         <li><a href="https://t.me/AMONEDACIONARGENTINA" target="_blank" rel="noopener noreferrer"><img src="img/telegram.png" alt="Telegram" /> Telegram</a></li>
       </ul>
     </section>
+    
+    <section id="contacto" class="section">
+      <h2 data-i18n="contacto.titulo">Contacto</h2>
+      <p data-i18n="contacto.p-1">
+        Para consultas o más información, escríbanos a 
+        <a href="mailto:info@amonedacion-argentina.com" id="contacto-email">info@amonedacion-argentina.com</a> 
+        o use el siguiente formulario:
+      </p>
+    
+      <form id="contacto-form" action="https://formsubmit.co/info@amonedacion-argentina.com" method="POST">
+        
+        <label for="nombre" data-i18n="contacto.form.nombre">Nombre completo</label>
+        <input id="nombre" type="text" name="nombre" required>
+    
+        <label for="email" data-i18n="contacto.form.email">Correo electrónico</label>
+        <input id="email" type="email" name="email" required>
+    
+        <label for="mensaje" data-i18n="contacto.form.mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+    
+        <input type="text" name="_honey" style="display:none;">
+    
+        <input type="hidden" name="_captcha" value="false">
+    
+        <button type="submit" data-i18n="contacto.form.submit">Enviar</button>
+      </form>
+    
+      <p id="form-message" style="display:none; color: green; margin-top: 1em;"></p>
+    </section>
+    
+    <section id="gracias" class="section">
+      <h2 data-i18n="gracias.titulo">¡Gracias por contactarnos!</h2>
+      <p data-i18n="gracias.p-1">Hemos recibido su mensaje correctamente. Aquí tiene un resumen:</p>
+      
+      <pre class="json-content" id="jsonDisplay"></pre>
+    </section>
+
   </main>
 
   <footer id="footer">
@@ -133,5 +171,6 @@
   </footer>
 
   <script src="js/script.js"></script>
+  <script src="contacto.js"></script>
 </body>
 </html>
