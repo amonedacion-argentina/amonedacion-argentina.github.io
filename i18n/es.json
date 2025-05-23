@@ -57,7 +57,11 @@
       "email": "Correo electrónico",
       "mensaje": "Escriba su mensaje aquí",
       "submit": "Enviar"
-    }
+    },
+    "error_campos": "Por favor, completa todos los campos obligatorios.",
+    "enviando": "Enviando...",
+    "error_envio": "Hubo un problema enviando el formulario.",
+    "error_conexion": "Error de conexión. Intenta de nuevo más tarde."
   },
   "gracias": {
     "titulo": "¡Gracias por contactarnos!",
