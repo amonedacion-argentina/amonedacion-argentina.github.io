@@ -99,4 +99,5 @@ document.addEventListener("DOMContentLoaded", () => {
     sections[0].classList.add("active");
     navButtons[0].classList.add("active");
   }
+  
 });
