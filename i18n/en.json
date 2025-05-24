@@ -47,21 +47,8 @@
   },
   "redes": {
     "titulo": "Social Media",
-    "p-1": "Connect with us on our official social networks and stay updated with news and events."
-  },
-  "contacto": {
-    "titulo": "Contact",
-    "p-1": "For inquiries or more information, please write to us at <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a> or use the following form:",
-    "form": {
-      "nombre": "Full Name",
-      "email": "Email",
-      "mensaje": "Write your message here",
-      "submit": "Submit"
-    },
-    "error_campos": "Please complete all required fields.",
-    "enviando": "Sending...",
-    "error_envio": "There was a problem submitting the form.",
-    "error_conexion": "Connection error. Please try again later.."
+    "p-1": "Connect with us on our official social networks and stay updated with news and events.",
+    "contacto": "For inquiries or more information, please write to us at <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
   "gracias": {
     "titulo": "Thank you for contacting us!",
