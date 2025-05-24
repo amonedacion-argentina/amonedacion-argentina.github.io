@@ -50,10 +50,6 @@
     "p-1": "Connect with us on our official social networks and stay updated with news and events.",
     "contacto": "For inquiries or more information, please write to us at <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
-  "gracias": {
-    "titulo": "Thank you for contacting us!",
-    "p-1": "We have successfully received your message. Here is a summary:"
-  },
   "footer": {
     "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
   }
