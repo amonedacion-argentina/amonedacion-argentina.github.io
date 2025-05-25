@@ -19,7 +19,17 @@
   },
   "inicio": {
     "titulo": "AMONEDACION ARGENTINA",
-    "p-1": "Los invitamos a explorar la riqueza histórica y cultural de las monedas argentinas a través de nuestra plataforma digital."
+    "p-1": "Los invitamos a explorar la riqueza histórica y cultural de las monedas argentinas a través de nuestra plataforma digital.",
+    "nft-titulo": "¿Qué es un NFT?",
+    "nft-p-1": "NFT significa \"Non-Fungible Token\" (Token No Fungible). Es un tipo especial de activo digital único que representa propiedad o autenticidad de un ítem digital, como arte, música, coleccionables y más, registrado en una blockchain.",
+    "rareza-titulo": "Grados de Rareza en AMONEDACION ARGENTINA",
+    "rareza-p-1": " Cada moneda NFT de la colección está clasificada según su <strong>rareza</strong>, lo que refleja su <strong>disponibilidad</strong> y <strong>valor relativo</strong> dentro del conjunto. Estos grados de rareza están directamente relacionados con la <strong>cantidad de ejemplares físicos documentados</strong> en mi catálogo de monedas argentinas, brindando así un puente entre el coleccionismo tradicional y el digital.",
+    "rareza-p-2": "En numismática, la rareza indica la dificultad para conseguir una pieza, más allá de su precio, fecha o estado de conservación. Esta clasificación se aplica también en el ámbito digital: una mayor rareza implica una menor disponibilidad de NFTs, y generalmente, un mayor desafío para obtenerlos.",
+    "rareza-r1": "<strong>🟢 R1 (Corriente)</strong> – 1.000 unidades<br>Ideal para coleccionistas que dan sus primeros pasos en el mundo de los NFTs numismáticos.",
+    "rareza-r2": "<strong>🔵 R2 (Escasa)</strong> – 400 unidades<br>Menor tirada, mayor exclusividad. Una elección perfecta para quienes buscan piezas más limitadas.",
+    "rareza-r3": "<strong>🟠 R3 (Rara)</strong> – 100 unidades<br>Más escasas, pensadas para quienes valoran la singularidad.",
+    "rareza-r4": "<strong>🔴 R4 (Muy rara)</strong> – 30 unidades <em>(Próximamente)</em><br>Monedas exclusivas con altísimo valor de colección.",
+    "rareza-r5": "<strong>⚫ R5 (Extremadamente rara)</strong> – 5 unidades <em>(Próximamente)</em><br>El máximo nivel de escasez. Solo para los coleccionistas más exigentes."
   },
   "catalogo": {
     "titulo": "Catálogo de Monedas",

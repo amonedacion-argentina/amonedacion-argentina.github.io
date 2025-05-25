@@ -19,7 +19,17 @@
   },
   "inicio": {
     "titulo": "AMONEDACION ARGENTINA",
-    "p-1": "We invite you to explore the historical and cultural richness of Argentine coins through our digital platform."
+    "p-1": "We invite you to explore the historical and cultural richness of Argentine coins through our digital platform.",
+    "nft-titulo": "What is an NFT?",
+    "nft-p-1": "NFT stands for \"Non-Fungible Token\". It's a special type of unique digital asset that represents ownership or authenticity of a digital item, such as art, music, collectibles, and more, recorded on a blockchain.",
+    "rareza-titulo": "Rarity Grades in AMONEDACION ARGENTINA",
+    "rareza-p-1": "Each NFT coin in the collection is classified according to its <strong>rarity</strong>, reflecting its <strong>availability</strong> and <strong>relative value</strong> within the set. These rarity grades are directly related to the <strong>number of physical specimens documented</strong> in my Argentine coin catalog, thus bridging traditional and digital collecting.",
+    "rareza-p-2": "In numismatics, rarity indicates the difficulty of obtaining a piece, beyond its price, date, or condition. This classification also applies in the digital realm: greater rarity means lower availability of NFTs and generally a higher challenge to acquire them.",
+    "rareza-r1": "<strong>🟢 R1 (Common)</strong> – 1,000 units<br>Ideal for collectors taking their first steps into the world of numismatic NFTs.",
+    "rareza-r2": "<strong>🔵 R2 (Scarce)</strong> – 400 units<br>Lower mintage, higher exclusivity. A perfect choice for those seeking more limited pieces.",
+    "rareza-r3": "<strong>🟠 R3 (Rare)</strong> – 100 units<br>More scarce, designed for those who value uniqueness.",
+    "rareza-r4": "<strong>🔴 R4 (Very rare)</strong> – 30 units <em>(Coming soon)</em><br>Exclusive coins with very high collector value.",
+    "rareza-r5": "<strong>⚫ R5 (Extremely rare)</strong> – 5 units <em>(Coming soon)</em><br>The highest level of scarcity. Only for the most demanding collectors."
   },
   "catalogo": {
     "titulo": "Coin Catalog",
