@@ -171,24 +171,26 @@ p {
   outline: none;
 }
 
-/* Listas con íconos */
+/* LISTAS */
 .link-list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.link-list li {
+  padding: 1rem;
 }
 #nft-marketplaces, #ul-redes {
   margin-bottom: 20px;
 }
-
 .link-list a {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
   color: #154360;
   font-weight: 600;
-  border: 2px solid transparent;
-  padding: 8px 10px;
-  border-radius: 6px;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  font-size: 1rem;
 }
 .link-list a:hover, .link-list a:focus {
   background-color: #d6eaf8;
@@ -196,12 +198,10 @@ p {
   outline: none;
 }
 .link-list img {
-  height: 24px;
-  width: 24px;
-  margin-right: 10px;
+  height: 28px;
+  width: 28px;
   object-fit: contain;
 }
-
 #catalogo2, #whitepaper2 {
   text-align: center;
 }
@@ -216,6 +216,61 @@ p {
   margin-top: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#contacto-email {
+  color: #154360;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+#contacto-email:hover,
+#contacto-email:focus {
+  color: #2874a6; /* azul celeste claro al pasar cursor */
+  text-decoration: none;
+  outline: none;
+}
+
+/* TOOGLES */
+.toggle-header {
+  font-size: 1.2rem;
+  background-color: #eaf2f8;
+  border: 1px solid #154360;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 20px 0 10px 0;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #154360;
+  transition: background-color 0.3s ease;
+  justify-content: space-between;
+}
+.toggle-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 1em;
+  border-width: 0;
+  border-style: solid;
+  border-color: #154360;
+  transition: max-height 0.6s ease, opacity 0.6s ease, padding 0.6s ease, border-width 0.6s ease;
+}
+.toggle-content.expanded {
+  max-height: 700px; /* suficiente para todo el contenido */
+  opacity: 1;
+  padding: 1em;
+  border-width: 1px;
+}
+.toggle-header .arrow {
+  transition: transform 0.3s ease;
+}
+.toggle-header.active .arrow {
+  transform: rotate(180deg);
 }
 
 /* FOOTER */
