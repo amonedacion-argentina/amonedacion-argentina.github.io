@@ -9,6 +9,7 @@
   },
   "nav": {
     "inicio": "Inicio",
+    "autor": "Autor",
     "catalogo": "Catálogo de Monedas",
     "whitepaper": "Whitepaper",
     "marketplaces": "Mercados",
@@ -30,6 +31,13 @@
     "rareza-r3": "<strong>🟠 R3 (Rara)</strong> – 100 unidades<br>Más escasas, pensadas para quienes valoran la singularidad.",
     "rareza-r4": "<strong>🔴 R4 (Muy rara)</strong> – 30 unidades <em>(Próximamente)</em><br>Monedas exclusivas con altísimo valor de colección.",
     "rareza-r5": "<strong>⚫ R5 (Extremadamente rara)</strong> – 5 unidades <em>(Próximamente)</em><br>El máximo nivel de escasez. Solo para los coleccionistas más exigentes."
+  },
+    "autor": {
+    "titulo": "Sobre el Autor",
+    "p-1": "<strong>Federico Aguirre Horn</strong> es ingeniero, perito informático y entusiasta de la numismática argentina, residente en Buenos Aires. Desde hace más de treinta años se dedica al estudio sistemático de las monedas emitidas en Argentina, con especial atención a sus aspectos técnicos, históricos y variantes.",
+    "p-2": "Es el autor del catálogo <em>La Moneda Argentina y sus Defectos Recurrentes</em>, un trabajo de investigación numismática que desarrolla desde hace más de una década y cuyo primer capítulo fue publicado en línea en 2025. Esta primera entrega está dedicada a las monedas argentinas de curso legal forzoso, abordando su contexto histórico, características físicas y principales particularidades. El catálogo está estrechamente vinculado al desarrollo de su colección de NFTs, integrando el conocimiento numismático tradicional con herramientas tecnológicas contemporáneas.",
+    "p-3": "En 2024, Federico creó el primer NFT de <strong>AMONEDACION ARGENTINA</strong>, que se presenta como el <strong>primer catálogo de monedas tokenizadas del mundo</strong>, utilizando la red Ethereum. Esta colección pionera busca preservar digitalmente el patrimonio numismático, facilitando su acceso y conocimiento a través de imágenes, datos técnicos y contexto histórico de cada pieza.",
+    "p-4": "Cada NFT ha sido elaborado a partir de fotografías originales y clasificaciones realizadas por el autor, quien también se encarga del desarrollo del sitio web y de la implementación de los contratos inteligentes. Su objetivo es acercar la numismática tradicional al mundo digital y fomentar el intercambio de conocimiento entre coleccionistas, investigadores y entusiastas de todo el mundo."
   },
   "catalogo": {
     "titulo": "Catálogo de Monedas",
