@@ -9,6 +9,7 @@
   },
   "nav": {
     "inicio": "Home",
+    "autor": "Autor",
     "catalogo": "Coin Catalog",
     "whitepaper": "Whitepaper",
     "marketplaces": "Marketplaces",
@@ -30,6 +31,13 @@
     "rareza-r3": "<strong>🟠 R3 (Rare)</strong> – 100 units<br>More scarce, designed for those who value uniqueness.",
     "rareza-r4": "<strong>🔴 R4 (Very rare)</strong> – 30 units <em>(Coming soon)</em><br>Exclusive coins with very high collector value.",
     "rareza-r5": "<strong>⚫ R5 (Extremely rare)</strong> – 5 units <em>(Coming soon)</em><br>The highest level of scarcity. Only for the most demanding collectors."
+  },
+  "autor": {
+    "titulo": "About the Author",
+    "p-1": "<strong>Federico Aguirre Horn</strong> is an engineer, forensic computer expert, and enthusiast of Argentine numismatics, residing in Buenos Aires. For more than thirty years, he has been dedicated to the systematic study of coins issued in Argentina, with special attention to their technical aspects, history, and variants.",
+    "p-2": "He is the author of the catalog <em>La Moneda Argentina y sus Defectos Recurrentes</em> (\"The Argentine Coin and Its Recurring Defects\"), a numismatic research work he has been developing for over a decade, whose first chapter was published online in 2025. This initial release is dedicated to Argentine legal tender coins, covering their historical context, physical characteristics, and main particularities. The catalog is closely linked to the development of his NFT collection, integrating traditional numismatic knowledge with contemporary technological tools.",
+    "p-3": "In 2024, Federico created the first NFT of <strong>AMONEDACION ARGENTINA</strong>, presented as the <strong>world’s first catalog of tokenized coins</strong>, using the Ethereum network. This pioneering collection aims to digitally preserve numismatic heritage, facilitating access and knowledge through images, technical data, and the historical context of each piece.",
+    "p-4": "Each NFT has been made from original photographs and classifications performed by the author, who is also responsible for the website development and smart contract implementation. His goal is to bring traditional numismatics closer to the digital world and encourage the exchange of knowledge among collectors, researchers, and enthusiasts worldwide."
   },
   "catalogo": {
     "titulo": "Coin Catalog",
