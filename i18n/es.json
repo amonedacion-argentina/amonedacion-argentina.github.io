@@ -20,7 +20,10 @@
   },
   "inicio": {
     "titulo": "AMONEDACION ARGENTINA",
-    "p-1": "Los invitamos a explorar la riqueza histórica y cultural de las monedas argentinas a través de nuestra plataforma digital.",
+    "p-1": "<strong>AMONEDACION ARGENTINA</strong> es el primer proyecto digital que fusiona la numismática tradicional con la tecnología blockchain, creando una colección única de monedas históricas argentinas tokenizadas como NFTs. Su objetivo es preservar y difundir el patrimonio cultural y monetario de Argentina en un formato innovador, accesible y seguro.",
+    "p-2": "Cada NFT representa una moneda argentina auténtica, documentada con características detalladas como valor facial, año, ceca, composición, peso y rareza, conformando un catálogo digital que permite coleccionar, estudiar y valorar estas piezas de manera transparente y descentralizada.",
+    "p-3": "El proyecto está dirigido a coleccionistas, investigadores y entusiastas de la numismática y las tecnologías emergentes, ofreciendo un puente entre la historia monetaria y el futuro digital. A través de su plataforma y canales oficiales, promueve la transparencia, la educación y la comunidad, invitando a todos a participar de esta revolución cultural.",
+    "p-4": "Como complemento, se encuentra disponible el catálogo <strong><em>\"La Moneda Argentina y sus Defectos Recurrentes\"</em></strong>, una obra que documenta las monedas físicas reales que dan sustento y contexto a los NFTs, reforzando la conexión entre lo tangible y lo digital.",
     "nft-titulo": "¿Qué es un NFT?",
     "nft-p-1": "NFT significa \"Non-Fungible Token\" (Token No Fungible). Es un tipo especial de activo digital único que representa propiedad o autenticidad de un ítem digital, como arte, música, coleccionables y más, registrado en una blockchain.",
     "rareza-titulo": "Grados de Rareza en AMONEDACION ARGENTINA",
@@ -41,34 +44,76 @@
   },
   "catalogo": {
     "titulo": "Catálogo de Monedas",
-    "p-1": "Nuestro catálogo incluye monedas digitales con alto valor histórico y artístico, acompañadas de sus detalles técnicos y fotografías.",
-    "btn": "Descargar Catálogo (PDF)"
+    "p-1": "<strong><em>La Moneda Argentina y sus Defectos Recurrentes</em></strong> es un catálogo de <strong>monedas argentinas físicas</strong>, auténticas y documentadas con rigor técnico. Cada pieza se presenta con fotografías y datos específicos: valor facial, año, ceca, composición, peso, alineación, canto, rareza y tirada.",
+    "p-2": "Cada ficha incluye imágenes del anverso y reverso, descripciones claras y un enlace directo a su correspondiente NFT en la colección <strong>AMONEDACION ARGENTINA</strong>, lo que permite contar con una <strong>representación digital certificada</strong> en la blockchain. Así, se refuerza el vínculo entre el patrimonio numismático tangible y su representación digital.",
+    "p-3": "El catálogo es de acceso gratuito y se encuentra en permanente expansión, destinado a coleccionistas, investigadores y entusiastas de la historia monetaria argentina.",
+    "cap-1": "CAPÍTULO I: MONEDAS DE CURSO LEGAL FORZOSO",
+    "cap-1-p-1": "Este capítulo está dedicado a monedas que fueron destinadas al <strong>curso legal forzoso</strong> en la República Argentina. Son piezas que circularon habitualmente en la vida cotidiana, muchas de las cuales pasaron por nuestras propias manos.",
+    "cap-1-p-2": "Su estudio permite redescubrir el valor cultural y documental de las monedas comunes, dentro del marco de la historia monetaria del país.",
+    "cap-2": "CAPÍTULO II: MONEDAS DE CURSO LEGAL NO FORZOSO",
+    "cap-2-p-1": "Se habilitará al alcanzarse los 1.000 coleccionistas únicos de la colección AMONEDACION ARGENTINA.",
+    "cap-2-p-2": "Este capítulo está enfocado en monedas <strong>conmemorativas</strong>, diseñadas especialmente para <strong>coleccionistas e inversores</strong>. Se trata de piezas de curso legal <strong>no forzoso</strong>, que sólo pueden (o pudieron) adquirirse a través del Banco Central de la República Argentina u otras instituciones autorizadas.",
+    "cap-2-p-3": "Estas monedas se caracterizan por su bajo volumen de emisión, acabados especiales y alto valor simbólico.",
+    "cap-3": "CAPÍTULO III: DEFECTOS RECURRENTES",
+    "cap-3-p-1": "Se habilitará al alcanzarse los 10.000 coleccionistas únicos de la colección.",
+    "cap-3-p-2": "Este capítulo documenta los <strong>defectos recurrentes</strong> —errores y variantes no planificadas— que se han observado con frecuencia en las monedas analizadas en los capítulos anteriores.",
+    "cap-3-p-3": "Estos defectos ofrecen interés técnico, histórico y coleccionable, permitiendo una apreciación más profunda del proceso de acuñación y sus particularidades.",
+    "btn": "Descargar Catálogo (PDF)",
+    "imgAlt": "Vista previa del catálogo de monedas"
   },
   "whitepaper": {
     "titulo": "Whitepaper (Documento Técnico)",
-    "p-1": "Descubre la visión y los detalles técnicos del proyecto AMONEDACION ARGENTINA, incluyendo tecnología blockchain y NFT.",
-    "btn": "Descargar Whitepaper (PDF)"
+    "p-1": "<strong>AMONEDACION ARGENTINA</strong> es un proyecto innovador que une la numismática tradicional con la tecnología blockchain, mediante la creación de un catálogo digital de monedas argentinas tokenizadas como NFTs.",
+    "p-2": "Cada pieza está basada en fotografías auténticas, con el objetivo de preservar el patrimonio monetario nacional, fomentar su estudio y crear una comunidad en torno a esta convergencia entre historia y tecnología.",
+    "contenido": "Contenido del Documento",
+    "li-1": "Introducción a la colección NFT y fundamentos del proyecto.",
+    "li-2": "Aplicación de tecnología blockchain y NFTs.",
+    "li-3": "Detalles sobre la organización por rareza (R1 a R5).",
+    "li-4": "Importancia histórica, visual y técnica de las piezas.",
+    "li-5": "Objetivos educativos y culturales.",
+    "li-6": "Roadmap de desarrollo.",
+    "roadmap": "Roadmap del Proyecto",
+    "fase-1": "Fase 1: Lanzamiento inicial",
+    "fase-1-li-1": "Publicación de NFTs de rareza R1 y R2 a través de OpenSea.",
+    "fase-1-li-2": "Inclusión de una moneda tipo por valor facial (un año por denominación).",
+    "fase-2": "Fase 2: Expansión de la colección",
+    "fase-2-li-1": "Introducción de NFTs R3, R4 y R5, con mayor grado de exclusividad.",
+    "fase-2-li-2": "Comienzo de la incorporación de monedas de distintos años para cada valor.",
+    "fase-3": "Fase 3: Inclusión de variantes",
+    "fase-3-li-1": "Proyecto a largo plazo para sumar variantes dentro de un mismo año.",
+    "fase-4": "Fase 4: Alianzas y visibilidad",
+    "fase-4-li-1": "Establecimiento de colaboraciones con coleccionistas y otros proyectos NFT.",
+    "fase-4-li-2": "Desarrollo continuo del catálogo y su difusión internacional.",
+    "econ": "Proyección económica",
+    "econ-p-1": "Además del compromiso con la preservación cultural, el proyecto contempla una rentabilidad legítima tanto para su creador como para los inversores.",
+    "econ-li-1": "Cada NFT tiene una cantidad limitada según su rareza, lo que eleva su valor como pieza de colección digital.",
+    "econ-li-2": "El crecimiento de la colección y la consolidación del catálogo potenciarán su apreciación futura en el mercado, generando oportunidades de ganancia para quienes participen en la compra y venta de estas piezas.",
+    "btn": "Descargar Whitepaper (PDF)",
+    "imgAlt": "Vista previa del whitepaper"
   },
   "marketplaces": {
     "titulo-1": "Mercados NFT",
-    "p-1": "Explora nuestra colección de monedas digitales en las principales plataformas.",
+    "p-1": "<strong>AMONEDACION ARGENTINA</strong> le ofrece acceso a su exclusiva colección de monedas digitales a través de las principales plataformas especializadas en NFTs, donde podrá adquirirlas, conservarlas como parte de su patrimonio digital o revenderlas libremente:",
     "titulo-2": "Mercado de Monedas Físicas",
-    "p-2": "Explora nuestras monedas físicas disponibles en MercadoLibre."
+    "p-2": "Asimismo, podrá explorar la oferta de monedas físicas disponibles para la venta en MercadoLibre Argentina:"
   },
   "galerias": {
     "titulo": "Galerías NFT",
-    "p-1": "Plataformas especializadas donde se exhiben NFTs de AMONEDACION ARGENTINA para coleccionistas y entusiastas."
+    "p-1": "Plataformas especializadas donde <strong>AMONEDACION ARGENTINA</strong> exhibe sus NFTs para coleccionistas y aficionados del arte digital:"
   },
   "analisis": {
     "titulo": "Análisis NFT",
-    "p-1": "Plataformas especializadas para análisis de NFTs."
+    "p-1": "<strong>AMONEDACION ARGENTINA</strong> pone a su disposición una selección de plataformas especializadas, diseñadas para usuarios avanzados, que facilitan el seguimiento exhaustivo y el análisis detallado de su colección NFT.",
+    "p-2": "A través de estas herramientas podrá monitorear el rendimiento, la evolución del mercado y las características específicas de cada pieza digital, optimizando así la gestión y el valor de su inversión:"
   },
   "redes": {
     "titulo": "Redes Sociales",
-    "p-1": "Conecta con nosotros en nuestras redes oficiales y mantente al día con las novedades y eventos.",
-    "contacto": "Para consultas o más información, escríbanos a <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
+    "p-1": "Conéctese a través de las redes sociales oficiales para mantenerse informado sobre las últimas novedades y eventos:",
+    "contacto": "Para consultas o información adicional, puede contactarse al correo <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
   "footer": {
     "p-1": "© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados."
-  }
+  },
+  "disponible": "Disponible",
+  "proximamente": "Próximamente"
 }
