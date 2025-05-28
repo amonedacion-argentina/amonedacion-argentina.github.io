@@ -55,27 +55,40 @@ document.addEventListener("DOMContentLoaded", () => {
   // Aplica los textos según data-i18n y actualiza meta tags
   function applyTexts(texts) {
     document.querySelectorAll("[data-i18n]").forEach(elem => {
-      const key = elem.getAttribute("data-i18n");
-      const text = getNestedValue(texts, key);
-      if (text !== undefined && text !== null) {
-        elem.innerHTML = text;
+      const data = elem.getAttribute("data-i18n");
+  
+      // Atributo con forma [attr]key
+      const attrMatch = data.match(/^\[(\w+)\](.+)/);
+      if (attrMatch) {
+        const attr = attrMatch[1];     // ej: "alt"
+        const key = attrMatch[2];      // ej: "whitepaper.imgAlt"
+        const value = getNestedValue(texts, key);
+        if (value !== undefined && value !== null) {
+          elem.setAttribute(attr, value);
+        } else {
+          elem.removeAttribute(attr); // o dejar como está
+        }
       } else {
-        elem.textContent = "";
+        // Reemplazo de contenido normal
+        const value = getNestedValue(texts, data);
+        if (value !== undefined && value !== null) {
+          elem.innerHTML = value;
+        } else {
+          elem.textContent = "";
+        }
       }
     });
-
-    // Actualizar título
+  
+    // Meta title y tags
     if (texts.title) document.title = texts.title;
-
-    // Actualizar meta description
+  
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription && texts.meta && texts.meta.description) {
+    if (metaDescription && texts.meta?.description) {
       metaDescription.setAttribute("content", texts.meta.description);
     }
-
-    // Actualizar meta keywords
+  
     const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords && texts.meta && texts.meta.keywords) {
+    if (metaKeywords && texts.meta?.keywords) {
       metaKeywords.setAttribute("content", texts.meta.keywords);
     }
   }
