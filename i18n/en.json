@@ -20,7 +20,10 @@
   },
   "inicio": {
     "titulo": "AMONEDACION ARGENTINA",
-    "p-1": "We invite you to explore the historical and cultural richness of Argentine coins through our digital platform.",
+    "p-1": "<strong>AMONEDACION ARGENTINA</strong> is the first digital project that merges traditional numismatics with blockchain technology, creating a unique collection of historical Argentine coins tokenized as NFTs. Its goal is to preserve and disseminate Argentina's cultural and monetary heritage in an innovative, accessible, and secure format.",
+    "p-2": "Each NFT represents a genuine Argentine coin, documented with detailed characteristics such as face value, year, mint, composition, weight, and rarity, forming a digital catalog that allows these pieces to be collected, studied, and valued in a transparent and decentralized manner.",
+    "p-3": "The project is aimed at collectors, researchers, and enthusiasts of numismatics and emerging technologies, offering a bridge between monetary history and the digital future. Through its platform and official channels, it promotes transparency, education, and community, inviting everyone to be part of this cultural revolution.",
+    "p-4": "As a complement, the catalog <strong><em>\"La Moneda Argentina y sus Defectos Recurrentes\"</em></strong> is available, documenting the real-world physical coins that form the basis and context for the NFTs, strengthening the connection between the tangible and the digital.",
     "nft-titulo": "What is an NFT?",
     "nft-p-1": "NFT stands for \"Non-Fungible Token\". It's a special type of unique digital asset that represents ownership or authenticity of a digital item, such as art, music, collectibles, and more, recorded on a blockchain.",
     "rareza-titulo": "Rarity Grades in AMONEDACION ARGENTINA",
@@ -35,40 +38,82 @@
   "autor": {
     "titulo": "About the Author",
     "p-1": "<strong>Federico Aguirre Horn</strong> is an engineer, forensic computer expert, and enthusiast of Argentine numismatics, residing in Buenos Aires. For more than thirty years, he has been dedicated to the systematic study of coins issued in Argentina, with special attention to their technical aspects, history, and variants.",
-    "p-2": "He is the author of the catalog <em>La Moneda Argentina y sus Defectos Recurrentes</em> (\"The Argentine Coin and Its Recurring Defects\"), a numismatic research work he has been developing for over a decade, whose first chapter was published online in 2025. This initial release is dedicated to Argentine legal tender coins, covering their historical context, physical characteristics, and main particularities. The catalog is closely linked to the development of his NFT collection, integrating traditional numismatic knowledge with contemporary technological tools.",
+    "p-2": "He is the author of the catalog <em>La Moneda Argentina y sus Defectos Recurrentes</em> (\"The Argentine Coin and its Recurring Defects\"), a numismatic research work he has been developing for over a decade, whose first chapter was published online in 2025. This initial release is dedicated to Argentine legal tender coins, covering their historical context, physical characteristics, and main particularities. The catalog is closely linked to the development of his NFT collection, integrating traditional numismatic knowledge with contemporary technological tools.",
     "p-3": "In 2024, Federico created the first NFT of <strong>AMONEDACION ARGENTINA</strong>, presented as the <strong>world’s first catalog of tokenized coins</strong>, using the Ethereum network. This pioneering collection aims to digitally preserve numismatic heritage, facilitating access and knowledge through images, technical data, and the historical context of each piece.",
     "p-4": "Each NFT has been made from original photographs and classifications performed by the author, who is also responsible for the website development and smart contract implementation. His goal is to bring traditional numismatics closer to the digital world and encourage the exchange of knowledge among collectors, researchers, and enthusiasts worldwide."
   },
   "catalogo": {
     "titulo": "Coin Catalog",
-    "p-1": "Our catalog includes digital coins with high historical and artistic value, accompanied by technical details and photographs.",
-    "btn": "Download Catalog (PDF)"
+    "p-1": "<strong><em>La Moneda Argentina y sus Defectos Recurrentes</em></strong> (<em>\"The Argentine Coin and its Recurring Defects\"</em>) is a catalog of <strong>physical Argentine coins</strong>, authentic and rigorously documented. Each piece is presented with photographs and specific data: face value, year, mint, composition, weight, alignment, edge, rarity, and mintage.",
+    "p-2": "Each entry includes images of the obverse and reverse, clear descriptions, and a direct link to its corresponding NFT in the <strong>AMONEDACION ARGENTINA</strong> collection, allowing a <strong>certified digital representation</strong> on the blockchain. This strengthens the connection between the tangible numismatic heritage and its digital representation.",
+    "p-3": "The catalog is free to access and is continuously expanding, aimed at collectors, researchers, and enthusiasts of Argentine monetary history.",
+    "cap-1": "CHAPTER I: LEGAL TENDER COINS",
+    "cap-1-p-1": "This chapter is dedicated to coins that were issued as <strong>legal tender</strong> in the Argentine Republic. These pieces circulated commonly in daily life, many of which may have passed through our own hands.",
+    "cap-1-p-2": "Its study allows a rediscovery of the cultural and documentary value of common coins within the framework of the country's monetary history.",
+    "cap-2": "CHAPTER II: NON-LEGAL TENDER COINS",
+    "cap-2-p-1": "This chapter will be unlocked when the collection reaches 1,000 unique collectors.",
+    "cap-2-p-2": "This chapter focuses on <strong>commemorative coins</strong>, specially designed for <strong>collectors and investors</strong>. These are <strong>non-legal tender</strong> coins, which can only (or could only) be purchased directly through the Central Bank of the Argentine Republic or other authorized institutions.",
+    "cap-2-p-3": "These coins are characterized by low mintage, special finishes, and high symbolic value.",
+    "cap-3": "CHAPTER III: RECURRENT DEFECTS",
+    "cap-3-p-1": "This chapter will be unlocked when the collection reaches 10,000 unique collectors.",
+    "cap-3-p-2": "This chapter documents <strong>recurrent defects</strong> —errors and unplanned variants— frequently observed in the coins analyzed in the previous chapters.",
+    "cap-3-p-3": "These defects offer technical, historical, and collectible interest, allowing a deeper appreciation of the minting process and its particularities.",
+    "btn": "Download Catalog (PDF)",
+    "imgAlt": "Preview of the coin catalog"
   },
   "whitepaper": {
     "titulo": "Whitepaper (Technical Document)",
-    "p-1": "Discover the vision and technical details of the AMONEDACION ARGENTINA project, including blockchain and NFT technology.",
-    "btn": "Download Whitepaper (PDF)"
+    "p-1": "<strong>AMONEDACION ARGENTINA</strong> is an innovative project that merges traditional numismatics with blockchain technology, through the creation of a digital catalog of Argentine coins tokenized as NFTs.",
+    "p-2": "Each piece is based on authentic photographs, with the aim of preserving the national monetary heritage, promoting its study, and building a community around this convergence of history and technology.",
+    "contenido": "Document Contents",
+    "li-1": "Introduction to the NFT collection and project foundations.",
+    "li-2": "Application of blockchain technology and NFTs.",
+    "li-3": "Details on the rarity organization (R1 to R5).",
+    "li-4": "Historical, visual, and technical importance of the pieces.",
+    "li-5": "Educational and cultural objectives.",
+    "li-6": "Development roadmap.",
+    "roadmap": "Project Roadmap",
+    "fase-1": "Phase 1: Initial Launc",
+    "fase-1-li-1": "Release of R1 and R2 rarity NFTs through OpenSea.",
+    "fase-1-li-2": "Inclusion of one representative coin per face value (one year per denomination).",
+    "fase-2": "Phase 2: Collection Expansion",
+    "fase-2-li-1": "Introduction of R3, R4, and R5 NFTs, with higher levels of exclusivity.",
+    "fase-2-li-2": "Beginning the inclusion of coins from different years for each denomination.",
+    "fase-3": "Phase 3: Variant Inclusion",
+    "fase-3-li-1": "Long-term project to add variants within the same year.",
+    "fase-4": "Phase 4: Partnerships and Visibility",
+    "fase-4-li-1": "Establishment of collaborations with collectors and other NFT projects.",
+    "fase-4-li-2": "Ongoing development of the catalog and its international outreach.",
+    "econ": "Economic Projection",
+    "econ-p-1": "In addition to its commitment to cultural preservation, the project includes a legitimate potential for profitability for both its creator and investors.",
+    "econ-li-1": "Each NFT has a limited quantity based on its rarity, increasing its value as a digital collectible.",
+    "econ-li-2": "The growth of the collection and the consolidation of the catalog will enhance its future market appreciation, creating opportunities for profit for those who participate in the buying and selling of these pieces.",
+    "btn": "Download Whitepaper (PDF)",
+    "imgAlt": "Preview of the whitepaper"
   },
   "marketplaces": {
     "titulo-1": "NFT Marketplaces",
-    "p-1": "Explore our collection of digital coins on all major platforms.",
+    "p-1": "<strong>AMONEDACIÓN ARGENTINA</strong> offers you exclusive access to its digital coin collection through the leading NFT platforms, where you can purchase, hold as part of your digital assets, or freely resell them:",
     "titulo-2": "Physical Coins Market",
-    "p-2": "Explore our physical coins available on MercadoLibre."
+    "p-2": "You may also explore the selection of physical coins available for purchase on MercadoLibre Argentina:"
   },
   "galerias": {
     "titulo": "NFT Galleries",
-    "p-1": "Specialized platforms showcasing AMONEDACION ARGENTINA NFTs for collectors and enthusiasts."
+    "p-1": "Specialized platforms where <strong>AMONEDACION ARGENTINA</strong> showcases its NFTs for collectors and digital art enthusiasts:"
   },
   "analisis": {
     "titulo": "NFT Analytics",
-    "p-1": "Specialized platforms for NFT analysis."
+    "p-1": "<strong>AMONEDACION ARGENTINA</strong> provides you with access to a selection of specialized platforms designed for advanced users, enabling comprehensive tracking and detailed analysis of your NFT collection.",
+    "p-2": "Through these tools, you can monitor performance, market trends, and the specific attributes of each digital asset, thereby optimizing the management and value of your investment:"
   },
   "redes": {
     "titulo": "Social Media",
-    "p-1": "Connect with us on our official social networks and stay updated with news and events.",
-    "contacto": "For inquiries or more information, please write to us at <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
+    "p-1": "Connect via the official social media channels to stay informed about the latest news and events:",
+    "contacto": "For inquiries or additional information, please direct correspondence to <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
   "footer": {
     "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
-  }
+  },
+  "disponible": "Available",
+  "proximamente": "Coming Soon"
 }
