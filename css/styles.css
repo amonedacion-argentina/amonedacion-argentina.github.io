@@ -21,7 +21,6 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   color: white;
 }
-
 .header-container {
   display: flex;
   align-items: center;
@@ -67,12 +66,21 @@ header {
   white-space: nowrap;
 }
 
-#lang-select {
+.lang-container {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* espacio entre el globo y el select */
   position: absolute;
   right: 5%;
   top: 85%;
   transform: translateY(-50%);
-  background-color: #21618c;
+}
+.lang-icon {
+  border: 2px solid black;
+  border-radius: 50%;
+}
+#lang-select {
+  background-color: cadetblue;
   border: 2px solid black;
   color: white;
   font-weight: bold;
@@ -80,6 +88,7 @@ header {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  position: static; /* elimina la posición absoluta */
 }
 #lang-select:hover, #lang-select:focus {
   background-color: #2874a6;
@@ -171,6 +180,58 @@ p {
   outline: none;
 }
 
+.available {
+  color: green;
+  font-weight: bold;
+}
+.upcoming {
+  color: #b5651d;
+  font-weight: bold;
+}
+.note {
+  font-style: italic;
+  color: #555;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+/* WHITEPAPER */
+.whitepaper-container ul {
+  list-style: disc;
+  margin-left: 2rem;
+}
+.whitepaper-container li {
+  margin-bottom: 0.5rem;
+}
+.whitepaper-container h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #154360;
+}
+.contenido-wp, .roadmap, .economia {
+  background-color: #f0f0f0;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+.fase {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid #555;
+  background-color: #fff;
+  border-radius: 6px;
+}
+.fase h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+.roadmap {
+  margin-top: 1rem;
+}
+.economia {
+  margin: 1rem 0;
+}
+
 /* LISTAS */
 .link-list {
   list-style: none;
@@ -205,7 +266,6 @@ p {
 #catalogo2, #whitepaper2 {
   text-align: center;
 }
-
 .catalogo-img, .whitepaper-img {
   display: block;
   margin: 0 auto;
@@ -217,7 +277,6 @@ p {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 #contacto-email {
   color: #154360;
   font-weight: 600;
@@ -225,7 +284,6 @@ p {
   transition: color 0.3s ease;
   cursor: pointer;
 }
-
 #contacto-email:hover,
 #contacto-email:focus {
   color: #2874a6; /* azul celeste claro al pasar cursor */
@@ -296,7 +354,6 @@ footer a:hover, footer a:focus {
   text-decoration: underline;
   color: #d6eaf8;
 }
-
 #autor {
   padding: 20px;
   background-color: #eaf2f8; /* celeste muy suave */
@@ -304,17 +361,14 @@ footer a:hover, footer a:focus {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
 #autor h2 {
   font-size: 1.6rem;
 }
-
 #autor p {
   font-size: 1rem;
   margin-bottom: 10px;
   font-style: italic;
 }
-
 #autor strong,  #autor em {
   font-weight: bold;
   color: #21618c;
