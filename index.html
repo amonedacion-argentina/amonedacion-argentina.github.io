@@ -8,6 +8,9 @@
   <title data-i18n="title">AMONEDACION ARGENTINA</title>
   <link rel="icon" href="img/logo.png" type="image/png">
   <link rel="stylesheet" href="css/styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4801P0QGT"></script>
+  <script src="js/gtag-init.js"></script>
 </head>
 <body>
   <header>
@@ -17,10 +20,13 @@
         <img src="img/logo.png" alt="AMONEDACION ARGENTINA Logo" id="logo" />
         <h1 id="titulo" data-i18n="header.titulo">AMONEDACION<br>ARGENTINA</h1>
       </div>
-      <select id="lang-select" aria-label="Seleccionar idioma">
-        <option value="en">EN</option>
-        <option value="es">ES</option>
-      </select>
+      <div class="lang-container">
+        <img src="img/globo.png" alt="Idioma" class="lang-icon" />
+        <select id="lang-select" aria-label="Seleccionar idioma">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
     </div>
   </header>
 
@@ -41,7 +47,16 @@
     <section id="inicio" class="section active">
       <h1 data-i18n="inicio.titulo">AMONEDACION ARGENTINA</h1>
       <p data-i18n="inicio.p-1">
-        Los invitamos a explorar la riqueza histórica y cultural de las monedas argentinas...
+        AMONEDACION ARGENTINA es el primer proyecto digital...
+      </p>
+      <p data-i18n="inicio.p-2">
+        Cada NFT representa una moneda argentina auténtica...
+      </p>
+      <p data-i18n="inicio.p-3">
+        El proyecto está dirigido a coleccionistas...
+      </p>
+      <p data-i18n="inicio.p-4">
+        Como complemento, se encuentra disponible el catálogo...
       </p>
 
       <div id="toggle-nft" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-nft">
@@ -90,35 +105,129 @@
     <section id="catalogo" class="section">
       <h2 data-i18n="catalogo.titulo">Catálogo de Monedas</h2>
       <p data-i18n="catalogo.p-1">
-        Nuestro catálogo incluye monedas digitales con alto valor histórico y artístico...
+        La Moneda Argentina y sus Defectos Recurrentes es un catálogo de monedas argentinas...
+      </p>
+      <p data-i18n="catalogo.p-2">
+        Cada ficha incluye imágenes del anverso y reverso, descripciones claras...
+      </p>
+      <p data-i18n="catalogo.p-3">
+        El catálogo es de acceso gratuito y se encuentra en permanente expansión...
+      </p>
+      
+      <h3 data-i18n="catalogo.cap-1">CAPÍTULO I: MONEDAS DE CURSO LEGAL FORZOSO</h3>
+      <p class="available" data-i18n="disponible">Disponible</p>
+      <p data-i18n="catalogo.cap-1-p-1">
+        Este capítulo está dedicado a monedas que fueron destinadas al curso legal forzoso...
+      </p>
+      <p data-i18n="catalogo.cap-1-p-2">
+        Su estudio permite redescubrir el valor cultural y documental de las monedas comunes...
+      </p>
+      
+      <h3 data-i18n="catalogo.cap-2">CAPÍTULO II: MONEDAS DE CURSO LEGAL NO FORZOSO</h3>
+      <p class="upcoming" data-i18n="proximamente">Próximamente</p>
+      <p class="note" data-i18n="catalogo.cap-2-p-1">
+        Se habilitará al alcanzarse los 1.000 coleccionistas únicos de la colección AMONEDACION ARGENTINA.
+      </p>
+      <p data-i18n="catalogo.cap-2-p-2">
+        Este capítulo está enfocado en monedas conmemorativas...
+      </p>
+      <p data-i18n="catalogo.cap-2-p-3">
+        Estas monedas se caracterizan por su bajo volumen de emisión, acabados especiales y alto valor simbólico.
+      </p>
+      <h3 data-i18n="catalogo.cap-3">CAPÍTULO III: DEFECTOS RECURRENTES</h3>
+      <p class="upcoming" data-i18n="proximamente">Próximamente</p>
+      <p class="note" data-i18n="catalogo.cap-3-p-1">
+        Se habilitará al alcanzarse los 10.000 coleccionistas únicos de la colección.
+      </p>
+      <p data-i18n="catalogo.cap-3-p-2">
+        Este capítulo documenta los defectos recurrentes —errores y variantes no planificadas—...
+      </p>
+      <p data-i18n="catalogo.cap-3-p-3">
+        Estos defectos ofrecen interés técnico, histórico y coleccionable...
       </p>
       <div id="catalogo2">
         <a href="docs/Catalogo.pdf" target="_blank" class="btn" data-i18n="catalogo.btn">
           Descargar Catálogo (PDF)
         </a>
         <br>
-        <img src="img/catalogo.jpeg" alt="Vista previa del catálogo de monedas" class="catalogo-img">
+        <img src="img/catalogo.jpeg" data-i18n="[alt]catalogo.imgAlt" alt="Vista previa del catálogo de monedas" class="catalogo-img">
       </div>
     </section>
 
     <section id="whitepaper" class="section">
       <h2 data-i18n="whitepaper.titulo">Whitepaper (Documento Técnico)</h2>
-      <p data-i18n="whitepaper.p-1">
-        Descubre la visión y los detalles técnicos del proyecto AMONEDACION ARGENTINA...
-      </p>
+      <div class="whitepaper-container">
+        <p data-i18n="whitepaper.p-1">
+           AMONEDACION ARGENTINA es un proyecto innovador que une la numismática tradicional con la tecnología blockchain...
+        </p>
+        <p data-i18n="whitepaper.p-2">
+           Cada pieza está basada en fotografías auténticas, con el objetivo de preservar el patrimonio monetario nacional...
+        </p>
+        <div class="contenido-wp">
+          <h3 data-i18n="whitepaper.contenido">Contenido del Documento</h3>
+          <ul>
+            <li data-i18n="whitepaper.li-1">Introducción a la colección NFT y fundamentos del proyecto.</li>
+            <li data-i18n="whitepaper.li-2">Aplicación de tecnología blockchain y NFTs.</li>
+            <li data-i18n="whitepaper.li-3">Detalles sobre la organización por rareza (R1 a R5).</li>
+            <li data-i18n="whitepaper.li-4">Importancia histórica, visual y técnica de las piezas.</li>
+            <li data-i18n="whitepaper.li-5">Objetivos educativos y culturales.</li>
+            <li data-i18n="whitepaper.li-6">Roadmap de desarrollo.</li>
+          </ul>
+        </div>
+        <div class="roadmap">
+          <h3 data-i18n="whitepaper.roadmap">Roadmap del Proyecto</h3>
+          <div class="fase">
+            <h4 data-i18n="whitepaper.fase-1">Fase 1: Lanzamiento inicial</h4>
+            <ul>
+              <li data-i18n="whitepaper.fase-1-li-1">Publicación de NFTs de rareza R1 y R2 a través de OpenSea.</li>
+              <li data-i18n="whitepaper.fase-1-li-2">Inclusión de una moneda tipo por valor facial (un año por denominación).</li>
+            </ul>
+          </div>
+          <div class="fase">
+            <h4 data-i18n="whitepaper.fase-2">Fase 2: Expansión de la colección</h4>
+            <ul>
+              <li data-i18n="whitepaper.fase-2-li-1">Introducción de NFTs R3, R4 y R5, con mayor grado de exclusividad.</li>
+              <li data-i18n="whitepaper.fase-2-li-2">Comienzo de la incorporación de monedas de distintos años para cada valor.</li>
+            </ul>
+          </div>
+          <div class="fase">
+            <h4 data-i18n="whitepaper.fase-3">Fase 3: Inclusión de variantes</h4>
+            <ul>
+              <li data-i18n="whitepaper.fase-3-li-1">Proyecto a largo plazo para sumar variantes dentro de un mismo año.</li>
+            </ul>
+          </div>
+          <div class="fase">
+            <h4 data-i18n="whitepaper.fase-4">Fase 4: Alianzas y visibilidad</h4>
+            <ul>
+              <li data-i18n="whitepaper.fase-4-li-1">Establecimiento de colaboraciones con coleccionistas y otros proyectos NFT.</li>
+              <li data-i18n="whitepaper.fase-4-li-2">Desarrollo continuo del catálogo y su difusión internacional.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="economia">
+          <h3 data-i18n="whitepaper.econ">Proyección económica</h3>
+          <p data-i18n="whitepaper.econ-p-1">
+            Además del compromiso con la preservación cultural, el proyecto contempla una rentabilidad legítima...
+          </p>
+          <ul>
+            <li data-i18n="whitepaper.econ-li-1">Cada NFT tiene una cantidad limitada según su rareza, lo que eleva su valor...</li>
+            <li data-i18n="whitepaper.econ-li-2">El crecimiento de la colección y la consolidación del catálogo potenciarán...</li>
+          </ul>
+        </div>
+      </div>
       <div id="whitepaper2">
         <a href="docs/Whitepaper.pdf" target="_blank" class="btn" data-i18n="whitepaper.btn">
           Descargar Whitepaper (PDF)
         </a>
         <br>
-        <img src="img/whitepaper.png" alt="Vista previa del whitepaper" class="whitepaper-img">
+        <img src="img/whitepaper.png" data-i18n="[alt]whitepaper.imgAlt" alt="Vista previa del whitepaper" class="whitepaper-img">
       </div>
     </section>
 
     <section id="marketplaces" class="section">
       <h2 data-i18n="marketplaces.titulo-1">Mercados NFT</h2>
       <p data-i18n="marketplaces.p-1">
-        Explora nuestra colección de monedas digitales en las principales plataformas
+        AMONEDACION ARGENTINA le ofrece acceso a su exclusiva colección de monedas digitales...
       </p>
       <ul id="nft-marketplaces" class="link-list">
         <li><a href="https://opensea.io/collection/amonedacion-argentina" target="_blank" rel="noopener noreferrer"><img src="img/opensea.png" alt="OpenSea" /> OpenSea</a></li>
@@ -129,7 +238,7 @@
       </ul>
       <h2 data-i18n="marketplaces.titulo-2">Mercado de Monedas Físicas</h2>
       <p data-i18n="marketplaces.p-2">
-        Explora nuestras monedas físicas disponibles en MercadoLibre
+        Asimismo, podrá explorar la oferta de monedas físicas disponibles para la venta en MercadoLibre Argentina:
       </p>
       <ul class="link-list">
         <li><a href="https://listado.mercadolibre.com.ar/antiguedades-colecciones/monedas-billetes/_CustId_89431632" target="_blank" rel="noopener noreferrer"><img src="img/mercadolibre.png" alt="MercadoLibre" /> MercadoLibre</a></li>
@@ -139,7 +248,7 @@
 
     <section id="galerias" class="section">
       <h2 data-i18n="galerias.titulo">Galerías NFT</h2>
-      <p data-i18n="galerias.p-1">Plataformas especializadas donde se exhiben NFTs de AMONEDACION ARGENTINA...</p>
+      <p data-i18n="galerias.p-1">Plataformas especializadas donde AMONEDACION ARGENTINA exhibe sus NFTs...</p>
       <ul class="link-list">
         <li><a href="https://gallery.so/argentine_coins/galleries" target="_blank" rel="noopener noreferrer"><img src="img/gallery.png" alt="Gallery" /> Gallery</a></li>
         <li><a href="https://lazy.com/aguirre_horn" target="_blank" rel="noopener noreferrer"><img src="img/lazy.png" alt="Lazy" /> Lazy</a></li>
@@ -148,7 +257,8 @@
 
     <section id="analisis" class="section">
       <h2 data-i18n="analisis.titulo">Análisis NFT</h2>
-      <p data-i18n="analisis.p-1">Plataformas especializadas para análisis de NFTs.</p>
+      <p data-i18n="analisis.p-1">AMONEDACION ARGENTINA pone a su disposición una selección de plataformas especializadas...</p>
+      <p data-i18n="analisis.p-2">A través de estas herramientas podrá monitorear el rendimiento...</p>
       <ul class="link-list">
         <li><a href="https://etherscan.io/token/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/etherscan.png" alt="Etherscan" /> Etherscan</a></li>
         <li><a href="https://coinmarketcap.com/nft/collections/eth/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/coinmarketcap.png" alt="CoinMarketCap" /> CoinMarketCap</a></li>
@@ -160,7 +270,7 @@
 
     <section id="redes" class="section">
       <h2 data-i18n="redes.titulo">Redes Sociales</h2>
-      <p data-i18n="redes.p-1">Conecta con nosotros en nuestras redes oficiales y mantente al día con las novedades.</p>
+      <p data-i18n="redes.p-1">Conéctese a través de las redes sociales oficiales para mantenerse informado sobre las últimas novedades y eventos:</p>
       <ul id="ul-redes" class="link-list">
         <li><a href="https://www.instagram.com/amonedacion_argentina" target="_blank" rel="noopener noreferrer"><img src="img/instagram.png" alt="Instagram" /> Instagram</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61566517487487" target="_blank" rel="noopener noreferrer"><img src="img/facebook.png" alt="Facebook" /> Facebook</a></li>
@@ -169,7 +279,7 @@
         <li><a href="https://t.me/AMONEDACIONARGENTINA" target="_blank" rel="noopener noreferrer"><img src="img/telegram.png" alt="Telegram" /> Telegram</a></li>
       </ul>
       <p data-i18n="redes.contacto">
-        Para consultas o más información, escríbanos a 
+        Para consultas o información adicional, puede contactarse al correo 
         <a href="mailto:info@amonedacion-argentina.com" id="contacto-email">info@amonedacion-argentina.com</a>.
       </p>
     </section>
