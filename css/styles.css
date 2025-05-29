@@ -27,7 +27,6 @@ header {
   justify-content: center;
   position: relative;
 }
-
 #fondo {
   position: absolute;
   top: 0;
@@ -37,7 +36,6 @@ header {
   object-fit: cover;
   z-index: 0;
 }
-
 #presentacion{
   margin: 35px auto 35px 3% ;
   width: 500px;
@@ -47,13 +45,11 @@ header {
   align-items: center;
   gap: 4%;
 }
-
 #logo {
   min-height: 150px;
   max-height: 150px;
   flex-shrink: 0;
 }
-
 #titulo {
   color: antiquewhite;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
@@ -65,7 +61,6 @@ header {
   font-family: sans-serif;
   white-space: nowrap;
 }
-
 .lang-container {
   display: flex;
   align-items: center;
@@ -142,28 +137,23 @@ main {
   border-radius: 8px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
-
 .section {
   display: none;
   animation: fadeIn 0.6s ease forwards;
 }
-
 .section.active {
   display: block;
 }
-
 h1, h2 {
   color: #154360;
   margin-bottom: 15px;
   font-weight: 700;
 }
-
 p {
   margin-bottom: 20px;
   font-size: 1.1rem;
   text-align: justify;
 }
-
 .btn {
   background-color: #2874a6;
   color: white;
@@ -179,7 +169,6 @@ p {
   background-color: #1b4f72;
   outline: none;
 }
-
 .available {
   color: green;
   font-weight: bold;
@@ -194,6 +183,7 @@ p {
   margin-top: 0.25rem;
   margin-bottom: 1rem;
 }
+
 /* WHITEPAPER */
 .whitepaper-container ul {
   list-style: disc;
@@ -233,13 +223,21 @@ p {
 }
 
 /* LISTAS */
+.toggle-content ol li {
+    margin-left: 2rem;
+    padding-left: 1rem;
+}
+.toggle-content ol, .toggle-content ul {
+    margin-bottom: 20px;
+}
 .link-list {
   list-style: none;
   display: flex;
   flex-direction: column;
 }
 .link-list li {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
+  padding-top: 0;
 }
 #nft-marketplaces, #ul-redes {
   margin-bottom: 20px;
@@ -322,6 +320,7 @@ p {
   max-height: 1500px; /* suficiente para todo el contenido */
   opacity: 1;
   padding: 1em;
+  padding-bottom: 0;
   border-width: 1px;
 }
 .toggle-header .arrow {
