@@ -1,83 +1,107 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NFTs - Amonedacion Argentina</title>
-<style>
-  body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 1rem; }
-  button { padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; }
-  .nft-list { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); gap: 1rem; }
-  .nft-item { border: 1px solid #ccc; border-radius: 8px; padding: 0.5rem; text-align: center; }
-  .nft-item img { max-width: 100%; border-radius: 6px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis NFTs - Amonedacion Argentina</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f8f9fa;
+      color: #333;
+    }
+    #nfts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .nft-card {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .nft-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #0052cc;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003d99;
+    }
+  </style>
 </head>
 <body>
+  <h1>Amonedacion Argentina - NFTs</h1>
+  <button id="connectWalletButton">Conectar Wallet</button>
+  <div id="nfts"></div>
 
-<h1>Mostrar NFTs de mi Wallet</h1>
+  <script>
+    const connectWalletButton = document.getElementById('connectWalletButton');
+    const nftsContainer = document.getElementById('nfts');
 
-<button id="connectWalletButton">Conectar Wallet y cargar NFTs</button>
+    connectWalletButton.onclick = async () => {
+      if (typeof window.ethereum === 'undefined') {
+        alert("Necesitás MetaMask para usar esta función.");
+        return;
+      }
 
-<div id="nfts" class="nft-list"></div>
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const address = accounts[0];
+        console.log("Conectado:", address);
 
-<script>
-const apiKey = "952b8e1e814e400eaae026892617b0d5";
+        const apiKey = "952b8e1e814e400eaae026892617b0d5";
+        const url = `https://api.opensea.io/api/v2/assets?owner=${address}&limit=20`;
 
-async function fetchNFTs(ownerAddress) {
-  const url = `https://api.opensea.io/api/v2/assets?owner=${ownerAddress}&limit=20`;
-  
-  const response = await fetch(url, {
-    headers: { 'X-API-KEY': apiKey }
-  });
-  
-  if (!response.ok) {
-    throw new Error(`Error en la consulta: ${response.status}`);
-  }
-  
-  const data = await response.json();
-  return data.assets;
-}
+        const response = await fetch(url, {
+          headers: {
+            "Accept": "application/json",
+            "X-API-KEY": apiKey
+          }
+        });
 
-async function connectWalletAndLoadNFTs() {
-  if (!window.ethereum) {
-    alert("Por favor instala MetaMask para continuar.");
-    return;
-  }
-  
-  try {
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    const ownerAddress = accounts[0];
-    
-    const nfts = await fetchNFTs(ownerAddress);
-    displayNFTs(nfts);
-  } catch (error) {
-    alert("Error conectando la wallet o cargando NFTs: " + error.message);
-  }
-}
+        if (!response.ok) {
+          throw new Error("Error en la consulta: " + response.status);
+        }
 
-function displayNFTs(nfts) {
-  const container = document.getElementById("nfts");
-  container.innerHTML = "";
+        const data = await response.json();
+        console.log(data);
 
-  if (nfts.length === 0) {
-    container.innerHTML = "<p>No se encontraron NFTs para esta wallet.</p>";
-    return;
-  }
+        nftsContainer.innerHTML = "";
 
-  nfts.forEach(nft => {
-    const div = document.createElement("div");
-    div.className = "nft-item";
-    div.innerHTML = `
-      <img src="${nft.image_url || ''}" alt="${nft.name || 'NFT'}" />
-      <h3>${nft.name || 'NFT sin nombre'}</h3>
-      <p>${nft.collection ? nft.collection.name : ''}</p>
-    `;
-    container.appendChild(div);
-  });
-}
+        if (data.assets && data.assets.length > 0) {
+          data.assets.forEach(nft => {
+            const card = document.createElement("div");
+            card.className = "nft-card";
+            card.innerHTML = `
+              <img src="${nft.image_url || ''}" alt="${nft.name || 'NFT'}" />
+              <h3>${nft.name || 'NFT sin nombre'}</h3>
+            `;
+            nftsContainer.appendChild(card);
+          });
+        } else {
+          nftsContainer.innerHTML = "<p>No se encontraron NFTs.</p>";
+        }
 
-document.getElementById("connectWalletButton").onclick = connectWalletAndLoadNFTs;
-</script>
-
+      } catch (err) {
+        console.error(err);
+        alert("Error conectando la wallet o cargando NFTs.");
+      }
+    };
+  </script>
 </body>
 </html>
