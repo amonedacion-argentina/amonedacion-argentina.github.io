@@ -144,32 +144,6 @@ function sanitizeInput(input) {
     return div.innerHTML;
 }
 
-// Obtener URL de imagen segura
-function getImageUrl(metadata) {
-    if (!metadata || !metadata.image) {
-        return 'https://via.placeholder.com/300x300?text=Imagen+no+disponible';
-    }
-    
-    try {
-        if (metadata.image.startsWith('http')) {
-            return metadata.image;
-        }
-        
-        if (metadata.image.startsWith('ipfs://')) {
-            const ipfsHash = metadata.image.replace('ipfs://', '');
-            return `${IPFS_GATEWAY}${ipfsHash}`;
-        }
-        
-        if (metadata.image.startsWith('Qm') || metadata.image.startsWith('baf')) {
-            return `${IPFS_GATEWAY}${metadata.image}`;
-        }
-    } catch (error) {
-        console.error('Error procesando imagen:', error);
-    }
-    
-    return 'https://via.placeholder.com/300x300?text=Imagen+no+disponible';
-}
-
 // Renderizar atributos
 function renderTraits(attributes) {
     if (!attributes || !Array.isArray(attributes)) return '';
