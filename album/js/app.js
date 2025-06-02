@@ -28,7 +28,7 @@ connectWalletButton.onclick = async () => {
 
 async function fetchNFTs(address) {
   const apiKey = '952b8e1e814e400eaae026892617b0d5'; // Reemplaza por tu API Key real si cambia
-  const url = `https://api.opensea.io/api/v2/chain/ethereum/account/${address}/nfts?limit=50`;
+  const url = `https://api.opensea.io/v2/chain/ethereum/account/${userAddress}/nfts`;
 
   const response = await fetch(url, {
     headers: {
