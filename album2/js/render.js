@@ -1,5 +1,4 @@
 // Configuración
-const IPFS_GATEWAY = 'https://ipfs.io/ipfs/';
 const OPENSEA_URL = 'https://opensea.io/assets/ethereum/';
 const CONTRACT_ADDRESS = '0x199f5418551db3afa002470c11c2f7eba5154a43';
 
