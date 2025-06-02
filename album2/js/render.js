@@ -92,12 +92,11 @@ async function fetchNFTMetadata(tokenId) {
     }
     
     // Si no está en caché, obtener de IPFS
-    const path = `${App.config.IPFS_HASH}/${tokenId}.json`;
+    const path = `${App.config.IPFS_HASH}/${tokenId}`;
     const gateways = [
+        'https://ipfs.io/ipfs/',
         'https://gateway.pinata.cloud/ipfs/',
-        'https://cloudflare-ipfs.com/ipfs/',
-        'https://dweb.link/ipfs/',
-        'https://ipfs.infura.io/ipfs/'
+        'https://dweb.link/ipfs/'
     ];
     
     let lastError = null;
