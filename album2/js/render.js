@@ -1,5 +1,3 @@
-const CONTRACT_ADDRESS = '0x199f5418551db3afa002470c11c2f7eba5154a43';
-
 // Renderizar NFTs en el contenedor
 async function renderNFTs(tokenIds) {
     const container = document.getElementById('nfts-container');
