@@ -1,0 +1,245 @@
+// Configuración
+const IPFS_GATEWAY = 'https://ipfs.io/ipfs/';
+const OPENSEA_URL = 'https://opensea.io/assets/ethereum/';
+const CONTRACT_ADDRESS = '0x199f5418551db3afa002470c11c2f7eba5154a43';
+
+// Renderizar NFTs en el contenedor
+async function renderNFTs(tokenIds) {
+    const container = document.getElementById('nfts-container');
+    container.innerHTML = '';
+    
+    if (tokenIds.length === 0) {
+        container.innerHTML = '<p class="no-results">No se encontraron NFTs que coincidan con los filtros.</p>';
+        return;
+    }
+    
+    const fragment = document.createDocumentFragment();
+    
+    for (const tokenId of tokenIds) {
+        try {
+            const nftElement = await createNFTElement(tokenId);
+            fragment.appendChild(nftElement);
+        } catch (error) {
+            console.error(`Error al renderizar NFT ${tokenId}:`, error);
+            const errorElement = document.createElement('div');
+            errorElement.className = 'nft-card error';
+            errorElement.innerHTML = `
+                <div class="nft-image error-image">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="nft-info">
+                    <div class="nft-name">Error al cargar NFT #${tokenId}</div>
+                    <p>Intenta recargar la página.</p>
+                </div>
+            `;
+            fragment.appendChild(errorElement);
+        }
+    }
+    
+    container.appendChild(fragment);
+    updateTraitFilterOptions();
+}
+
+// Crear elemento HTML para un NFT
+async function createNFTElement(tokenId) {
+    const metadata = await fetchNFTMetadata(tokenId);
+    
+    const nftCard = document.createElement('div');
+    nftCard.className = 'nft-card';
+    
+    if (App.state.ownedNFTs.has(tokenId)) {
+        nftCard.classList.add('owned');
+    } else {
+        nftCard.classList.add('disabled');
+    }
+    
+    nftCard.innerHTML = `
+        <img class="nft-image" src="${getImageUrl(metadata)}" alt="${metadata.name || `NFT #${tokenId}`}" loading="lazy">
+        <div class="nft-info">
+            <div class="nft-name">${metadata.name || `NFT #${tokenId}`}</div>
+            <div class="nft-traits" id="traits-${tokenId}">
+                ${renderTraits(metadata.attributes)}
+            </div>
+            <div class="nft-owned">En tu colección</div>
+            <a href="${OPENSEA_URL}${CONTRACT_ADDRESS}/${tokenId}" target="_blank" rel="noopener noreferrer" class="opensea-link">
+                Ver en OpenSea
+            </a>
+        </div>
+    `;
+    
+    return nftCard;
+}
+
+// Obtener metadatos del NFT desde IPFS o caché
+async function fetchNFTMetadata(tokenId) {
+    // Verificar caché local primero
+    if (App.state.metadataCache[tokenId]) {
+        return App.state.metadataCache[tokenId];
+    }
+    
+    // Verificar si hay una versión en caché en localStorage
+    const localStorageKey = `nft-${tokenId}-metadata`;
+    const cachedData = localStorage.getItem(localStorageKey);
+    if (cachedData) {
+        try {
+            const metadata = JSON.parse(cachedData);
+            App.state.metadataCache[tokenId] = metadata;
+            return metadata;
+        } catch (e) {
+            console.warn(`Error al parsear caché para NFT ${tokenId}`, e);
+            localStorage.removeItem(localStorageKey);
+        }
+    }
+    
+    // Si no está en caché, obtener de IPFS
+    const path = `${App.config.IPFS_HASH}/${tokenId}.json`;
+    const gateways = [
+        'https://gateway.pinata.cloud/ipfs/',
+        'https://cloudflare-ipfs.com/ipfs/',
+        'https://dweb.link/ipfs/',
+        'https://ipfs.infura.io/ipfs/'
+    ];
+    
+    let lastError = null;
+    
+    for (const gateway of gateways) {
+        try {
+            const response = await fetch(`${gateway}${path}`);
+            if (!response.ok) continue;
+            
+            const metadata = await response.json();
+            
+            // Sanitizar y validar metadatos
+            const safeMetadata = {
+                name: App.utils.sanitizeInput(metadata.name || `NFT #${tokenId}`),
+                description: App.utils.sanitizeInput(metadata.description || ''),
+                image: App.utils.sanitizeInput(metadata.image || ''),
+                attributes: []
+            };
+            
+            if (metadata.attributes && Array.isArray(metadata.attributes)) {
+                safeMetadata.attributes = metadata.attributes.map(attr => ({
+                    trait_type: App.utils.sanitizeInput(attr.trait_type || ''),
+                    value: App.utils.sanitizeInput(attr.value || '')
+                }));
+            }
+            
+            // Actualizar cachés
+            App.state.metadataCache[tokenId] = safeMetadata;
+            localStorage.setItem(localStorageKey, JSON.stringify(safeMetadata));
+            localStorage.setItem('nftMetadataCache', JSON.stringify(App.state.metadataCache));
+            
+            return safeMetadata;
+        } catch (error) {
+            lastError = error;
+            console.warn(`Error con gateway ${gateway} para NFT ${tokenId}:`, error);
+        }
+    }
+    
+    // Si todos los gateways fallaron
+    console.error(`Todos los gateways fallaron para NFT ${tokenId}:`, lastError);
+    throw lastError || new Error(`No se pudo cargar metadata para NFT ${tokenId}`);
+}
+
+// Sanitizar entrada para prevenir XSS
+function sanitizeInput(input) {
+    if (typeof input !== 'string') return input;
+    
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+// Obtener URL de imagen segura
+function getImageUrl(metadata) {
+    if (!metadata || !metadata.image) {
+        return 'https://via.placeholder.com/300x300?text=Imagen+no+disponible';
+    }
+    
+    try {
+        if (metadata.image.startsWith('http')) {
+            return metadata.image;
+        }
+        
+        if (metadata.image.startsWith('ipfs://')) {
+            const ipfsHash = metadata.image.replace('ipfs://', '');
+            return `${IPFS_GATEWAY}${ipfsHash}`;
+        }
+        
+        if (metadata.image.startsWith('Qm') || metadata.image.startsWith('baf')) {
+            return `${IPFS_GATEWAY}${metadata.image}`;
+        }
+    } catch (error) {
+        console.error('Error procesando imagen:', error);
+    }
+    
+    return 'https://via.placeholder.com/300x300?text=Imagen+no+disponible';
+}
+
+// Renderizar atributos
+function renderTraits(attributes) {
+    if (!attributes || !Array.isArray(attributes)) return '';
+    
+    return attributes.map(attr => `
+        <div class="trait" data-trait-type="${attr.trait_type}" data-trait-value="${attr.value}">
+            <strong>${attr.trait_type}:</strong> ${attr.value}
+        </div>
+    `).join('');
+}
+
+// Aplicar filtro de atributos
+function applyTraitFilter() {
+    if (App.state.currentTraitFilter === 'all') return;
+    
+    const [traitType, traitValue] = App.state.currentTraitFilter.split('|');
+    const nftCards = document.querySelectorAll('.nft-card');
+    
+    nftCards.forEach(card => {
+        const traits = card.querySelectorAll('.trait');
+        let hasTrait = false;
+        
+        traits.forEach(trait => {
+            if (trait.dataset.traitType === traitType && trait.dataset.traitValue === traitValue) {
+                hasTrait = true;
+            }
+        });
+        
+        card.style.display = hasTrait ? 'block' : 'none';
+    });
+}
+
+// Actualizar opciones de filtro de atributos
+function updateTraitFilterOptions() {
+    const traitFilter = document.getElementById('trait-filter');
+    
+    if (traitFilter.value !== 'all') return;
+    
+    const traits = new Map();
+    
+    document.querySelectorAll('.trait').forEach(trait => {
+        const type = trait.dataset.traitType;
+        const value = trait.dataset.traitValue;
+        
+        if (!traits.has(type)) {
+            traits.set(type, new Set());
+        }
+        
+        traits.get(type).add(value);
+    });
+    
+    traitFilter.innerHTML = '<option value="all">Todos los atributos</option>';
+    
+    traits.forEach((values, type) => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = type;
+        
+        values.forEach(value => {
+            const option = document.createElement('option');
+            option.value = `${type}|${value}`;
+            option.textContent = `${type}: ${value}`;
+            optgroup.appendChild(option);
+        });
+        
+        traitFilter.appendChild(optgroup);
+    });
+}
