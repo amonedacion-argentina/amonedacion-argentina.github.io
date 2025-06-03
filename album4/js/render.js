@@ -76,78 +76,79 @@ function actualizarCardNFT(nft, elemento) {
     const plataformasContainer = elemento.querySelector('.nft-plataformas');
     plataformasContainer.innerHTML = '';
 
-for (const [key, nombre] of Object.entries(App.config.PLATAFORMAS)) {
-    const enlace = document.createElement('a');
-    
-    // Determina la URL de cada plataforma
-    let url;
-    switch(key) {
-        case 'OPENSEA':
-            url = `${App.config.OPENSEA_URL}${App.config.CONTRATO}/${nft.id}`;
-            break;
-        case 'RARIBLE':
-            url = `${App.config.RARIBLE_URL}${App.config.CONTRATO}/${nft.id}`;
-            break;
-        case 'OKX':
-            url = `${App.config.OKX_URL}${App.config.CONTRATO}/${nft.id}`;
-            break;
-        case 'LOOKSRARE':
-            url = `${App.config.LOOKSRARE_URL}${App.config.CONTRATO}/${nft.id}`;
-            break;
-        case 'MAGICEDEN':
-            url = `${App.config.MAGICEDEN_URL}${App.config.CONTRATO}/${nft.id}`;
-            break;
-        default:
-            url = '#';
+    for (const [key, nombre] of Object.entries(App.config.PLATAFORMAS)) {
+        const enlace = document.createElement('a');
+        
+        // Determina la URL de cada plataforma
+        let url;
+        switch(key) {
+            case 'OPENSEA':
+                url = `${App.config.OPENSEA_URL}${App.config.CONTRATO}/${nft.id}`;
+                break;
+            case 'RARIBLE':
+                url = `${App.config.RARIBLE_URL}${App.config.CONTRATO}/${nft.id}`;
+                break;
+            case 'OKX':
+                url = `${App.config.OKX_URL}${App.config.CONTRATO}/${nft.id}`;
+                break;
+            case 'LOOKSRARE':
+                url = `${App.config.LOOKSRARE_URL}${App.config.CONTRATO}/${nft.id}`;
+                break;
+            case 'MAGICEDEN':
+                url = `${App.config.MAGICEDEN_URL}${App.config.CONTRATO}/${nft.id}`;
+                break;
+            default:
+                url = '#';
+        }
+        
+        enlace.href = url;
+        enlace.target = '_blank';
+        enlace.rel = 'noopener noreferrer';
+        enlace.title = nombre; // Tooltip al pasar el mouse
+        enlace.style.display = 'inline-block';
+        enlace.style.margin = '0 5px';
+        
+        // Crea el elemento de imagen
+        const img = document.createElement('img');
+        img.src = `../img/${key.toLowerCase()}.png`;
+        img.alt = nombre;
+        img.width = 24; // Tamaño uniforme para todos los iconos
+        img.height = 24;
+        img.style.verticalAlign = 'middle';
+        
+        // Maneja el error si la imagen no carga
+        img.onerror = function() {
+            this.style.display = 'none';
+            enlace.textContent = key.charAt(0); // Mostrar inicial si falla la imagen
+        };
+        
+        enlace.appendChild(img);
+        plataformasContainer.appendChild(enlace);
     }
     
-    enlace.href = url;
-    enlace.target = '_blank';
-    enlace.rel = 'noopener noreferrer';
-    enlace.title = nombre; // Tooltip al pasar el mouse
-    enlace.style.display = 'inline-block';
-    enlace.style.margin = '0 5px';
+    function actualizarEstadisticas() {
+        if (!App.estado.walletConectada) return;
+        
+        const totalNFTs = App.estado.nftsFiltrados.length;
+        const nftsPropios = App.estado.nftsFiltrados.filter(nft => nft.enPropiedad).length;
+        
+        document.getElementById('wallet-estadisticas').textContent = 
+            `Completado: ${nftsPropios} de ${totalNFTs}`;
+    }
     
-    // Crea el elemento de imagen
-    const img = document.createElement('img');
-    img.src = `../img/${key.toLowerCase()}.png`;
-    img.alt = nombre;
-    img.width = 24; // Tamaño uniforme para todos los iconos
-    img.height = 24;
-    img.style.verticalAlign = 'middle';
+    function actualizarBotonesPaginacion() {
+        const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);
+        document.getElementById('btn-anterior').disabled = App.estado.paginaActual <= 1;
+        document.getElementById('btn-siguiente').disabled = App.estado.paginaActual >= totalPaginas;
+    }
     
-    // Maneja el error si la imagen no carga
-    img.onerror = function() {
-        this.style.display = 'none';
-        enlace.textContent = key.charAt(0); // Mostrar inicial si falla la imagen
-    };
-    
-    enlace.appendChild(img);
-    plataformasContainer.appendChild(enlace);
-}
-
-function actualizarEstadisticas() {
-    if (!App.estado.walletConectada) return;
-    
-    const totalNFTs = App.estado.nftsFiltrados.length;
-    const nftsPropios = App.estado.nftsFiltrados.filter(nft => nft.enPropiedad).length;
-    
-    document.getElementById('wallet-estadisticas').textContent = 
-        `Completado: ${nftsPropios} de ${totalNFTs}`;
-}
-
-function actualizarBotonesPaginacion() {
-    const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);
-    document.getElementById('btn-anterior').disabled = App.estado.paginaActual <= 1;
-    document.getElementById('btn-siguiente').disabled = App.estado.paginaActual >= totalPaginas;
-}
-
-function sanitizarHTML(str) {
-    if (!str) return '';
-    return str.toString()
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+    function sanitizarHTML(str) {
+        if (!str) return '';
+        return str.toString()
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
 }
