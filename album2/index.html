@@ -107,6 +107,17 @@
                 currentTraitFilter: 'all',
                 showOnlyOwned: false,
                 metadataCache: {}
+            },
+            utils: { 
+            sanitizeInput: function(input) {
+                if (typeof input !== 'string') return input;
+                const div = document.createElement('div');
+                div.textContent = input;
+                return div.innerHTML;
+            },
+            shortenAddress: function(address) {
+                if (!address) return '';
+                return `${address.substring(0, 6)}...${address.substring(38)}`;
             }
         };
     </script>
