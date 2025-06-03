@@ -2,7 +2,7 @@ async function conectarWallet() {
     try {
         // Verificar si MetaMask está instalado
         if (typeof window.ethereum === 'undefined') {
-            alert('Por favor instala MetaMask u otra wallet compatible');
+            alert('Por favor, instale MetaMask u otra wallet compatible.');
             return;
         }
 
@@ -34,7 +34,7 @@ async function verificarRed() {
                 params: [{ chainId: '0x1' }],
             });
         } catch (error) {
-            alert('Por favor cambia a Ethereum Mainnet en tu wallet');
+            alert('Por favor, cambie de red a Ethereum Mainnet en tu wallet.');
         }
     }
 }
@@ -64,7 +64,7 @@ async function cargarNFTsUsuario() {
                     cargarMetadatosNFT(nft);
                 }
             } catch (error) {
-                console.error(`Error al verificar balance para NFT ${nft.id}:`, error);
+                console.error(`Error al verificar balance para el NFT ${nft.id}:`, error);
                 nft.enPropiedad = false;
             }
         }
@@ -75,7 +75,7 @@ async function cargarNFTsUsuario() {
         renderizarNFTs();
     } catch (error) {
         console.error('Error al cargar NFTs del usuario:', error);
-        mostrarError('Error al cargar tus NFTs');
+        mostrarError('Error al cargar sus NFTs.');
     } finally {
         mostrarLoading(false);
     }

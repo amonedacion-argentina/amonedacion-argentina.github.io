@@ -9,6 +9,10 @@ const App = {
         ],
         IPFS_HASH: 'bafybeidph7szu4urvlkzzyappcsm2nuvzeoveehx2byku4xyxwmb6eq5py',
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
+        RARIBLE_URL: 'https://rarible.com/monedas-argentinas/',
+        OKX_URL: 'https://www.okx.com/es-es/web3/marketplace/nft/collection/eth/amonedacion-argentina/',
+        LOOKSRARE_URL: 'https://looksrare.org/es/collections/0x199F5418551DB3aFA002470c11C2f7EbA5154A43/',
+        MAGICEDEN_URL: 'https://magiceden.io/collections/ethereum/0x199f5418551db3afa002470c11c2f7eba5154a43/',
         PLATAFORMAS: {
             OPENSEA: 'OpenSea',
             RARIBLE: 'Rarible',
@@ -55,9 +59,9 @@ function inicializarEventos() {
     document.getElementById('btn-conectar').addEventListener('click', conectarWallet);
     
     // Eventos de filtros
-    document.getElementById('filtro-categoria').addEventListener('change', manejarCambioFiltro);
-    document.getElementById('filtro-paginacion').addEventListener('change', manejarCambioPaginacion);
-    document.getElementById('filtro-propios').addEventListener('change', manejarCambioFiltro);
+    document.getElementById('filtro-categoria').addEventListener('change', cambiarFiltro);
+    document.getElementById('filtro-paginacion').addEventListener('change', cambiarPagina);
+    document.getElementById('filtro-propios').addEventListener('change', cambiarFiltro);
     
     // Eventos de paginación
     document.getElementById('btn-anterior').addEventListener('click', paginaAnterior);
@@ -70,12 +74,12 @@ function inicializarEventos() {
     }
 }
 
-function manejarCambioFiltro() {
+function cambiarFiltro() {
     filtrarNFTs();
     renderizarNFTs();
 }
 
-function manejarCambioPaginacion(e) {
+function cambiarPagina(e) {
     App.estado.itemsPorPagina = parseInt(e.target.value);
     App.estado.paginaActual = 1;
     renderizarNFTs();

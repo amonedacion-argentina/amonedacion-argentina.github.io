@@ -12,7 +12,7 @@ function renderizarNFTs() {
     
     // Mostrar mensaje si no hay resultados
     if (nftsPagina.length === 0) {
-        galeria.innerHTML = '<p class="sin-resultados">No se encontraron NFTs que coincidan con los filtros</p>';
+        galeria.innerHTML = '<p class="sin-resultados">No se encontraron NFTs que coincidan con los filtros aplicados.</p>';
         return;
     }
     
@@ -52,11 +52,11 @@ function crearElementoNFT(nft) {
 function actualizarCardNFT(nft, elemento) {
     if (!nft.metadata) return;
     
-    // Sanitizar y mostrar nombre
+    // Sanitiza y muestra nombre
     const nombre = sanitizarHTML(nft.metadata.name || `NFT #${nft.id}`);
     elemento.querySelector('.nft-nombre').textContent = nombre;
     
-    // Mostrar atributos
+    // Sanitiza y muestra atributos
     const atributosContainer = elemento.querySelector('.nft-atributos');
     atributosContainer.innerHTML = '';
     
@@ -72,18 +72,58 @@ function actualizarCardNFT(nft, elemento) {
         });
     }
     
-    // Mostrar enlaces a plataformas
+    // Muestra enlaces a plataformas
     const plataformasContainer = elemento.querySelector('.nft-plataformas');
     plataformasContainer.innerHTML = '';
+
+for (const [key, nombre] of Object.entries(App.config.PLATAFORMAS)) {
+    const enlace = document.createElement('a');
     
-    for (const [key, nombre] of Object.entries(App.config.PLATAFORMAS)) {
-        const enlace = document.createElement('a');
-        enlace.href = `${App.config.OPENSEA_URL}${App.config.CONTRATO}/${nft.id}`;
-        enlace.target = '_blank';
-        enlace.rel = 'noopener noreferrer';
-        enlace.textContent = nombre;
-        plataformasContainer.appendChild(enlace);
+    // Determina la URL de cada plataforma
+    let url;
+    switch(key) {
+        case 'OPENSEA':
+            url = `${App.config.OPENSEA_URL}${App.config.CONTRATO}/${nft.id}`;
+            break;
+        case 'RARIBLE':
+            url = `${App.config.RARIBLE_URL}${App.config.CONTRATO}/${nft.id}`;
+            break;
+        case 'OKX':
+            url = `${App.config.OKX_URL}${App.config.CONTRATO}/${nft.id}`;
+            break;
+        case 'LOOKSRARE':
+            url = `${App.config.LOOKSRARE_URL}${App.config.CONTRATO}/${nft.id}`;
+            break;
+        case 'MAGICEDEN':
+            url = `${App.config.MAGICEDEN_URL}${App.config.CONTRATO}/${nft.id}`;
+            break;
+        default:
+            url = '#';
     }
+    
+    enlace.href = url;
+    enlace.target = '_blank';
+    enlace.rel = 'noopener noreferrer';
+    enlace.title = nombre; // Tooltip al pasar el mouse
+    enlace.style.display = 'inline-block';
+    enlace.style.margin = '0 5px';
+    
+    // Crea el elemento de imagen
+    const img = document.createElement('img');
+    img.src = `../img/${key.toLowerCase()}.png`;
+    img.alt = nombre;
+    img.width = 24; // Tamaño uniforme para todos los iconos
+    img.height = 24;
+    img.style.verticalAlign = 'middle';
+    
+    // Maneja el error si la imagen no carga
+    img.onerror = function() {
+        this.style.display = 'none';
+        enlace.textContent = key.charAt(0); // Mostrar inicial si falla la imagen
+    };
+    
+    enlace.appendChild(img);
+    plataformasContainer.appendChild(enlace);
 }
 
 function actualizarEstadisticas() {

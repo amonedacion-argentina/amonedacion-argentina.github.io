@@ -9,6 +9,7 @@
 <body>
     <header>
         <h1>AMONEDACION ARGENTINA</h1>
+        <h2>ALBUM VIRTUAL</h2>
         <button id="btn-conectar">Conectar Wallet</button>
         <div id="wallet-info" class="hidden">
             <span id="wallet-direccion"></span>
@@ -18,17 +19,22 @@
 
     <main>
         <section class="filtros">
+
+            <label for="filtro-categoria">Categoría:</label>
             <select id="filtro-categoria">
                 <option value="">Todas las categorías</option>
             </select>
+
+            <label for="filtro-paginacion">NFTs por página:</label>
             <select id="filtro-paginacion">
-                <option value="5">5 por página</option>
-                <option value="10" selected>10 por página</option>
-                <option value="20">20 por página</option>
-                <option value="50">50 por página</option>
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
             </select>
+            
             <label>
-                <input type="checkbox" id="filtro-propios"> Mostrar solo mis NFTs
+                <input type="checkbox" id="filtro-propios"> Mostrar solo mis NFTs.
             </label>
         </section>
 

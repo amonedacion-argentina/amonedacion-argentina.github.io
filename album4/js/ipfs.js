@@ -7,14 +7,14 @@ async function cargarMetadatosNFT(nft, elemento) {
     }
     
     try {
-        // Verificar caché local primero
+        // Verifica caché local primero
         const cacheKey = `nft_${nft.id}_metadata`;
         const cachedData = localStorage.getItem(cacheKey);
         
         if (cachedData) {
             nft.metadata = JSON.parse(cachedData);
         } else {
-            // Intentar con cada gateway hasta tener éxito
+            // Intenta con cada gateway hasta tener éxito
             for (const gateway of App.config.IPFS_GATEWAY) {
                 try {
                     const url = `${gateway}${App.config.IPFS_HASH}/${nft.id}`;
@@ -31,11 +31,11 @@ async function cargarMetadatosNFT(nft, elemento) {
             }
             
             if (!nft.metadata) {
-                throw new Error('No se pudieron cargar los metadatos desde ningún gateway');
+                throw new Error('No se pudieron cargar los metadatos desde ningún gateway.');
             }
         }
         
-        // Actualizar imagen si el usuario posee el NFT
+        // Actualiza la imagen si el usuario posee el NFT
         if (nft.enPropiedad && nft.metadata.image) {
             const imagenUrl = nft.metadata.image.replace('ipfs://', 'https://ipfs.io/ipfs/');
             if (elemento) {
@@ -48,9 +48,9 @@ async function cargarMetadatosNFT(nft, elemento) {
             actualizarCardNFT(nft, elemento);
         }
     } catch (error) {
-        console.error(`Error al cargar metadatos para NFT ${nft.id}:`, error);
+        console.error(`Error al cargar los metadatos del NFT ${nft.id}:`, error);
         if (elemento) {
-            elemento.querySelector('.nft-nombre').textContent = `Error al cargar NFT #${nft.id}`;
+            elemento.querySelector('.nft-nombre').textContent = `Error al cargar el NFT #${nft.id}`;
         }
     } finally {
         nft.cargandoMetadata = false;
