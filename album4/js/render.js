@@ -125,30 +125,30 @@ function actualizarCardNFT(nft, elemento) {
         enlace.appendChild(img);
         plataformasContainer.appendChild(enlace);
     }
+}
+
+function actualizarEstadisticas() {
+    if (!App.estado.walletConectada) return;
     
-    function actualizarEstadisticas() {
-        if (!App.estado.walletConectada) return;
-        
-        const totalNFTs = App.estado.nftsFiltrados.length;
-        const nftsPropios = App.estado.nftsFiltrados.filter(nft => nft.enPropiedad).length;
-        
-        document.getElementById('wallet-estadisticas').textContent = 
-            `Completado: ${nftsPropios} de ${totalNFTs}`;
-    }
+    const totalNFTs = App.estado.nftsFiltrados.length;
+    const nftsPropios = App.estado.nftsFiltrados.filter(nft => nft.enPropiedad).length;
     
-    function actualizarBotonesPaginacion() {
-        const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);
-        document.getElementById('btn-anterior').disabled = App.estado.paginaActual <= 1;
-        document.getElementById('btn-siguiente').disabled = App.estado.paginaActual >= totalPaginas;
-    }
-    
-    function sanitizarHTML(str) {
-        if (!str) return '';
-        return str.toString()
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#039;');
-    }
+    document.getElementById('wallet-estadisticas').textContent = 
+        `Completado: ${nftsPropios} de ${totalNFTs}`;
+}
+
+function actualizarBotonesPaginacion() {
+    const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);
+    document.getElementById('btn-anterior').disabled = App.estado.paginaActual <= 1;
+    document.getElementById('btn-siguiente').disabled = App.estado.paginaActual >= totalPaginas;
+}
+
+function sanitizarHTML(str) {
+    if (!str) return '';
+    return str.toString()
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 }
