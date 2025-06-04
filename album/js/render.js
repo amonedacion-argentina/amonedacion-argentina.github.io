@@ -41,9 +41,14 @@ function renderizarNFTs() {
 function crearElementoNFT(nft) {
     const nftElement = document.createElement('div');
     nftElement.className = 'nft-card';
+
+    const imagenSrc = (App.estado.walletConectada && nft.enPropiedad && nft.metadata && nft.metadata.image)
+        ? nft.metadata.image.replace('ipfs://', 'https://ipfs.io/ipfs/')
+        : `img/monedas-grises/${nft.id}.png`;
+
     nftElement.innerHTML = `
         <div class="nft-imagen-container">
-            <img src="img/monedas-grises/${nft.id}.png" alt="NFT ${nft.id}" 
+            <img src="${imagenSrc}" alt="NFT ${nft.id}" 
                  class="nft-imagen ${nft.enPropiedad ? 'nft-propio' : ''}">
             ${nft.cargandoMetadata ? '<div class="spinner pequeno"></div>' : ''}
         </div>
@@ -51,8 +56,10 @@ function crearElementoNFT(nft) {
         <div class="nft-atributos"></div>
         <div class="nft-plataformas"></div>
     `;
+
     return nftElement;
 }
+
 
 function actualizarCardNFT(nft, elemento) {
     if (!nft.metadata) return;
