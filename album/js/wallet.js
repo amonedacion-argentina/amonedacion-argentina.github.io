@@ -60,7 +60,9 @@ async function cargarNFTsVisibles() {
         for (const nft of nftsPagina) {
             try {
                 const balance = await contrato.balanceOf(App.estado.direccionWallet, nft.id);
-                nft.enPropiedad = balance.gt(0);
+                const balanceValue = balance.toNumber();
+                nft.enPropiedad = balanceValue > 0;
+                console.log(`NFT ${nft.id} balance: ${balanceValue}`);
 
                 if (nft.enPropiedad && !nft.metadata && !nft.cargandoMetadata) {
                     const elemento = document.querySelector(`.nft-card img[alt="NFT ${nft.id}"]`)?.closest('.nft-card');
