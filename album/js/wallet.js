@@ -1,18 +1,24 @@
 async function conectarWallet() {
     try {
+        // Verificar si MetaMask está instalado
         if (typeof window.ethereum === 'undefined') {
             alert('Por favor, instale MetaMask u otra wallet compatible.');
             return;
         }
 
+        // Solicitar conexión de cuentas
         const cuentas = await window.ethereum.request({ method: 'eth_requestAccounts' });
         App.estado.direccionWallet = cuentas[0];
         App.estado.walletConectada = true;
 
+        // Actualizar UI
         actualizarUIWallet();
+        
+        // Verificar red correcta (Mainnet Ethereum)
         await verificarRed();
-
-        renderizarNFTs(); // render inicial y luego se llama a cargarNFTsVisibles por página
+        
+        // Cargar NFTs del usuario
+        await renderizarNFTs();
     } catch (error) {
         console.error('Error al conectar wallet:', error);
         mostrarError('Error al conectar la wallet');
@@ -21,7 +27,7 @@ async function conectarWallet() {
 
 async function verificarRed() {
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if (chainId !== '0x1') {
+    if (chainId !== '0x1') { // 0x1 = Mainnet Ethereum
         try {
             await window.ethereum.request({
                 method: 'wallet_switchEthereumChain',
@@ -67,7 +73,7 @@ async function cargarNFTsVisibles() {
         }
 
         actualizarEstadisticas();
-        renderizarNFTs();
+        renderizarNFTs(); // vuelve a dibujar ahora con propiedad
     } catch (error) {
         console.error('Error al cargar NFTs visibles del usuario:', error);
         mostrarError('Error al cargar sus NFTs.');
@@ -80,14 +86,15 @@ function actualizarUIWallet() {
     const btnConectar = document.getElementById('btn-conectar');
     const walletInfo = document.getElementById('wallet-info');
     const direccionElement = document.getElementById('wallet-direccion');
-
+    
     if (App.estado.walletConectada) {
         btnConectar.textContent = 'Wallet Conectada';
         btnConectar.classList.add('conectado');
-
+        
+        // Mostrar dirección abreviada
         const direccionAbreviada = `${App.estado.direccionWallet.substring(0, 6)}...${App.estado.direccionWallet.substring(38)}`;
         direccionElement.textContent = direccionAbreviada;
-
+        
         walletInfo.classList.remove('hidden');
     } else {
         btnConectar.textContent = 'Conectar Wallet';
