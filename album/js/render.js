@@ -32,10 +32,10 @@ function renderizarNFTs() {
     // Actualiza estado de botones de paginación
     actualizarBotonesPaginacion();
 
-    // Actualiza NFTs visibles
-    //if (App.estado.walletConectada) {
-    //    cargarNFTsVisibles();
-    //}
+    //Actualiza NFTs visibles
+    if (App.estado.walletConectada) {
+        cargarNFTsVisibles();
+    }
 }
 
 function crearElementoNFT(nft) {
