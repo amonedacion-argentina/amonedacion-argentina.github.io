@@ -16,7 +16,4 @@ function filtrarNFTs() {
     
     // Resetea a página 1 al filtrar
     App.estado.paginaActual = 1;
-    
-    // Actualiza estadísticas
-    actualizarEstadisticas();
 }

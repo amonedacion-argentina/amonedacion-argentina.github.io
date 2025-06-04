@@ -47,7 +47,6 @@ async function inicializarApp() {
         await inicializarFiltros();
         filtrarNFTs();
         renderizarNFTs();
-        cargarNFTsVisibles();
     } catch (error) {
         mostrarError('Error al inicializar la aplicación: ' + error.message);
     } finally {
@@ -104,7 +103,7 @@ function paginaSiguiente() {
 function manejarCambioCuentas(cuentas) {
     if (cuentas.length > 0) {
         App.estado.direccionWallet = cuentas[0];
-        cargarNFTsVisibles();
+        renderizarNFTs();
     } else {
         // Wallet desconectada
         App.estado.walletConectada = false;

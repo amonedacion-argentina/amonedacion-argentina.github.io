@@ -74,7 +74,6 @@ async function cargarNFTsVisibles() {
         }
 
         actualizarEstadisticas();
-        renderizarNFTs(); // vuelve a dibujar ahora con propiedad
     } catch (error) {
         console.error('Error al cargar NFTs visibles del usuario:', error);
         mostrarError('Error al cargar sus NFTs.');

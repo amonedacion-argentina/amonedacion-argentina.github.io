@@ -31,6 +31,8 @@ function renderizarNFTs() {
     
     // Actualiza estado de botones de paginación
     actualizarBotonesPaginacion();
+
+    cargarNFTsVisibles();
 }
 
 function crearElementoNFT(nft) {
