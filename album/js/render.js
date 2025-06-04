@@ -33,9 +33,9 @@ function renderizarNFTs() {
     actualizarBotonesPaginacion();
 
     // Actualiza NFTs visibles
-    if (App.estado.walletConectada) {
-        cargarNFTsVisibles();
-    }
+    //if (App.estado.walletConectada) {
+    //    cargarNFTsVisibles();
+    //}
 }
 
 function crearElementoNFT(nft) {
