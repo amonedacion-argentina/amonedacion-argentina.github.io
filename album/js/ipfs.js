@@ -36,7 +36,8 @@ async function cargarMetadatosNFT(nft, elemento) {
         }
         
         // Actualiza la imagen si el usuario posee el NFT
-        if (nft.enPropiedad && nft.metadata.image) {
+        // Actualiza la imagen si el usuario posee el NFT
+        if (App.estado.walletConectada && nft.enPropiedad && nft.metadata?.image) {
             const imagenUrl = nft.metadata.image.replace('ipfs://', 'https://ipfs.io/ipfs/');
             if (elemento) {
                 const imgElement = elemento.querySelector('.nft-imagen');
