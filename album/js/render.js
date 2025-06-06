@@ -32,7 +32,7 @@ async function cargarTodosLosBalances() {
         App.estado.nftsPoseidos = allNFTIds.filter((_, index) => balances[index].gt(0));
 
         // Actualiza la UI para mostrar todos los NFTs poseídos
-        actualizarUINFTsPoseidos();
+        //actualizarUINFTsPoseidos();
 
         actualizarEstadisticas();
 
@@ -57,6 +57,7 @@ async function cargarNFTsVisibles() {
     }
 }
 
+/*
 // Muestra NFTs poseídos fuera de la página actual
 function actualizarUINFTsPoseidos() {
     if (!App.estado.nftsPoseidos || App.estado.nftsPoseidos.length === 0) return;
@@ -75,6 +76,7 @@ function actualizarUINFTsPoseidos() {
         contadorElement.style.display = poseidosFueraPagina.length > 0 ? 'block' : 'none';
     }
 }
+*/
 
 function renderizarNFTs() {
     const galeria = document.getElementById('galeria-nfts');

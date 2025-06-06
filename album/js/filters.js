@@ -19,5 +19,5 @@ function filtrarNFTs() {
     actualizarBotonesPaginacion();
     
     // Actualiza contador de NFTs poseídos
-    actualizarUINFTsPoseidos();
+    //actualizarUINFTsPoseidos();
 }
