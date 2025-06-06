@@ -250,13 +250,13 @@ function actualizarEstadisticas() {
         };
     }
     
-    // Ordenar categorías por porcentaje completado (descendente)
+    // Ordena categorías por porcentaje completado (descendente)
     const categoriasOrdenadas = Object.values(categoriasStats).sort((a, b) => b.porcentaje - a.porcentaje);
     
-    // Generar HTML
+    // Genera HTML
     let html = `
         <div class="estadisticas-global">
-            <h3>Tu Colección</h3>
+            <h3>Su Colección</h3>
             <div class="progreso-total">
                 <div class="progreso-barra" style="width: ${(nftsPropios / totalNFTs) * 100}%"></div>
                 <span>${nftsPropios} de ${totalNFTs} NFTs (${Math.round((nftsPropios / totalNFTs) * 100)}%)</span>

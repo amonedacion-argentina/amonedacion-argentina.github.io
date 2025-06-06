@@ -54,15 +54,6 @@ async function inicializarApp() {
     try {
         await cargarDatosNFTs();
         inicializarFiltros();
-        
-        const filtrosContainer = document.querySelector('.filtros');
-        if (filtrosContainer && !document.getElementById('estadisticas-container')) {
-            const statsContainer = document.createElement('div');
-            statsContainer.id = 'estadisticas-container';
-            statsContainer.className = 'estadisticas-container hidden';
-            filtrosContainer.insertAdjacentElement('afterend', statsContainer);
-        }
-        
         filtrarNFTs();
         renderizarNFTs();
     } catch (error) {

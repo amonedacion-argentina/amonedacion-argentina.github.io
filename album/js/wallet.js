@@ -17,8 +17,14 @@ async function conectarWallet() {
         // Actualizar UI
         actualizarUIWallet();
         
-        // Cargar NFTs del usuario
-        await renderizarNFTs();
+        // Carga balances antes de renderizar
+        await cargarTodosLosBalances();
+
+        // Asegura que los filtros se apliquen
+        filtrarNFTs();
+
+        // Carga NFTs del usuario
+        renderizarNFTs();
     } catch (error) {
         console.error('Error al conectar wallet:', error);
         mostrarError('Error al conectar la wallet.');
