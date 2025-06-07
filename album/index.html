@@ -57,15 +57,14 @@
             <section class="filtros">
                 <label for="filtro-categoria">Categoría:</label>
                 <select id="filtro-categoria">
-                    <option value="">Todas las categorías</option>
+                    <!--<option value="">Todas las categorías</option>-->
                 </select>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="filtro-propios">
-                    <label for="filtro-propios">Mostrar solo mis NFTs</label>
+                <div id="div-filtro-propios" class="hidden">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="filtro-propios">
+                        <label for="filtro-propios">Mostrar solo mis NFTs</label>
+                    </div>
                 </div>
-
-                <!--<div id="contador-nfts-poseidos" class="contador-nfts" style="display: none;"></div>-->
             </section>
 
             <div id="loading" class="hidden">
@@ -74,7 +73,7 @@
 
             <section id="galeria-nfts" class="grid-container"></section>
 
-            <section class="paginacion">
+            <section class="paginador">
                 <div class="paginador-container">
                     <!-- Primera página -->
                     <button id="btn-primera" class="paginador-btn paginador-flecha-doble" aria-label="Primera página">
@@ -104,13 +103,15 @@
                     </button>
                 </div>
 
-                <label for="filtro-paginacion">NFTs por página:</label>
-                <select id="filtro-paginacion">
-                    <option value="5">5</option>
-                    <option value="10" selected>10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
+                <div id="div-filtro-paginador">
+                    <label for="filtro-paginador">NFTs por página:</label>
+                    <select id="filtro-paginador">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
             </section>
 
             <section class="estadisticas">

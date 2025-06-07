@@ -1,44 +1,26 @@
-:root {
-    --color-primario: #2c3e50;
-    --color-secundario: #3498db;
-    --color-fondo: #f5f5f5;
-    --color-texto: #333;
-    --color-borde: #ddd;
-    --color-exito: #27ae60;
-    --color-error: #e74c3c;
-    --tamanio-icono: 32px;
-    --tamanio-icono-mobile: 28px;
-    --color-nft: #4e44ce;
-    --color-nft-hover: #3a30b0;
-}
-
-/* Estilos Base */
+/* Reset y base */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--color-texto);
-    background-color: var(--color-fondo);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #d0e8f2; /* Celeste suave */
+  color: #1c2833; /* texto oscuro */
+  line-height: 1.6;
+  min-height: 100vh;
 }
-
 .hidden {
     display: none !important;
 }
-
-/* Utilidades */
-.contador-nfts {
-    text-align: center;
-    margin: 10px 0;
-    font-size: 0.9em;
-    color: #666;
-    font-style: italic;
+main {
+  margin: 20px 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
-
 .sin-resultados {
     grid-column: 1 / -1;
     text-align: center;
@@ -46,8 +28,6 @@ body {
     color: #7f8c8d;
     font-size: 18px;
 }
-
-/* Componentes reutilizables */
 .card {
     background: white;
     border-radius: 10px;
@@ -55,14 +35,13 @@ body {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
-
 .card:hover {
     transform: translateY(-5px);
 }
 
 /* Botones */
 button {
-    background-color: var(--color-secundario);
+    background-color: #3498db;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -71,20 +50,16 @@ button {
     font-size: 16px;
     transition: background-color 0.3s;
 }
-
 button:hover {
     background-color: #2980b9;
 }
-
 button:disabled {
     background-color: #95a5a6;
     cursor: not-allowed;
 }
-
 button.conectado {
-    background-color: var(--color-exito);
+    background-color: #27ae60;
 }
-
 #btn-conectar {
     background-color: cadetblue;
     border: 2px solid black;
@@ -105,7 +80,6 @@ button.conectado {
     top: 12%;
     transform: translateY(-50%);
 }
-
 .wallet-icon {
     border: 2px solid black;
     border-radius: 50%;
@@ -116,20 +90,26 @@ button.conectado {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    margin: 20px 0;
     align-items: center;
+    border-radius: 8px 8px 0 0;
+    padding: 15px;
+    background-color: lightcyan;
 }
-
-.filtros select, 
-.filtros input {
+.filtros select, .filtros input {
     padding: 8px;
     margin-right: 15px;
     border-radius: 5px;
-    border: 1px solid var(--color-borde);
+    border: 1px solid #ddd;
     font-size: 14px;
     cursor: pointer;
 }
-
+.estadisticas-container {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
 .checkbox-group {
     display: inline-flex;
     align-items: center;
@@ -137,11 +117,10 @@ button.conectado {
     flex-shrink: 0;
     min-width: max-content;
 }
-
 label {
     display: block;
     font-weight: bold;
-    color: var(--color-primario);
+    color: #2c3e50;
 }
 
 /* Grid y Cards */
@@ -151,13 +130,11 @@ label {
     gap: 20px;
     margin-bottom: 30px;
 }
-
 .nft-card {
     composes: card;
     display: flex;
     flex-direction: column;
 }
-
 .nft-imagen-container {
     position: relative;
     width: 100%;
@@ -168,98 +145,66 @@ label {
     justify-content: center;
     background-color: #f0f0f0;
 }
-
 .nft-imagen {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     transition: filter 0.3s;
 }
-
 .nft-imagen:not(.nft-propio) {
     filter: grayscale(100%);
 }
-
 .nft-info {
     padding: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
-
 .nft-nombre {
     font-size: 18px;
     margin-bottom: 12px;
-    color: var(--color-primario);
+    color: #2c3e50;
 }
-
 .nft-atributos {
     margin-bottom: 15px;
 }
-
 .nft-atributo {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
     font-size: 14px;
 }
-
 .atributo-nombre {
     font-weight: bold;
-    color: var(--color-primario);
+    color: #2c3e50;
 }
 
 /* Plataformas NFT */
 .nft-plataformas {
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
-    margin-top: auto;
     padding-top: 15px;
-    border-top: 1px solid var(--color-borde);
+    border-top: 1px solid #ddd;
     justify-content: center;
 }
-
-.nft-plataformas a {
-    display: inline-flex;
-    width: var(--tamanio-icono);
-    height: var(--tamanio-icono);
-    transition: all 0.3s ease;
-    border-radius: 6px;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
 .nft-plataformas a:hover {
     transform: translateY(-2px) scale(1.1);
     background-color: rgba(0, 0, 0, 0.08);
 }
-
-.nft-plataformas a:active {
-    transform: translateY(0) scale(0.98);
-}
-
 .nft-plataformas img {
-    width: 80%;
-    height: 80%;
-    object-fit: contain;
-    filter: grayscale(30%) contrast(1.1);
-    transition: all 0.3s ease;
+    width: 32px;
+    height: 32px;
 }
-
 .nft-plataformas a:hover img {
     filter: grayscale(0%) contrast(1.2);
 }
-
 .nft-plataformas a::after {
     content: attr(title);
     position: absolute;
     bottom: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--color-primario);
+    background-color: #2c3e50;
     color: white;
     padding: 4px 8px;
     border-radius: 4px;
@@ -270,56 +215,37 @@ label {
     transition: opacity 0.3s;
     z-index: 10;
 }
-
 .nft-plataformas a:hover::after {
     opacity: 1;
 }
 
 /* Paginación */
-.paginacion {
+#div-filtro-paginador{
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin: 30px 0;
+    margin-top: 30px;
+    justify-content: center;
 }
-
-.paginacion-container,
 .paginador-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
-
 .paginador-btn {
-    background: var(--color-nft);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
-
-.paginacion-btn:hover:not(:disabled),
 .paginador-btn:hover:not(:disabled) {
-    background: var(--color-nft-hover);
+    background: #3a30b0;
     transform: scale(1.1);
 }
-
-.paginacion-btn:disabled,
 .paginador-btn:disabled {
     background: #cccccc;
     color: #666666;
     cursor: not-allowed;
     opacity: 0.6;
 }
-
 .paginador-contador {
     font-size: 1rem;
     color: #333;
@@ -328,40 +254,34 @@ label {
     font-weight: 500;
 }
 
-/* Flechas personalizadas */
+/* Flechas Paginador */
 .paginador-btn {
     background: none;
     border-radius: 4px;
-    width: auto;
-    height: auto;
     padding: 8px;
 }
-
 .paginador-flecha {
-    display: inline-block;
     width: 12px;
     height: 12px;
-    border-top: 2px solid var(--color-nft);
-    border-right: 2px solid var(--color-nft);
-    transition: all 0.2s ease;
+    border-top: 2px solid #4e44ce;
+    border-right: 2px solid #4e44ce;
 }
-
 .paginador-flecha.izquierda {
     transform: rotate(-135deg);
     margin-right: 2px;
 }
-
 .paginador-flecha.derecha {
     transform: rotate(45deg);
     margin-left: 2px;
 }
-
 .paginador-btn:hover:not(:disabled) .paginador-flecha {
-    border-color: var(--color-nft-hover);
+    border-color: whitesmoke;
 }
-
 .paginador-btn:disabled .paginador-flecha {
     border-color: #999;
+}
+#filtro-paginador{
+    cursor: pointer;
 }
 
 /* Estadísticas */
@@ -373,7 +293,6 @@ label {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: opacity 0.3s ease;
 }
-
 .estadisticas-container.hidden {
     opacity: 0;
     height: 0;
@@ -381,19 +300,14 @@ label {
     margin: 0;
     overflow: hidden;
 }
-
-.estadisticas-global, 
-.estadisticas-categorias {
+.estadisticas-global, .estadisticas-categorias {
     margin-bottom: 15px;
 }
-
-.estadisticas-container h3, 
-.estadisticas-container h4 {
+.estadisticas-container h3, .estadisticas-container h4 {
     margin: 0 0 10px 0;
     color: #333;
 }
-.progreso-total, 
-.progreso-categoria {
+.progreso-total, .progreso-categoria {
     height: 24px;
     background: #e9ecef;
     border-radius: 12px;
@@ -403,12 +317,11 @@ label {
 }
 .progreso-barra {
     height: 100%;
-    background: var(--color-nft);
+    background: #4e44ce;
     border-radius: 12px;
     transition: width 0.3s ease;
 }
-.progreso-total span, 
-.progreso-categoria span {
+.progreso-total span, .progreso-categoria span {
     position: absolute;
     left: 10px;
     top: 50%;
@@ -432,11 +345,6 @@ label {
     margin-bottom: 4px;
     color: #555;
 }
-.filtros {
-    position: relative;
-    margin-bottom: 0; /* Reducir margen inferior ya que las estadísticas estarán debajo */
-}
-
 .estadisticas-container {
     background: #f8f9fa;
     border-radius: 0 0 8px 8px;
@@ -445,19 +353,6 @@ label {
     border-top: 1px solid #eee;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-}
-
-/* Para mantener el diseño consistente */
-.filtros, .estadisticas-container {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px auto;
-    max-width: 1200px;
-}
-
-.filtros {
-    border-radius: 8px 8px 0 0;
 }
 
 /* Spinners */
@@ -473,16 +368,14 @@ label {
     justify-content: center;
     z-index: 1000;
 }
-
 .spinner {
     border: 5px solid #f3f3f3;
-    border-top: 5px solid var(--color-secundario);
+    border-top: 5px solid #3498db;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     animation: spin 1s linear infinite;
 }
-
 .spinner.pequeno {
     width: 20px;
     height: 20px;
@@ -495,7 +388,6 @@ label {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
 @keyframes slideIn {
     from { transform: translateX(100%); }
     to { transform: translateX(0); }
@@ -505,7 +397,6 @@ label {
 html {
     scroll-behavior: smooth;
 }
-
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -517,7 +408,7 @@ html {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: var(--color-error);
+    background-color: #e74c3c;
     color: white;
     padding: 15px;
     border-radius: 5px;
@@ -532,13 +423,11 @@ html {
         flex-direction: column;
         gap: 15px;
     }
-    
     .grid-container {
         grid-template-columns: 1fr;
     }
-    
     .nft-plataformas a {
-        width: var(--tamanio-icono-mobile);
-        height: var(--tamanio-icono-mobile);
+        width: 28px;
+        height: 28px;
     }
 }
