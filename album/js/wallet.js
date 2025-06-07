@@ -47,13 +47,18 @@ async function verificarRed() {
 
 function actualizarUIWallet() {
     const btnConectar = document.getElementById('btn-conectar');
+    const divFiltroPropios = document.getElementById('div-filtro-propios');
     if (App.estado.walletConectada) {
-        // Mostrar dirección abreviada
+        // Muestra dirección abreviada
         const direccionAbreviada = `${App.estado.direccionWallet.substring(0, 4)}...${App.estado.direccionWallet.substring(38)}`;
         btnConectar.textContent = direccionAbreviada;
         btnConectar.classList.add('conectado');
+        // Muestra el filtro para NFTs propios
+        divFiltroPropios.classList.remove('hidden');
     } else {
         btnConectar.textContent = 'Conectar';
         btnConectar.classList.remove('conectado');
+        // Oculta el filtro para NFTs propios
+        divFiltroPropios.classList.add('hidden');
     }
 }

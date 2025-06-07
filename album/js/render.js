@@ -57,27 +57,6 @@ async function cargarNFTsVisibles() {
     }
 }
 
-/*
-// Muestra NFTs poseídos fuera de la página actual
-function actualizarUINFTsPoseidos() {
-    if (!App.estado.nftsPoseidos || App.estado.nftsPoseidos.length === 0) return;
-
-    const poseidosFueraPagina = App.estado.nftsPoseidos.filter(id => {
-        const nft = App.estado.nfts.find(n => n.id === id);
-        return nft && !App.estado.nftsFiltrados.slice(
-            (App.estado.paginaActual - 1) * App.estado.itemsPorPagina,
-            App.estado.paginaActual * App.estado.itemsPorPagina
-        ).some(n => n.id === id);
-    });
-
-    const contadorElement = document.getElementById('contador-nfts-poseidos');
-    if (contadorElement) {
-        contadorElement.textContent = `(+${poseidosFueraPagina.length} NFTs poseídos en otras páginas)`;
-        contadorElement.style.display = poseidosFueraPagina.length > 0 ? 'block' : 'none';
-    }
-}
-*/
-
 function renderizarNFTs() {
     const galeria = document.getElementById('galeria-nfts');
     galeria.innerHTML = '';
@@ -112,7 +91,7 @@ function renderizarNFTs() {
     actualizarEstadisticas();
 
     // Actualiza estado de botones de paginación
-    actualizarBotonesPaginacion();
+    actualizarBotonesPaginador();
 
     cargarNFTsVisibles();
 }
@@ -195,16 +174,11 @@ function actualizarCardNFT(nft, elemento) {
         enlace.target = '_blank';
         enlace.rel = 'noopener noreferrer';
         enlace.title = nombre; // Tooltip al pasar el mouse
-        enlace.style.display = 'inline-block';
-        enlace.style.margin = '0 5px';
         
         // Crea el elemento de imagen
         const img = document.createElement('img');
         img.src = `../img/${key.toLowerCase()}.png`;
         img.alt = nombre;
-        img.width = 24; // Tamaño uniforme para todos los iconos
-        img.height = 24;
-        img.style.verticalAlign = 'middle';
         
         // Maneja el error si la imagen no carga
         img.onerror = function() {
@@ -218,79 +192,76 @@ function actualizarCardNFT(nft, elemento) {
 }
 
 function actualizarEstadisticas() {
+    const container = document.getElementById('estadisticas-container');
+    if (!container) return;
+
+    // Ocultar si no hay wallet conectada
     if (!App.estado.walletConectada) {
-        const container = document.getElementById('estadisticas-container');
-        if (container) container.classList.add('hidden');
+        container.classList.add('hidden');
         return;
     }
     
-    const container = document.getElementById('estadisticas-container');
-    if (!container) return;
-    
     container.classList.remove('hidden');
     
-    // Estadísticas generales
+    // Calcular estadísticas
+    const { totalNFTs, nftsPropios, categoriasStats } = calcularEstadisticas();
+    
+    // Generar y mostrar HTML
+    container.innerHTML = generarHTMLStats(totalNFTs, nftsPropios, categoriasStats);
+}
+
+function calcularEstadisticas() {
     const totalNFTs = App.estado.nfts.length;
     const nftsPropios = App.estado.nftsPoseidos?.length || 0;
     
-    // Calcular estadísticas por categoría
-    let categoriasStats = {};
+    const categoriasStats = Object.entries(App.estado.categorias)
+        .filter(([catKey]) => catKey !== 'todas')
+        .map(([catKey, categoria]) => {
+            const poseidosEnCategoria = categoria.ids
+                .filter(id => App.estado.nftsPoseidos?.includes(id))
+                .length;
+                
+            return {
+                nombre: categoria.nombre,
+                total: categoria.ids.length,
+                poseidos: poseidosEnCategoria,
+                porcentaje: Math.round((poseidosEnCategoria / categoria.ids.length) * 100)
+            };
+        })
+        .sort((a, b) => b.porcentaje - a.porcentaje);
+
+    return { totalNFTs, nftsPropios, categoriasStats };
+}
+
+function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
+    const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
     
-    for (const [catKey, categoria] of Object.entries(App.estado.categorias)) {
-        if (catKey === 'todas' || catKey === 'quemados') continue;
-        
-        const totalEnCategoria = categoria.ids.length;
-        const poseidosEnCategoria = categoria.ids.filter(id => 
-            App.estado.nftsPoseidos?.includes(id)
-        ).length;
-        
-        categoriasStats[catKey] = {
-            nombre: categoria.nombre,
-            total: totalEnCategoria,
-            poseidos: poseidosEnCategoria,
-            porcentaje: Math.round((poseidosEnCategoria / totalEnCategoria) * 100)
-        };
-    }
-    
-    // Ordena categorías por porcentaje completado (descendente)
-    const categoriasOrdenadas = Object.values(categoriasStats).sort((a, b) => b.porcentaje - a.porcentaje);
-    
-    // Genera HTML
-    let html = `
+    return `
         <div class="estadisticas-global">
-            <h3>Su Colección</h3>
+            <h3>Mi Colección</h3>
             <div class="progreso-total">
-                <div class="progreso-barra" style="width: ${(nftsPropios / totalNFTs) * 100}%"></div>
-                <span>${nftsPropios} de ${totalNFTs} NFTs (${Math.round((nftsPropios / totalNFTs) * 100)}%)</span>
+                <div class="progreso-barra" style="width: ${porcentajeTotal}%"></div>
+                <span>${nftsPropios} de ${totalNFTs} NFTs (${porcentajeTotal}%)</span>
             </div>
         </div>
-        
         <div class="estadisticas-categorias">
             <h4>Por Categoría:</h4>
             <ul class="lista-categorias">
-    `;
-    
-    categoriasOrdenadas.forEach(cat => {
-        html += `
-            <li>
-                <span class="categoria-nombre">${cat.nombre}</span>
-                <div class="progreso-categoria">
-                    <div class="progreso-barra" style="width: ${cat.porcentaje}%"></div>
-                    <span>${cat.poseidos}/${cat.total} (${cat.porcentaje}%)</span>
-                </div>
-            </li>
-        `;
-    });
-    
-    html += `
+                ${categoriasStats.map(cat => `
+                    <li>
+                        <span class="categoria-nombre">${cat.nombre}</span>
+                        <div class="progreso-categoria">
+                            <div class="progreso-barra" style="width: ${cat.porcentaje}%"></div>
+                            <span>${cat.poseidos}/${cat.total} (${cat.porcentaje}%)</span>
+                        </div>
+                    </li>
+                `).join('')}
             </ul>
         </div>
     `;
-    
-    container.innerHTML = html;
 }
 
-function actualizarBotonesPaginacion() {
+function actualizarBotonesPaginador() {
     const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);
     
     // Actualizar botones
@@ -304,10 +275,10 @@ function actualizarBotonesPaginacion() {
     document.getElementById('total-paginas').textContent = totalPaginas;
     
     // Actualizar aria-live para lectores de pantalla
-    const paginacionInfo = document.querySelector('.paginacion-info');
-    if (paginacionInfo) {
-        paginacionInfo.setAttribute('aria-live', 'polite');
-        paginacionInfo.setAttribute('aria-atomic', 'true');
+    const paginadorInfo = document.querySelector('.paginador-info');
+    if (paginadorInfo) {
+        paginadorInfo.setAttribute('aria-live', 'polite');
+        paginadorInfo.setAttribute('aria-atomic', 'true');
     }
 }
 

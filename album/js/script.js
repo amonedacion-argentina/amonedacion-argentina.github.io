@@ -71,7 +71,7 @@ function inicializarEventos() {
     // Eventos de filtros
     document.getElementById('filtro-categoria').addEventListener('change', cambiarFiltro);
     document.getElementById('filtro-propios').addEventListener('change', cambiarFiltro);
-    document.getElementById('filtro-paginacion').addEventListener('change', cambiarPagina);
+    document.getElementById('filtro-paginador').addEventListener('change', cambiarPagina);
     
     // Eventos de paginación
     document.getElementById('btn-anterior').addEventListener('click', paginaAnterior);

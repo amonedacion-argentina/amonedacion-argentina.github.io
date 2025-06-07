@@ -11,95 +11,103 @@ async function cargarDatosNFTs() {
 }
 
 function procesarCategorias(datos) {
+    const todasEpocas = datos["Todas las Épocas"];
+    const idsTodasEpocas = Object.values(todasEpocas).flat();
+    
     const categorias = {
-        todas: { nombre: "Todas las categorías", ids: [] },
-        quemados: { nombre: "Quemados", ids: datos.burned || [] }
+        todas: { 
+            nombre: "Todas las Épocas", 
+            ids: idsTodasEpocas 
+        }
     };
 
     for (const [key, value] of Object.entries(datos)) {
-        if (key === 'total' || key === 'burned') continue;
+        if (key === "Todas las Épocas") {
+            // Procesamos las subcategorías de "Todas las Épocas"
+            for (const [subKey, subValue] of Object.entries(value)) {
+                categorias[subKey] = {
+                    nombre: formatearNombre(subKey),
+                    ids: subValue,
+                    parent: "Todas las Épocas"
+                };
+            }
+            continue;
+        }
         
         if (Array.isArray(value)) {
-            // Es una categoría simple
             categorias[key] = {
-                nombre: key.charAt(0).toUpperCase() + key.slice(1),
+                nombre: formatearNombre(key),
                 ids: value
             };
-        } else if (typeof value === 'object') {
-            // Es una categoría con subcategorías (como Próceres)
-
-            // Primero crea la categoría principal
+        } else if (typeof value === 'object' && value !== null) {
             categorias[key] = {
-                nombre: key.charAt(0).toUpperCase() + key.slice(1),
+                nombre: formatearNombre(key),
                 ids: [],
                 tieneSubcategorias: true
             };
 
-            // Luego procesa sus subcategorías
             for (const [subKey, subValue] of Object.entries(value)) {
-                const nombre = subKey.split('_').map(word => 
-                    word.charAt(0).toUpperCase() + word.slice(1)
-                ).join(' ');
-                
                 categorias[subKey] = {
-                    nombre: nombre,
+                    nombre: formatearNombre(subKey),
                     ids: subValue,
                     parent: key
                 };
-                
-                // Agrega los IDs de la subcategoría a la categoría principal
-                categorias[key].ids = [...new Set([...categorias[key].ids, ...subValue])];
+                categorias[key].ids.push(...subValue);
             }
         }
     }
-
-    // Genera lista de IDs para "Todas"
-    categorias.todas.ids = Array.from({length: datos.total}, (_, i) => i + 1)
-        .filter(id => !datos.burned.includes(id));
-
     return categorias;
 }
 
+function formatearNombre(str) {
+    return str.split('_')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ');
+}
+
 function generarListaNFTs(datos) {
-    const nfts = [];
-    const idsQuemados = new Set(datos.burned || []);
-    
-    for (let id = 1; id <= datos.total; id++) {
-        if (!idsQuemados.has(id)) {
-            nfts.push({
-                id: id,
-                enPropiedad: false,
-                metadata: null,
-                cargandoMetadata: false
-            });
-        }
-    }
-    
-    return nfts;
+    const todasEpocas = datos["Todas las Épocas"];
+    const idsExistentes = Object.values(todasEpocas).flat();
+
+    return idsExistentes.map(id => ({
+        id: id,
+        enPropiedad: false,
+        metadata: null,
+        cargandoMetadata: false
+    }));
 }
 
 function inicializarFiltros() {
     const selectCategoria = document.getElementById('filtro-categoria');
     selectCategoria.innerHTML = '';
     
-    // Agrega opción para todas las categorías
+    // Opción "Todas las Épocas" como primera y seleccionada por defecto
     const optionTodas = document.createElement('option');
     optionTodas.value = 'todas';
-    optionTodas.textContent = 'Todas las categorías';
+    optionTodas.textContent = 'Todas las Épocas';
+    optionTodas.selected = true;
     selectCategoria.appendChild(optionTodas);
     
-    // Agrega categorías principales
+    // Subcategorías de "Todas las Épocas"
     for (const [key, categoria] of Object.entries(App.estado.categorias)) {
-        if (key === 'todas' || key === 'quemados') continue;
-        if (categoria.parent) continue; // Salta subcategorías
+        if (categoria.parent === "Todas las Épocas") {
+            const subOption = document.createElement('option');
+            subOption.value = key;
+            subOption.textContent = `├ ${categoria.nombre}`;
+            selectCategoria.appendChild(subOption);
+        }
+    }
+    
+    // Otras categorías principales
+    for (const [key, categoria] of Object.entries(App.estado.categorias)) {
+        if (key === 'todas' || categoria.parent) continue;
+        if (key === "Todas las Épocas") continue;
         
-        // Categoría principal
         const option = document.createElement('option');
         option.value = key;
         option.textContent = categoria.nombre;
         selectCategoria.appendChild(option);
         
-        // Si tiene subcategorías, las agrega agrupadas
         if (categoria.tieneSubcategorias) {
             for (const [subKey, subCategoria] of Object.entries(App.estado.categorias)) {
                 if (subCategoria.parent === key) {
