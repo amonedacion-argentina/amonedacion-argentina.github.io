@@ -30,9 +30,6 @@ async function cargarTodosLosBalances() {
 
         // Guarda en el estado los IDs de NFTs poseídos
         App.estado.nftsPoseidos = allNFTIds.filter((_, index) => balances[index].gt(0));
-
-        actualizarEstadisticas();
-
     } catch (error) {
         console.error('Error al cargar balances de NFTs:', error);
         mostrarError('Error al verificar sus NFTs.');
@@ -198,17 +195,6 @@ function actualizarEstadisticas() {
     
     const {totalNFTs, nftsPropios, categoriasStats} = calcularEstadisticas();
     container.innerHTML = generarHTMLStats(totalNFTs, nftsPropios, categoriasStats);
-    
-    // Forzar traducción después de renderizar
-    if (typeof i18next !== 'undefined' && App.estado.i18n) {
-        const elements = container.querySelectorAll('[data-i18n]');
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (i18next.exists(key)) {
-                el.textContent = i18next.t(key);
-            }
-        });
-    }
 }
 
 function calcularEstadisticas() {
@@ -236,14 +222,12 @@ function calcularEstadisticas() {
 
 function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
     const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
+    const i18n = App.estado.i18n || {};
     
     const itemsCategorias = categoriasStats.map(cat => {
-        const claveI18n = `cat.${cat.nombre}`;
-        const nombreMostrar = i18next.t(claveI18n, {defaultValue: cat.nombre});
-        
         return `
             <li>
-                <span class="categoria-nombre" data-i18n="${claveI18n}">${nombreMostrar}</span>
+                <span class="categoria-nombre">${i18n.cat?.[cat.nombre] || cat.nombre}</span>
                 <div class="progreso-categoria">
                     <div class="progreso-barra" style="width: ${cat.porcentaje}%"></div>
                     <span>${cat.poseidos}/${cat.total} (${cat.porcentaje}%)</span>
@@ -254,14 +238,14 @@ function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
 
     return `
         <div class="estadisticas-global">
-            <h3 data-i18n="stats.mi-coleccion">Mi Colección</h3>
+            <h3>${i18n.stats?.['mi-coleccion'] || 'Mi Colección'}</h3>
             <div class="progreso-total">
                 <div class="progreso-barra" style="width: ${porcentajeTotal}%"></div>
                 <span>${nftsPropios}/${totalNFTs} NFTs (${porcentajeTotal}%)</span>
             </div>
         </div>
         <div class="estadisticas-categorias">
-            <h4 data-i18n="stats.por-categoria">Por Categoría:</h4>
+            <h4>${i18n.stats?.['por-categoria'] || 'Por Categoría:'}</h4>
             <ul class="lista-categorias">
                 ${itemsCategorias}
             </ul>

@@ -1,8 +1,24 @@
 async function conectarWallet() {
     try {
+        // Espera a que esté cargado el estado y las traducciones
+        if (!App.estado?.i18n) {
+            await new Promise((resolve, reject) => {
+                const check = setInterval(() => {
+                    if (App.estado?.i18n) {
+                        clearInterval(check);
+                        resolve();
+                    }
+                }, 100);
+                setTimeout(() => {
+                    clearInterval(check);
+                    reject(new Error('Timeout esperando carga de traducciones'));
+                }, 3000);
+            });
+        }
+
         // Verificar si MetaMask está instalado
         if (typeof window.ethereum === 'undefined') {
-            alert('Por favor, instale MetaMask u otra wallet compatible con la red de Ethereum.');
+            mostrarError(App.estado.i18n?.error?.instale-metamask || 'Por favor, instale MetaMask...');
             return;
         }
 
@@ -27,7 +43,7 @@ async function conectarWallet() {
         renderizarNFTs();
     } catch (error) {
         console.error('Error al conectar wallet:', error);
-        mostrarError('Error al conectar la wallet.');
+        mostrarError(App.estado.i18n?.error?.wallet || 'Error al conectar la wallet.');
     }
 }
 

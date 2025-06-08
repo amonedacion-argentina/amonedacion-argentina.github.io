@@ -35,14 +35,16 @@ function loadLanguage(lang) {
     fetch(`i18n/${lang}.json`)
         .then(res => res.json())
         .then(texts => {
-            if (!App.estado) App.estado = {}; // Asegura que App.estado exista
-            App.estado.i18n = texts; // Guarda las traducciones
-            applyTexts(texts);
-            if (typeof inicializarFiltros === 'function') {
-                inicializarFiltros(); // Reconstruye filtros con el nuevo idioma
-            }
-        })
-        .catch(err => console.error("Error loading language:", err));
+        App.estado = App.estado || {};
+        App.estado.i18n = texts;
+        App.estado.idioma = lang;
+        applyTexts(texts);
+        
+        // Dispara evento personalizado cuando las traducciones están listas
+        document.dispatchEvent(new CustomEvent('i18nLoaded', {
+            detail: { lang, texts }
+        }));
+    });
 }
 
   // Obtiene el valor de clave anidada tipo "inicio.h1"
