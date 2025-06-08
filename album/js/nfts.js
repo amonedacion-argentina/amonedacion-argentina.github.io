@@ -81,46 +81,34 @@ function inicializarFiltros() {
     const selectCategoria = document.getElementById('filtro-categoria');
     selectCategoria.innerHTML = '';
     
-    // Obtiene traducciones del estado (asumiendo que se cargaron previamente)
     const i18n = App.estado.i18n || {};
     const catTranslations = i18n.cat || {};
 
-    // Opción "todas-las-epocas" con fallback
+    // Opción "Todas"
     const optionTodas = document.createElement('option');
     optionTodas.value = 'todas';
     optionTodas.textContent = catTranslations['todas-las-epocas'] || 'Todas las Épocas';
-    optionTodas.selected = true;
     selectCategoria.appendChild(optionTodas);
-    
-    // Resto del código usa catTranslations[key] || categoria.nombre
-    for (const [key, categoria] of Object.entries(App.estado.categorias)) {
-        if (categoria.parent === "todas-las-epocas") {
-            const subOption = document.createElement('option');
-            subOption.value = key;
-            subOption.textContent = `├ ${catTranslations[key] || categoria.nombre}`;
-            selectCategoria.appendChild(subOption);
-        }
-    }
-    
-    // Otras categorías (traducidas)
-    for (const [key, categoria] of Object.entries(App.estado.categorias)) {
-        if (key === 'todas' || categoria.parent) continue;
-        if (key === "todas-las-epocas") continue;
+
+    // Categorías principales y subcategorías
+    Object.entries(App.estado.categorias).forEach(([key, categoria]) => {
+        if (key === 'todas') return;
         
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = i18n.cat[key] || categoria.nombre; // Traducción o fallback
-        selectCategoria.appendChild(option);
-        
-        if (categoria.tieneSubcategorias) {
-            for (const [subKey, subCategoria] of Object.entries(App.estado.categorias)) {
-                if (subCategoria.parent === key) {
-                    const subOption = document.createElement('option');
-                    subOption.value = subKey;
-                    subOption.textContent = `├ ${i18n.cat[subKey] || subCategoria.nombre}`;
-                    selectCategoria.appendChild(subOption);
-                }
-            }
+        // Categoría principal
+        if (!categoria.parent && key !== "todas-las-epocas") {
+            const option = document.createElement('option');
+            option.value = key;
+            option.textContent = i18n.cat?.[key] || key;
+            selectCategoria.appendChild(option);
         }
-    }
+        
+        // Subcategorías (incluyendo las de "todas-las-epocas")
+        if (categoria.parent) {
+            const option = document.createElement('option');
+            option.value = key;
+            const prefijo = categoria.parent === "todas-las-epocas" ? "├ " : "↳ ";
+            option.textContent = prefijo + (i18n.cat?.[key] || key);
+            selectCategoria.appendChild(option);
+        }
+    });
 }

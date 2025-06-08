@@ -22,13 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Cambio de idioma desde el select
   langSelect.addEventListener("change", () => {
-    const lang = langSelect.value;
-    localStorage.setItem("lang", lang);
-    loadLanguage(lang);
-    if (App.estado.nfts) {
-      inicializarFiltros();
-    }
+      const lang = langSelect.value;
+      localStorage.setItem("lang", lang);
+      
+      loadLanguage(lang).then(() => {
+          // Disparar evento después de cargar completamente los textos
+          document.dispatchEvent(new CustomEvent('idiomaCambiado', { 
+              detail: { lang } 
+          }));
+          
+          // Actualización directa como respaldo
+          if (App.estado.nfts) {
+              inicializarFiltros();
+              actualizarEstadisticas();
+          }
+      });
   });
+
+  document.dispatchEvent(new CustomEvent('idiomaCambiado', { 
+      detail: { lang: lang } 
+  }));
 
   // Carga JSON y aplica textos
 function loadLanguage(lang) {

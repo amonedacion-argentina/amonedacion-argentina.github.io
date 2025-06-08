@@ -221,13 +221,14 @@ function calcularEstadisticas() {
 }
 
 function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
-    const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
     const i18n = App.estado.i18n || {};
+    const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
     
     const itemsCategorias = categoriasStats.map(cat => {
+        const nombreTraducido = i18n.cat?.[cat.nombre] || cat.nombre;
         return `
             <li>
-                <span class="categoria-nombre">${i18n.cat?.[cat.nombre] || cat.nombre}</span>
+                <span class="categoria-nombre">${nombreTraducido}</span>
                 <div class="progreso-categoria">
                     <div class="progreso-barra" style="width: ${cat.porcentaje}%"></div>
                     <span>${cat.poseidos}/${cat.total} (${cat.porcentaje}%)</span>
@@ -252,6 +253,23 @@ function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
         </div>
     `;
 }
+
+let idiomaCambiadoHandler;
+document.addEventListener('i18nLoaded', () => {
+    // Eliminar handler anterior si existe
+    if (idiomaCambiadoHandler) {
+        document.removeEventListener('idiomaCambiado', idiomaCambiadoHandler);
+    }
+    
+    // Crear nuevo handler
+    idiomaCambiadoHandler = () => {
+        inicializarFiltros();
+        actualizarEstadisticas();
+        renderizarNFTs(); // Solo si los NFTs contienen texto traducible
+    };
+    
+    document.addEventListener('idiomaCambiado', idiomaCambiadoHandler);
+});
 
 function actualizarBotonesPaginador() {
     const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);
