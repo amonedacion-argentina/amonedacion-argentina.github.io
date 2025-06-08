@@ -224,32 +224,45 @@ function calcularEstadisticas() {
         })
         .sort((a, b) => b.porcentaje - a.porcentaje);
 
-    return { totalNFTs, nftsPropios, categoriasStats };
+    return {totalNFTs, nftsPropios, categoriasStats};
 }
 
 function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
     const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
+
+    console.log("categoriasStats: "+categoriasStats);
     
+    // Verificar y mapear las categorías de forma segura
+    const itemsCategorias = categoriasStats.map(cat => {
+        // Validación para evitar undefined
+        const nombre = cat?.nombre || 'Categoría desconocida';
+        const poseidos = cat?.poseidos || 0;
+        const total = cat?.total || 0;
+        const porcentaje = cat?.porcentaje || 0;
+        
+        return `
+            <li>
+                <span class="categoria-nombre" data-i18n="cat.${nombre}">${nombre}</span>
+                <div class="progreso-categoria">
+                    <div class="progreso-barra" style="width: ${porcentaje}%"></div>
+                    <span>${poseidos}/${total} (${porcentaje}%)</span>
+                </div>
+            </li>
+        `;
+    }).join('');
+
     return `
         <div class="estadisticas-global">
             <h3 data-i18n="stats.mi-coleccion">Mi Colección</h3>
             <div class="progreso-total">
                 <div class="progreso-barra" style="width: ${porcentajeTotal}%"></div>
-                <span>${nftsPropios} de ${totalNFTs} NFTs (${porcentajeTotal}%)</span>
+                <span>${nftsPropios}/${totalNFTs} NFTs (${porcentajeTotal}%)</span>
             </div>
         </div>
         <div class="estadisticas-categorias">
             <h4 data-i18n="stats.por-categoria">Por Categoría:</h4>
             <ul class="lista-categorias">
-                ${categoriasStats.map(cat => `
-                    <li>
-                        <span class="categoria-nombre" data-i18n="cat.${cat.nombre}">${cat.nombre}</span>
-                        <div class="progreso-categoria">
-                            <div class="progreso-barra" style="width: ${cat.porcentaje}%"></div>
-                            <span>${cat.poseidos}/${cat.total} (${cat.porcentaje}%)</span>
-                        </div>
-                    </li>
-                `).join('')}
+                ${itemsCategorias}
             </ul>
         </div>
     `;
