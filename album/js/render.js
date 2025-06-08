@@ -198,7 +198,7 @@ function actualizarEstadisticas() {
     container.classList.remove('hidden');
     
     // Calcula estadísticas
-    const { totalNFTs, nftsPropios, categoriasStats } = calcularEstadisticas();
+    const {totalNFTs, nftsPropios, categoriasStats} = calcularEstadisticas();
     
     // Genera y muestra HTML
     container.innerHTML = generarHTMLStats(totalNFTs, nftsPropios, categoriasStats);
@@ -229,13 +229,10 @@ function calcularEstadisticas() {
 
 function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
     const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
-
-    console.log("categoriasStats: "+JSON.stringify(categoriasStats, null, 2));
     
     // Verificar y mapear las categorías de forma segura
     const itemsCategorias = categoriasStats.map(cat => {
-        // Validación para evitar undefined
-        const nombre = cat?.nombre || 'Categoría desconocida';
+        const nombre = cat?.nombre;
         const poseidos = cat?.poseidos || 0;
         const total = cat?.total || 0;
         const porcentaje = cat?.porcentaje || 0;
