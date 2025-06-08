@@ -209,7 +209,7 @@ function calcularEstadisticas() {
     const nftsPropios = App.estado.nftsPoseidos?.length || 0;
     
     const categoriasStats = Object.entries(App.estado.categorias)
-        .filter(([catKey]) => catKey !== 'todas')
+        .filter(([catKey]) => catKey !== 'todas-las-epocas')
         .map(([catKey, categoria]) => {
             const poseidosEnCategoria = categoria.ids
                 .filter(id => App.estado.nftsPoseidos?.includes(id))
