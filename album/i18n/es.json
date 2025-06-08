@@ -11,6 +11,10 @@
   "footer": {
     "p-1": "© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados."
   },
+  "error": {
+    "wallet": "Error al conectar la wallet.",
+    "instale-metamask": "Por favor, instale MetaMask u otra wallet compatible con la red de Ethereum."
+  },
   "nav": {
     "inicio": "Inicio",
     "album": "Álbum NFT",
