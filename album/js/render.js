@@ -230,7 +230,7 @@ function calcularEstadisticas() {
 function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
     const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
 
-    console.log("categoriasStats: "+categoriasStats);
+    console.log("categoriasStats: "+JSON.stringify(categoriasStats, null, 2));
     
     // Verificar y mapear las categorías de forma segura
     const itemsCategorias = categoriasStats.map(cat => {
