@@ -21,44 +21,46 @@ document.addEventListener("DOMContentLoaded", () => {
   loadLanguage(initialLang);
 
   // Cambio de idioma desde el select
-  langSelect.addEventListener("change", () => {
-      const lang = langSelect.value;
-      localStorage.setItem("lang", lang);
-      
-      loadLanguage(lang).then(() => {
-          // Disparar evento después de cargar completamente los textos
-          document.dispatchEvent(new CustomEvent('idiomaCambiado', { 
-              detail: { lang } 
-          }));
-          
-          // Actualización directa como respaldo
-          if (App.estado.nfts) {
-              inicializarFiltros();
-              actualizarEstadisticas();
-          }
-      });
-  });
-
-  document.dispatchEvent(new CustomEvent('idiomaCambiado', { 
-      detail: { lang: lang } 
-  }));
+  langSelect.addEventListener("change", function() {
+    const lang = this.value; // <-- Usamos this.value en lugar de lang no definido
+    localStorage.setItem("lang", lang);
+    
+    loadLanguage(lang).then(() => {
+        if (App.estado.nfts) {
+            inicializarFiltros();
+            actualizarEstadisticas();
+        }
+    }).catch(error => {
+        console.error("Error al cambiar idioma:", error);
+        mostrarError("Error al cambiar el idioma");
+    });
+});
 
   // Carga JSON y aplica textos
-function loadLanguage(lang) {
-    fetch(`i18n/${lang}.json`)
-        .then(res => res.json())
-        .then(texts => {
-        App.estado = App.estado || {};
-        App.estado.i18n = texts;
-        App.estado.idioma = lang;
-        applyTexts(texts);
-        
-        // Dispara evento personalizado cuando las traducciones están listas
-        document.dispatchEvent(new CustomEvent('i18nLoaded', {
-            detail: { lang, texts }
-        }));
-    });
-}
+  function loadLanguage(lang) {
+      return fetch(`i18n/${lang}.json`)
+          .then(res => {
+              if (!res.ok) throw new Error(`Error ${res.status} cargando idioma`);
+              return res.json();
+          })
+          .then(texts => {
+              App.estado = App.estado || {};
+              App.estado.i18n = texts;
+              App.estado.idioma = lang;
+              applyTexts(texts);
+              
+              // Disparar ambos eventos
+              document.dispatchEvent(new CustomEvent('i18nLoaded', {
+                  detail: { lang, texts }
+              }));
+              document.dispatchEvent(new CustomEvent('idiomaCambiado', {
+                  detail: { lang }
+              }));
+              
+              return texts;
+          });
+  }
+
 
   // Obtiene el valor de clave anidada tipo "inicio.h1"
   function getNestedValue(obj, key) {
