@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="" data-i18n="meta.description" />
   <meta name="keywords" content="" data-i18n="meta.keywords" />
-  <title data-i18n="title">AMONEDACION ARGENTINA - Álbum Virtual</title>
+  <title data-i18n="title">AMONEDACION ARGENTINA - Álbum NFT</title>
   <link rel="icon" href="../img/logo.webp" type="image/webp">
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="../css/footer.css" />
@@ -21,7 +21,7 @@
             <div id="presentacion">
                 <img src="../img/logo.webp" alt="AMONEDACION ARGENTINA Logo" id="logo" />
                 <h1 id="titulo" data-i18n="header.titulo">AMONEDACION<br>ARGENTINA</h1>
-                <h2 id="subtitulo" data-i18n="header.subtitulo">ALBUM VIRTUAL</h2>
+                <h2 id="subtitulo" data-i18n="header.subtitulo">ALBUM NFT</h2>
             </div>
             
             <div class="lang-container">
@@ -55,14 +55,12 @@
     <main>
         <section id="album" class="section active">
             <section class="filtros">
-                <label for="filtro-categoria">Categoría:</label>
-                <select id="filtro-categoria">
-                    <!--<option value="">Todas las categorías</option>-->
-                </select>
+                <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría:</label>
+                <select id="filtro-categoria"></select>
                 <div id="div-filtro-propios" class="hidden">
                     <div class="checkbox-group">
                         <input type="checkbox" id="filtro-propios">
-                        <label for="filtro-propios">Mostrar solo mis NFTs</label>
+                        <label for="filtro-propios" data-i18n="filtros.propios">Mostrar solo mis NFTs</label>
                     </div>
                 </div>
             </section>
@@ -104,7 +102,7 @@
                 </div>
 
                 <div id="div-filtro-paginador">
-                    <label for="filtro-paginador">NFTs por página:</label>
+                    <label for="filtro-paginador" data-i18n="filtros.nft-por-pagina">NFTs por página:</label>
                     <select id="filtro-paginador">
                         <option value="5">5</option>
                         <option value="10" selected>10</option>
@@ -125,6 +123,7 @@
         <p><a href="mailto:info@amonedacion-argentina.com">info@amonedacion-argentina.com</a></p>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script src="js/ethers.min.js"></script>
     <script src="js/render.js"></script>
     <script src="js/wallet.js"></script>
