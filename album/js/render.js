@@ -189,7 +189,6 @@ function actualizarEstadisticas() {
     const container = document.getElementById('estadisticas-container');
     if (!container) return;
 
-    // Oculta si no hay wallet conectada
     if (!App.estado.walletConectada) {
         container.classList.add('hidden');
         return;
@@ -197,11 +196,19 @@ function actualizarEstadisticas() {
     
     container.classList.remove('hidden');
     
-    // Calcula estadísticas
     const {totalNFTs, nftsPropios, categoriasStats} = calcularEstadisticas();
-    
-    // Genera y muestra HTML
     container.innerHTML = generarHTMLStats(totalNFTs, nftsPropios, categoriasStats);
+    
+    // Forzar traducción después de renderizar
+    if (typeof i18next !== 'undefined' && App.estado.i18n) {
+        const elements = container.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (i18next.exists(key)) {
+                el.textContent = i18next.t(key);
+            }
+        });
+    }
 }
 
 function calcularEstadisticas() {
@@ -209,14 +216,14 @@ function calcularEstadisticas() {
     const nftsPropios = App.estado.nftsPoseidos?.length || 0;
     
     const categoriasStats = Object.entries(App.estado.categorias)
-        .filter(([catKey]) => catKey !== 'todas-las-epocas')
+        .filter(([catKey]) => catKey !== 'todas')
         .map(([catKey, categoria]) => {
             const poseidosEnCategoria = categoria.ids
                 .filter(id => App.estado.nftsPoseidos?.includes(id))
                 .length;
                 
             return {
-                nombre: catKey,
+                nombre: catKey, // Usa la clave directamente para i18n
                 total: categoria.ids.length,
                 poseidos: poseidosEnCategoria,
                 porcentaje: Math.round((poseidosEnCategoria / categoria.ids.length) * 100)
@@ -230,19 +237,16 @@ function calcularEstadisticas() {
 function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
     const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
     
-    // Verificar y mapear las categorías de forma segura
     const itemsCategorias = categoriasStats.map(cat => {
-        const nombre = cat?.nombre;
-        const poseidos = cat?.poseidos || 0;
-        const total = cat?.total || 0;
-        const porcentaje = cat?.porcentaje || 0;
+        const claveI18n = `cat.${cat.nombre}`;
+        const nombreMostrar = i18next.t(claveI18n, {defaultValue: cat.nombre});
         
         return `
             <li>
-                <span class="categoria-nombre" data-i18n="cat.${nombre}">${nombre}</span>
+                <span class="categoria-nombre" data-i18n="${claveI18n}">${nombreMostrar}</span>
                 <div class="progreso-categoria">
-                    <div class="progreso-barra" style="width: ${porcentaje}%"></div>
-                    <span>${poseidos}/${total} (${porcentaje}%)</span>
+                    <div class="progreso-barra" style="width: ${cat.porcentaje}%"></div>
+                    <span>${cat.poseidos}/${cat.total} (${cat.porcentaje}%)</span>
                 </div>
             </li>
         `;

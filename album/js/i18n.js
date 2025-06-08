@@ -90,4 +90,44 @@ function loadLanguage(lang) {
       metaKeywords.setAttribute("content", texts.meta.keywords);
     }
   }
+
+  // Inicializa el MutationObserver para contenido dinámico
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          applyTextsToElement(node, App.estado.i18n || {});
+        }
+      });
+    });
+  });
+
+  // Observa el contenedor principal y la sección de estadísticas
+  const mainContainer = document.querySelector('main');
+  const statsContainer = document.getElementById('estadisticas-container');
+  
+  if (mainContainer) {
+    observer.observe(mainContainer, {
+      childList: true,
+      subtree: true
+    });
+  }
+  
+  if (statsContainer) {
+    observer.observe(statsContainer, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  // Función auxiliar para aplicar textos a un elemento específico
+  function applyTextsToElement(element, texts) {
+    element.querySelectorAll("[data-i18n]").forEach(elem => {
+      const data = elem.getAttribute("data-i18n");
+      const value = getNestedValue(texts, data);
+      if (value !== undefined && value !== null) {
+        elem.textContent = value;
+      }
+    });
+  }
 });
