@@ -1,0 +1,74 @@
+{
+  "title": "AMONEDACION ARGENTINA",
+  "meta": {
+    "description": "AMONEDACION ARGENTINA - Colección digital NFT de monedas argentinas",
+    "keywords": "NFT, monedas argentinas, numismática, colección digital, blockchain"
+  },
+  "header": {
+    "titulo": "AMONEDACION<br>ARGENTINA",
+    "subtitulo": "ALBUM NFT"
+  },
+  "footer": {
+    "p-1": "© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados."
+  },
+  "nav": {
+    "inicio": "Inicio",
+    "album": "Álbum NFT",
+    "autor": "Autor",
+    "catalogo": "Catálogo de Monedas",
+    "whitepaper": "Whitepaper",
+    "marketplaces": "Mercados",
+    "galerias": "Galerías NFT",
+    "analisis": "Análisis NFT",
+    "redes": "Redes Sociales",
+    "contacto": "Contacto"
+  },
+  "inicio": {
+    "titulo": "AMONEDACION ARGENTINA"
+  },
+  "filtros": {
+    "categoria": "Categoría:",
+    "propios": "Mostrar solo mis NFTs",
+    "nft-por-pagina": "NFTs por página:"
+  },
+  "stats": {
+    "mi-coleccion": "Mi Colección",
+    "por-categoria": "Por Categoría:"
+  },
+  "cat": {
+    "todas-las-epocas": "Todas las Épocas",
+    "pesos-moneda-nacional": "Pesos Moneda Nacional",
+    "pesos-ley": "Pesos Ley 18.188",
+    "pesos-argentinos": "Pesos Argentinos",
+    "australes": "Australes",
+    "pesos": "Pesos",
+    "futbol": "Mundiales de Fútbol",
+    "flora": "Flora Autóctona",
+    "fauna": "Fauna Autóctona",
+    "efigies": "Efigies",
+    "paisajes": "Paisajes",
+    "edificios": "Edificios Históricos",
+    "escudo": "Escudo Nacional",
+    "sol": "Sol de Mayo",
+    "bimetalicas": "Bimetálicas",
+    "oro": "Oro",
+    "plata": "Plata",
+    "esmaltadas": "Esmaltadas",
+    "proceres": "Próceres Históricos",
+    "belgrano": "Belgrano",
+    "brown": "Brown",
+    "evita": "Evita",
+    "guemes": "Güemes",
+    "san-martin": "San Martín",
+    "sarmiento": "Sarmiento",
+    "urquiza": "Urquiza",
+    "borges": "Borges",
+    "r1":"R1",
+    "r2":"R2",
+    "r3":"R3",
+    "r4":"R4",
+    "r5":"R5"
+  },
+  "cargando": "Cargando...",
+  "sin-resultados":"No se encontraron NFTs que coincidan con los filtros aplicados."
+}

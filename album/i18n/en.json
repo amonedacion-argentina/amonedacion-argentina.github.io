@@ -1,0 +1,74 @@
+{
+  "title": "AMONEDACION ARGENTINA",
+  "meta": {
+    "description": "AMONEDACION ARGENTINA - NFT digital collection of Argentine coins",
+    "keywords": "NFT, Argentine coins, numismatics, digital collection, blockchain"
+  },
+  "header": {
+    "titulo": "AMONEDACION<br>ARGENTINA",
+    "subtitulo": "NFT ALBUM"
+  },
+  "footer": {
+    "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
+  },
+  "nav": {
+    "inicio": "Home",
+    "album": "NFT Album",
+    "autor": "Author",
+    "catalogo": "Coin Catalog",
+    "whitepaper": "Whitepaper",
+    "marketplaces": "Marketplaces",
+    "galerias": "NFT Galleries",
+    "analisis": "NFT Analytics",
+    "redes": "Social Media",
+    "contacto": "Contact"
+  },
+  "inicio": {
+    "titulo": "AMONEDACION ARGENTINA"
+  },
+  "filtros": {
+    "categoria": "Category:",
+    "propios": "Show only my NFTs",
+    "nft-por-pagina": "NFTs per page:"
+  },
+  "stats": {
+    "mi-coleccion": "My Collection",
+    "por-categoria": "By Category:"
+  },
+  "cat": {
+    "todas-las-epocas": "All Eras",
+    "pesos-moneda-nacional": "Pesos Moneda Nacional",
+    "pesos-ley": "Pesos Ley 18.188",
+    "pesos-argentinos": "Pesos Argentinos",
+    "australes": "Australes",
+    "pesos": "Pesos",
+    "futbol": "Football World Cup",
+    "flora": "Native Flora",
+    "fauna": "Native Fauna",
+    "efigies": "Effigies",
+    "paisajes": "Landscapes",
+    "edificios": "Historic Buildings",
+    "escudo": "National Shield",
+    "sol": "Sun of May",
+    "bimetalicas": "Bimetallic",
+    "oro": "Gold",
+    "plata": "Silver",
+    "esmaltadas": "Enamelled",
+    "proceres": "Historical Figures",
+    "belgrano": "Belgrano",
+    "brown": "Brown",
+    "evita": "Evita",
+    "guemes": "Güemes",
+    "san-martin": "San Martín",
+    "sarmiento": "Sarmiento",
+    "urquiza": "Urquiza",
+    "borges": "Borges",
+    "r1":"R1",
+    "r2":"R2",
+    "r3":"R3",
+    "r4":"R4",
+    "r5":"R5"
+  },
+  "cargando": "Loading...",
+  "sin-resultados":"No NFTs matching the applied filters were found."
+}
