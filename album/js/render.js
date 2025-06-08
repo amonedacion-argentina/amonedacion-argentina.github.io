@@ -101,7 +101,7 @@ function crearElementoNFT(nft) {
                  class="nft-imagen ${nft.enPropiedad ? 'nft-propio' : ''}">
             ${nft.cargandoMetadata ? '<div class="spinner pequeno"></div>' : ''}
         </div>
-        <h3 class="nft-nombre" data-i18n="cargando">Cargando...</h3>
+        <h3 class="nft-nombre">Loading...</h3>
         <div class="nft-atributos"></div>
         <div class="nft-plataformas"></div>
     `;
