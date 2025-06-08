@@ -65,7 +65,11 @@ function renderizarNFTs() {
     
     // Muestra mensaje si no hay resultados
     if (nftsPagina.length === 0) {
-        galeria.innerHTML = '<p class="sin-resultados" data-i18n="sin-resultados">No se encontraron NFTs que coincidan con los filtros aplicados.</p>';
+        const mensaje = document.createElement('p');
+        mensaje.className = 'sin-resultados';
+        mensaje.setAttribute('data-i18n', 'sin-resultados');
+        mensaje.textContent = App.estado.i18n?.['sin-resultados'] || 'No se encontraron NFTs que coincidan con los filtros aplicados.';
+        galeria.appendChild(mensaje);
         return;
     }
     
@@ -112,24 +116,65 @@ function crearElementoNFT(nft) {
 function actualizarCardNFT(nft, elemento) {
     if (!nft.metadata) return;
     
-    // Sanitiza y muestra nombre
-    const nombre = sanitizarHTML(nft.metadata.name || `NFT #${nft.id}`);
-    elemento.querySelector('.nft-nombre').textContent = nombre;
-    
-    // Sanitiza y muestra atributos
-    const atributosContainer = elemento.querySelector('.nft-atributos');
-    atributosContainer.innerHTML = '';
-    
-    if (nft.metadata.attributes && nft.metadata.attributes.length > 0) {
-        nft.metadata.attributes.forEach(attr => {
-            const attrElement = document.createElement('div');
-            attrElement.className = 'nft-atributo';
-            attrElement.innerHTML = `
-                <span class="atributo-nombre">${sanitizarHTML(attr.trait_type)}:</span>
-                <span class="atributo-valor">${sanitizarHTML(attr.value)}</span>
+    try {
+        const metadataTraducida = traducirMetadata(nft.metadata, App.estado.idioma);
+        const nombre = sanitizarHTML(metadataTraducida.name || `NFT #${nft.id}`);
+        elemento.querySelector('.nft-nombre').textContent = nombre;
+        
+        const atributosContainer = elemento.querySelector('.nft-atributos');
+        atributosContainer.innerHTML = '';
+
+        // Verificar que tenemos un orden definido
+        const ordenAtributos = App.config.ordenAtributos || [];
+        
+        if (Array.isArray(metadataTraducida.attributes)) {
+            // Separar atributos ordenados y no ordenados
+            const atributosOrdenados = [];
+            const atributosNoOrdenados = [];
+            
+            metadataTraducida.attributes.forEach(attr => {
+                if (!attr.trait_type) return;
+                
+                // Usamos el originalTraitType normalizado para el ordenamiento
+                const traitTypeParaOrden = attr.originalTraitType || attr.trait_type;
+                const index = ordenAtributos.indexOf(traitTypeParaOrden);
+                
+                if (index >= 0) {
+                    atributosOrdenados.push({
+                        ...attr,
+                        orden: index
+                    });
+                } else {
+                    atributosNoOrdenados.push(attr);
+                }
+            });
+            
+            // Ordenar y mostrar atributos conocidos
+            atributosOrdenados.sort((a, b) => a.orden - b.orden)
+                .forEach(attr => {
+                    mostrarAtributo(attr, atributosContainer);
+                });
+            
+            // Mostrar atributos no ordenados
+            atributosNoOrdenados.forEach(attr => {
+                mostrarAtributo(attr, atributosContainer, 'atributo-no-ordenado');
+            });
+        }
+        
+        // Mostrar descripción/observaciones al final
+        if (metadataTraducida.description) {
+            const descElement = document.createElement('div');
+            descElement.className = 'nft-atributo observaciones';
+            descElement.innerHTML = `
+                <span class="atributo-nombre">${App.estado.i18n?.atributos?.OBSERVACIONES || 'OBSERVACIONES'}:</span>
+                <span class="atributo-valor">${sanitizarHTML(metadataTraducida.description)}</span>
             `;
-            atributosContainer.appendChild(attrElement);
-        });
+            atributosContainer.appendChild(descElement);
+        }
+        
+    } catch (error) {
+        console.error(`Error al actualizar tarjeta NFT ${nft.id}:`, error);
+        mostrarErrorEnTarjeta(elemento, nft.id);
     }
     
     // Muestra enlaces a plataformas
@@ -180,6 +225,29 @@ function actualizarCardNFT(nft, elemento) {
         enlace.appendChild(img);
         plataformasContainer.appendChild(enlace);
     }
+}
+
+// Función auxiliar para mostrar atributos
+function mostrarAtributo(attr, container, claseExtra = '') {
+    const attrElement = document.createElement('div');
+    attrElement.className = `nft-atributo ${claseExtra}`.trim();
+    attrElement.innerHTML = `
+        <span class="atributo-nombre">${sanitizarHTML(attr.trait_type)}:</span>
+        <span class="atributo-valor">${sanitizarHTML(attr.value)}</span>
+    `;
+    container.appendChild(attrElement);
+}
+
+// Función para mostrar errores en la tarjeta
+function mostrarErrorEnTarjeta(elemento, nftId) {
+    if (!elemento) return;
+    
+    const errorContainer = elemento.querySelector('.nft-atributos') || elemento;
+    errorContainer.innerHTML = `
+        <div class="error-atributo">
+            Error al cargar los atributos del NFT #${nftId}
+        </div>
+    `;
 }
 
 function actualizarEstadisticas() {
@@ -263,13 +331,46 @@ document.addEventListener('i18nLoaded', () => {
     
     // Crear nuevo handler
     idiomaCambiadoHandler = () => {
-        inicializarFiltros();
+        // Solo actualizar textos, no reiniciar filtros
         actualizarEstadisticas();
-        renderizarNFTs(); // Solo si los NFTs contienen texto traducible
+        
+        // Actualizar textos en los NFTs ya renderizados
+        document.querySelectorAll('.nft-card').forEach(card => {
+            const nftId = card.dataset.id;
+            const nft = App.estado.nftsFiltrados.find(n => n.id === nftId);
+            if (nft && nft.metadata) {
+                actualizarCardNFT(nft, card);
+            }
+        });
     };
     
     document.addEventListener('idiomaCambiado', idiomaCambiadoHandler);
 });
+
+// Traduce metadatos (atributos y descripción del NFT)
+function traducirMetadata(nftMetadata, lang = 'es') {
+    if (!nftMetadata) return { attributes: [] };
+    
+    const i18n = App.estado.i18n?.atributos || {};
+    
+    const normalizarTexto = (text) => {
+        if (!text) return '';
+        return text.toString().trim().toUpperCase();
+    };
+    
+    return {
+        ...nftMetadata,
+        attributes: (nftMetadata.attributes || []).map(attr => {
+            const traitType = normalizarTexto(attr.trait_type);
+            return {
+                trait_type: i18n[traitType] || attr.trait_type,
+                value: i18n[attr.value] || attr.value,
+                originalTraitType: traitType // Guardamos el original normalizado
+            };
+        }),
+        description: nftMetadata.description ? (i18n[nftMetadata.description] || nftMetadata.description) : undefined
+    };
+}
 
 function actualizarBotonesPaginador() {
     const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);

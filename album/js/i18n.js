@@ -22,12 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Cambio de idioma desde el select
   langSelect.addEventListener("change", function() {
-    const lang = this.value; // <-- Usamos this.value en lugar de lang no definido
+    const lang = this.value;
     localStorage.setItem("lang", lang);
     
     loadLanguage(lang).then(() => {
         if (App.estado.nfts) {
             inicializarFiltros();
+            // Asegura que los filtros se apliquen
+            filtrarNFTs();
+            // Carga NFTs del usuario
+            renderizarNFTs();
             actualizarEstadisticas();
         }
     }).catch(error => {

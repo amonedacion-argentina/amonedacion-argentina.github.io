@@ -19,7 +19,23 @@ const App = {
             OKX: 'OKX NFT',
             LOOKSRARE: 'LooksRare',
             MAGICEDEN: 'Magic Eden'
-        }
+        },
+        ordenAtributos: [
+        'AH#',
+        'RAREZA',
+        'AÑO',
+        'TIRADA',
+        'TIRADA LOCAL',
+        'TIRADA MÁXIMA',
+        'COMPOSICIÓN',
+        'ALINEACIÓN',
+        'CANTO',
+        'FORMA',
+        'CECA',
+        'PESO',
+        'DIÁMETRO',
+        'CALIDAD'
+        ]
     },
     estado: {
         walletConectada: false,

@@ -69,11 +69,13 @@ function actualizarUIWallet() {
         const direccionAbreviada = `${App.estado.direccionWallet.substring(0, 4)}...${App.estado.direccionWallet.substring(38)}`;
         btnConectar.textContent = direccionAbreviada;
         btnConectar.classList.add('conectado');
+        btnConectar.disabled = true;
         // Muestra el filtro para NFTs propios
         divFiltroPropios.classList.remove('hidden');
     } else {
         btnConectar.textContent = 'Conectar';
         btnConectar.classList.remove('conectado');
+        btnConectar.disabled = false;
         // Oculta el filtro para NFTs propios
         divFiltroPropios.classList.add('hidden');
     }
