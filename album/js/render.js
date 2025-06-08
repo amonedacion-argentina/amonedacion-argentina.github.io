@@ -31,14 +31,11 @@ async function cargarTodosLosBalances() {
         // Guarda en el estado los IDs de NFTs poseídos
         App.estado.nftsPoseidos = allNFTIds.filter((_, index) => balances[index].gt(0));
 
-        // Actualiza la UI para mostrar todos los NFTs poseídos
-        //actualizarUINFTsPoseidos();
-
         actualizarEstadisticas();
 
     } catch (error) {
         console.error('Error al cargar balances de NFTs:', error);
-        mostrarError('Error al verificar tus NFTs.');
+        mostrarError('Error al verificar sus NFTs.');
     } finally {
         mostrarLoading(false);
     }
@@ -61,17 +58,17 @@ function renderizarNFTs() {
     const galeria = document.getElementById('galeria-nfts');
     galeria.innerHTML = '';
     
-    // Calcular índices para la paginación
+    // Calcula índices para la paginación
     const inicio = (App.estado.paginaActual - 1) * App.estado.itemsPorPagina;
     const fin = inicio + App.estado.itemsPorPagina;
     const nftsPagina = App.estado.nftsFiltrados.slice(inicio, fin);
     
-    // Actualizar texto de paginación
+    // Actualiza texto de paginación
     document.getElementById('pagina-actual').textContent = App.estado.paginaActual;
     
-    // Mostrar mensaje si no hay resultados
+    // Muestra mensaje si no hay resultados
     if (nftsPagina.length === 0) {
-        galeria.innerHTML = '<p class="sin-resultados">No se encontraron NFTs que coincidan con los filtros aplicados.</p>';
+        galeria.innerHTML = '<p class="sin-resultados" data-i18n="sin-resultados">No se encontraron NFTs que coincidan con los filtros aplicados.</p>';
         return;
     }
     
@@ -89,10 +86,7 @@ function renderizarNFTs() {
     }
     
     actualizarEstadisticas();
-
-    // Actualiza estado de botones de paginación
     actualizarBotonesPaginador();
-
     cargarNFTsVisibles();
 }
 
@@ -110,7 +104,7 @@ function crearElementoNFT(nft) {
                  class="nft-imagen ${nft.enPropiedad ? 'nft-propio' : ''}">
             ${nft.cargandoMetadata ? '<div class="spinner pequeno"></div>' : ''}
         </div>
-        <h3 class="nft-nombre">Cargando...</h3>
+        <h3 class="nft-nombre" data-i18n="cargando">Cargando...</h3>
         <div class="nft-atributos"></div>
         <div class="nft-plataformas"></div>
     `;
@@ -195,7 +189,7 @@ function actualizarEstadisticas() {
     const container = document.getElementById('estadisticas-container');
     if (!container) return;
 
-    // Ocultar si no hay wallet conectada
+    // Oculta si no hay wallet conectada
     if (!App.estado.walletConectada) {
         container.classList.add('hidden');
         return;
@@ -203,10 +197,10 @@ function actualizarEstadisticas() {
     
     container.classList.remove('hidden');
     
-    // Calcular estadísticas
+    // Calcula estadísticas
     const { totalNFTs, nftsPropios, categoriasStats } = calcularEstadisticas();
     
-    // Generar y mostrar HTML
+    // Genera y muestra HTML
     container.innerHTML = generarHTMLStats(totalNFTs, nftsPropios, categoriasStats);
 }
 
@@ -238,18 +232,18 @@ function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
     
     return `
         <div class="estadisticas-global">
-            <h3>Mi Colección</h3>
+            <h3 data-i18n="stats.mi-coleccion">Mi Colección</h3>
             <div class="progreso-total">
                 <div class="progreso-barra" style="width: ${porcentajeTotal}%"></div>
                 <span>${nftsPropios} de ${totalNFTs} NFTs (${porcentajeTotal}%)</span>
             </div>
         </div>
         <div class="estadisticas-categorias">
-            <h4>Por Categoría:</h4>
+            <h4 data-i18n="stats.por-categoria">Por Categoría:</h4>
             <ul class="lista-categorias">
                 ${categoriasStats.map(cat => `
                     <li>
-                        <span class="categoria-nombre">${cat.nombre}</span>
+                        <span class="categoria-nombre" data-i18n="cat.${cat.nombre}">${cat.nombre}</span>
                         <div class="progreso-categoria">
                             <div class="progreso-barra" style="width: ${cat.porcentaje}%"></div>
                             <span>${cat.poseidos}/${cat.total} (${cat.porcentaje}%)</span>
@@ -264,17 +258,17 @@ function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
 function actualizarBotonesPaginador() {
     const totalPaginas = Math.ceil(App.estado.nftsFiltrados.length / App.estado.itemsPorPagina);
     
-    // Actualizar botones
+    // Actualiza botones
     document.getElementById('btn-primera').disabled = App.estado.paginaActual <= 1;
     document.getElementById('btn-anterior').disabled = App.estado.paginaActual <= 1;
     document.getElementById('btn-siguiente').disabled = App.estado.paginaActual >= totalPaginas;
     document.getElementById('btn-ultima').disabled = App.estado.paginaActual >= totalPaginas;
     
-    // Actualizar información de página
+    // Actualiza información de página
     document.getElementById('pagina-actual').textContent = App.estado.paginaActual;
     document.getElementById('total-paginas').textContent = totalPaginas;
     
-    // Actualizar aria-live para lectores de pantalla
+    // Actualiza aria-live para lectores de pantalla
     const paginadorInfo = document.querySelector('.paginador-info');
     if (paginadorInfo) {
         paginadorInfo.setAttribute('aria-live', 'polite');

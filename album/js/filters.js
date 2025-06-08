@@ -17,7 +17,4 @@ function filtrarNFTs() {
     // Resetear a la primera página
     App.estado.paginaActual = 1;
     actualizarBotonesPaginador();
-    
-    // Actualiza contador de NFTs poseídos
-    //actualizarUINFTsPoseidos();
 }

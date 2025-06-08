@@ -36,7 +36,6 @@ const App = {
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', () => {
-    // Usamos una función autoinvocada async
     (async () => {
         try {
             await inicializarApp();

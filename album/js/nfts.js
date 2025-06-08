@@ -11,24 +11,24 @@ async function cargarDatosNFTs() {
 }
 
 function procesarCategorias(datos) {
-    const todasEpocas = datos["Todas las Épocas"];
+    const todasEpocas = datos["todas-las-epocas"];
     const idsTodasEpocas = Object.values(todasEpocas).flat();
     
     const categorias = {
         todas: { 
-            nombre: "Todas las Épocas", 
+            nombre: "todas-las-epocas", 
             ids: idsTodasEpocas 
         }
     };
 
     for (const [key, value] of Object.entries(datos)) {
-        if (key === "Todas las Épocas") {
-            // Procesamos las subcategorías de "Todas las Épocas"
+        if (key === "todas-las-epocas") {
+            // Procesa las subcategorías de "todas-las-epocas"
             for (const [subKey, subValue] of Object.entries(value)) {
                 categorias[subKey] = {
-                    nombre: formatearNombre(subKey),
+                    //nombre: formatearNombre(subKey),
                     ids: subValue,
-                    parent: "Todas las Épocas"
+                    parent: "todas-las-epocas"
                 };
             }
             continue;
@@ -36,19 +36,19 @@ function procesarCategorias(datos) {
         
         if (Array.isArray(value)) {
             categorias[key] = {
-                nombre: formatearNombre(key),
+                //nombre: formatearNombre(key),
                 ids: value
             };
         } else if (typeof value === 'object' && value !== null) {
             categorias[key] = {
-                nombre: formatearNombre(key),
+                //nombre: formatearNombre(key),
                 ids: [],
                 tieneSubcategorias: true
             };
 
             for (const [subKey, subValue] of Object.entries(value)) {
                 categorias[subKey] = {
-                    nombre: formatearNombre(subKey),
+                    //nombre: formatearNombre(subKey),
                     ids: subValue,
                     parent: key
                 };
@@ -58,15 +58,15 @@ function procesarCategorias(datos) {
     }
     return categorias;
 }
-
+/*
 function formatearNombre(str) {
     return str.split('_')
               .map(word => word.charAt(0).toUpperCase() + word.slice(1))
               .join(' ');
 }
-
+*/
 function generarListaNFTs(datos) {
-    const todasEpocas = datos["Todas las Épocas"];
+    const todasEpocas = datos["todas-las-epocas"];
     const idsExistentes = Object.values(todasEpocas).flat();
 
     return idsExistentes.map(id => ({
@@ -81,31 +81,35 @@ function inicializarFiltros() {
     const selectCategoria = document.getElementById('filtro-categoria');
     selectCategoria.innerHTML = '';
     
-    // Opción "Todas las Épocas" como primera y seleccionada por defecto
+    // Obtiene traducciones del estado (asumiendo que se cargaron previamente)
+    const i18n = App.estado.i18n || {};
+    const catTranslations = i18n.cat || {};
+
+    // Opción "todas-las-epocas" con fallback
     const optionTodas = document.createElement('option');
     optionTodas.value = 'todas';
-    optionTodas.textContent = 'Todas las Épocas';
+    optionTodas.textContent = catTranslations['todas-las-epocas'] || 'Todas las Épocas';
     optionTodas.selected = true;
     selectCategoria.appendChild(optionTodas);
     
-    // Subcategorías de "Todas las Épocas"
+    // Resto del código usa catTranslations[key] || categoria.nombre
     for (const [key, categoria] of Object.entries(App.estado.categorias)) {
-        if (categoria.parent === "Todas las Épocas") {
+        if (categoria.parent === "todas-las-epocas") {
             const subOption = document.createElement('option');
             subOption.value = key;
-            subOption.textContent = `├ ${categoria.nombre}`;
+            subOption.textContent = `├ ${catTranslations[key] || categoria.nombre}`;
             selectCategoria.appendChild(subOption);
         }
     }
     
-    // Otras categorías principales
+    // Otras categorías (traducidas)
     for (const [key, categoria] of Object.entries(App.estado.categorias)) {
         if (key === 'todas' || categoria.parent) continue;
-        if (key === "Todas las Épocas") continue;
+        if (key === "todas-las-epocas") continue;
         
         const option = document.createElement('option');
         option.value = key;
-        option.textContent = categoria.nombre;
+        option.textContent = i18n.cat[key] || categoria.nombre; // Traducción o fallback
         selectCategoria.appendChild(option);
         
         if (categoria.tieneSubcategorias) {
@@ -113,7 +117,7 @@ function inicializarFiltros() {
                 if (subCategoria.parent === key) {
                     const subOption = document.createElement('option');
                     subOption.value = subKey;
-                    subOption.textContent = `├ ${subCategoria.nombre}`;
+                    subOption.textContent = `├ ${i18n.cat[subKey] || subCategoria.nombre}`;
                     selectCategoria.appendChild(subOption);
                 }
             }
