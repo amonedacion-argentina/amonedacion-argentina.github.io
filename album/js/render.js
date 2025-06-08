@@ -216,7 +216,7 @@ function calcularEstadisticas() {
                 .length;
                 
             return {
-                nombre: categoria.nombre,
+                nombre: catKey,
                 total: categoria.ids.length,
                 poseidos: poseidosEnCategoria,
                 porcentaje: Math.round((poseidosEnCategoria / categoria.ids.length) * 100)
