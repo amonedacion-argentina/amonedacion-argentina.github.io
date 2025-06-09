@@ -14,7 +14,8 @@
   },
   "error": {
     "wallet": "Error al conectar la wallet.",
-    "instale-metamask": "Por favor, instale MetaMask u otra wallet compatible con la red de Ethereum."
+    "instale-metamask": "Por favor, instale MetaMask u otra wallet compatible con la red de Ethereum.",
+    "cambie-de-red": "Por favor, cambie de red a Ethereum Mainnet en su wallet."
   },
   "nav": {
     "inicio": "Inicio",

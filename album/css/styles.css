@@ -312,6 +312,9 @@ label {
 }
 
 /* Estadísticas */
+.estadisticas {
+    margin-top: 20px;
+}
 .estadisticas-container {
     background: #f8f9fa;
     border-radius: 8px;
