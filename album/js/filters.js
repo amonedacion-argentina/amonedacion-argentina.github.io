@@ -14,7 +14,7 @@ function filtrarNFTs() {
         return enCategoria && cumplePropiedad;
     });
     
-    // Resetear a la primera página
+    // Resetea a la primera página
     App.estado.paginaActual = 1;
     actualizarBotonesPaginador();
 }

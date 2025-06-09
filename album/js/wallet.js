@@ -11,36 +11,33 @@ async function conectarWallet() {
                 }, 100);
                 setTimeout(() => {
                     clearInterval(check);
-                    reject(new Error('Timeout esperando carga de traducciones'));
+                    reject(new Error('Timeout esperando carga de traducciones.'));
                 }, 3000);
             });
         }
 
-        // Verificar si MetaMask está instalado
+        // Verifica si MetaMask está instalado
         if (typeof window.ethereum === 'undefined') {
             mostrarError(App.estado.i18n?.error?.instale-metamask || 'Por favor, instale MetaMask...');
             return;
         }
 
-        // Solicitar conexión de cuentas
+        // Solicita conexión de cuentas
         const cuentas = await window.ethereum.request({ method: 'eth_requestAccounts' });
         App.estado.direccionWallet = cuentas[0];
         App.estado.walletConectada = true;
        
-        // Verificar red correcta (Mainnet Ethereum)
+        // Verifica red correcta (Mainnet Ethereum)
         await verificarRed();
 
-        // Actualizar UI
+        // Actualiza UI
         actualizarUIWallet();
         
         // Carga balances antes de renderizar
         await cargarTodosLosBalances();
 
         // Asegura que los filtros se apliquen
-        filtrarNFTs();
-
-        // Carga NFTs del usuario
-        renderizarNFTs();
+        aplicarFiltro();
     } catch (error) {
         console.error('Error al conectar wallet:', error);
         mostrarError(App.estado.i18n?.error?.wallet || 'Error al conectar la wallet.');
@@ -56,7 +53,7 @@ async function verificarRed() {
                 params: [{ chainId: '0x1' }],
             });
         } catch (error) {
-            alert('Por favor, cambie de red a Ethereum Mainnet en su wallet.');
+            alert(App.estado.i18n?.error?.cambie-de-red || 'Por favor, cambie de red a Ethereum...');
         }
     }
 }

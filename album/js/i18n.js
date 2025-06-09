@@ -27,12 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     loadLanguage(lang).then(() => {
         if (App.estado.nfts) {
+            actualizarUIWallet();
             inicializarFiltros();
-            // Asegura que los filtros se apliquen
-            filtrarNFTs();
-            // Carga NFTs del usuario
-            renderizarNFTs();
-            actualizarEstadisticas();
+            aplicarFiltro();
         }
     }).catch(error => {
         console.error("Error al cambiar idioma:", error);
@@ -65,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
           });
   }
 
-
   // Obtiene el valor de clave anidada tipo "inicio.h1"
   function getNestedValue(obj, key) {
     return key.split('.').reduce((o, k) => (o ? o[k] : undefined), obj);
@@ -79,8 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Atributo con forma [attr]key
       const attrMatch = data.match(/^\[(\w+)\](.+)/);
       if (attrMatch) {
-        const attr = attrMatch[1];     // ej: "alt"
-        const key = attrMatch[2];      // ej: "whitepaper.imgAlt"
+        const attr = attrMatch[1];  // ej: "alt"
+        const key = attrMatch[2];   // ej: "whitepaper.imgAlt"
         const value = getNestedValue(texts, key);
         if (value !== undefined && value !== null) {
           elem.setAttribute(attr, value);
@@ -141,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Función auxiliar para aplicar textos a un elemento específico
+  // Aplica textos a un elemento específico
   function applyTextsToElement(element, texts) {
     element.querySelectorAll("[data-i18n]").forEach(elem => {
       const data = elem.getAttribute("data-i18n");

@@ -26,6 +26,7 @@ async function cargarTodosLosBalances() {
         App.estado.nfts.forEach((nft, index) => {
             const balanceValue = balances[index].toNumber();
             nft.enPropiedad = balanceValue > 0;
+            nft.cantidad = balanceValue;
         });
 
         // Guarda en el estado los IDs de NFTs poseídos
@@ -106,6 +107,7 @@ function crearElementoNFT(nft) {
             ${nft.cargandoMetadata ? '<div class="spinner pequeno"></div>' : ''}
         </div>
         <h3 class="nft-nombre">Loading...</h3>
+        <h4 class="nft-cantidad">Cantidad: ${nft.cantidad}</h4>
         <div class="nft-atributos"></div>
         <div class="nft-plataformas"></div>
     `;
@@ -124,18 +126,18 @@ function actualizarCardNFT(nft, elemento) {
         const atributosContainer = elemento.querySelector('.nft-atributos');
         atributosContainer.innerHTML = '';
 
-        // Verificar que tenemos un orden definido
+        // Verifica que exista un orden definido
         const ordenAtributos = App.config.ordenAtributos || [];
         
         if (Array.isArray(metadataTraducida.attributes)) {
-            // Separar atributos ordenados y no ordenados
+            // Separa atributos ordenados y no ordenados
             const atributosOrdenados = [];
             const atributosNoOrdenados = [];
             
             metadataTraducida.attributes.forEach(attr => {
                 if (!attr.trait_type) return;
                 
-                // Usamos el originalTraitType normalizado para el ordenamiento
+                // Usa el originalTraitType normalizado para el ordenamiento
                 const traitTypeParaOrden = attr.originalTraitType || attr.trait_type;
                 const index = ordenAtributos.indexOf(traitTypeParaOrden);
                 
@@ -149,24 +151,24 @@ function actualizarCardNFT(nft, elemento) {
                 }
             });
             
-            // Ordenar y mostrar atributos conocidos
+            // Ordena y muestra atributos conocidos
             atributosOrdenados.sort((a, b) => a.orden - b.orden)
                 .forEach(attr => {
                     mostrarAtributo(attr, atributosContainer);
                 });
             
-            // Mostrar atributos no ordenados
+            // Muestra atributos no ordenados
             atributosNoOrdenados.forEach(attr => {
                 mostrarAtributo(attr, atributosContainer, 'atributo-no-ordenado');
             });
         }
         
-        // Mostrar descripción/observaciones al final
+        // Muestra descripción/observaciones al final
         if (metadataTraducida.description) {
             const descElement = document.createElement('div');
             descElement.className = 'nft-atributo observaciones';
             descElement.innerHTML = `
-                <span class="atributo-nombre">${App.estado.i18n?.atributos?.OBSERVACIONES || 'OBSERVACIONES'}:</span>
+                <span class="atributo-nombre">${App.estado.i18n?.atributos?.OBSERVACIONES}:</span>
                 <span class="atributo-valor">${sanitizarHTML(metadataTraducida.description)}</span>
             `;
             atributosContainer.appendChild(descElement);
@@ -219,7 +221,7 @@ function actualizarCardNFT(nft, elemento) {
         // Maneja el error si la imagen no carga
         img.onerror = function() {
             this.style.display = 'none';
-            enlace.textContent = key.charAt(0); // Mostrar inicial si falla la imagen
+            enlace.textContent = key.charAt(0); // Muestra inicial si falla la imagen
         };
         
         enlace.appendChild(img);
@@ -227,7 +229,7 @@ function actualizarCardNFT(nft, elemento) {
     }
 }
 
-// Función auxiliar para mostrar atributos
+// Muestra atributos
 function mostrarAtributo(attr, container, claseExtra = '') {
     const attrElement = document.createElement('div');
     attrElement.className = `nft-atributo ${claseExtra}`.trim();
@@ -238,7 +240,7 @@ function mostrarAtributo(attr, container, claseExtra = '') {
     container.appendChild(attrElement);
 }
 
-// Función para mostrar errores en la tarjeta
+// Muestra errores en la tarjeta
 function mostrarErrorEnTarjeta(elemento, nftId) {
     if (!elemento) return;
     
@@ -277,7 +279,7 @@ function calcularEstadisticas() {
                 .length;
                 
             return {
-                nombre: catKey, // Usa la clave directamente para i18n
+                nombre: catKey, // Usa la clave para i18n
                 total: categoria.ids.length,
                 poseidos: poseidosEnCategoria,
                 porcentaje: Math.round((poseidosEnCategoria / categoria.ids.length) * 100)
@@ -324,17 +326,17 @@ function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
 
 let idiomaCambiadoHandler;
 document.addEventListener('i18nLoaded', () => {
-    // Eliminar handler anterior si existe
+    // Elimina handler anterior si existe
     if (idiomaCambiadoHandler) {
         document.removeEventListener('idiomaCambiado', idiomaCambiadoHandler);
     }
     
-    // Crear nuevo handler
+    // Crea nuevo handler
     idiomaCambiadoHandler = () => {
-        // Solo actualizar textos, no reiniciar filtros
+        // Solo actualiza textos, no reinicia filtros
         actualizarEstadisticas();
         
-        // Actualizar textos en los NFTs ya renderizados
+        // Actualiza textos en los NFTs ya renderizados
         document.querySelectorAll('.nft-card').forEach(card => {
             const nftId = card.dataset.id;
             const nft = App.estado.nftsFiltrados.find(n => n.id === nftId);

@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             inicializarEventos();
         } catch (error) {
             console.error('Error al inicializar:', error);
-            mostrarError('Error crítico al cargar la aplicación');
+            mostrarError('Error crítico al cargar la aplicación.');
         }
     })();
 });
@@ -69,8 +69,7 @@ async function inicializarApp() {
     try {
         await cargarDatosNFTs();
         inicializarFiltros();
-        filtrarNFTs();
-        renderizarNFTs();
+        aplicarFiltro();
     } catch (error) {
         console.error('Error en inicializarApp:', error);
         mostrarError('Error al inicializar la aplicación: ' + error.message);
@@ -84,8 +83,8 @@ function inicializarEventos() {
     document.getElementById('btn-conectar').addEventListener('click', conectarWallet);
     
     // Eventos de filtros
-    document.getElementById('filtro-categoria').addEventListener('change', cambiarFiltro);
-    document.getElementById('filtro-propios').addEventListener('change', cambiarFiltro);
+    document.getElementById('filtro-categoria').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-propios').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-paginador').addEventListener('change', cambiarPagina);
     
     // Eventos de paginación
@@ -94,14 +93,14 @@ function inicializarEventos() {
     document.getElementById('btn-primera').addEventListener('click', irAPrimeraPagina);
     document.getElementById('btn-ultima').addEventListener('click', irAUltimaPagina);
     
-    // Escuchar cambios de wallet
+    // Escucha cambios de wallet
     if (window.ethereum) {
         window.ethereum.on('accountsChanged', manejarCambioCuentas);
         window.ethereum.on('chainChanged', manejarCambioRed);
     }
 }
 
-function cambiarFiltro() {
+function aplicarFiltro() {
     filtrarNFTs();
     renderizarNFTs();
 }
@@ -150,7 +149,7 @@ function irAUltimaPagina() {
 function scrollToTop() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // Efecto de desplazamiento suave
+        behavior: 'smooth' // Desplazamiento suave
     });
     
     // Alternativa para navegadores más antiguos
@@ -162,8 +161,7 @@ function manejarCambioCuentas(cuentas) {
         App.estado.direccionWallet = cuentas[0];
         App.estado.walletConectada = true;
         cargarTodosLosBalances().then(() => {
-            filtrarNFTs();
-            renderizarNFTs();
+            aplicarFiltro();
         });
     } else {
         // Wallet desconectada
@@ -171,8 +169,7 @@ function manejarCambioCuentas(cuentas) {
         App.estado.direccionWallet = '';
         App.estado.nftsPoseidos = [];
         actualizarUIWallet();
-        filtrarNFTs();
-        renderizarNFTs();
+        aplicarFiltro();
     }
 }
 

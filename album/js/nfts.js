@@ -26,7 +26,6 @@ function procesarCategorias(datos) {
             // Procesa las subcategorías de "todas-las-epocas"
             for (const [subKey, subValue] of Object.entries(value)) {
                 categorias[subKey] = {
-                    //nombre: formatearNombre(subKey),
                     ids: subValue,
                     parent: "todas-las-epocas"
                 };
@@ -36,19 +35,16 @@ function procesarCategorias(datos) {
         
         if (Array.isArray(value)) {
             categorias[key] = {
-                //nombre: formatearNombre(key),
                 ids: value
             };
         } else if (typeof value === 'object' && value !== null) {
             categorias[key] = {
-                //nombre: formatearNombre(key),
                 ids: [],
                 tieneSubcategorias: true
             };
 
             for (const [subKey, subValue] of Object.entries(value)) {
                 categorias[subKey] = {
-                    //nombre: formatearNombre(subKey),
                     ids: subValue,
                     parent: key
                 };
@@ -58,13 +54,7 @@ function procesarCategorias(datos) {
     }
     return categorias;
 }
-/*
-function formatearNombre(str) {
-    return str.split('_')
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ');
-}
-*/
+
 function generarListaNFTs(datos) {
     const todasEpocas = datos["todas-las-epocas"];
     const idsExistentes = Object.values(todasEpocas).flat();
