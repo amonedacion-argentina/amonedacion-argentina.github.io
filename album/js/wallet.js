@@ -12,7 +12,7 @@ async function conectarWallet() {
                 setTimeout(() => {
                     clearInterval(check);
                     reject(new Error('Timeout esperando carga de traducciones.'));
-                }, 3000);
+                }, 5000);
             });
         }
 
