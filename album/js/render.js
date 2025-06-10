@@ -101,7 +101,7 @@ function crearElementoNFT(nft) {
     : `img/monedas-grises/${nft.id}.webp`;
 
     nftElement.innerHTML = `
-        <div class="nft-imagen-container">
+        <div class="nft-imagen-container ${nft.enPropiedad ? 'propio' : 'no-propio'}">
             <img src="${imagenSrc}" alt="NFT ${nft.id}" 
                  class="nft-imagen ${nft.enPropiedad ? 'nft-propio' : ''}">
             ${nft.enPropiedad ? `<div class="nft-cantidad">x${nft.cantidad}</div>` : ''}
