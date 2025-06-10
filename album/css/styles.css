@@ -163,16 +163,28 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
+}
+.nft-imagen-container.propio {
+  background: linear-gradient(135deg, #d4af37, #fff8dc);
+  border: 2px solid #c5a017;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+}
+.nft-imagen-container.no-propio {
+  background: repeating-linear-gradient(
+    45deg,
+    #f0f0f0,
+    #f0f0f0 10px,
+    #e0e0e0 10px,
+    #e0e0e0 20px
+  );
+  border: 2px dashed #999;
+  opacity: 0.7;
 }
 .nft-imagen {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     transition: filter 0.3s;
-}
-.nft-imagen:not(.nft-propio) {
-    filter: grayscale(100%);
 }
 .nft-cantidad {
     position: absolute;
@@ -187,7 +199,6 @@ label {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .nft-info {
     padding: 15px;
     display: flex;
