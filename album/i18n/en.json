@@ -23,7 +23,7 @@
   },
   "advertencia": {
     "conecteWallet": "🔒 Wallet not connected.\nSign in to view your colorful collection.",
-    "faltantes":"🛒 Gray coins: Missing from your collection.\nPurchase available on marketplaces (icons below each coin)."
+    "faltantes":"🛒 Gray coins: Missing from your collection.\nPurchase available on NFT marketplaces."
   },
   "nav": {
     "inicio": "Home",
