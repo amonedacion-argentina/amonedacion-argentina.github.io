@@ -76,7 +76,7 @@ async function inicializarApp() {
         ]);
         inicializarFiltros();
         aplicarFiltro();
-        mostrarAdvertencia(App.estado.i18n?.advertencia?.conecteWallet || '🔒 Conecte su wallet para ver sus NFTs coleccionados.');
+        mostrarAdvertencia(App.estado.i18n?.advertencia?.conecteWallet || 'Wallet no conectada.\nInicie sesión para ver su colección a color.');
     } catch (error) {
         console.error('Error en inicializarApp:', error);
         mostrarError(App.estado.i18n?.error?.inicializar || 'Error al inicializar la aplicación: ' + error.message);
@@ -208,5 +208,5 @@ function mostrarAdvertencia(mensaje) {
     
     setTimeout(() => {
         advertElement.remove();
-    }, 5000);
+    }, 8000);
 }
