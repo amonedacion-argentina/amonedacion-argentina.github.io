@@ -69,11 +69,11 @@
     "sarmiento": "Sarmiento",
     "urquiza": "Urquiza",
     "borges": "Borges",
-    "r1":"🟢 R1 (Corriente) - 1K unidades",
-    "r2":"🔵 R2 (Escasa) - 400 unidades",
-    "r3":"🟠 R3 (Rara) - 100 unidades",
-    "r4":"🔴 R4 (Muy rara) - 30 unidades",
-    "r5":"⚫ R5 (Extremadamente rara) - 5 unidades"
+    "r1":"🟢 R1 (Corriente)",
+    "r2":"🔵 R2 (Escasa)",
+    "r3":"🟠 R3 (Rara)",
+    "r4":"🔴 R4 (Muy rara)",
+    "r5":"⚫ R5 (Extremadamente rara)"
   },
   "atributos": {
     "AÑO": "AÑO",

@@ -69,11 +69,11 @@
     "sarmiento": "Sarmiento",
     "urquiza": "Urquiza",
     "borges": "Borges",
-    "r1":"🟢 R1 (Common) - 1K units",
-    "r2":"🔵 R2 (Scarce) - 400 units",
-    "r3":"🟠 R3 (Rare) - 100 units",
-    "r4":"🔴 R4 (Very rare) - 30 units",
-    "r5":"⚫ R5 (Extremely rare) - 5 units"
+    "r1":"🟢 R1 (Common)",
+    "r2":"🔵 R2 (Scarce)",
+    "r3":"🟠 R3 (Rare)",
+    "r4":"🔴 R4 (Very rare)",
+    "r5":"⚫ R5 (Extremely rare)"
   },
   "atributos": {
     "AÑO": "YEAR",
