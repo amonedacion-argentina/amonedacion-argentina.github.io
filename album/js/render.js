@@ -33,7 +33,7 @@ async function cargarTodosLosBalances() {
         App.estado.nftsPoseidos = allNFTIds.filter((_, index) => balances[index].gt(0));
     } catch (error) {
         console.error('Error al cargar balances de NFTs:', error);
-        mostrarError('Error al verificar sus NFTs.');
+        mostrarError(App.estado.i18n?.error?.verificarNfts || 'Error al verificar sus NFTs.');
     } finally {
         mostrarLoading(false);
     }
@@ -68,8 +68,8 @@ function renderizarNFTs() {
     if (nftsPagina.length === 0) {
         const mensaje = document.createElement('p');
         mensaje.className = 'sin-resultados';
-        mensaje.setAttribute('data-i18n', 'sin-resultados');
-        mensaje.textContent = App.estado.i18n?.['sin-resultados'] || 'No se encontraron NFTs que coincidan con los filtros aplicados.';
+        mensaje.setAttribute('data-i18n', 'sinResultados');
+        mensaje.textContent = App.estado.i18n?.['sinResultados'] || 'No se encontraron NFTs que coincidan con los filtros aplicados.';
         galeria.appendChild(mensaje);
         return;
     }
@@ -309,14 +309,14 @@ function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
 
     return `
         <div class="estadisticas-global">
-            <h3>${i18n.stats?.['mi-coleccion'] || 'Mi Colección'}</h3>
+            <h3>${i18n.estadisticas?.['miColeccion'] || 'Mi Colección'}</h3>
             <div class="progreso-total">
                 <div class="progreso-barra" style="width: ${porcentajeTotal}%"></div>
                 <span>${nftsPropios}/${totalNFTs} NFTs (${porcentajeTotal}%)</span>
             </div>
         </div>
         <div class="estadisticas-categorias">
-            <h4>${i18n.stats?.['por-categoria'] || 'Por Categoría:'}</h4>
+            <h4>${i18n.estadisticas?.['porCategoria'] || 'Por Categoría:'}</h4>
             <ul class="lista-categorias">
                 ${itemsCategorias}
             </ul>

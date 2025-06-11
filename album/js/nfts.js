@@ -11,23 +11,23 @@ async function cargarDatosNFTs() {
 }
 
 function procesarCategorias(datos) {
-    const todasEpocas = datos["todas-las-epocas"];
+    const todasEpocas = datos["todasLasEpocas"];
     const idsTodasEpocas = Object.values(todasEpocas).flat();
     
     const categorias = {
         todas: { 
-            nombre: "todas-las-epocas", 
+            nombre: "todasLasEpocas", 
             ids: idsTodasEpocas 
         }
     };
 
     for (const [key, value] of Object.entries(datos)) {
-        if (key === "todas-las-epocas") {
-            // Procesa las subcategorías de "todas-las-epocas"
+        if (key === "todasLasEpocas") {
+            // Procesa las subcategorías de "todasLasEpocas"
             for (const [subKey, subValue] of Object.entries(value)) {
                 categorias[subKey] = {
                     ids: subValue,
-                    parent: "todas-las-epocas"
+                    parent: "todasLasEpocas"
                 };
             }
             continue;
@@ -56,7 +56,7 @@ function procesarCategorias(datos) {
 }
 
 function generarListaNFTs(datos) {
-    const todasEpocas = datos["todas-las-epocas"];
+    const todasEpocas = datos["todasLasEpocas"];
     const idsExistentes = Object.values(todasEpocas).flat();
 
     return idsExistentes.map(id => ({
@@ -77,7 +77,7 @@ function inicializarFiltros() {
     // Opción "Todas"
     const optionTodas = document.createElement('option');
     optionTodas.value = 'todas';
-    optionTodas.textContent = catTranslations['todas-las-epocas'] || 'Todas las Épocas';
+    optionTodas.textContent = catTranslations['todasLasEpocas'] || 'Todas las Épocas';
     selectCategoria.appendChild(optionTodas);
 
     // Categorías principales y subcategorías
@@ -85,18 +85,18 @@ function inicializarFiltros() {
         if (key === 'todas') return;
         
         // Categoría principal
-        if (!categoria.parent && key !== "todas-las-epocas") {
+        if (!categoria.parent && key !== "todasLasEpocas") {
             const option = document.createElement('option');
             option.value = key;
             option.textContent = i18n.cat?.[key] || key;
             selectCategoria.appendChild(option);
         }
         
-        // Subcategorías (incluyendo las de "todas-las-epocas")
+        // Subcategorías (incluyendo las de "todasLasEpocas")
         if (categoria.parent) {
             const option = document.createElement('option');
             option.value = key;
-            const prefijo = categoria.parent === "todas-las-epocas" ? "├ " : "↳ ";
+            const prefijo = categoria.parent === "todasLasEpocas" ? "├ " : "↳ ";
             option.textContent = prefijo + (i18n.cat?.[key] || key);
             selectCategoria.appendChild(option);
         }

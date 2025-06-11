@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }).catch(error => {
         console.error("Error al cambiar idioma:", error);
-        mostrarError("Error al cambiar el idioma");
+        mostrarError(App.estado.i18n?.error?.cambioIdioma || 'Error al cambiar el idioma.');
     });
 });
 

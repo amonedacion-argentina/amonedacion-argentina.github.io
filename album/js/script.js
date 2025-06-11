@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             inicializarEventos();
         } catch (error) {
             console.error('Error al inicializar:', error);
-            mostrarError('Error crítico al cargar la aplicación.');
+            mostrarError(App.estado.i18n?.error?.critico || 'Error crítico al cargar la aplicación.');
         }
     })();
 });
@@ -76,9 +76,10 @@ async function inicializarApp() {
         ]);
         inicializarFiltros();
         aplicarFiltro();
+        mostrarAdvertencia(App.estado.i18n?.advertencia?.conecteWallet || '🔒 Conecte su wallet para ver sus NFTs coleccionados.');
     } catch (error) {
         console.error('Error en inicializarApp:', error);
-        mostrarError('Error al inicializar la aplicación: ' + error.message);
+        mostrarError(App.estado.i18n?.error?.inicializar || 'Error al inicializar la aplicación: ' + error.message);
     } finally {
         mostrarLoading(false);
     }
@@ -196,5 +197,16 @@ function mostrarError(mensaje) {
     
     setTimeout(() => {
         errorElement.remove();
+    }, 5000);
+}
+
+function mostrarAdvertencia(mensaje) {
+    const advertElement = document.createElement('div');
+    advertElement.className = 'advertencia';
+    advertElement.textContent = mensaje;
+    document.body.appendChild(advertElement);
+    
+    setTimeout(() => {
+        advertElement.remove();
     }, 5000);
 }

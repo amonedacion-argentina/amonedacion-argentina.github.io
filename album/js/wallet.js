@@ -18,7 +18,7 @@ async function conectarWallet() {
 
         // Verifica si MetaMask está instalado
         if (typeof window.ethereum === 'undefined') {
-            mostrarError(App.estado.i18n?.error?.instale-metamask || 'Por favor, instale MetaMask...');
+            mostrarError(App.estado.i18n?.error?.instaleMetamask || 'Por favor, instale MetaMask...');
             return;
         }
 
@@ -38,6 +38,8 @@ async function conectarWallet() {
 
         // Asegura que los filtros se apliquen
         aplicarFiltro();
+
+        mostrarAdvertencia(App.estado.i18n?.advertencia?.faltantes || '🛒 Monedas grises: Ausentes en su colección.\n<small>Compra disponible en los marketplaces (íconos debajo de cada moneda).</small>');
     } catch (error) {
         console.error('Error al conectar wallet:', error);
         mostrarError(App.estado.i18n?.error?.wallet || 'Error al conectar la wallet.');
@@ -53,7 +55,7 @@ async function verificarRed() {
                 params: [{ chainId: '0x1' }],
             });
         } catch (error) {
-            alert(App.estado.i18n?.error?.cambie-de-red || 'Por favor, cambie de red a Ethereum...');
+            alert(App.estado.i18n?.error?.cambieDeRed || 'Por favor, cambie de red a Ethereum...');
         }
     }
 }
