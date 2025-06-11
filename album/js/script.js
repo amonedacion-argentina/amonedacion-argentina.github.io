@@ -65,9 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function inicializarApp() {
     mostrarLoading(true);
-    
     try {
-        await cargarDatosNFTs();
+        await Promise.all([
+            cargarDatosNFTs(),
+            // Espera a que i18n esté listo
+            new Promise(resolve => {
+                if (App.estado.i18n) resolve();
+                else document.addEventListener('i18nLoaded', resolve);
+            })
+        ]);
         inicializarFiltros();
         aplicarFiltro();
     } catch (error) {
