@@ -519,7 +519,7 @@ html {
 .advertencia {
     position: fixed;
     grid-column: 1 / -1;
-    text-align: center;
+    text-align: left;
     padding: 15px;
     bottom: 20px;
     right: 20px;
