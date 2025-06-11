@@ -23,7 +23,7 @@
   },
   "advertencia": {
     "conecteWallet": "🔒 Connect your wallet to see your collected NFTs.",
-    "faltantes":"🛒 Gray coins: Missing from your collection.\n<small>Purchase available on marketplaces (icons below each coin).</small>"
+    "faltantes":"🛒 Gray coins: Missing from your collection.\nPurchase available on marketplaces (icons below each coin)."
   },
   "nav": {
     "inicio": "Home",

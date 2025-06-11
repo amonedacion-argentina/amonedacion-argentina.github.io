@@ -23,7 +23,7 @@
   },
   "advertencia": {
     "conecteWallet": "🔒 Conecte su wallet para ver sus NFTs coleccionados.",
-    "faltantes":"🛒 Monedas grises: Ausentes en su colección.\n<small>Compra disponible en los marketplaces (íconos debajo de cada moneda).</small>"
+    "faltantes":"🛒 Monedas grises: Ausentes en su colección.\nCompra disponible en los marketplaces (íconos debajo de cada moneda)."
   },
   "nav": {
     "inicio": "Inicio",
