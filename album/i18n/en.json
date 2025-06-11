@@ -14,8 +14,16 @@
   },
   "error": {
     "wallet": "Error connecting the wallet.",
-    "instale-metamask": "Please install MetaMask or another wallet compatible with the Ethereum network.",
-    "cambie-de-red": "Please switch to Ethereum Mainnet in your wallet."
+    "instaleMetamask": "Please install MetaMask or another wallet compatible with the Ethereum network.",
+    "cambieDeRed": "Please switch to Ethereum Mainnet in your wallet.",
+    "cambioIdioma":"Error changing language.",
+    "verificarNfts":"Error verifying your NFTs.",
+    "critico":"Critical error loading application.",
+    "inicializar":"Error initializing application: "
+  },
+  "advertencia": {
+    "conecteWallet": "🔒 Connect your wallet to see your collected NFTs.",
+    "faltantes":"🛒 Gray coins: Missing from your collection.\n<small>Purchase available on marketplaces (icons below each coin).</small>"
   },
   "nav": {
     "inicio": "Home",
@@ -35,17 +43,17 @@
   "filtros": {
     "categoria": "Category:",
     "propios": "Show only my NFTs",
-    "nft-por-pagina": "NFTs per page:"
+    "nftPorPagina": "NFTs per page:"
   },
-  "stats": {
-    "mi-coleccion": "My Collection",
-    "por-categoria": "By Category:"
+  "estadisticas": {
+    "miColeccion": "My Collection",
+    "porCategoria": "By Category:"
   },
   "cat": {
-    "todas-las-epocas": "All Eras",
-    "pesos-moneda-nacional": "Pesos Moneda Nacional",
-    "pesos-ley": "Pesos Ley 18.188",
-    "pesos-argentinos": "Pesos Argentinos",
+    "todasLasEpocas": "All Eras",
+    "pesosMonedaNacional": "Pesos Moneda Nacional",
+    "pesosLey": "Pesos Ley 18.188",
+    "pesosArgentinos": "Pesos Argentinos",
     "australes": "Australes",
     "pesos": "Pesos",
     "futbol": "Football World Cup",
@@ -60,12 +68,12 @@
     "oro": "Gold",
     "plata": "Silver",
     "esmaltadas": "Enamelled",
-    "figuras-historicas": "Historical Figures",
+    "figurasHistoricas": "Historical Figures",
     "belgrano": "Belgrano",
     "brown": "Brown",
     "evita": "Evita",
     "guemes": "Güemes",
-    "san-martin": "San Martín",
+    "sanMartin": "San Martín",
     "sarmiento": "Sarmiento",
     "urquiza": "Urquiza",
     "borges": "Borges",
@@ -143,5 +151,5 @@
     "Cuño: Español\nAcabado: Nítido\nEstrellas: Nítidas\nVela mayor: Cabos regulares\nVela media: 2 cabos\nProa: Curva": "Mint: Spanish\nFinish: Sharp\nStars: Well-defined\nMain sail: Regular ropes\nMiddle sail: 2 ropes\nBow: Curved"
   },
   "cargando": "Loading...",
-  "sin-resultados":"No NFTs matching the applied filters were found."
+  "sinResultados":"No NFTs matching the applied filters were found."
 }
