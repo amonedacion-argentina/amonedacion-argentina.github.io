@@ -206,31 +206,74 @@ label {
     flex-grow: 1;
 }
 .nft-nombre {
-    font-size: 18px;
-    padding: 10px;
+    font-size: 1.1rem;
+    padding: 12px 10px;
     color: #2c3e50;
     min-height: 80px;
     text-align: center;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: azure;
+    background-color: #f8f9fa;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    line-height: 1.4;
+    border-top: 1px solid #e0e0e0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: grid;
+    place-items: center;
 }
 .nft-atributos {
-    padding: 15px;
+    padding: 12px 15px;
+    background: #f8fafb;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: 1px solid #e1e5e9;
+}
+.nft-card:hover .nft-atributos {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #cfd8dc;
+}
+.nft-atributos-titulo {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #4e44ce;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.nft-atributos-contador {
+    background: #4e44ce;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 8px;
+}
+.nft-atributos-lista {
+    display: grid;
+    gap: 8px;
 }
 .nft-atributo {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 14px;
+    align-items: center;
+    padding: 8px 10px;
+    background: white;
+    border-radius: 6px;
 }
 .atributo-nombre {
-    font-weight: bold;
+    font-weight: 600;
     color: #2c3e50;
+    font-size: 0.85rem;
 }
 .atributo-valor {
     text-align: right;
+    font-size: 0.82rem;
+    color: #5a6a7a;
+    padding-left: 10px;
     white-space: pre-line; /* Respeta los saltos de línea */
 }
 
@@ -381,8 +424,8 @@ label {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: grey;
-    font-size: 12px;
+    color: #B09EFF;
+    font-size: 12.5px;
     font-weight: bold;
 }
 .lista-categorias {
