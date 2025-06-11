@@ -39,7 +39,7 @@ async function conectarWallet() {
         // Asegura que los filtros se apliquen
         aplicarFiltro();
 
-        mostrarAdvertencia(App.estado.i18n?.advertencia?.faltantes || '🛒 Monedas grises: Ausentes en su colección.\n<small>Compra disponible en los marketplaces (íconos debajo de cada moneda).</small>');
+        mostrarAdvertencia(App.estado.i18n?.advertencia?.faltantes || 'Monedas grises: Ausentes en su colección...');
     } catch (error) {
         console.error('Error al conectar wallet:', error);
         mostrarError(App.estado.i18n?.error?.wallet || 'Error al conectar la wallet.');
