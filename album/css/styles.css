@@ -534,10 +534,6 @@ html {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     white-space: pre-line;
 }
-.advertencia p {
-    margin: 0;
-    font-size: 1rem;
-}
 
 /* Responsive */
 @media (max-width: 768px) {
