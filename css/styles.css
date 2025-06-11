@@ -122,6 +122,10 @@ p {
   display: flex;
   flex-direction: column;
 }
+.lista-ul{
+  list-style: circle;
+  padding-left: 35px;
+}
 .link-list li {
   padding: 0.5rem 1rem;
 }

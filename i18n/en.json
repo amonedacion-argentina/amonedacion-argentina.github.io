@@ -7,6 +7,9 @@
   "header": {
     "titulo": "AMONEDACION<br>ARGENTINA"
   },
+  "footer": {
+    "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
+  },
   "nav": {
     "inicio": "Home",
     "album": "NFT Album",
@@ -101,7 +104,15 @@
     "transferir-ether-li-7": "Make sure to <strong>select the Ethereum (ERC-20) network</strong> to avoid errors or loss of funds.",
     "transferir-ether-li-8": "Make sure you have enough ETH to cover the price of the NFT you want to buy and the gas fees, which may vary depending on network congestion.",
     "transferir-ether-li-9": "Confirm the transaction and complete any required verification steps from the exchange.",
-    "transferir-ether-p-3": "Within a few minutes, your Ether should appear in your wallet and be ready for use on NFT marketplaces like OpenSea."
+    "transferir-ether-p-3": "Within a few minutes, your Ether should appear in your wallet and be ready for use on NFT marketplaces like OpenSea.",
+    "album-titulo": "What is the NFT Album of AMONEDACION ARGENTINA?",
+    "album-p-1": "The NFT Album is a digital tool designed to organize and display your collection of tokenized coins.",
+    "album-p-2": "Key features:",
+    "album-li-1": "Thematic classifications and rarity grades (R1 to R5).",
+    "album-li-2": "Interactive visualization to examine the numismatic details of each piece.",
+    "album-li-3": "Direct integration with major NFT marketplaces for easy collection management.",
+    "album-li-4": "Verified technical information about each monetary issue.",
+    "album-p-3": "This platform combines traditional collecting with blockchain advantages, offering a modern and accessible cataloging experience."
   },
   "autor": {
     "titulo": "About the Author",
@@ -178,9 +189,6 @@
     "titulo": "Social Media",
     "p-1": "Connect via the official social media channels to stay informed about the latest news and events:",
     "contacto": "For inquiries or additional information, please direct correspondence to <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
-  },
-  "footer": {
-    "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
   },
   "disponible": "Available",
   "proximamente": "Coming Soon"

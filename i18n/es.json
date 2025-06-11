@@ -7,6 +7,9 @@
   "header": {
     "titulo": "AMONEDACION<br>ARGENTINA"
   },
+  "footer": {
+    "p-1": "© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados."
+  },
   "nav": {
     "inicio": "Inicio",
     "album": "Álbum NFT",
@@ -101,7 +104,15 @@
     "transferir-ether-li-7": "Verifique que la <strong>red seleccionada sea Ethereum (ERC-20)</strong> para evitar errores o pérdidas de fondos.",
     "transferir-ether-li-8": "Asegúrese de tener suficiente ETH para cubrir el precio del NFT que desea adquirir y las comisiones de gas, que pueden variar según la congestión de la red.",
     "transferir-ether-li-9": "Confirme la operación y complete la verificación solicitada por el exchange.",
-    "transferir-ether-p-3": "En pocos minutos, el Ether estará disponible en su wallet y listo para ser utilizado en mercados NFT como OpenSea."
+    "transferir-ether-p-3": "En pocos minutos, el Ether estará disponible en su wallet y listo para ser utilizado en mercados NFT como OpenSea.",
+    "album-titulo": "¿Qué es el Álbum NFT de AMONEDACION ARGENTINA?",
+    "album-p-1": "El Álbum NFT es una herramienta digital diseñada para organizar y exhibir su colección de monedas tokenizadas.",
+    "album-p-2": "Características principales:",
+    "album-li-1": "Clasificaciones temáticas y por grados de rareza (R1 a R5).",
+    "album-li-2": "Visualización interactiva que permite apreciar los detalles numismáticos de cada pieza.",
+    "album-li-3": "Integración directa con los principales mercados NFT para facilitar la gestión de su colección.",
+    "album-li-4": "Información técnica verídica sobre cada emisión monetaria.",
+    "album-p-3": "Esta plataforma combina el coleccionismo tradicional con las ventajas del blockchain, ofreciendo una experiencia de catalogación moderna y accesible."
   },
     "autor": {
     "titulo": "Sobre el Autor",
@@ -178,9 +189,6 @@
     "titulo": "Redes Sociales",
     "p-1": "Conéctese a través de las redes sociales oficiales para mantenerse informado sobre las últimas novedades y eventos:",
     "contacto": "Para consultas o información adicional, puede contactarse al correo <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
-  },
-  "footer": {
-    "p-1": "© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados."
   },
   "disponible": "Disponible",
   "proximamente": "Próximamente"
