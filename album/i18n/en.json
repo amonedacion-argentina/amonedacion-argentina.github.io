@@ -22,7 +22,7 @@
     "inicializar":"Error initializing application: "
   },
   "advertencia": {
-    "conecteWallet": "🔒 Connect your wallet to see your collected NFTs.",
+    "conecteWallet": "🔒 Wallet not connected.\nSign in to view your colorful collection.",
     "faltantes":"🛒 Gray coins: Missing from your collection.\nPurchase available on marketplaces (icons below each coin)."
   },
   "nav": {
