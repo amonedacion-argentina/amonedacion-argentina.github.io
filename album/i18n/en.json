@@ -23,7 +23,7 @@
   },
   "advertencia": {
     "conecteWallet": "🔒 Wallet not connected.\nSign in to view your colorful collection.",
-    "faltantes":"🛒 Gray coins: Missing from your collection.\nPurchase available on NFT marketplaces."
+    "faltantes":"Gray coins: Missing from your collection.\n🛒 Purchase available on NFT marketplaces."
   },
   "nav": {
     "inicio": "Home",
@@ -61,7 +61,8 @@
     "fauna": "Native Fauna",
     "efigies": "Effigies",
     "paisajes": "Landscapes",
-    "edificios": "Historic Buildings",
+    "arquitectura": "Architecture",
+    "malvinas": "Falkland Islands",
     "escudo": "National Shield",
     "sol": "Sun of May",
     "bimetalicas": "Bimetallic",

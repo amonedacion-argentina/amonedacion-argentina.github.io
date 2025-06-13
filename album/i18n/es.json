@@ -23,7 +23,7 @@
   },
   "advertencia": {
     "conecteWallet": "🔒 Wallet no conectada.\nInicie sesión para ver su colección a color.",
-    "faltantes":"🛒 Monedas grises: Ausentes en su colección.\nCompra disponible en los mercados NFT."
+    "faltantes":"Monedas grises: Ausentes en su colección.\n🛒 Compra disponible en los mercados NFT."
   },
   "nav": {
     "inicio": "Inicio",
@@ -61,7 +61,8 @@
     "fauna": "Fauna Autóctona",
     "efigies": "Efigies",
     "paisajes": "Paisajes",
-    "edificios": "Edificios Históricos",
+    "arquitectura": "Arquitectura",
+    "malvinas": "Islas Malvinas",
     "escudo": "Escudo Nacional",
     "sol": "Sol de Mayo",
     "bimetalicas": "Bimetálicas",
