@@ -91,20 +91,6 @@ button:disabled {
 }
 
 /* Filtros */
-#filtro-categoria, #filtro-paginador {
-  background-color: cadetblue;
-  border: 2px solid black;
-  color: white;
-  font-weight: bold;
-  padding: 10px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-#filtro-categoria:hover, #filtro-categoria:focus, #filtro-paginador:hover, #filtro-paginador:focus {
-  background-color: #2874a6;
-  outline: none;
-}
 .filtros {
     display: flex;
     flex-wrap: wrap;
@@ -121,6 +107,20 @@ button:disabled {
     border: 1px solid #ddd;
     font-size: 14px;
     cursor: pointer;
+}
+.filtro {
+  background-color: cadetblue;
+  border: 2px solid black;
+  color: white;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.filtro:hover, .filtro:focus {
+  background-color: #2874a6;
+  outline: none;
 }
 .estadisticas-container {
     background: white;
@@ -398,9 +398,6 @@ label {
     margin: 0;
     overflow: hidden;
 }
-.estadisticas-global, .estadisticas-categorias {
-    margin-bottom: 15px;
-}
 .estadisticas-container h3, .estadisticas-container h4 {
     margin: 0 0 10px 0;
     color: #333;
@@ -409,9 +406,14 @@ label {
     height: 24px;
     background: #e9ecef;
     border-radius: 12px;
-    margin-bottom: 8px;
     position: relative;
     overflow: hidden;
+}
+.progreso-total {
+    margin-bottom: 25px;
+}
+.progreso-categoria {
+    margin-bottom: 8px;
 }
 .progreso-barra {
     height: 100%;
@@ -450,6 +452,46 @@ label {
     border-top: 1px solid #eee;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+}
+
+/* TOOGLES */
+.toggle-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 1em;
+  border-width: 0;
+  border-style: solid;
+  border-color: #154360;
+  transition: max-height 0.6s ease, opacity 0.6s ease, padding 0.6s ease, border-width 0.6s ease;
+}
+.toggle-content.expanded {
+  max-height: 2500px; /* suficiente para todo el contenido */
+  opacity: 1;
+  padding: 1em 3em;
+  border-width: 1px;
+}
+.toggle-header {
+  font-size: 1.2rem;
+  background-color: #eaf2f8;
+  border: 1px solid #154360;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 20px 0 10px 0;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #154360;
+  transition: background-color 0.3s ease;
+  justify-content: space-between;
+}
+.toggle-header .arrow {
+  transition: transform 0.3s ease;
+}
+.toggle-header.active .arrow {
+  transform: rotate(180deg);
 }
 
 /* Spinners */

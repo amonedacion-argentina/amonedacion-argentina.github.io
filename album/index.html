@@ -56,7 +56,18 @@
         <section id="album" class="section active">
             <section class="filtros">
                 <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría:</label>
-                <select id="filtro-categoria"></select>
+                <select id="filtro-categoria" class="filtro"></select>
+
+                <label for="filtro-rareza" data-i18n="filtros.rareza">Rareza:</label>
+                <select id="filtro-rareza" class="filtro">
+                    <option value="todas" data-i18n="filtros.todas">Todas</option>
+                    <option value="r1" data-i18n="filtros.r1">🟢 R1 (Corriente)</option>
+                    <option value="r2" data-i18n="filtros.r2">🔵 R2 (Escasa)</option>
+                    <option value="r3" data-i18n="filtros.r3">🟠 R3 (Rara)</option>
+                    <!--<option value="r4" data-i18n="filtros.r4">🔴 R4 (Muy rara)</option>
+                    <option value="r5" data-i18n="filtros.r5">⚫ R5 (Extremadamente rara)</option>-->
+                </select>
+
                 <div id="div-filtro-propios" class="hidden">
                     <div class="checkbox-group">
                         <input type="checkbox" id="filtro-propios">
@@ -103,7 +114,7 @@
 
                 <div id="div-filtro-paginador">
                     <label for="filtro-paginador" data-i18n="filtros.nftPorPagina">NFTs por página:</label>
-                    <select id="filtro-paginador">
+                    <select id="filtro-paginador" class="filtro">
                         <option value="5">5</option>
                         <option value="10" selected>10</option>
                         <option value="20">20</option>
@@ -125,6 +136,7 @@
 
     <script src="js/i18n.js"></script>
     <script src="js/ethers.min.js"></script>
+    <script src="../js/toogle.js"></script>
     <script src="js/nfts.js"></script>
     <script src="js/render.js"></script>
     <script src="js/wallet.js"></script>

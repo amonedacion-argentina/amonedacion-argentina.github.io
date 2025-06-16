@@ -42,12 +42,21 @@
   },
   "filtros": {
     "categoria": "Categoría:",
+    "rareza":"Rareza",
+    "todas":"Todas",
+    "r1":"🟢 R1 (Corriente)",
+    "r2":"🔵 R2 (Escasa)",
+    "r3":"🟠 R3 (Rara)",
+    "r4":"🔴 R4 (Muy rara)",
+    "r5":"⚫ R5 (Extremadamente rara)",
     "propios": "Mostrar solo mis NFTs",
     "nftPorPagina": "NFTs por página:"
   },
   "estadisticas": {
     "miColeccion": "Mi Colección",
-    "porCategoria": "Por Categoría:"
+    "progresoTotal":"Progreso Total",
+    "porCategoria": "Por Categoría",
+    "porRareza": "Por Rareza"
   },
   "cat": {
     "todasLasEpocas": "Todas las Épocas",
@@ -57,8 +66,8 @@
     "australes": "Australes",
     "pesos": "Pesos",
     "futbol": "Mundiales de Fútbol",
-    "flora": "Flora Autóctona",
-    "fauna": "Fauna Autóctona",
+    "flora": "Flora",
+    "fauna": "Fauna",
     "efigies": "Efigies",
     "paisajes": "Paisajes",
     "arquitectura": "Arquitectura",
@@ -77,12 +86,7 @@
     "sanMartin": "San Martín",
     "sarmiento": "Sarmiento",
     "urquiza": "Urquiza",
-    "borges": "Borges",
-    "r1":"🟢 R1 (Corriente)",
-    "r2":"🔵 R2 (Escasa)",
-    "r3":"🟠 R3 (Rara)",
-    "r4":"🔴 R4 (Muy rara)",
-    "r5":"⚫ R5 (Extremadamente rara)"
+    "borges": "Borges"
   },
   "atributos": {
     "AÑO": "AÑO",
