@@ -1,9 +1,14 @@
 async function cargarTodosLosBalances() {
-    if (!App.estado.walletConectada) return;
+    if (!App.estado.walletConectada) {
+        console.log('Wallet no conectada, omitiendo carga de balances');
+        mostrarLoading(false);
+        return;
+    }
 
     mostrarLoading(true);
 
     try {
+        //Configura provider y contrato
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contrato = new ethers.Contract(
@@ -15,25 +20,41 @@ async function cargarTodosLosBalances() {
             signer
         );
 
-        // Prepara arrays para balanceOfBatch
         const allNFTIds = App.estado.nfts.map(nft => nft.id);
         const addresses = Array(allNFTIds.length).fill(App.estado.direccionWallet);
-
-        // Consulta todos los balances en una sola llamada
         const balances = await contrato.balanceOfBatch(addresses, allNFTIds);
 
-        // Actualiza el estado de propiedad de todos los NFTs
+        // Actualiza estado
         App.estado.nfts.forEach((nft, index) => {
             const balanceValue = balances[index].toNumber();
             nft.enPropiedad = balanceValue > 0;
             nft.cantidad = balanceValue;
         });
 
-        // Guarda en el estado los IDs de NFTs poseídos
         App.estado.nftsPoseidos = allNFTIds.filter((_, index) => balances[index].gt(0));
+
+        // Precarga metadatos para NFTs propios
+        const nftsPropios = App.estado.nfts.filter(nft => nft.enPropiedad);
+        
+        await Promise.all(nftsPropios.map(nft => {
+            if (!nft.metadata && !nft.cargandoMetadata) {
+                return getMetadaNFT(nft);
+            }
+            return Promise.resolve();
+        }));
+
+        // Actualiza UI
+        await aplicarFiltro();
+
     } catch (error) {
-        console.error('Error al cargar balances de NFTs:', error);
+        console.error('Error en cargarTodosLosBalances: ', error);
         mostrarError(App.estado.i18n?.error?.verificarNfts || 'Error al verificar sus NFTs.');
+        
+        // Verifica específicamente si es error de red
+        if (error.message.includes('chain') || error.message.includes('red')) {
+            console.error('Error de red detectado: ', error);
+            mostrarError('Por favor verifica que estás en la red Ethereum Mainnet');
+        }
     } finally {
         mostrarLoading(false);
     }
@@ -52,7 +73,7 @@ async function cargarNFTsVisibles() {
     }
 }
 
-function renderizarNFTs() {
+async function renderizarNFTs() {
     const galeria = document.getElementById('galeria-nfts');
     galeria.innerHTML = '';
     
@@ -87,9 +108,12 @@ function renderizarNFTs() {
         }
     }
     
+    // Fuerza carga de imágenes
+    await new Promise(resolve => setTimeout(resolve, 50));
+
     actualizarEstadisticas();
     actualizarBotonesPaginador();
-    cargarNFTsVisibles();
+    await cargarNFTsVisibles();
 }
 
 function crearElementoNFT(nft) {
@@ -263,14 +287,21 @@ function actualizarEstadisticas() {
     
     container.classList.remove('hidden');
     
-    const {totalNFTs, nftsPropios, categoriasStats} = calcularEstadisticas();
-    container.innerHTML = generarHTMLStats(totalNFTs, nftsPropios, categoriasStats);
+    const {totalNFTs, nftsPropios, categoriasStats, listaRarezas} = calcularEstadisticas();
+    container.innerHTML = generarHTMLStats(totalNFTs, nftsPropios, categoriasStats, listaRarezas);
+    inicializarToggles();
+}
+
+function ordenRareza(nombre) {
+  const orden = { R1: 1, R2: 2, R3: 3, R4: 4, R5: 5 };
+  return orden[nombre] || 999; // Desconocidas al final
 }
 
 function calcularEstadisticas() {
     const totalNFTs = App.estado.nfts.length;
     const nftsPropios = App.estado.nftsPoseidos?.length || 0;
     
+    // Por Categoría
     const categoriasStats = Object.entries(App.estado.categorias)
         .filter(([catKey]) => catKey !== 'todas')
         .map(([catKey, categoria]) => {
@@ -287,13 +318,49 @@ function calcularEstadisticas() {
         })
         .sort((a, b) => b.porcentaje - a.porcentaje);
 
-    return {totalNFTs, nftsPropios, categoriasStats};
+    // Por Rareza
+    const rarezasStats = {};
+
+    App.estado.nfts.forEach(nft => {
+        if (!nft.metadata || !Array.isArray(nft.metadata.attributes)) return;
+
+        const rarezaAttr = nft.metadata.attributes.find(attr =>
+            (attr.trait_type || '').toUpperCase() === 'RAREZA'
+        );
+
+        if (!rarezaAttr) return;
+
+        const clave = (rarezaAttr.value || 'Desconocida').toUpperCase();
+
+        if (!rarezasStats[clave]) {
+            rarezasStats[clave] = { total: 0, poseidos: 0 };
+        }
+
+        rarezasStats[clave].total += 1;
+        if (nft.enPropiedad) {
+            rarezasStats[clave].poseidos += 1;
+        }
+    });
+
+    const listaRarezas = Object.entries(rarezasStats).map(([nombre, datos]) => ({
+        nombre,
+        total: datos.total,
+        poseidos: datos.poseidos,
+        porcentaje: Math.round((datos.poseidos / datos.total) * 100)
+    })).sort((a, b) => {
+        if (b.porcentaje !== a.porcentaje) {
+            return b.porcentaje - a.porcentaje;
+        }
+        return ordenRareza(a.nombre) - ordenRareza(b.nombre);
+    });
+
+    return {totalNFTs, nftsPropios, categoriasStats, listaRarezas };
 }
 
-function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
+function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats, listaRarezas = []) {
     const i18n = App.estado.i18n || {};
     const porcentajeTotal = Math.round((nftsPropios / totalNFTs) * 100);
-    
+
     const itemsCategorias = categoriasStats.map(cat => {
         const nombreTraducido = i18n.cat?.[cat.nombre] || cat.nombre;
         return `
@@ -307,19 +374,56 @@ function generarHTMLStats(totalNFTs, nftsPropios, categoriasStats) {
         `;
     }).join('');
 
+    const itemsRarezas = listaRarezas.map(r => {
+        const nombreTraducido = i18n.filtros?.[r.nombre.toLowerCase()] || r.nombre;
+        return `
+            <li>
+                <span class="categoria-nombre">${nombreTraducido}</span>
+                <div class="progreso-categoria">
+                    <div class="progreso-barra" style="width: ${r.porcentaje}%"></div>
+                    <span>${r.poseidos}/${r.total} (${r.porcentaje}%)</span>
+                </div>
+            </li>
+        `;
+    }).join('');
+
     return `
-        <div class="estadisticas-global">
-            <h3>${i18n.estadisticas?.['miColeccion'] || 'Mi Colección'}</h3>
-            <div class="progreso-total">
-                <div class="progreso-barra" style="width: ${porcentajeTotal}%"></div>
-                <span>${nftsPropios}/${totalNFTs} NFTs (${porcentajeTotal}%)</span>
+        <div id="estadisticas-global">
+            <div class="toggle-header" role="button" tabindex="0" aria-expanded="true" aria-controls="contenido-global">
+                <h4>${i18n.estadisticas?.['miColeccion'] || 'Mi Colección'}</h4>
+                <span class="toggle-icon">▶</span>
             </div>
-        </div>
-        <div class="estadisticas-categorias">
-            <h4>${i18n.estadisticas?.['porCategoria'] || 'Por Categoría:'}</h4>
-            <ul class="lista-categorias">
-                ${itemsCategorias}
-            </ul>
+            <div id="contenido-global" class="toggle-content expanded" aria-hidden="false">
+                <h4 class="categoria-nombre">${i18n.estadisticas?.['progresoTotal'] || 'Progreso Total'}</h4>
+                <div class="progreso-total">
+                    <div class="progreso-barra" style="width: ${porcentajeTotal}%"></div>
+                    <span>${nftsPropios}/${totalNFTs} NFTs (${porcentajeTotal}%)</span>
+                </div>
+
+                <div id="estadisticas-categorias">
+                    <div class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="contenido-categorias">
+                        <h4>${i18n.estadisticas?.['porCategoria'] || 'Por Categoría'}</h4>
+                        <span class="toggle-icon">▶</span>
+                    </div>
+                    <div id="contenido-categorias" class="toggle-content" aria-hidden="true">
+                        <ul class="lista-categorias">
+                            ${itemsCategorias}
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="estadisticas-rarezas">
+                    <div class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="contenido-rareza">
+                        <h4>${i18n.estadisticas?.['porRareza'] || 'Por Rareza'}</h4>
+                        <span class="toggle-icon">▶</span>
+                    </div>
+                    <div id="contenido-rareza" class="toggle-content" aria-hidden="true">
+                        <ul class="lista-categorias">
+                            ${itemsRarezas}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     `;
 }

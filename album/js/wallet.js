@@ -32,17 +32,18 @@ async function conectarWallet() {
 
         // Actualiza UI
         actualizarUIWallet();
-        
+
         // Carga balances antes de renderizar
         await cargarTodosLosBalances();
 
         // Asegura que los filtros se apliquen
-        aplicarFiltro();
+        await aplicarFiltro();
 
         mostrarAdvertencia(App.estado.i18n?.advertencia?.faltantes || 'Monedas grises: Ausentes en su colección...');
     } catch (error) {
         console.error('Error al conectar wallet:', error);
         mostrarError(App.estado.i18n?.error?.wallet || 'Error al conectar la wallet.');
+        mostrarLoading(false);
     }
 }
 

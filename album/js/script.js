@@ -74,6 +74,7 @@ async function inicializarApp() {
                 else document.addEventListener('i18nLoaded', resolve);
             })
         ]);
+        await precargarMetadatas();
         inicializarFiltros();
         aplicarFiltro();
         mostrarAdvertencia(App.estado.i18n?.advertencia?.conecteWallet || 'Wallet no conectada.\nInicie sesión para ver su colección a color.');
@@ -91,6 +92,7 @@ function inicializarEventos() {
     
     // Eventos de filtros
     document.getElementById('filtro-categoria').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-rareza').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-propios').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-paginador').addEventListener('change', cambiarPagina);
     
@@ -107,9 +109,9 @@ function inicializarEventos() {
     }
 }
 
-function aplicarFiltro() {
+async function aplicarFiltro() {
     filtrarNFTs();
-    renderizarNFTs();
+    await renderizarNFTs();
 }
 
 function cambiarPagina(e) {

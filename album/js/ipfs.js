@@ -50,6 +50,7 @@ async function getMetadaNFT(nft, elemento) {
     
         if (elemento) {
             actualizarCardNFT(nft, elemento);
+            //aplicarFiltro(); // Vuelve a filtrar con los datos nuevos
         }
     } catch (error) {
         console.error(`Error al obtener los metadatos del NFT ${nft.id}:`, error);
@@ -63,4 +64,36 @@ async function getMetadaNFT(nft, elemento) {
             if (spinner) spinner.classList.add('hidden');
         }
     }
+}
+
+async function precargarMetadatas() {
+    const nftsSinMetadata = App.estado.nfts.filter(nft => !nft.metadata);
+
+    const promesas = nftsSinMetadata.map(async (nft) => {
+        const cacheKey = `nft_${nft.id}_metadata`;
+        const cachedData = localStorage.getItem(cacheKey);
+
+        if (cachedData) {
+            nft.metadata = JSON.parse(cachedData);
+            return;
+        }
+
+        // Si no hay cache, descarga desde IPFS
+        for (const gateway of App.config.IPFS_GATEWAY) {
+            try {
+                const url = `${gateway}${App.config.IPFS_HASH}/${nft.id}`;
+                const response = await fetch(url);
+
+                if (response.ok) {
+                    nft.metadata = await response.json();
+                    localStorage.setItem(cacheKey, JSON.stringify(nft.metadata));
+                    break;
+                }
+            } catch (error) {
+                console.warn(`IPFS error (${gateway}) para NFT ${nft.id}:`, error);
+            }
+        }
+    });
+
+    await Promise.all(promesas);
 }
