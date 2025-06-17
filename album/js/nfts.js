@@ -68,17 +68,18 @@ function generarListaNFTs(datos) {
 }
 
 function inicializarFiltros() {
+    const i18n = App.estado.i18n || {};
+    const catTranslations = i18n.cat || {};
+    
+    // Filtro por Categoría
     const selectCategoria = document.getElementById('filtro-categoria');
     selectCategoria.innerHTML = '';
     
-    const i18n = App.estado.i18n || {};
-    const catTranslations = i18n.cat || {};
-
-    // Opción "Todas"
-    const optionTodas = document.createElement('option');
-    optionTodas.value = 'todas';
-    optionTodas.textContent = catTranslations['todasLasEpocas'] || 'Todas las Épocas';
-    selectCategoria.appendChild(optionTodas);
+    // Opción "Todas las Épocas"
+    const optionTodasCategorias = document.createElement('option');
+    optionTodasCategorias.value = 'todas';
+    optionTodasCategorias.textContent = catTranslations['todasLasEpocas'] || 'Todas las Épocas';
+    selectCategoria.appendChild(optionTodasCategorias);
 
     // Categorías principales y subcategorías
     Object.entries(App.estado.categorias).forEach(([key, categoria]) => {
@@ -100,5 +101,17 @@ function inicializarFiltros() {
             option.textContent = prefijo + (i18n.cat?.[key] || key);
             selectCategoria.appendChild(option);
         }
+    });
+
+    // Filtro por Año
+    const selectAnio = document.getElementById('filtro-anio');
+    Object.keys(App.estado.anios)
+    .filter(key => key !== 'todos')
+    .sort((a, b) => parseInt(a) - parseInt(b))
+    .forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = key;
+        selectAnio.appendChild(option);
     });
 }

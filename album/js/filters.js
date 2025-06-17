@@ -1,6 +1,7 @@
 function filtrarNFTs() {
     const categoriaSeleccionada = document.getElementById('filtro-categoria').value;
     const rarezaSeleccionada = document.getElementById('filtro-rareza').value;
+    const anioSeleccionado = document.getElementById('filtro-anio').value;
     const mostrarSoloPropios = document.getElementById('filtro-propios').checked;
 
     const idsCategoria = categoriaSeleccionada ?
@@ -26,7 +27,22 @@ function filtrarNFTs() {
             }
         }
 
-        return enCategoria && cumplePropiedad && cumpleRareza;
+        // Comprobación de año
+        let cumpleAnio = true;
+
+        if (anioSeleccionado !== 'todos') {
+            const metadata = nft.metadata;
+            if (!metadata || !Array.isArray(metadata.attributes)) {
+                cumpleAnio = false; // Si no tiene metadata o attributes, no se puede evaluar
+            } else {
+                const anioAttr = metadata.attributes.find(attr =>
+                    (attr.trait_type || '').toUpperCase() === 'AÑO'
+                );
+                cumpleAnio = anioAttr && (anioAttr.value || '').toUpperCase() === anioSeleccionado.toUpperCase();
+            }
+        }
+
+        return enCategoria && cumplePropiedad && cumpleRareza && cumpleAnio;
     });
 
     App.estado.paginaActual = 1;

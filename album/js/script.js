@@ -43,6 +43,7 @@ const App = {
         nfts: [],
         nftsFiltrados: [],
         categorias: {},
+        anios: {},
         paginaActual: 1,
         itemsPorPagina: 10,
         metadatosCache: {},
@@ -75,6 +76,7 @@ async function inicializarApp() {
             })
         ]);
         await precargarMetadatas();
+        extraerAniosDesdeMetadata();
         inicializarFiltros();
         aplicarFiltro();
         mostrarAdvertencia(App.estado.i18n?.advertencia?.conecteWallet || 'Wallet no conectada.\nInicie sesión para ver su colección a color.');
@@ -93,6 +95,7 @@ function inicializarEventos() {
     // Eventos de filtros
     document.getElementById('filtro-categoria').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-rareza').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-anio').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-propios').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-paginador').addEventListener('change', cambiarPagina);
     
@@ -211,4 +214,29 @@ function mostrarAdvertencia(mensaje) {
     setTimeout(() => {
         advertElement.remove();
     }, 8000);
+}
+
+//  Extrae todos los años únicos de la metadata de los NFTs
+function extraerAniosDesdeMetadata() {
+    const aniosSet = new Set();
+
+    App.estado.nfts.forEach(nft => {
+        const metadata = nft.metadata;
+        if (metadata && Array.isArray(metadata.attributes)) {
+            const attrAnio = metadata.attributes.find(attr =>
+                (attr.trait_type || '').toUpperCase() === 'AÑO'
+            );
+            if (attrAnio && attrAnio.value) {
+                aniosSet.add(attrAnio.value.toString());
+            }
+        }
+    });
+
+    // Guarda los años en estado ordenados ascendentemente
+    App.estado.anios = { todos: true };
+    [...aniosSet]
+        .sort((a, b) => parseInt(a) - parseInt(b))
+        .forEach(anio => {
+            App.estado.anios[anio] = true;
+        });
 }
