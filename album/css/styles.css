@@ -110,6 +110,13 @@ button:disabled {
     margin-right: 0.4rem;
     cursor: pointer;
 }
+#filtro-composicion {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  word-break: break-word;
+}
 .filtro {
   background-color: cadetblue;
   border: 2px solid black;
