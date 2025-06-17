@@ -42,13 +42,15 @@
   },
   "filtros": {
     "categoria": "Categoría:",
-    "rareza":"Rareza",
+    "rareza":"Rareza:",
     "todas":"Todas",
+    "todos":"Todos",
     "r1":"🟢 R1 (Corriente)",
     "r2":"🔵 R2 (Escasa)",
     "r3":"🟠 R3 (Rara)",
     "r4":"🔴 R4 (Muy rara)",
     "r5":"⚫ R5 (Extremadamente rara)",
+    "anio":"Año:",
     "propios": "Mostrar solo mis NFTs",
     "nftPorPagina": "NFTs por página:"
   },

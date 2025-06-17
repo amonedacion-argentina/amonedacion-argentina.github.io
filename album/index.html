@@ -55,20 +55,31 @@
     <main>
         <section id="album" class="section active">
             <section class="filtros">
-                <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría:</label>
-                <select id="filtro-categoria" class="filtro"></select>
+                <div class="filtro-group">
+                    <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría:</label>
+                    <select id="filtro-categoria" class="filtro"></select>
+                </div>
 
-                <label for="filtro-rareza" data-i18n="filtros.rareza">Rareza:</label>
-                <select id="filtro-rareza" class="filtro">
-                    <option value="todas" data-i18n="filtros.todas">Todas</option>
-                    <option value="r1" data-i18n="filtros.r1">🟢 R1 (Corriente)</option>
-                    <option value="r2" data-i18n="filtros.r2">🔵 R2 (Escasa)</option>
-                    <option value="r3" data-i18n="filtros.r3">🟠 R3 (Rara)</option>
-                    <!--<option value="r4" data-i18n="filtros.r4">🔴 R4 (Muy rara)</option>
-                    <option value="r5" data-i18n="filtros.r5">⚫ R5 (Extremadamente rara)</option>-->
-                </select>
+                <div class="filtro-group">
+                    <label for="filtro-rareza" data-i18n="filtros.rareza">Rareza:</label>
+                    <select id="filtro-rareza" class="filtro">
+                        <option value="todas" data-i18n="filtros.todas">Todas</option>
+                        <option value="r1" data-i18n="filtros.r1">🟢 R1 (Corriente)</option>
+                        <option value="r2" data-i18n="filtros.r2">🔵 R2 (Escasa)</option>
+                        <option value="r3" data-i18n="filtros.r3">🟠 R3 (Rara)</option>
+                        <!--<option value="r4" data-i18n="filtros.r4">🔴 R4 (Muy rara)</option>
+                        <option value="r5" data-i18n="filtros.r5">⚫ R5 (Extremadamente rara)</option>-->
+                    </select>
+                </div>
 
-                <div id="div-filtro-propios" class="hidden">
+                <div class="filtro-group">
+                    <label for="filtro-anio" data-i18n="filtros.anio">Año:</label>
+                    <select id="filtro-anio" class="filtro">
+                        <option value="todos" data-i18n="filtros.todos">Todos</option>
+                    </select>
+                </div>
+
+                <div id="div-filtro-propios" class="filtro-group hidden">
                     <div class="checkbox-group">
                         <input type="checkbox" id="filtro-propios">
                         <label for="filtro-propios" data-i18n="filtros.propios">Mostrar solo mis NFTs</label>
