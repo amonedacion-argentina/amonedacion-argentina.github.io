@@ -44,6 +44,7 @@ const App = {
         nftsFiltrados: [],
         categorias: {},
         anios: {},
+        composiciones: {},
         paginaActual: 1,
         itemsPorPagina: 10,
         metadatosCache: {},
@@ -77,6 +78,7 @@ async function inicializarApp() {
         ]);
         await precargarMetadatas();
         extraerAniosDesdeMetadata();
+        extraerComposicionesDesdeMetadata();
         inicializarFiltros();
         aplicarFiltro();
         mostrarAdvertencia(App.estado.i18n?.advertencia?.conecteWallet || 'Wallet no conectada.\nInicie sesión para ver su colección a color.');
@@ -96,6 +98,7 @@ function inicializarEventos() {
     document.getElementById('filtro-categoria').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-rareza').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-anio').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-composicion').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-propios').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-paginador').addEventListener('change', cambiarPagina);
     
@@ -239,4 +242,54 @@ function extraerAniosDesdeMetadata() {
         .forEach(anio => {
             App.estado.anios[anio] = true;
         });
+}
+
+// Normaliza las composiciones
+function normalizarComposicion(valor) {
+    const agrupaciones = {
+        '750 Cu + 25 Ni': 'cuproniquel',
+        '750 Cu + 250 Ni': 'cuproniquel',
+        '700 Al + 300 Mg': 'aluminio',
+        '900 Ag + 100 Cu': 'plata',
+        '925 Ag + 75 Cu': 'plata',
+        '900 Au + 100 Cu': 'oro',
+        '920 Cu + 80 Al': 'bronce',
+        '920 Cu + 80 Al ': 'bronce',
+        '950 Cu + 40 Sn + 10 Zn': 'cobre',
+        '970 Cu + 5 Sn + 25 Zn': 'cobre',
+        '1000 Ni': 'niquel',
+        'Acero electrodepositado con latón': 'aceroLaton',
+        'Acero enchapado en cuproníquel': 'aceroCuproniquel',
+        'Alpaca homogénea con níquel 700 Cu + 245 Zn + 55 Ni': 'alpacaNiquel',
+        'Anillo:   75 Cu + 25 Ni - Núcleo: 920 Cu + 60 Al + 20 Ni': 'anilloCuproniquelNucleoBronce',
+        'Anillo:   750 Cu + 250 Ni - Núcleo: 920 Cu + 60 Al + 20 Ni': 'anilloCuproniquelNucleoBronce',
+        'Anillo:   920 Cu + 60 Al + 20 Ni - Núcleo: 750 Cu + 250 Ni': 'anilloBronceNucleoCuproniquel'
+    };
+
+    return agrupaciones[valor] || valor;
+}
+
+//  Extrae todas las composiciones únicas de la metadata de los NFTs
+function extraerComposicionesDesdeMetadata() {
+    const composicionesSet = new Set();
+
+    App.estado.nfts.forEach(nft => {
+        const metadata = nft.metadata;
+        if (metadata && Array.isArray(metadata.attributes)) {
+            const attrComposicion = metadata.attributes.find(attr =>
+                (attr.trait_type || '').toUpperCase() === 'COMPOSICIÓN'
+            );
+            if (attrComposicion && attrComposicion.value) {
+                composicionesSet.add(normalizarComposicion(attrComposicion.value));
+            }
+        }
+    });
+
+    // Guarda las composiciones en estado
+    App.estado.composiciones = { todas: true };
+    [...composicionesSet]
+    .sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }))
+    .forEach(composicion => {
+        App.estado.composiciones[composicion] = true;
+    });
 }

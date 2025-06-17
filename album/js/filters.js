@@ -1,7 +1,5 @@
 function filtrarNFTs() {
     const categoriaSeleccionada = document.getElementById('filtro-categoria').value;
-    const rarezaSeleccionada = document.getElementById('filtro-rareza').value;
-    const anioSeleccionado = document.getElementById('filtro-anio').value;
     const mostrarSoloPropios = document.getElementById('filtro-propios').checked;
 
     const idsCategoria = categoriaSeleccionada ?
@@ -13,6 +11,7 @@ function filtrarNFTs() {
         const cumplePropiedad = !mostrarSoloPropios || nft.enPropiedad;
 
         // Comprobación de rareza
+        const rarezaSeleccionada = document.getElementById('filtro-rareza').value;
         let cumpleRareza = true;
 
         if (rarezaSeleccionada !== 'todas') {
@@ -28,6 +27,7 @@ function filtrarNFTs() {
         }
 
         // Comprobación de año
+        const anioSeleccionado = document.getElementById('filtro-anio').value;
         let cumpleAnio = true;
 
         if (anioSeleccionado !== 'todos') {
@@ -42,7 +42,28 @@ function filtrarNFTs() {
             }
         }
 
-        return enCategoria && cumplePropiedad && cumpleRareza && cumpleAnio;
+        // Comprobación de composición
+        const composicionSeleccionada = document.getElementById('filtro-composicion').value;
+        let cumpleComposicion = true;
+
+        if (composicionSeleccionada !== 'todas') {
+            const metadata = nft.metadata;
+            if (!metadata || !Array.isArray(metadata.attributes)) {
+                cumpleComposicion = false; // No hay metadata
+            } else {
+                const composicionAttr = metadata.attributes.find(attr =>
+                    (attr.trait_type || '').toUpperCase() === 'COMPOSICIÓN'
+                );
+                
+                const valorNormalizado = composicionAttr?.value
+                    ? normalizarComposicion(composicionAttr.value)
+                    : '';
+
+                cumpleComposicion = valorNormalizado === composicionSeleccionada;
+            }
+        }
+
+        return enCategoria && cumplePropiedad && cumpleRareza && cumpleAnio && cumpleComposicion;
     });
 
     App.estado.paginaActual = 1;

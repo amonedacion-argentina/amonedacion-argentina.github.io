@@ -114,4 +114,24 @@ function inicializarFiltros() {
         option.textContent = key;
         selectAnio.appendChild(option);
     });
+
+    // Filtro por Composición
+    const selectComposicion = document.getElementById('filtro-composicion');
+    selectComposicion.innerHTML = '';
+
+    const optionTodas = document.createElement('option');
+    optionTodas.value = 'todas';
+    optionTodas.textContent = App.estado.i18n?.filtros?.todas || 'Todas';
+    selectComposicion.appendChild(optionTodas);
+
+    const atributosTrad = App.estado.i18n?.atributos || {};
+
+    Object.keys(App.estado.composiciones)
+    .filter(key => key !== 'todas')
+    .forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = atributosTrad[key] || key;
+        selectComposicion.appendChild(option);
+    });
 }
