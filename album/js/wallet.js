@@ -63,20 +63,42 @@ async function verificarRed() {
 
 function actualizarUIWallet() {
     const btnConectar = document.getElementById('btn-conectar');
+    const divFiltroValor = document.getElementById('div-filtro-valor');
+    const divFiltroAnio = document.getElementById('div-filtro-anio');
+    const divFiltroComposicion = document.getElementById('div-filtro-composicion');
+    const divFiltroAlineacion = document.getElementById('div-filtro-alineacion');
+    const divFiltroCanto = document.getElementById('div-filtro-canto');
+    const divFiltroForma = document.getElementById('div-filtro-forma');
+    const divFiltroCeca = document.getElementById('div-filtro-ceca');
     const divFiltroPropios = document.getElementById('div-filtro-propios');
+
     if (App.estado.walletConectada) {
         // Muestra dirección abreviada
         const direccionAbreviada = `${App.estado.direccionWallet.substring(0, 4)}...${App.estado.direccionWallet.substring(38)}`;
         btnConectar.textContent = direccionAbreviada;
         btnConectar.classList.add('conectado');
         btnConectar.disabled = true;
-        // Muestra el filtro para NFTs propios
+        // Muestra los filtros avanzados
+        divFiltroValor.classList.remove('hidden');
+        divFiltroAnio.classList.remove('hidden');
+        divFiltroComposicion.classList.remove('hidden');
+        divFiltroAlineacion.classList.remove('hidden');
+        divFiltroCanto.classList.remove('hidden');
+        divFiltroForma.classList.remove('hidden');
+        divFiltroCeca.classList.remove('hidden');
         divFiltroPropios.classList.remove('hidden');
     } else {
         btnConectar.textContent = 'Conectar';
         btnConectar.classList.remove('conectado');
         btnConectar.disabled = false;
-        // Oculta el filtro para NFTs propios
+        // Oculta los filtros avanzados
+        divFiltroValor.classList.add('hidden');
+        divFiltroAnio.classList.add('hidden');
+        divFiltroComposicion.classList.add('hidden');
+        divFiltroAlineacion.classList.add('hidden');
+        divFiltroCanto.classList.add('hidden');
+        divFiltroForma.classList.add('hidden');
+        divFiltroCeca.classList.add('hidden');
         divFiltroPropios.classList.add('hidden');
     }
 }

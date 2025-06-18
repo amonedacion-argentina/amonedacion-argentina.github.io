@@ -43,8 +43,12 @@ const App = {
         nfts: [],
         nftsFiltrados: [],
         categorias: {},
+        valores: {},
         anios: {},
         composiciones: {},
+        alineaciones: {},
+        cantos: {},
+        cecas: {},
         paginaActual: 1,
         itemsPorPagina: 10,
         metadatosCache: {},
@@ -77,8 +81,11 @@ async function inicializarApp() {
             })
         ]);
         await precargarMetadatas();
+        extraerValoresDesdeMetadata();
         extraerAniosDesdeMetadata();
         extraerComposicionesDesdeMetadata();
+        extraerCantosDesdeMetadata();
+        extraerCecasDesdeMetadata();
         inicializarFiltros();
         aplicarFiltro();
         mostrarAdvertencia(App.estado.i18n?.advertencia?.conecteWallet || 'Wallet no conectada.\nInicie sesión para ver su colección a color.');
@@ -97,8 +104,13 @@ function inicializarEventos() {
     // Eventos de filtros
     document.getElementById('filtro-categoria').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-rareza').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-valor').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-anio').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-composicion').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-alineacion').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-canto').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-forma').addEventListener('change', aplicarFiltro);
+    document.getElementById('filtro-ceca').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-propios').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-paginador').addEventListener('change', cambiarPagina);
     
@@ -219,6 +231,41 @@ function mostrarAdvertencia(mensaje) {
     }, 8000);
 }
 
+function limpiarNombreDeValor(nombre) {
+    return nombre
+        .replace(/\(.*?\)/g, '')         // elimina paréntesis
+        .replace(/\[.*?\]/g, '')         // elimina corchetes
+        .replace(/\bDE AUSTRAL\b/gi, '') // elimina "DE AUSTRAL"
+        .trim();
+}
+
+//  Extrae todos los valores únicos de la metadata de los NFTs
+function extraerValoresDesdeMetadata() {
+    const valoresSet = new Set();
+
+    App.estado.nfts.forEach(nft => {
+        const metadata = nft.metadata;
+        if (metadata && metadata.name) {
+            let valor = limpiarNombreDeValor(metadata.name);
+            valoresSet.add(valor);
+        }
+    });
+
+    // Ordena reemplazando ½ por 0.5 solo para ordenamiento
+    const valoresOrdenados = [...valoresSet]
+        .map(v => ({
+            original: v,
+            ordenable: v.replace(/^½/, '0.5')  // Para que "½" quede antes de "1"
+        }))
+        .sort((a, b) => a.ordenable.localeCompare(b.ordenable, 'es', { numeric: true, sensitivity: 'base' }));
+
+    // Guarda los valores en estado
+    App.estado.valores = { todos: true };
+    valoresOrdenados.forEach(({ original }) => {
+        App.estado.valores[original.trim()] = true;
+    });
+}
+
 //  Extrae todos los años únicos de la metadata de los NFTs
 function extraerAniosDesdeMetadata() {
     const aniosSet = new Set();
@@ -261,9 +308,9 @@ function normalizarComposicion(valor) {
         'Acero electrodepositado con latón': 'aceroLaton',
         'Acero enchapado en cuproníquel': 'aceroCuproniquel',
         'Alpaca homogénea con níquel 700 Cu + 245 Zn + 55 Ni': 'alpacaNiquel',
-        'Anillo:   75 Cu + 25 Ni - Núcleo: 920 Cu + 60 Al + 20 Ni': 'anilloCuproniquelNucleoBronce',
-        'Anillo:   750 Cu + 250 Ni - Núcleo: 920 Cu + 60 Al + 20 Ni': 'anilloCuproniquelNucleoBronce',
-        'Anillo:   920 Cu + 60 Al + 20 Ni - Núcleo: 750 Cu + 250 Ni': 'anilloBronceNucleoCuproniquel'
+        'Anillo:   75 Cu + 25 Ni - Núcleo: 920 Cu + 60 Al + 20 Ni': 'bimetalica',
+        'Anillo:   750 Cu + 250 Ni - Núcleo: 920 Cu + 60 Al + 20 Ni': 'bimetalica',
+        'Anillo:   920 Cu + 60 Al + 20 Ni - Núcleo: 750 Cu + 250 Ni': 'bimetalica'
     };
 
     return agrupaciones[valor] || valor;
@@ -277,7 +324,7 @@ function extraerComposicionesDesdeMetadata() {
         const metadata = nft.metadata;
         if (metadata && Array.isArray(metadata.attributes)) {
             const attrComposicion = metadata.attributes.find(attr =>
-                (attr.trait_type || '').toUpperCase() === 'COMPOSICIÓN'
+                (attr.trait_type || '')=== 'COMPOSICIÓN'
             );
             if (attrComposicion && attrComposicion.value) {
                 composicionesSet.add(normalizarComposicion(attrComposicion.value));
@@ -291,5 +338,81 @@ function extraerComposicionesDesdeMetadata() {
     .sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }))
     .forEach(composicion => {
         App.estado.composiciones[composicion] = true;
+    });
+}
+
+// Normaliza los cantos
+function normalizarCanto(valor) {
+    const agrupaciones = {
+        'Liso': 'liso',
+        '“IGUALDAD | * ANTE * LA | * LEY **** |”': 'parlante',
+        'Estriado Discontinuo': 'estriadoDiscontinuo',
+        '14 e/cm.': 'estriado',
+        '14 (±1) e/cm.': 'estriado',
+        '15 e/cm.': 'estriado',
+        '16 e/cm.': 'estriado',
+        '19 e/cm.': 'estriado',
+        '20 e/cm.': 'estriado',
+        '21 e/cm': 'estriado',
+        '21 e/cm.': 'estriado',
+        '22 e/cm': 'estriado',
+        '22 e/cm.': 'estriado',
+        '23 e/cm.': 'estriado',
+        '24 e/cm': 'estriado',
+        '24 e/cm.': 'estriado',
+        '26 e/cm': 'estriado',
+        '26 e/cm.': 'estriado'
+    };
+
+    return agrupaciones[valor] || valor;
+}
+
+//  Extrae todos los cantos únicos de la metadata de los NFTs
+function extraerCantosDesdeMetadata() {
+    const cantosSet = new Set();
+
+    App.estado.nfts.forEach(nft => {
+        const metadata = nft.metadata;
+        if (metadata && Array.isArray(metadata.attributes)) {
+            const attrCanto = metadata.attributes.find(attr =>
+                (attr.trait_type || '') === 'CANTO'
+            );
+            if (attrCanto && attrCanto.value) {
+                cantosSet.add(normalizarCanto(attrCanto.value));
+            }
+        }
+    });
+
+    // Guarda los cantos en estado
+    App.estado.cantos = { todos: true };
+    [...cantosSet]
+    .sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }))
+    .forEach(canto => {
+        App.estado.cantos[canto] = true;
+    });
+}
+
+//  Extrae todas las cecas únicas de la metadata de los NFTs
+function extraerCecasDesdeMetadata() {
+    const cecasSet = new Set();
+
+    App.estado.nfts.forEach(nft => {
+        const metadata = nft.metadata;
+        if (metadata && Array.isArray(metadata.attributes)) {
+            const attrCeca = metadata.attributes.find(attr =>
+                (attr.trait_type || '') === 'CECA'
+            );
+            if (attrCeca && attrCeca.value) {
+                cecasSet.add(attrCeca.value);
+            }
+        }
+    });
+
+    // Guarda las cecas en estado
+    App.estado.cecas = { todas: true };
+    [...cecasSet]
+    .sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }))
+    .forEach(ceca => {
+        App.estado.cecas[ceca] = true;
     });
 }

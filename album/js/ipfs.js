@@ -1,7 +1,21 @@
-/*
-    Obtiene la metadata desde IPFS (o desde caché local).
-    Actualiza el nombre y los atributos del NFT (a través de actualizarCardNFT()).
-*/
+// Completa metadata faltante
+function completarMetadataFaltante(nft) {
+        if (nft.id == 50) {
+            nft.metadata.attributes.push({
+                trait_type: 'CANTO',
+                value: '15 e/cm.'
+            });
+        }
+
+        if (nft.id == 73) {
+            nft.metadata.attributes.push({
+                trait_type: 'CANTO',
+                value: 'Liso'
+            });
+        }
+}
+
+// Obtiene la metadata de un NFT desde IPFS (o desde caché local)
 async function getMetadaNFT(nft, elemento) {
     nft.cargandoMetadata = true;
     
@@ -17,6 +31,7 @@ async function getMetadaNFT(nft, elemento) {
         
         if (cachedData) {
             nft.metadata = JSON.parse(cachedData);
+            completarMetadataFaltante(nft);
         } else {
             // Intenta con cada gateway hasta tener éxito
             for (const gateway of App.config.IPFS_GATEWAY) {
@@ -26,6 +41,7 @@ async function getMetadaNFT(nft, elemento) {
                     
                     if (response.ok) {
                         nft.metadata = await response.json();
+                        completarMetadataFaltante(nft);
                         localStorage.setItem(cacheKey, JSON.stringify(nft.metadata));
                         break;
                     }
@@ -50,7 +66,6 @@ async function getMetadaNFT(nft, elemento) {
     
         if (elemento) {
             actualizarCardNFT(nft, elemento);
-            //aplicarFiltro(); // Vuelve a filtrar con los datos nuevos
         }
     } catch (error) {
         console.error(`Error al obtener los metadatos del NFT ${nft.id}:`, error);
@@ -66,6 +81,7 @@ async function getMetadaNFT(nft, elemento) {
     }
 }
 
+// Obtiene la metadata de todos los NFT desde IPFS (o desde caché local)
 async function precargarMetadatas() {
     const nftsSinMetadata = App.estado.nfts.filter(nft => !nft.metadata);
 
@@ -75,6 +91,7 @@ async function precargarMetadatas() {
 
         if (cachedData) {
             nft.metadata = JSON.parse(cachedData);
+            completarMetadataFaltante(nft);
             return;
         }
 
@@ -86,6 +103,7 @@ async function precargarMetadatas() {
 
                 if (response.ok) {
                     nft.metadata = await response.json();
+                    completarMetadataFaltante(nft);
                     localStorage.setItem(cacheKey, JSON.stringify(nft.metadata));
                     break;
                 }
@@ -94,6 +112,5 @@ async function precargarMetadatas() {
             }
         }
     });
-
     await Promise.all(promesas);
 }

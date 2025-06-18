@@ -68,8 +68,8 @@ function generarListaNFTs(datos) {
 }
 
 function inicializarFiltros() {
-    const i18n = App.estado.i18n || {};
-    const catTranslations = i18n.cat || {};
+    const catTrad = App.estado.i18n?.cat || {}; // Categorías traducidas
+    const atributosTrad = App.estado.i18n?.atributos || {}; // Atributos traducidos
     
     // Filtro por Categoría
     const selectCategoria = document.getElementById('filtro-categoria');
@@ -78,7 +78,7 @@ function inicializarFiltros() {
     // Opción "Todas las Épocas"
     const optionTodasCategorias = document.createElement('option');
     optionTodasCategorias.value = 'todas';
-    optionTodasCategorias.textContent = catTranslations['todasLasEpocas'] || 'Todas las Épocas';
+    optionTodasCategorias.textContent = catTrad['todasLasEpocas'] || 'Todas las Épocas';
     selectCategoria.appendChild(optionTodasCategorias);
 
     // Categorías principales y subcategorías
@@ -89,7 +89,7 @@ function inicializarFiltros() {
         if (!categoria.parent && key !== "todasLasEpocas") {
             const option = document.createElement('option');
             option.value = key;
-            option.textContent = i18n.cat?.[key] || key;
+            option.textContent = catTrad[key] || key;
             selectCategoria.appendChild(option);
         }
         
@@ -98,13 +98,43 @@ function inicializarFiltros() {
             const option = document.createElement('option');
             option.value = key;
             const prefijo = categoria.parent === "todasLasEpocas" ? "├ " : "↳ ";
-            option.textContent = prefijo + (i18n.cat?.[key] || key);
+            option.textContent = prefijo + (catTrad[key] || key);
             selectCategoria.appendChild(option);
         }
     });
 
+    // Filtro por Valor
+    const selectValor = document.getElementById('filtro-valor');
+    selectValor.innerHTML = '';
+    
+    // Opción "Todos"
+    const optionTodosValores = document.createElement('option');
+    optionTodosValores.value = 'todos';
+    optionTodosValores.textContent = atributosTrad['todos'] || 'Todos';
+    selectValor.appendChild(optionTodosValores);
+
+    // Demás opciones
+    Object.keys(App.estado.valores)
+    .filter(key => key !== 'todos')
+    .sort((a, b) => parseInt(a) - parseInt(b))
+    .forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = key;
+        selectValor.appendChild(option);
+    });
+
     // Filtro por Año
     const selectAnio = document.getElementById('filtro-anio');
+    selectAnio.innerHTML = '';
+    
+    // Opción "Todos"
+    const optionTodosAnios = document.createElement('option');
+    optionTodosAnios.value = 'todos';
+    optionTodosAnios.textContent = atributosTrad['todos'] || 'Todos';
+    selectAnio.appendChild(optionTodosAnios);
+
+    // Demás opciones
     Object.keys(App.estado.anios)
     .filter(key => key !== 'todos')
     .sort((a, b) => parseInt(a) - parseInt(b))
@@ -118,14 +148,14 @@ function inicializarFiltros() {
     // Filtro por Composición
     const selectComposicion = document.getElementById('filtro-composicion');
     selectComposicion.innerHTML = '';
+    
+    // Opción "Todas"
+    const optionTodasComposiciones = document.createElement('option');
+    optionTodasComposiciones.value = 'todas';
+    optionTodasComposiciones.textContent = atributosTrad['todas'] || 'Todas';
+    selectComposicion.appendChild(optionTodasComposiciones);
 
-    const optionTodas = document.createElement('option');
-    optionTodas.value = 'todas';
-    optionTodas.textContent = App.estado.i18n?.filtros?.todas || 'Todas';
-    selectComposicion.appendChild(optionTodas);
-
-    const atributosTrad = App.estado.i18n?.atributos || {};
-
+    // Demás opciones
     Object.keys(App.estado.composiciones)
     .filter(key => key !== 'todas')
     .forEach(key => {
@@ -133,5 +163,45 @@ function inicializarFiltros() {
         option.value = key;
         option.textContent = atributosTrad[key] || key;
         selectComposicion.appendChild(option);
+    });
+
+    // Filtro por Canto
+    const selectCanto = document.getElementById('filtro-canto');
+    selectCanto.innerHTML = '';
+    
+    // Opción "Todos"
+    const optionTodosCantos = document.createElement('option');
+    optionTodosCantos.value = 'todos';
+    optionTodosCantos.textContent = atributosTrad['todos'] || 'Todos';
+    selectCanto.appendChild(optionTodosCantos);
+
+    // Demás opciones
+    Object.keys(App.estado.cantos)
+    .filter(key => key !== 'todos')
+    .forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = atributosTrad[key] || key;
+        selectCanto.appendChild(option);
+    });
+
+    // Filtro por Ceca
+    const selectCeca = document.getElementById('filtro-ceca');
+    selectCeca.innerHTML = '';
+    
+    // Opción "Todas"
+    const optionTodasCecas = document.createElement('option');
+    optionTodasCecas.value = 'todas';
+    optionTodasCecas.textContent = atributosTrad['todas'] || 'Todas';
+    selectCeca.appendChild(optionTodasCecas);
+
+    // Demás opciones
+    Object.keys(App.estado.cecas)
+    .filter(key => key !== 'todas')
+    .forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = atributosTrad[key] || key;
+        selectCeca.appendChild(option);
     });
 }
