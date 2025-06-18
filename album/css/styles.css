@@ -106,12 +106,12 @@ button:disabled {
 }
 #filtro-propios{
     transform: scale(1.4);
-    margin: 16px;
+    margin: 14px;
     cursor: pointer;
 }
 .filtro {
   background-color: cadetblue;
-  margin-top: 8px;
+  margin-top: 4px;
   border: 2px solid black;
   color: white;
   font-weight: bold;

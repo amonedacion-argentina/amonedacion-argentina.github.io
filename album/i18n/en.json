@@ -22,7 +22,7 @@
     "inicializar":"Error initializing application: "
   },
   "advertencia": {
-    "conecteWallet": "🔒 Wallet not connected.\nSign in to view your colorful collection.",
+    "conecteWallet": "🔒 Wallet not connected.\nSign in to view your collection in color and use advanced filters.",
     "faltantes":"Gray coins: Missing from your collection.\n🛒 Purchase available on NFT marketplaces."
   },
   "nav": {
@@ -43,15 +43,18 @@
   "filtros": {
     "categoria": "Category",
     "rareza":"Rarity",
-    "todas":"All",
-    "todos":"All",
     "r1":"🟢 R1 (Common)",
     "r2":"🔵 R2 (Scarce)",
     "r3":"🟠 R3 (Rare)",
     "r4":"🔴 R4 (Very rare)",
     "r5":"⚫ R5 (Extremely rare)",
+    "valor":"Value",
     "anio":"Year",
     "composicion":"Composition",
+    "alineacion":"Alignment",
+    "canto":"Edge",
+    "forma":"Shape",
+    "ceca":"Mint",
     "propios": "Show only my NFTs",
     "nftPorPagina": "NFTs per page:"
   },
@@ -77,7 +80,6 @@
     "malvinas": "Falkland Islands",
     "escudo": "National Shield",
     "sol": "Sun of May",
-    "bimetalicas": "Bimetallic",
     "esmaltadas": "Enamelled",
     "figurasHistoricas": "Historical Figures",
     "belgrano": "Belgrano",
@@ -90,6 +92,8 @@
     "borges": "Borges"
   },
   "atributos": {
+    "todas":"All",
+    "todos":"All",
     "AÑO": "YEAR",
     "TIRADA": "MINTAGE",
     "TIRADA MÁXIMA": "MAX. MINTAGE",
@@ -108,8 +112,13 @@
     "alpacaNiquel":"Homogeneous alpaca with nickel",
     "anilloCuproniquelNucleoBronce":"Ring: Cupronickel - Core: Bronze",
     "anilloBronceNucleoCuproniquel":"Ring: Bronze - Core: Cupronickel",
+    "bimetalica": "Bimetallic",
     "ALINEACIÓN": "ALIGNMENT",
     "CANTO": "EDGE",
+    "liso":"Smooth",
+    "parlante":"Inscribed",
+    "estriadoDiscontinuo":"Interrupted Reeded",
+    "estriado":"Reeded",
     "FORMA": "SHAPE",
     "CECA": "MINT",
     "PESO": "WEIGHT",

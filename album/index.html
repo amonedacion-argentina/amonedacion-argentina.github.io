@@ -55,15 +55,15 @@
     <main>
         <section id="album" class="section active">
             <section class="filtros">
-                <div class="filtro-group">
-                    <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría:</label>
+                <div id="div-filtro-categoria" class="filtro-group">
+                    <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría</label>
                     <select id="filtro-categoria" class="filtro"></select>
                 </div>
 
-                <div class="filtro-group">
-                    <label for="filtro-rareza" data-i18n="filtros.rareza">Rareza:</label>
+                <div id="div-filtro-rareza" class="filtro-group">
+                    <label for="filtro-rareza" data-i18n="filtros.rareza">Rareza</label>
                     <select id="filtro-rareza" class="filtro">
-                        <option value="todas" data-i18n="filtros.todas">Todas</option>
+                        <option value="todas" data-i18n="atributos.todas">Todas</option>
                         <option value="r1" data-i18n="filtros.r1">🟢 R1 (Corriente)</option>
                         <option value="r2" data-i18n="filtros.r2">🔵 R2 (Escasa)</option>
                         <option value="r3" data-i18n="filtros.r3">🟠 R3 (Rara)</option>
@@ -72,18 +72,48 @@
                     </select>
                 </div>
 
-                <div class="filtro-group">
-                    <label for="filtro-anio" data-i18n="filtros.anio">Año:</label>
-                    <select id="filtro-anio" class="filtro">
-                        <option value="todos" data-i18n="filtros.todos">Todos</option>
+                <div id="div-filtro-valor" class="filtro-group hidden">
+                    <label for="filtro-valor" data-i18n="filtros.valor">Valor</label>
+                    <select id="filtro-valor" class="filtro"></select>
+                </div>
+
+                <div id="div-filtro-anio" class="filtro-group hidden">
+                    <label for="filtro-anio" data-i18n="filtros.anio">Año</label>
+                    <select id="filtro-anio" class="filtro"></select>
+                </div>
+
+                <div id="div-filtro-composicion" class="filtro-group hidden">
+                    <label for="filtro-composicion" data-i18n="filtros.composicion">Composición</label>
+                    <select id="filtro-composicion" class="filtro"></select>
+                </div>
+
+                <div id="div-filtro-alineacion" class="filtro-group hidden">
+                    <label for="filtro-alineacion" data-i18n="filtros.alineacion">Alineación</label>
+                    <select id="filtro-alineacion" class="filtro">
+                        <option value="todas" data-i18n="atributos.todas">Todas</option>
+                        <option value="medalla" data-i18n="atributos.Medalla">Medalla</option>
+                        <option value="moneda" data-i18n="atributos.Moneda">Moneda</option>
                     </select>
                 </div>
 
-                <div class="filtro-group">
-                    <label for="filtro-composicion" data-i18n="filtros.composicion">Composición:</label>
-                    <select id="filtro-composicion" class="filtro">
-                        <option value="todas" data-i18n="filtros.todas">Todas</option>
+                <div id="div-filtro-canto" class="filtro-group hidden">
+                    <label for="filtro-canto" data-i18n="filtros.canto">Canto</label>
+                    <select id="filtro-canto" class="filtro"></select>
+                </div>
+
+                <div id="div-filtro-forma" class="filtro-group hidden">
+                    <label for="filtro-forma" data-i18n="filtros.forma">Forma</label>
+                    <select id="filtro-forma" class="filtro">
+                        <option value="todas" data-i18n="atributos.todas">Todas</option>
+                        <option value="circular" data-i18n="atributos.Circular">Circular</option>
+                        <option value="dodecágona" data-i18n="atributos.Dodecágona">Dodecágona</option>
+                        <option value="octogonal" data-i18n="atributos.Octogonal">Octogonal</option>
                     </select>
+                </div>
+
+                <div id="div-filtro-ceca" class="filtro-group hidden">
+                    <label for="filtro-ceca" data-i18n="filtros.ceca">Ceca</label>
+                    <select id="filtro-ceca" class="filtro"></select>
                 </div>
 
                 <div id="div-filtro-propios" class="filtro-group hidden">

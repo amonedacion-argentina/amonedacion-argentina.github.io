@@ -22,7 +22,7 @@
     "inicializar":"Error al inicializar la aplicación: "
   },
   "advertencia": {
-    "conecteWallet": "🔒 Wallet no conectada.\nInicie sesión para ver su colección a color.",
+    "conecteWallet": "🔒 Wallet no conectada.\nInicie sesión para visualizar su colección en color y utilizar filtros avanzados.",
     "faltantes":"Monedas grises: Ausentes en su colección.\n🛒 Compra disponible en los mercados NFT."
   },
   "nav": {
@@ -43,15 +43,18 @@
   "filtros": {
     "categoria": "Categoría",
     "rareza":"Rareza",
-    "todas":"Todas",
-    "todos":"Todos",
     "r1":"🟢 R1 (Corriente)",
     "r2":"🔵 R2 (Escasa)",
     "r3":"🟠 R3 (Rara)",
     "r4":"🔴 R4 (Muy rara)",
     "r5":"⚫ R5 (Extremadamente rara)",
+    "valor":"Valor",
     "anio":"Año",
     "composicion":"Composición",
+    "alineacion":"Alineación",
+    "canto":"Canto",
+    "forma":"Forma",
+    "ceca":"Ceca",
     "propios": "Mostrar solo mis NFTs",
     "nftPorPagina": "NFTs por página:"
   },
@@ -77,7 +80,6 @@
     "malvinas": "Islas Malvinas",
     "escudo": "Escudo Nacional",
     "sol": "Sol de Mayo",
-    "bimetalicas": "Bimetálicas",
     "esmaltadas": "Esmaltadas",
     "figurasHistoricas": "Figuras Históricas",
     "belgrano": "Belgrano",
@@ -90,6 +92,8 @@
     "borges": "Borges"
   },
   "atributos": {
+    "todas":"Todas",
+    "todos":"Todos",
     "AÑO": "AÑO",
     "TIRADA": "TIRADA",
     "TIRADA MÁXIMA": "TIRADA MÁXIMA",
@@ -108,8 +112,13 @@
     "alpacaNiquel":"Alpaca homogénea con níquel",
     "anilloCuproniquelNucleoBronce":"Anillo: Cuproníquel - Núcleo: Bronce",
     "anilloBronceNucleoCuproniquel":"Anillo: Bronce - Núcleo: Cuproníquel",
+    "bimetalica": "Bimetálica",
     "ALINEACIÓN": "ALINEACIÓN",
     "CANTO": "CANTO",
+    "liso":"Liso",
+    "parlante":"Parlante",
+    "estriadoDiscontinuo":"Estriado Discontinuo",
+    "estriado":"Estriado",
     "FORMA": "FORMA",
     "CECA": "CECA",
     "PESO": "PESO",
