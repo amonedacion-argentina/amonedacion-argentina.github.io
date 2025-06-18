@@ -41,8 +41,8 @@
     "titulo": "AMONEDACION ARGENTINA"
   },
   "filtros": {
-    "categoria": "Categoría:",
-    "rareza":"Rareza:",
+    "categoria": "Categoría",
+    "rareza":"Rareza",
     "todas":"Todas",
     "todos":"Todos",
     "r1":"🟢 R1 (Corriente)",
@@ -50,8 +50,8 @@
     "r3":"🟠 R3 (Rara)",
     "r4":"🔴 R4 (Muy rara)",
     "r5":"⚫ R5 (Extremadamente rara)",
-    "anio":"Año:",
-    "composicion":"Composición:",
+    "anio":"Año",
+    "composicion":"Composición",
     "propios": "Mostrar solo mis NFTs",
     "nftPorPagina": "NFTs por página:"
   },

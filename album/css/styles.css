@@ -102,23 +102,16 @@ button:disabled {
     justify-content: center;
 }
 .filtro-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem; /* Espacio entre label y select */
+  justify-items: center;
 }
 #filtro-propios{
-    margin-right: 0.4rem;
+    transform: scale(1.4);
+    margin: 16px;
     cursor: pointer;
-}
-#filtro-composicion {
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  white-space: normal;
-  word-break: break-word;
 }
 .filtro {
   background-color: cadetblue;
+  margin-top: 8px;
   border: 2px solid black;
   color: white;
   font-weight: bold;
@@ -132,11 +125,7 @@ button:disabled {
   outline: none;
 }
 .checkbox-group {
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    flex-shrink: 0;
-    min-width: max-content;
+    text-align: center;
 }
 label {
     display: block;
