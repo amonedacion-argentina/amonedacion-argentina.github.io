@@ -19,7 +19,9 @@
     "cambioIdioma":"Error changing language.",
     "verificarNfts":"Error verifying your NFTs.",
     "critico":"Critical error loading application.",
-    "inicializar":"Error initializing application: "
+    "inicializar":"Error initializing application: ",
+    "errorCargaAtributos":"Error loading attributes of NFT #",
+    "obtenerNFT":"Error obtaining NFT #"
   },
   "advertencia": {
     "conecteWallet": "🔒 Wallet not connected.\nSign in to view your collection in color and use advanced filters.",

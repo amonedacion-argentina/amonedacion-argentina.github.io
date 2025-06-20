@@ -19,7 +19,9 @@
     "cambioIdioma":"Error al cambiar el idioma.",
     "verificarNfts":"Error al verificar sus NFTs.",
     "critico":"Error crítico al cargar la aplicación.",
-    "inicializar":"Error al inicializar la aplicación: "
+    "inicializar":"Error al inicializar la aplicación: ",
+    "cargaAtributos":"Error al cargar los atributos del NFT #",
+    "obtenerNFT":"Error al obtener el NFT #"
   },
   "advertencia": {
     "conecteWallet": "🔒 Wallet no conectada.\nInicie sesión para visualizar su colección en color y utilizar filtros avanzados.",
