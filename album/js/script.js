@@ -101,6 +101,8 @@ async function inicializarApp() {
 function inicializarEventos() {
     // Eventos de wallet
     document.getElementById('btn-conectar').addEventListener('click', conectarWallet);
+    document.getElementById('btn-conectar-banner').addEventListener('click', conectarWallet);
+    document.getElementById('btn-cerrar-banner').addEventListener('click', cerrarBannerSorteo);
     
     // Eventos de filtros
     document.getElementById('filtro-categoria').addEventListener('change', aplicarFiltro);
@@ -417,3 +419,26 @@ function extraerCecasDesdeMetadata() {
         App.estado.cecas[ceca] = true;
     });
 }
+
+// Cierra el Banner del Sorteo para siempre
+function cerrarBannerSorteo() {
+    localStorage.setItem("bannerSorteoOculto", "si");
+    document.getElementById("banner-sorteo").classList.add('hidden');
+    clearTimeout(autoHideTimeout);
+}
+
+// Muestra el Banner del Sorteo a los 10 segundos de carga total del sitio, si no fue ocultado
+let autoHideTimeout;
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    if (localStorage.getItem("bannerSorteoOculto") !== "si") {
+      const banner = document.getElementById("banner-sorteo");
+      banner.classList.remove('hidden');
+
+      // Lo oculta automáticamente a los 10 segundos
+      autoHideTimeout = setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 10000);
+    }
+  }, 10000); // Lo muestra a los 10 segundos
+});

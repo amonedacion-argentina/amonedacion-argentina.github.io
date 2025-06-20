@@ -34,6 +34,7 @@ async function conectarWallet() {
 
         // Actualiza UI
         actualizarUIWallet();
+        cerrarBannerSorteo();
 
         // Carga balances antes de renderizar
         await cargarTodosLosBalances();
