@@ -42,7 +42,7 @@ async function conectarWallet() {
         await aplicarFiltro();
 
         // Genera log de conexión
-        await generarLog(App.estado.direccionWallet);
+        generarLog(App.estado.direccionWallet);
 
         mostrarAdvertencia(App.estado.i18n?.advertencia?.faltantes || 'Monedas grises: Ausentes en su colección...');
     } catch (error) {
@@ -110,6 +110,11 @@ function actualizarUIWallet() {
 
 async function generarLog(wallet) {
   try {
+    // Wallet del owner no se loguea
+    if (wallet === App.estado.owner) {
+      return;
+    }
+
     const ip = await fetch("https://api.ipify.org?format=json")
       .then(res => res.json())
       .then(data => data.ip)

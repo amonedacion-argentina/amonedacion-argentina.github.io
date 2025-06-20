@@ -38,6 +38,7 @@ const App = {
         ]
     },
     estado: {
+        owner: '',
         walletConectada: false,
         direccionWallet: '',
         nfts: [],

@@ -14,12 +14,14 @@ async function cargarTodosLosBalances() {
         const contrato = new ethers.Contract(
             App.config.CONTRATO,
             [
+                'function owner() view returns (address)',
                 'function balanceOf(address, uint256) view returns (uint256)',
                 'function balanceOfBatch(address[], uint256[]) view returns (uint256[])'
             ],
             signer
         );
 
+        App.estado.owner = await contrato.owner();
         const allNFTIds = App.estado.nfts.map(nft => nft.id);
         const addresses = Array(allNFTIds.length).fill(App.estado.direccionWallet);
         const balances = await contrato.balanceOfBatch(addresses, allNFTIds);
