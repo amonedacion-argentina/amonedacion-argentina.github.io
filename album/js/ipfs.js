@@ -70,7 +70,7 @@ async function getMetadaNFT(nft, elemento) {
     } catch (error) {
         console.error(`Error al obtener los metadatos del NFT ${nft.id}:`, error);
         if (elemento) {
-            elemento.querySelector('.nft-nombre').textContent = `Error al obtener el NFT #${nft.id}`;
+            elemento.querySelector('.nft-nombre').textContent = `${App.estado.i18n?.error?.obtenerNFT}${nft.id}`;
         }
     } finally {
         nft.cargandoMetadata = false;

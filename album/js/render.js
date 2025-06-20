@@ -271,7 +271,7 @@ function mostrarErrorEnTarjeta(elemento, nftId) {
     const errorContainer = elemento.querySelector('.nft-atributos') || elemento;
     errorContainer.innerHTML = `
         <div class="error-atributo">
-            Error al cargar los atributos del NFT #${nftId}
+            ${App.estado.i18n?.error?.cargaAtributos}${nftId}
         </div>
     `;
 }

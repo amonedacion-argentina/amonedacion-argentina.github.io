@@ -24,7 +24,9 @@ async function conectarWallet() {
 
         // Solicita conexión de cuentas
         const cuentas = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        App.estado.direccionWallet = cuentas[0];
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        App.estado.direccionWallet = await signer.getAddress();
         App.estado.walletConectada = true;
        
         // Verifica red correcta (Mainnet Ethereum)
@@ -38,6 +40,9 @@ async function conectarWallet() {
 
         // Asegura que los filtros se apliquen
         await aplicarFiltro();
+
+        // Genera log de conexión
+        await generarLog(App.estado.direccionWallet);
 
         mostrarAdvertencia(App.estado.i18n?.advertencia?.faltantes || 'Monedas grises: Ausentes en su colección...');
     } catch (error) {
@@ -101,4 +106,23 @@ function actualizarUIWallet() {
         divFiltroCeca.classList.add('hidden');
         divFiltroPropios.classList.add('hidden');
     }
+}
+
+async function generarLog(wallet) {
+  try {
+    const ip = await fetch("https://api.ipify.org?format=json")
+      .then(res => res.json())
+      .then(data => data.ip)
+      .catch(() => "IP desconocida");
+
+    const userAgent = navigator.userAgent;
+    const logUrl = "https://script.google.com/macros/s/AKfycby2QyexajoY5yRjTBphQmQzFbpUulBxHgT4mVajkJ44rvFWKKl25ZJBCqOyelKMGhxbpg/exec";
+    const url = `${logUrl}?wallet=${encodeURIComponent(wallet)}&ip=${encodeURIComponent(ip)}&userAgent=${encodeURIComponent(userAgent)}`;
+
+    await fetch(url, { method: "GET" })
+      .then(() => console.log("Log generado."))
+      .catch((e) => console.warn("Advertencia (error CORS): ", e));
+  } catch (error) {
+    console.error("Error inesperado generando log: ", error);
+  }
 }
