@@ -119,10 +119,12 @@ async function generarLog(wallet) {
       .then(res => res.json())
       .then(data => data.ip)
       .catch(() => "IP desconocida");
-
     const userAgent = navigator.userAgent;
+    const idiomaNavegador = navigator.language || navigator.userLanguage;
+    const idiomaSeleccionado = document.getElementById("lang-select")?.value || "No seleccionado";
+    
     const logUrl = "https://script.google.com/macros/s/AKfycby2QyexajoY5yRjTBphQmQzFbpUulBxHgT4mVajkJ44rvFWKKl25ZJBCqOyelKMGhxbpg/exec";
-    const url = `${logUrl}?wallet=${encodeURIComponent(wallet)}&ip=${encodeURIComponent(ip)}&userAgent=${encodeURIComponent(userAgent)}`;
+    const url = `${logUrl}?wallet=${encodeURIComponent(wallet)}&ip=${encodeURIComponent(ip)}&userAgent=${encodeURIComponent(userAgent)}&idiomaNavegador=${encodeURIComponent(idiomaNavegador)}&idiomaSeleccionado=${encodeURIComponent(idiomaSeleccionado)}`;
 
     await fetch(url, { method: "GET" })
       .then(() => console.log("Log generado."))
