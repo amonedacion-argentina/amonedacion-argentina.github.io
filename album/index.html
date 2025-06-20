@@ -27,8 +27,8 @@
             <div class="lang-container">
                 <img src="../img/globo.png" alt="Idioma" class="lang-icon" />
                 <select id="lang-select" aria-label="Seleccionar idioma">
-                <option value="en">English</option>
-                <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
                 </select>
             </div>
 
@@ -126,6 +126,13 @@
 
             <div id="loading" class="hidden">
                 <div class="spinner"></div>
+            </div>
+
+            <div id="banner-sorteo" class="hidden">
+                <strong data-i18n="banner.sorteo">¡Sorteo exclusivo!</strong>
+                <p data-i18n="banner.conecteWallet">Conecte su wallet y participe del sorteo de un NFT gratis.</p>
+                <button id="btn-conectar-banner" data-i18n="banner.conectarme">Conectarme</button>
+                <button id="btn-cerrar-banner" data-i18n="banner.cerrar">Cerrar</button>
             </div>
 
             <section id="galeria-nfts" class="grid-container"></section>

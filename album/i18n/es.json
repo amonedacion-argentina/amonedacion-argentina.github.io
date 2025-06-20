@@ -27,6 +27,12 @@
     "conecteWallet": "🔒 Wallet no conectada.\nInicie sesión para visualizar su colección en color y utilizar filtros avanzados.",
     "faltantes":"Monedas grises: Ausentes en su colección.\n🛒 Compra disponible en los mercados NFT."
   },
+   "banner": {
+    "sorteo": "🎁 ¡Sorteo exclusivo!",
+    "conecteWallet":"Conecte su wallet y participe del sorteo de un NFT gratis.",
+    "conectarme":"Conectarme",
+    "cerrar":"Cerrar"
+  },
   "nav": {
     "inicio": "Inicio",
     "album": "Álbum NFT",

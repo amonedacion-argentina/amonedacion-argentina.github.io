@@ -27,6 +27,12 @@
     "conecteWallet": "🔒 Wallet not connected.\nSign in to view your collection in color and use advanced filters.",
     "faltantes":"Gray coins: Missing from your collection.\n🛒 Purchase available on NFT marketplaces."
   },
+  "banner": {
+    "sorteo": "🎁 Exclusive Giveaway!",
+    "conecteWallet": "Connect your wallet and enter the giveaway for a free NFT.",
+    "conectarme": "Connect",
+    "cerrar": "Close"
+  },
   "nav": {
     "inicio": "Home",
     "album": "NFT Album",
