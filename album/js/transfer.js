@@ -42,6 +42,8 @@ async function confirmarTransferencia() {
     const to = document.getElementById('direccion-destino').value.trim();
     const cantidadStr = document.getElementById('cantidad-transferir').value;
     const cantidad = parseInt(cantidadStr);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
 
     if (!App.estado.walletConectada || !App.estado.direccionWallet) {
         mostrarError(App.estado.i18n?.error?.walletNoConectada || 'Debe conectar su wallet.');
@@ -80,9 +82,6 @@ async function confirmarTransferencia() {
     }
 
     try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-
         const contrato = new ethers.Contract(App.config.CONTRATO, [
             'function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes data)'
         ], signer);
