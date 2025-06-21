@@ -89,9 +89,9 @@ async function confirmarTransferencia() {
         const tx = await contrato.safeTransferFrom(App.estado.direccionWallet, to, nftSeleccionado.id, cantidad, "0x");
         await tx.wait();
 
-        mostrarExito(App.estado.i18n?.transferencia?.realizada || 'Transferencia realizada.');
         cerrarPopupTransferencia();
         await cargarTodosLosBalances();
+        mostrarExito(App.estado.i18n?.transferencia?.realizada || 'Transferencia realizada.');
     } catch (error) {
         console.error('Error al transferir: ', error);
         mostrarError(App.estado.i18n?.error?.alTransferir || 'Error al realizar la transferencia.');
