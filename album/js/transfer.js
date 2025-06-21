@@ -39,6 +39,12 @@ function cerrarPopupTransferencia() {
 }
 
 async function confirmarTransferencia() {
+    const btnEnviar = document.querySelector('#form-transferencia button[type="submit"]');
+    if (!btnEnviar) return;
+
+    btnEnviar.disabled = true;
+    btnEnviar.innerText = App.estado.i18n?.transferencia?.enviando || 'Enviando...';
+
     const to = document.getElementById('direccion-destino').value.trim();
     const cantidadStr = document.getElementById('cantidad-transferir').value;
     const cantidad = parseInt(cantidadStr);
@@ -47,37 +53,44 @@ async function confirmarTransferencia() {
 
     if (!App.estado.walletConectada || !App.estado.direccionWallet) {
         mostrarError(App.estado.i18n?.error?.walletNoConectada || 'Debe conectar su wallet.');
+        resetearBotonEnviar(btnEnviar);
         return;
     }
 
     if (!to) {
         mostrarError(App.estado.i18n?.error?.dirVacia || 'Debe ingresar una dirección de destino.');
+        resetearBotonEnviar(btnEnviar);
         return;
     }
     
     if (!ethers.utils.isAddress(to)) {
         mostrarError(App.estado.i18n?.error?.dirInvalida || 'Dirección inválida.');
+        resetearBotonEnviar(btnEnviar);
         return;
     }
 
     if (to.toLowerCase() === App.estado.direccionWallet.toLowerCase()) {
         mostrarError(App.estado.i18n?.error?.mismoDestino || 'No puede transferir a su propia wallet.');
+        resetearBotonEnviar(btnEnviar);
         return;
     }
 
     if (!cantidadStr || isNaN(cantidad) || cantidad < 1 || cantidad > nftSeleccionado.cantidad) {
         mostrarError(App.estado.i18n?.error?.cantidadInvalida || 'Cantidad inválida.');
+        resetearBotonEnviar(btnEnviar);
         return;
     }
 
     if (!Number.isInteger(cantidad)) {
         mostrarError(App.estado.i18n?.error?.noEntero || 'La cantidad debe ser un número entero.');
+        resetearBotonEnviar(btnEnviar);
         return;
     }
 
     const code = await provider.getCode(to);
     if (code !== '0x') {
         mostrarError(App.estado.i18n?.error?.noContrato || 'No se puede transferir a un contrato inteligente.');
+        resetearBotonEnviar(btnEnviar);
         return;
     }
 
@@ -94,6 +107,17 @@ async function confirmarTransferencia() {
         mostrarExito(App.estado.i18n?.transferencia?.realizada || 'Transferencia realizada.');
     } catch (error) {
         console.error('Error al transferir: ', error);
-        mostrarError(App.estado.i18n?.error?.alTransferir || 'Error al realizar la transferencia.');
+        if (error.code === 'ACTION_REJECTED') {
+            mostrarError(App.estado.i18n?.error?.rechazadaUsuario || 'Transferencia cancelada por el usuario.');
+        } else {
+            mostrarError(App.estado.i18n?.error?.alTransferir || 'Error al realizar la transferencia.');
+        }
+     } finally {
+        resetearBotonEnviar(btnEnviar);
     }
+}
+
+function resetearBotonEnviar(btnEnviar) {
+    btnEnviar.disabled = false;
+    btnEnviar.innerText = App.estado.i18n?.transferencia?.enviar || 'Enviar';
 }

@@ -105,6 +105,7 @@ function inicializarEventos() {
     document.getElementById('btn-cerrar-banner').addEventListener('click', cerrarBannerSorteo);
     
     // Eventos de filtros
+    document.getElementById('limpiar-filtros').addEventListener('click', limpiarFiltros);
     document.getElementById('filtro-categoria').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-rareza').addEventListener('change', aplicarFiltro);
     document.getElementById('filtro-valor').addEventListener('change', aplicarFiltro);
@@ -122,6 +123,17 @@ function inicializarEventos() {
     document.getElementById('btn-siguiente').addEventListener('click', paginaSiguiente);
     document.getElementById('btn-primera').addEventListener('click', irAPrimeraPagina);
     document.getElementById('btn-ultima').addEventListener('click', irAUltimaPagina);
+
+    // Eventos de transferencia
+    document.getElementById('popup-cerrar').addEventListener('click', cerrarPopupTransferencia);
+    // Envío del formulario
+    const form = document.getElementById('form-transferencia');
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            confirmarTransferencia();
+        });
+    }
     
     // Escucha cambios de wallet
     if (window.ethereum) {
@@ -133,6 +145,32 @@ function inicializarEventos() {
 async function aplicarFiltro() {
     filtrarNFTs();
     await renderizarNFTs();
+}
+
+async function limpiarFiltros() {
+    const filtroCategoria = document.getElementById('filtro-categoria');
+    const filtroRareza = document.getElementById('filtro-rareza');
+    const filtroValor = document.getElementById('filtro-valor');
+    const filtroAnio = document.getElementById('filtro-anio');
+    const filtroComposicion = document.getElementById('filtro-composicion');
+    const filtroAlineacion = document.getElementById('filtro-alineacion');
+    const filtroCanto = document.getElementById('filtro-canto');
+    const filtroForma = document.getElementById('filtro-forma');
+    const filtroCeca = document.getElementById('filtro-ceca');
+    const checkboxPropios = document.getElementById('filtro-propios');
+
+    filtroCategoria.value = 'todas';
+    filtroRareza.value = 'todas';
+    filtroValor.value = 'todos';
+    filtroAnio.value = 'todos';
+    filtroComposicion.value = 'todas';
+    filtroAlineacion.value = 'todas';
+    filtroCanto.value = 'todos';
+    filtroForma.value = 'todas';
+    filtroCeca.value = 'todas';
+    checkboxPropios.checked = false;
+
+    await aplicarFiltro();
 }
 
 function cambiarPagina(e) {

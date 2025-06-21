@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
               App.estado.i18n = texts;
               App.estado.idioma = lang;
               applyTexts(texts);
+              applyPlaceholders(texts);
               
               // Disparar ambos eventos
               document.dispatchEvent(new CustomEvent('i18nLoaded', {
@@ -106,6 +107,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (metaKeywords && texts.meta?.keywords) {
       metaKeywords.setAttribute("content", texts.meta.keywords);
     }
+  }
+
+  // Aplica los textos según data-i18n a los Placeholders
+  function applyPlaceholders(texts) {
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(elem => {
+      const key = elem.getAttribute('data-i18n-placeholder');
+      const value = getNestedValue(texts, key);
+      if (value !== undefined && value !== null) {
+        elem.placeholder = value;
+      }
+    });
   }
 
   // Inicializa el MutationObserver para contenido dinámico
