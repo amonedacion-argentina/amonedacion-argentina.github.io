@@ -25,6 +25,7 @@
     "dirInvalida":"Dirección inválida.",
     "cantidadInvalida":"Cantidad inválida.",
     "alTransferir":"Error al realizar la transferencia.",
+    "rechazadaUsuario":"Transferencia cancelada por el usuario.",
     "mismoDestino":"No puede transferir a su propia wallet.",
     "walletNoConectada":"Debe conectar su wallet.",
     "noContrato":"No se puede transferir a un contrato inteligente.",
@@ -36,6 +37,7 @@
     "dirDestino":"Dirección Destino",
     "cantidad":"Cantidad",
     "enviar":"Enviar",
+    "enviando":"Enviando...",
     "realizada": "Transferencia realizada."
   },
   "advertencia": {
@@ -79,7 +81,8 @@
     "forma":"Forma",
     "ceca":"Ceca",
     "propios": "Mostrar solo mis NFTs",
-    "nftPorPagina": "NFTs por página:"
+    "nftPorPagina": "NFTs por página:",
+    "limpiar":"Limpiar filtros"
   },
   "estadisticas": {
     "miColeccion": "Mi Colección",

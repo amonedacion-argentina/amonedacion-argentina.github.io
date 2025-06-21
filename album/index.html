@@ -55,6 +55,10 @@
     <main>
         <section id="album" class="section active">
             <section class="filtros">
+                <div class="filtros-header">
+                    <img id="limpiar-filtros" src="img/limpiar.png" alt="Limpiar filtros" title="Limpiar filtros" data-i18n="[title]filtros.limpiar"/>
+                </div>
+
                 <div id="div-filtro-categoria" class="filtro-group">
                     <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría</label>
                     <select id="filtro-categoria" class="filtro"></select>
@@ -137,11 +141,11 @@
 
             <div id="popup-transferencia" class="popup hidden">
                 <div class="popup-contenido">
-                    <span class="popup-cerrar" onclick="cerrarPopupTransferencia()">&times;</span>
+                    <span id="popup-cerrar">&times;</span>
                     <h2><span data-i18n="transferencia.transferir">Transferir</span> AH# <span id="popup-moneda-ah"></span></h2>
                     <h3>(NFT# <span id="popup-nft-id"></span>)</h3>
                     
-                    <form onsubmit="event.preventDefault(); confirmarTransferencia();">
+                    <form id="form-transferencia">
                         <input id="direccion-destino" type="text" required pattern="^0x[a-fA-F0-9]{40}$" placeholder="Dirección Destino" data-i18n-placeholder="transferencia.dirDestino">
                         <input id="cantidad-transferir" type="number" required min="1" step="1" placeholder="Cantidad" data-i18n-placeholder="transferencia.cantidad">
                         <button type="submit" data-i18n="transferencia.enviar">Enviar</button>

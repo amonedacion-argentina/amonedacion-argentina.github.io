@@ -74,6 +74,10 @@ button:disabled {
     content: "✓";
     margin-left: 5px;
 }
+button:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
 
 /* Wallet */
 .wallet-container {
@@ -100,6 +104,22 @@ button:disabled {
     padding: 15px 15px 20px 15px;
     background-color: lightcyan;
     justify-content: center;
+    position: relative;
+}
+.filtros-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#limpiar-filtros {
+    width: 35px;
+    height: 35px;
+    border: 2px solid black;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+#limpiar-filtros:hover {
+    opacity: 1;
 }
 .filtro-group {
   justify-items: center;
@@ -496,7 +516,7 @@ label {
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
     position: relative;
 }
-.popup-cerrar {
+#popup-cerrar {
     position: absolute;
     top: 0;
     right: 14px;

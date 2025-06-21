@@ -25,6 +25,7 @@
     "dirInvalida": "Invalid address.",
     "cantidadInvalida": "Invalid amount.",
     "alTransferir": "Error during the transfer.",
+    "rechazadaUsuario":"Transfer cancelled by the user.",
     "mismoDestino": "You cannot transfer to your own wallet.",
     "walletNoConectada": "You must connect your wallet.",
     "noContrato": "Cannot transfer to a smart contract.",
@@ -36,6 +37,7 @@
     "dirDestino": "Destination address",
     "cantidad": "Amount",
     "enviar": "Send",
+    "enviando":"Sending...",
     "realizada": "Transfer completed."
   },
   "advertencia": {
@@ -79,7 +81,8 @@
     "forma":"Shape",
     "ceca":"Mint",
     "propios": "Show only my NFTs",
-    "nftPorPagina": "NFTs per page:"
+    "nftPorPagina": "NFTs per page:",
+    "limpiar":"Clear filters"
   },
   "estadisticas": {
     "miColeccion": "My Collection",
