@@ -213,25 +213,36 @@ function mostrarLoading(mostrar) {
 }
 
 function mostrarError(mensaje) {
-    const errorElement = document.createElement('div');
-    errorElement.className = 'error-mensaje';
-    errorElement.textContent = mensaje;
-    document.body.appendChild(errorElement);
+    const div = document.createElement('div');
+    div.className = 'error-mensaje';
+    div.textContent = mensaje;
+    document.body.appendChild(div);
     
     setTimeout(() => {
-        errorElement.remove();
+        div.remove();
     }, 5000);
 }
 
 function mostrarAdvertencia(mensaje) {
-    const advertElement = document.createElement('div');
-    advertElement.className = 'advertencia';
-    advertElement.textContent = mensaje;
-    document.body.appendChild(advertElement);
+    const div = document.createElement('div');
+    div.className = 'advertencia';
+    div.textContent = mensaje;
+    document.body.appendChild(div);
     
     setTimeout(() => {
-        advertElement.remove();
+        div.remove();
     }, 8000);
+}
+
+function mostrarExito(mensaje) {
+    const div = document.createElement('div');
+    div.className = 'mensaje-exito';
+    div.textContent = mensaje;
+    document.body.appendChild(div);
+
+    setTimeout(() => {
+        div.remove();
+    }, 5000);
 }
 
 function limpiarNombreDeValor(nombre) {

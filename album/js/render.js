@@ -119,6 +119,7 @@ async function renderizarNFTs() {
 }
 
 function crearElementoNFT(nft) {
+    const i18n = App.estado.i18n || {};
     const nftElement = document.createElement('div');
     nftElement.className = 'nft-card';
 
@@ -130,10 +131,13 @@ function crearElementoNFT(nft) {
         <div class="nft-imagen-container ${nft.enPropiedad ? 'propio' : 'no-propio'}">
             <img src="${imagenSrc}" alt="NFT ${nft.id}" 
                  class="nft-imagen ${nft.enPropiedad ? 'nft-propio' : ''}">
-            ${nft.enPropiedad ? `<div class="nft-cantidad">x${nft.cantidad}</div>` : ''}
+            ${nft.enPropiedad ? `<div class="nft-cantidad">x${nft.cantidad}</div>
+                                <div class="div-transferir" onclick="abrirPopupTransferencia(${nft.id})" title="${i18n.transferencia?.transferir || 'Transferir'}">
+                                    <img src="img/transferir.png" alt="${i18n.transferencia?.transferir || 'Transferir'}">
+                                </div>` : ''}
             ${nft.cargandoMetadata ? '<div class="spinner pequeno"></div>' : ''}
         </div>
-        <h3 class="nft-nombre">Loading...</h3>
+        <h3 class="nft-nombre">${i18n.cargando || 'Cargando...'}</h3>
         <div class="nft-atributos"></div>
         <div class="nft-plataformas"></div>
     `;
