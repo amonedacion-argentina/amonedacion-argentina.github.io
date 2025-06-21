@@ -135,6 +135,20 @@
                 <button id="btn-cerrar-banner" data-i18n="banner.cerrar">Cerrar</button>
             </div>
 
+            <div id="popup-transferencia" class="popup hidden">
+                <div class="popup-contenido">
+                    <span class="popup-cerrar" onclick="cerrarPopupTransferencia()">&times;</span>
+                    <h2><span data-i18n="transferencia.transferir">Transferir</span> AH# <span id="popup-moneda-ah"></span></h2>
+                    <h3>(NFT# <span id="popup-nft-id"></span>)</h3>
+                    
+                    <form onsubmit="event.preventDefault(); confirmarTransferencia();">
+                        <input id="direccion-destino" type="text" required pattern="^0x[a-fA-F0-9]{40}$" placeholder="Dirección Destino" data-i18n-placeholder="transferencia.dirDestino">
+                        <input id="cantidad-transferir" type="number" required min="1" step="1" placeholder="Cantidad" data-i18n-placeholder="transferencia.cantidad">
+                        <button type="submit" data-i18n="transferencia.enviar">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
             <section id="galeria-nfts" class="grid-container"></section>
 
             <section class="paginador">
@@ -199,5 +213,6 @@
     <script src="js/ipfs.js"></script>
     <script src="js/script.js"></script>
     <script src="js/nav.js"></script>
+    <script src="js/transfer.js"></script>
 </body>
 </html>

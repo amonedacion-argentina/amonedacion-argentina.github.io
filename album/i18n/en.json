@@ -21,7 +21,22 @@
     "critico":"Critical error loading application.",
     "inicializar":"Error initializing application: ",
     "errorCargaAtributos":"Error loading attributes of NFT #",
-    "obtenerNFT":"Error obtaining NFT #"
+    "obtenerNFT":"Error obtaining NFT #",
+    "dirInvalida": "Invalid address.",
+    "cantidadInvalida": "Invalid amount.",
+    "alTransferir": "Error during the transfer.",
+    "mismoDestino": "You cannot transfer to your own wallet.",
+    "walletNoConectada": "You must connect your wallet.",
+    "noContrato": "Cannot transfer to a smart contract.",
+    "dirVacia":"Destination address is required.",
+    "noEntero":"The amount must be a whole number."
+  },
+  "transferencia": {
+    "transferir": "Transfer",
+    "dirDestino": "Destination address",
+    "cantidad": "Amount",
+    "enviar": "Send",
+    "realizada": "Transfer completed."
   },
   "advertencia": {
     "conecteWallet": "🔒 Wallet not connected.\nSign in to view your collection in color and use advanced filters.",

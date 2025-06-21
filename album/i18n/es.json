@@ -21,7 +21,22 @@
     "critico":"Error crítico al cargar la aplicación.",
     "inicializar":"Error al inicializar la aplicación: ",
     "cargaAtributos":"Error al cargar los atributos del NFT #",
-    "obtenerNFT":"Error al obtener el NFT #"
+    "obtenerNFT":"Error al obtener el NFT #",
+    "dirInvalida":"Dirección inválida.",
+    "cantidadInvalida":"Cantidad inválida.",
+    "alTransferir":"Error al realizar la transferencia.",
+    "mismoDestino":"No puede transferir a su propia wallet.",
+    "walletNoConectada":"Debe conectar su wallet.",
+    "noContrato":"No se puede transferir a un contrato inteligente.",
+    "dirVacia":"Debe ingresar una dirección de destino.",
+    "noEntero":"La cantidad debe ser un número entero."
+  },
+  "transferencia": {
+    "transferir":"Transferir",
+    "dirDestino":"Dirección Destino",
+    "cantidad":"Cantidad",
+    "enviar":"Enviar",
+    "realizada": "Transferencia realizada."
   },
   "advertencia": {
     "conecteWallet": "🔒 Wallet no conectada.\nInicie sesión para visualizar su colección en color y utilizar filtros avanzados.",
