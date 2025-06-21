@@ -491,7 +491,7 @@ label {
 }
 .popup-contenido {
     background: white;
-    padding: 20px;
+    padding: 40px 20px 20px 20px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
     position: relative;
