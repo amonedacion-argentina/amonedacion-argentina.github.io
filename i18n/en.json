@@ -188,6 +188,8 @@
   "redes": {
     "titulo": "Social Media",
     "p-1": "Connect via the official social media channels to stay informed about the latest news and events:",
+    "misiones": "Quests and Rewards",
+    "p-2": "Complete challenges and earn an NFT from <strong>AMONEDACION ARGENTINA</strong>:",
     "contacto": "For inquiries or additional information, please direct correspondence to <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
   "disponible": "Available",

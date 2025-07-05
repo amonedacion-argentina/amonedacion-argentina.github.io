@@ -188,6 +188,8 @@
   "redes": {
     "titulo": "Redes Sociales",
     "p-1": "Conéctese a través de las redes sociales oficiales para mantenerse informado sobre las últimas novedades y eventos:",
+    "misiones": "Misiones y Recompensas",
+    "p-2": "Complete desafíos y gane un NFT de <strong>AMONEDACION ARGENTINA</strong>:",
     "contacto": "Para consultas o información adicional, puede contactarse al correo <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
   "disponible": "Disponible",
