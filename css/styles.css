@@ -129,7 +129,7 @@ p {
 .link-list li {
   padding: 0.5rem 1rem;
 }
-#nft-marketplaces, #ul-redes {
+#nft-marketplaces, #redes ul, #redes h3 {
   margin-bottom: 20px;
 }
 .link-list a {
