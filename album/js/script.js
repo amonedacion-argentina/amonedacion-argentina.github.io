@@ -351,6 +351,7 @@ function normalizarComposicion(valor) {
         '700 Al + 300 Mg': 'aluminio',
         '900 Ag + 100 Cu': 'plata',
         '925 Ag + 75 Cu': 'plata',
+        '999 Au': 'oro',
         '900 Au + 100 Cu': 'oro',
         '920 Cu + 80 Al': 'bronce',
         '920 Cu + 80 Al ': 'bronce',
