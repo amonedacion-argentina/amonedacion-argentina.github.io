@@ -5,480 +5,218 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="" data-i18n="meta.description" />
   <meta name="keywords" content="" data-i18n="meta.keywords" />
-  <title data-i18n="title">AMONEDACION ARGENTINA</title>
-  <link rel="icon" href="img/logo.webp" type="image/webp">
+  <title data-i18n="title">AMONEDACION ARGENTINA - Álbum NFT</title>
+  <link rel="icon" href="../img/logo.webp" type="image/webp">
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/header.css" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4801P0QGT"></script>
-  <script src="js/gtag-init.js"></script>
+  <script src="../js/gtag-init.js"></script>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <img src="img/fondo.webp" alt="AMONEDACION ARGENTINA Fondo" id="fondo" />
-      <div id="presentacion">
-        <img src="img/logo.webp" alt="AMONEDACION ARGENTINA Logo" id="logo" />
-        <h1 id="titulo" data-i18n="header.titulo">AMONEDACION<br>ARGENTINA</h1>
-      </div>
-      <div class="lang-container">
-        <img src="img/globo.png" alt="Idioma" class="lang-icon" />
-        <select id="lang-select" aria-label="Seleccionar idioma">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-        </select>
-      </div>
-    </div>
-  </header>
+    <header>
+        <div class="header-container">
+            <img src="../img/fondo.webp" alt="AMONEDACION ARGENTINA Fondo" id="fondo" />
+            <div id="presentacion">
+                <img src="../img/logo.webp" alt="AMONEDACION ARGENTINA Logo" id="logo" />
+                <h1 id="titulo" data-i18n="header.titulo">AMONEDACION<br>ARGENTINA</h1>
+                <h2 id="subtitulo" data-i18n="header.subtitulo">ALBUM NFT</h2>
+            </div>
+            
+            <div class="lang-container">
+                <img src="../img/globo.png" alt="Idioma" class="lang-icon" />
+                <select id="lang-select" aria-label="Seleccionar idioma">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
 
-  <nav>
-    <ul id="nav-list">
-      <li><button data-section="inicio" class="nav-btn active" data-i18n="nav.inicio">Inicio</button></li>
-      <li><button data-section="album" class="nav-btn" data-i18n="nav.album">Álbum NFT</button></li>
-      <li><button data-section="autor" class="nav-btn" data-i18n="nav.autor">Autor</button></li>
-      <li><button data-section="catalogo" class="nav-btn" data-i18n="nav.catalogo">Catálogo de Monedas</button></li>
-      <li><button data-section="whitepaper" class="nav-btn" data-i18n="nav.whitepaper">Whitepaper</button></li>
-      <li><button data-section="marketplaces" class="nav-btn" data-i18n="nav.marketplaces">Mercados</button></li>
-      <li><button data-section="galerias" class="nav-btn" data-i18n="nav.galerias">Galerías NFT</button></li>
-      <li><button data-section="analisis" class="nav-btn" data-i18n="nav.analisis">Análisis NFT</button></li>
-      <li><button data-section="redes" class="nav-btn" data-i18n="nav.redes">Redes Sociales</button></li>
-    </ul>
-  </nav>
-
-  <main>
-    <section id="inicio" class="section active">
-      <h1 data-i18n="inicio.titulo">AMONEDACION ARGENTINA</h1>
-      <p data-i18n="inicio.p-1">
-        AMONEDACION ARGENTINA es el primer proyecto digital...
-      </p>
-      <p data-i18n="inicio.p-2">
-        Cada NFT representa una moneda argentina auténtica...
-      </p>
-      <p data-i18n="inicio.p-3">
-        El proyecto está dirigido a coleccionistas...
-      </p>
-      <p data-i18n="inicio.p-4">
-        Como complemento, se encuentra disponible el catálogo...
-      </p>
-
-      <h2 data-i18n="inicio.faq">Preguntas Frecuentes</h2>
-      
-      <div id="toggle-moneda" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-moneda">
-        <span data-i18n="inicio.moneda-titulo">¿Qué es una Moneda?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-moneda" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.moneda-p-1">Una moneda es una pieza metálica acuñada por una autoridad emisora...</p>
-        <p data-i18n="inicio.moneda-p-2">A lo largo de la historia, las monedas no solo han servido para facilitar transacciones...</p>
-      </div>
-      
-      <div id="toggle-numismatica" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-numismatica">
-        <span data-i18n="inicio.numismatica-titulo">¿Qué es la Numismática?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-numismatica" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.numismatica-p-1">La numismática es el estudio y coleccionismo de monedas, billetes y medallas...</p>
-        <p data-i18n="inicio.numismatica-p-2">En AMONEDACION ARGENTINA, la numismática se fusiona con las tecnologías emergentes...</p>
-      </div>
-
-      <div id="toggle-nft" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-nft">
-        <span data-i18n="inicio.nft-titulo">¿Qué es un NFT?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-nft" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.nft-p-1">Un NFT es un token no fungible...</p>
-      </div>
-      
-      <div id="toggle-coleccion-nft" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-coleccion-nft">
-        <span data-i18n="inicio.coleccion-nft-titulo">¿Qué es una Colección NFT?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-coleccion-nft" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.coleccion-nft-p-1">Una colección NFT es un conjunto estructurado de tokens no fungibles...</p>
-      </div>
-      
-      <div id="toggle-blockchain" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-blockchain">
-        <span data-i18n="inicio.blockchain-titulo">¿Qué es una Blockchain?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-blockchain" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.blockchain-p-1">Una blockchain (o cadena de bloques) es una base de datos descentralizada y distribuida...</p>
-        <p data-i18n="inicio.blockchain-p-2">Gracias a su estructura, la blockchain no depende de una entidad central y es resistente a manipulaciones...</p>
-        <p data-i18n="inicio.blockchain-p-3">En AMONEDACION ARGENTINA, las monedas NFT están registradas en la blockchain de Ethereum...</p>
-      </div>
-      
-      <div id="toggle-ethereum" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-ethereum">
-        <span data-i18n="inicio.ethereum-titulo">¿Qué es Ethereum?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-ethereum" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.ethereum-p-1">Ethereum es una plataforma blockchain de código abierto que permite...</p>
-        <p data-i18n="inicio.ethereum-p-2">A diferencia de Bitcoin, que se centra principalmente en ser una moneda digital, Ethereum...</p>
-        <p data-i18n="inicio.ethereum-p-3">En AMONEDACION ARGENTINA, Ethereum es la blockchain que garantiza...</p>
-      </div>
-      
-      <div id="toggle-transaccion" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-transaccion">
-        <span data-i18n="inicio.transaccion-titulo">¿Qué es una Transacción en Ethereum?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-transaccion" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.transaccion-p-1">Una transacción en Ethereum es una acción registrada en la blockchain...</p>
-        <p data-i18n="inicio.transaccion-p-2">Las transacciones requieren el pago de una comisión llamada “gas”...</p>
-        <p data-i18n="inicio.transaccion-p-3">En AMONEDACION ARGENTINA, las transacciones aseguran que la compra, venta o...</p>
-      </div>
-      
-      <div id="toggle-gas" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-gas">
-        <span data-i18n="inicio.gas-titulo">¿Qué son las Comisiones de Gas?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-gas" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.gas-p-1">Las comisiones de gas son tarifas que se pagan para realizar transacciones...</p>
-        <p data-i18n="inicio.gas-p-2">El gas se mide en unidades y su costo varía según la demanda de la red...</p>
-        <p data-i18n="inicio.gas-p-3">En AMONEDACION ARGENTINA, las comisiones de gas son necesarias para comprar, vender o transferir...</p>
-      </div>
-      
-      <div id="toggle-tokenizacion" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-tokenizacion">
-        <span data-i18n="inicio.tokenizacion-titulo">¿Qué es la Tokenización?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-tokenizacion" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.tokenizacion-p-1">La tokenización es el proceso de convertir un activo físico o digital en un token...</p>
-        <p data-i18n="inicio.tokenizacion-p-2">En AMONEDACION ARGENTINA, las monedas físicas reales son tokenizadas como NFTs...</p>
-      </div>
-      
-      <div id="toggle-moneda-nft" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-moneda-nft">
-        <span data-i18n="inicio.moneda-nft-titulo">¿Qué es una moneda NFT (tokenizada)?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-moneda-nft" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.moneda-nft-p-1">Una moneda NFT tokenizada es una representación digital registrada en una blockchain...</p>
-        <p data-i18n="inicio.moneda-nft-p-2">En el caso de AMONEDACION ARGENTINA, cada NFT está vinculado a una moneda concreta...</p>
-         <p data-i18n="inicio.moneda-nft-p-3">Este sistema fusiona el valor histórico de las monedas físicas con las ventajas del mundo digital...</p>
-      </div>
-
-      <div id="toggle-rareza" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-rareza">
-        <span data-i18n="inicio.rareza-titulo">Grados de Rareza en AMONEDACION ARGENTINA</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-rareza" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.rareza-p-1">Cada moneda NFT de la colección está clasificada...</p>
-        <p data-i18n="inicio.rareza-p-2">En numismática, la rareza indica...</p>
-        <ul class="link-list">
-          <li data-i18n="inicio.rareza-r1">
-            🟢 R1 (Corriente)...
-          </li>
-          <li data-i18n="inicio.rareza-r2">
-            🔵 R2 (Escasa)...
-          </li>
-          <li data-i18n="inicio.rareza-r3">
-            🟠 R3 (Rara)...
-          </li>
-          <li data-i18n="inicio.rareza-r4">
-             R4 (Muy rara)...
-          </li>
-          <li data-i18n="inicio.rareza-r5">
-            ⚫ R5 (Extremadamente rara)...
-          </li>
+            <div class="wallet-container">
+                <img src="img/wallet.png" alt="Wallet" class="wallet-icon" />
+                <button id="btn-conectar" data-i18n="header.conectar">Conectar</button>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul id="nav-list">
+            <li><button data-section="inicio" class="nav-btn" data-i18n="nav.inicio">Inicio</button></li>
+            <li><button data-section="album" class="nav-btn active" data-i18n="nav.album">Álbum NFT</button></li>
+            <li><button data-section="autor" class="nav-btn" data-i18n="nav.autor">Autor</button></li>
+            <li><button data-section="catalogo" class="nav-btn" data-i18n="nav.catalogo">Catálogo de Monedas</button></li>
+            <li><button data-section="whitepaper" class="nav-btn" data-i18n="nav.whitepaper">Whitepaper</button></li>
+            <li><button data-section="marketplaces" class="nav-btn" data-i18n="nav.marketplaces">Mercados</button></li>
+            <li><button data-section="galerias" class="nav-btn" data-i18n="nav.galerias">Galerías NFT</button></li>
+            <li><button data-section="analisis" class="nav-btn" data-i18n="nav.analisis">Análisis NFT</button></li>
+            <li><button data-section="redes" class="nav-btn" data-i18n="nav.redes">Redes Sociales</button></li>
         </ul>
-      </div>
-      
-      <div id="toggle-wallet" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-wallet">
-        <span data-i18n="inicio.wallet-titulo">¿Qué es una Wallet?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-wallet" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.wallet-p-1">Una wallet (o billetera digital) es una aplicación o dispositivo que permite...</p>
-        <p data-i18n="inicio.wallet-p-2">En el contexto de AMONEDACION ARGENTINA, la wallet es esencial para...</p>
-      </div>
-      
-      <div id="toggle-metamask" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-metamask">
-        <span data-i18n="inicio.metamask-titulo">¿Qué es MetaMask?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-metamask" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.metamask-p-1">MetaMask es una billetera digital (wallet) que permite...</p>
-        <p data-i18n="inicio.metamask-p-2">Con MetaMask, los usuarios pueden gestionar criptomonedas como ETH...</p>
-        <p data-i18n="inicio.metamask-p-3">Para utilizar AMONEDACION ARGENTINA y adquirir monedas digitales...</p>
-      </div>
-      
-      <div id="toggle-mercado-nft" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-mercado-nft">
-        <span data-i18n="inicio.mercado-nft-titulo">¿Qué es un Mercado NFT (como OpenSea)?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-mercado-nft" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.mercado-nft-p-1">Un mercado NFT es una plataforma donde usted puede comprar, vender e intercambiar NFTs...</p>
-        <p data-i18n="inicio.mercado-nft-p-2">Ejemplos populares son OpenSea, OKX NFT, LooksRare y Magic Eden...</p>
-      </div>
-      
-      <div id="toggle-exchange" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-exchange">
-        <span data-i18n="inicio.exchange-titulo">¿Qué es un Exchange (como Binance)?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-exchange" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.exchange-p-1">Un exchange o casa de cambio de criptomonedas es una plataforma digital que permite...</p>
-        <p data-i18n="inicio.exchange-p-2">Existen diferentes tipos de exchanges, pero los más populares -como Binance, Coinbase...</p>
-      </div>
-      
-      <div id="toggle-comprar-nft" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-comprar-nft">
-        <span data-i18n="inicio.comprar-nft-titulo">¿Cómo Comprar un NFT?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-comprar-nft" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.comprar-nft-p-1">Para adquirir un NFT de la colección AMONEDACION ARGENTINA, siga estos pasos:</p>
-        <ol>
-          <li data-i18n="inicio.comprar-nft-li-1">Instale una wallet compatible con Ethereum. Se recomienda MetaMask...</li>
-          <li data-i18n="inicio.comprar-nft-li-2">Compre Ether (ETH), la criptomoneda de Ethereum, en un exchange confiable y transfiéralo a su wallet.</li>
-          <li data-i18n="inicio.comprar-nft-li-3">Acceda al mercado donde se venden los NFTs, como OpenSea, y conecte su wallet.</li>
-          <li data-i18n="inicio.comprar-nft-li-4">Explore la colección e identifique la moneda digital que desea adquirir.</li>
-          <li data-i18n="inicio.comprar-nft-li-5">Siga las instrucciones del mercado NFT para comprar el NFT con su wallet.</li>
-          <li data-i18n="inicio.comprar-nft-li-6">Confirme la transacción aceptando la operación y las comisiones de gas en su wallet.</li>
-        </ol>
-        <p data-i18n="inicio.comprar-nft-p-2">¡Disfrute de su NFT!</p>
-      </div>
-      
-      <div id="toggle-transferir-ether" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-transferir-ether">
-        <span data-i18n="inicio.transferir-ether-titulo">¿Cómo Transferir Ether desde un Exchange a su Wallet?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-transferir-ether" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.transferir-ether-p-1">Una vez que haya comprado Ether (ETH) en un exchange como Binance, deberá transferirlo...</p>
-        <p data-i18n="inicio.transferir-ether-p-2">Pasos para transferir ETH a su wallet (por ejemplo, MetaMask):</p>
-        <ol>
-          <li data-i18n="inicio.transferir-ether-li-1">Abra su wallet y copie su dirección pública de Ethereum...</li>
-          <li data-i18n="inicio.transferir-ether-li-2">Ingrese al exchange donde compró el ETH (por ejemplo, Binance).</li>
-          <li data-i18n="inicio.transferir-ether-li-3">Vaya a la sección de retiros (Withdraw).</li>
-          <li data-i18n="inicio.transferir-ether-li-4">Seleccione Ethereum (ETH) como criptomoneda a retirar.</li>
-          <li data-i18n="inicio.transferir-ether-li-5">Pegue la dirección de su wallet en el campo correspondiente.</li>
-          <li data-i18n="inicio.transferir-ether-li-6">Ingrese la cantidad de ETHque desea transferir.</li>
-          <li data-i18n="inicio.transferir-ether-li-7">Verifique que la red seleccionada sea Ethereum (ERC-20) para evitar errores o pérdidas de fondos.</li>
-          <li data-i18n="inicio.transferir-ether-li-8">Asegúrese de tener suficiente ETH para cubrir el precio del NFT que desea adquirir y las comisiones de gas, que pueden variar según la congestión de la red.</li>
-          <li data-i18n="inicio.transferir-ether-li-9">Confirme la operación y complete la verificación solicitada por el exchange.</li>
-        </ol>
-        <p data-i18n="inicio.transferir-ether-p-3">En pocos minutos, el Ether estará disponible en su wallet...</p>
-      </div>
+    </nav>
 
-      <div id="toggle-album" class="toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="explicacion-album">
-        <span data-i18n="inicio.album-titulo">¿Qué es el Álbum NFT de AMONEDACION ARGENTINA?</span>
-        <span class="toggle-icon">▶</span>
-      </div>
-      <div id="explicacion-album" class="toggle-content" aria-hidden="true">
-        <p data-i18n="inicio.album-p-1">El Álbum NFT es una herramienta digital diseñada para organizar...</p>
-        <p data-i18n="inicio.album-p-2">Características principales:</p>
-        <ul class="lista-ul">
-          <li data-i18n="inicio.album-li-1">Clasificaciones temáticas y por grados de rareza (R1 a R5).</li>
-          <li data-i18n="inicio.album-li-2">Visualización interactiva que permite apreciar los detalles numismáticos...</li>
-          <li data-i18n="inicio.album-li-3">Integración directa con los principales mercados NFT...</li>
-          <li data-i18n="inicio.album-li-4">Información técnica verídica sobre cada emisión monetaria.</li>
-        </ul>
-        <p data-i18n="inicio.album-p-3">Esta plataforma combina el coleccionismo tradicional con las ventajas del blockchain...</p>
-      </div>
-    </section>
-    
-    <section id="autor" class="section">
-      <h2 data-i18n="autor.titulo">Sobre el Autor</h2>
-      <p data-i18n="autor.p-1">Federico Aguirre Horn es ingeniero, perito informático y entusiasta de la numismática argentina..</p>
-      <p data-i18n="autor.p-2">Es el autor del catálogo La Moneda Argentina y sus Defectos Recurrentes, un trabajo de investigación...</p>
-      <p data-i18n="autor.p-3">En 2024, Federico creó el primer NFT de AMONEDACION ARGENTINA, que se presenta como...</p>
-      <p data-i18n="autor.p-4">Cada NFT ha sido elaborado a partir de fotografías originales y clasificaciones realizadas por el autor, ...</p>
-    </section>
+    <main>
+        <section id="album" class="section active">
+            <section class="filtros">
+                <div class="filtros-header">
+                    <img id="limpiar-filtros" src="img/limpiar.png" alt="Limpiar filtros" title="Limpiar filtros" data-i18n="[title]filtros.limpiar"/>
+                </div>
 
-    <section id="catalogo" class="section">
-      <h2 data-i18n="catalogo.titulo">Catálogo de Monedas</h2>
-      <p data-i18n="catalogo.p-1">
-        La Moneda Argentina y sus Defectos Recurrentes es un catálogo de monedas argentinas...
-      </p>
-      <p data-i18n="catalogo.p-2">
-        Cada ficha incluye imágenes del anverso y reverso, descripciones claras...
-      </p>
-      <p data-i18n="catalogo.p-3">
-        El catálogo es de acceso gratuito y se encuentra en permanente expansión...
-      </p>
-      <h3 data-i18n="catalogo.cap-1">CAPÍTULO I: MONEDAS DE CURSO LEGAL FORZOSO</h3>
-      <p class="available" data-i18n="disponible">Disponible</p>
-      <p data-i18n="catalogo.cap-1-p-1">
-        Este capítulo está dedicado a monedas que fueron destinadas al curso legal forzoso...
-      </p>
-      <p data-i18n="catalogo.cap-1-p-2">
-        Su estudio permite redescubrir el valor cultural y documental de las monedas comunes...
-      </p>
-      <h3 data-i18n="catalogo.cap-2">CAPÍTULO II: MONEDAS DE CURSO LEGAL NO FORZOSO</h3>
-      <p class="upcoming" data-i18n="proximamente">Próximamente</p>
-      <p class="note" data-i18n="catalogo.cap-2-p-1">
-        Se habilitará al alcanzarse los 1.000 coleccionistas únicos de la colección AMONEDACION ARGENTINA.
-      </p>
-      <p data-i18n="catalogo.cap-2-p-2">
-        Este capítulo está enfocado en monedas conmemorativas...
-      </p>
-      <p data-i18n="catalogo.cap-2-p-3">
-        Estas monedas se caracterizan por su bajo volumen de emisión, acabados especiales y alto valor simbólico.
-      </p>
-      <h3 data-i18n="catalogo.cap-3">CAPÍTULO III: DEFECTOS RECURRENTES</h3>
-      <p class="upcoming" data-i18n="proximamente">Próximamente</p>
-      <p class="note" data-i18n="catalogo.cap-3-p-1">
-        Se habilitará al alcanzarse los 10.000 coleccionistas únicos de la colección.
-      </p>
-      <p data-i18n="catalogo.cap-3-p-2">
-        Este capítulo documenta los defectos recurrentes —errores y variantes no planificadas—...
-      </p>
-      <p data-i18n="catalogo.cap-3-p-3">
-        Estos defectos ofrecen interés técnico, histórico y coleccionable...
-      </p>
-      <div id="catalogo2">
-        <a href="docs/Catalogo.pdf" target="_blank" class="btn" data-i18n="catalogo.btn">
-          Descargar Catálogo (PDF)
-        </a>
-        <br>
-        <img src="img/catalogo.jpeg" data-i18n="[alt]catalogo.imgAlt" alt="Vista previa del catálogo de monedas" class="catalogo-img">
-      </div>
-    </section>
+                <div id="div-filtro-categoria" class="filtro-group">
+                    <label for="filtro-categoria" data-i18n="filtros.categoria">Categoría</label>
+                    <select id="filtro-categoria" class="filtro"></select>
+                </div>
 
-    <section id="whitepaper" class="section">
-      <h2 data-i18n="whitepaper.titulo">Whitepaper (Documento Técnico)</h2>
-      <div class="whitepaper-container">
-        <p data-i18n="whitepaper.p-1">
-           AMONEDACION ARGENTINA es un proyecto innovador que une la numismática tradicional con la tecnología blockchain...
-        </p>
-        <p data-i18n="whitepaper.p-2">
-           Cada pieza está basada en fotografías auténticas, con el objetivo de preservar el patrimonio monetario nacional...
-        </p>
-        <div class="contenido-wp">
-          <h3 data-i18n="whitepaper.contenido">Contenido del Documento</h3>
-          <ul>
-            <li data-i18n="whitepaper.li-1">Introducción a la colección NFT y fundamentos del proyecto.</li>
-            <li data-i18n="whitepaper.li-2">Aplicación de tecnología blockchain y NFTs.</li>
-            <li data-i18n="whitepaper.li-3">Detalles sobre la organización por rareza (R1 a R5).</li>
-            <li data-i18n="whitepaper.li-4">Importancia histórica, visual y técnica de las piezas.</li>
-            <li data-i18n="whitepaper.li-5">Objetivos educativos y culturales.</li>
-            <li data-i18n="whitepaper.li-6">Roadmap de desarrollo.</li>
-          </ul>
-        </div>
-        <div class="roadmap">
-          <h3 data-i18n="whitepaper.roadmap">Roadmap del Proyecto</h3>
-          <div class="fase">
-            <h4 data-i18n="whitepaper.fase-1">Fase 1: Lanzamiento inicial</h4>
-            <ul>
-              <li data-i18n="whitepaper.fase-1-li-1">Publicación de NFTs de rareza R1 y R2 a través de OpenSea.</li>
-              <li data-i18n="whitepaper.fase-1-li-2">Inclusión de una moneda tipo por valor facial (un año por denominación).</li>
-            </ul>
-          </div>
-          <div class="fase">
-            <h4 data-i18n="whitepaper.fase-2">Fase 2: Expansión de la colección</h4>
-            <ul>
-              <li data-i18n="whitepaper.fase-2-li-1">Introducción de NFTs R3, R4 y R5, con mayor grado de exclusividad.</li>
-              <li data-i18n="whitepaper.fase-2-li-2">Comienzo de la incorporación de monedas de distintos años para cada valor.</li>
-            </ul>
-          </div>
-          <div class="fase">
-            <h4 data-i18n="whitepaper.fase-3">Fase 3: Inclusión de variantes</h4>
-            <ul>
-              <li data-i18n="whitepaper.fase-3-li-1">Proyecto a largo plazo para sumar variantes dentro de un mismo año.</li>
-            </ul>
-          </div>
-          <div class="fase">
-            <h4 data-i18n="whitepaper.fase-4">Fase 4: Alianzas y visibilidad</h4>
-            <ul>
-              <li data-i18n="whitepaper.fase-4-li-1">Establecimiento de colaboraciones con coleccionistas y otros proyectos NFT.</li>
-              <li data-i18n="whitepaper.fase-4-li-2">Desarrollo continuo del catálogo y su difusión internacional.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="economia">
-          <h3 data-i18n="whitepaper.econ">Proyección económica</h3>
-          <p data-i18n="whitepaper.econ-p-1">
-            Además del compromiso con la preservación cultural, el proyecto contempla una rentabilidad legítima...
-          </p>
-          <ul>
-            <li data-i18n="whitepaper.econ-li-1">Cada NFT tiene una cantidad limitada según su rareza, lo que eleva su valor...</li>
-            <li data-i18n="whitepaper.econ-li-2">El crecimiento de la colección y la consolidación del catálogo potenciarán...</li>
-          </ul>
-        </div>
-      </div>
-      <div id="whitepaper2">
-        <a href="docs/Whitepaper.pdf" target="_blank" class="btn" data-i18n="whitepaper.btn">Descargar Whitepaper (PDF)</a>
-        <br>
-        <img src="img/whitepaper.png" data-i18n="[alt]whitepaper.imgAlt" alt="Vista previa del whitepaper" class="whitepaper-img">
-      </div>
-    </section>
+                <div id="div-filtro-rareza" class="filtro-group">
+                    <label for="filtro-rareza" data-i18n="filtros.rareza">Rareza</label>
+                    <select id="filtro-rareza" class="filtro">
+                        <option value="todas" data-i18n="atributos.todas">Todas</option>
+                        <option value="r1" data-i18n="filtros.r1">🟢 R1 (Corriente)</option>
+                        <option value="r2" data-i18n="filtros.r2">🔵 R2 (Escasa)</option>
+                        <option value="r3" data-i18n="filtros.r3">🟠 R3 (Rara)</option>
+                        <option value="r4" data-i18n="filtros.r4">🔴 R4 (Muy rara)</option>
+                        <!--<option value="r5" data-i18n="filtros.r5">⚫ R5 (Extremadamente rara)</option>-->
+                    </select>
+                </div>
 
-    <section id="marketplaces" class="section">
-      <h2 data-i18n="marketplaces.titulo-1">Mercados NFT</h2>
-      <p data-i18n="marketplaces.p-1">
-        AMONEDACION ARGENTINA le ofrece acceso a su exclusiva colección de monedas digitales...
-      </p>
-      <ul id="nft-marketplaces" class="link-list">
-        <li><a href="https://opensea.io/collection/amonedacion-argentina" target="_blank" rel="noopener noreferrer"><img src="img/opensea.png" alt="OpenSea" />OpenSea</a></li>
-        <!--<li><a href="https://rarible.com/monedas-argentinas" target="_blank" rel="noopener noreferrer"><img src="img/rarible.png" alt="Rarible" />Rarible</a></li>-->
-        <li><a href="https://www.okx.com/es-es/web3/marketplace/nft/collection/eth/amonedacion-argentina" target="_blank" rel="noopener noreferrer"><img src="img/okx.png" alt="OKX" />OKX</a></li>
-        <li><a href="https://looksrare.org/es/collections/0x199F5418551DB3aFA002470c11C2f7EbA5154A43" target="_blank" rel="noopener noreferrer"><img src="img/looksrare.png" alt="LooksRare" />LooksRare</a></li>
-        <li><a href="https://magiceden.io/collections/ethereum/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/magiceden.png" alt="Magic Eden" />Magic Eden</a></li>
-      </ul>
-      <h2 data-i18n="marketplaces.titulo-2">Mercado de Monedas Físicas</h2>
-      <p data-i18n="marketplaces.p-2">
-        Asimismo, podrá explorar la oferta de monedas físicas disponibles para la venta en MercadoLibre Argentina:
-      </p>
-      <ul class="link-list">
-        <li><a href="https://listado.mercadolibre.com.ar/antiguedades-colecciones/monedas-billetes/_CustId_89431632" target="_blank" rel="noopener noreferrer"><img src="img/mercadolibre.png" alt="MercadoLibre" />MercadoLibre</a></li>
-      </ul>
-    </section>
+                <div id="div-filtro-valor" class="filtro-group hidden">
+                    <label for="filtro-valor" data-i18n="filtros.valor">Valor</label>
+                    <select id="filtro-valor" class="filtro"></select>
+                </div>
 
-    <section id="galerias" class="section">
-      <h2 data-i18n="galerias.titulo">Galerías NFT</h2>
-      <p data-i18n="galerias.p-1">Plataformas especializadas donde AMONEDACION ARGENTINA exhibe sus NFTs...</p>
-      <ul class="link-list">
-        <li><a href="https://gallery.so/argentine_coins/galleries" target="_blank" rel="noopener noreferrer"><img src="img/gallery.png" alt="Gallery" />Gallery</a></li>
-        <li><a href="https://lazy.com/aguirre_horn" target="_blank" rel="noopener noreferrer"><img src="img/lazy.png" alt="Lazy" />Lazy</a></li>
-      </ul>
-    </section>
+                <div id="div-filtro-anio" class="filtro-group hidden">
+                    <label for="filtro-anio" data-i18n="filtros.anio">Año</label>
+                    <select id="filtro-anio" class="filtro"></select>
+                </div>
 
-    <section id="analisis" class="section">
-      <h2 data-i18n="analisis.titulo">Análisis NFT</h2>
-      <p data-i18n="analisis.p-1">AMONEDACION ARGENTINA pone a su disposición una selección de plataformas especializadas...</p>
-      <p data-i18n="analisis.p-2">A través de estas herramientas podrá monitorear el rendimiento...</p>
-      <ul class="link-list">
-        <li><a href="https://etherscan.io/token/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/etherscan.png" alt="Etherscan" />Etherscan</a></li>
-        <li><a href="https://coinmarketcap.com/nft/collections/eth/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/coinmarketcap.png" alt="CoinMarketCap" />CoinMarketCap</a></li>
-        <li><a href="https://eth.nftscan.com/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/nftscan.png" alt="NFTScan" />NFTScan</a></li>
-        <li><a href="https://zapper.xyz/es/nft/ethereum/0x199f5418551db3afa002470c11c2f7eba5154a43" target="_blank" rel="noopener noreferrer"><img src="img/zapper.png" alt="Zapper" />Zapper</a></li>
-        <li><a href="https://dappradar.com/dapp/amonedacion-argentina-3" target="_blank" rel="noopener noreferrer"><img src="img/dappradar.png" alt="DappRadar" />DappRadar</a></li>
-      </ul>
-    </section>
+                <div id="div-filtro-composicion" class="filtro-group hidden">
+                    <label for="filtro-composicion" data-i18n="filtros.composicion">Composición</label>
+                    <select id="filtro-composicion" class="filtro"></select>
+                </div>
 
-    <section id="redes" class="section">
-      <h2 data-i18n="redes.titulo">Redes Sociales</h2>
-      <p data-i18n="redes.p-1">Conéctese a través de las redes sociales oficiales para mantenerse informado sobre las últimas novedades y eventos:</p>
-      <ul id="ul-redes" class="link-list">
-        <li><a href="https://www.instagram.com/amonedacion_argentina" target="_blank" rel="noopener noreferrer"><img src="img/instagram.png" alt="Instagram" />Instagram</a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=61566517487487" target="_blank" rel="noopener noreferrer"><img src="img/facebook.png" alt="Facebook" />Facebook</a></li>
-        <li><a href="https://x.com/AMON_ARG_NFT" target="_blank" rel="noopener noreferrer"><img src="img/x.png" alt="X" />X</a></li>
-        <li><a href="https://www.youtube.com/@amonedacion_argentina" target="_blank" rel="noopener noreferrer"><img src="img/youtube.png" alt="YouTube" />YouTube</a></li>
-        <li><a href="https://www.threads.net/@amonedacion_argentina" target="_blank" rel="noopener noreferrer"><img src="img/threads.png" alt="Threads" />Threads</a></li>
-        <li><a href="https://t.me/AMONEDACIONARGENTINA" target="_blank" rel="noopener noreferrer"><img src="img/telegram.png" alt="Telegram" />Telegram</a></li>
-        <li><a href="https://discord.gg/uHxawKadba" target="_blank" rel="noopener noreferrer"><img src="img/discord.png" alt="Discord" />Discord</a></li>
-      </ul>
+                <div id="div-filtro-alineacion" class="filtro-group hidden">
+                    <label for="filtro-alineacion" data-i18n="filtros.alineacion">Alineación</label>
+                    <select id="filtro-alineacion" class="filtro">
+                        <option value="todas" data-i18n="atributos.todas">Todas</option>
+                        <option value="medalla" data-i18n="atributos.Medalla">Medalla</option>
+                        <option value="moneda" data-i18n="atributos.Moneda">Moneda</option>
+                    </select>
+                </div>
 
-      <!--
-      <h3 data-i18n="redes.misiones">Misiones y Recompensas</h3>
-      <p data-i18n="redes.p-2">Complete desafíos y gane un NFT de AMONEDACION ARGENTINA:</p>
-      <ul id="ul-desafios" class="link-list">
-        <li><a href="https://zealy.io/cw/amonedacion-argentina" target="_blank" rel="noopener noreferrer"><img src="img/zealy.png" alt="Zealy" />Zealy</a></li>
-      </ul>
-      -->
-      
-      <p data-i18n="redes.contacto">
-        Para consultas o información adicional, puede contactarse al correo 
-        <a href="mailto:info@amonedacion-argentina.com" id="contacto-email">info@amonedacion-argentina.com</a>.
-      </p>
-    </section>
-  </main>
+                <div id="div-filtro-canto" class="filtro-group hidden">
+                    <label for="filtro-canto" data-i18n="filtros.canto">Canto</label>
+                    <select id="filtro-canto" class="filtro"></select>
+                </div>
 
-  <footer>
-    <p data-i18n="footer.p-1">© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados.</p>
-    <p><a href="mailto:info@amonedacion-argentina.com">info@amonedacion-argentina.com</a></p>
-  </footer>
+                <div id="div-filtro-forma" class="filtro-group hidden">
+                    <label for="filtro-forma" data-i18n="filtros.forma">Forma</label>
+                    <select id="filtro-forma" class="filtro">
+                        <option value="todas" data-i18n="atributos.todas">Todas</option>
+                        <option value="circular" data-i18n="atributos.Circular">Circular</option>
+                        <option value="dodecágona" data-i18n="atributos.Dodecágona">Dodecágona</option>
+                        <option value="octogonal" data-i18n="atributos.Octogonal">Octogonal</option>
+                    </select>
+                </div>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/toogle.js"></script>
-  <script src="js/nav.js"></script>
+                <div id="div-filtro-ceca" class="filtro-group hidden">
+                    <label for="filtro-ceca" data-i18n="filtros.ceca">Ceca</label>
+                    <select id="filtro-ceca" class="filtro"></select>
+                </div>
+
+                <div id="div-filtro-propios" class="filtro-group hidden">
+                    <div class="checkbox-group">
+                        <label for="filtro-propios" data-i18n="filtros.propios">Mostrar solo mis NFTs</label>
+                        <input type="checkbox" id="filtro-propios">
+                    </div>
+                </div>
+            </section>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+            </div>
+
+            <div id="banner-sorteo" class="hidden">
+                <strong data-i18n="banner.sorteo">¡Sorteo exclusivo!</strong>
+                <p data-i18n="banner.conecteWallet">Conecte su wallet y participe del sorteo de un NFT gratis.</p>
+                <button id="btn-conectar-banner" data-i18n="banner.conectarme">Conectarme</button>
+                <button id="btn-cerrar-banner" data-i18n="banner.cerrar">Cerrar</button>
+            </div>
+
+            <div id="popup-transferencia" class="popup hidden">
+                <div class="popup-contenido">
+                    <span id="popup-cerrar">&times;</span>
+                    <h2><span data-i18n="transferencia.transferir">Transferir</span> AH# <span id="popup-moneda-ah"></span></h2>
+                    <h3>(NFT# <span id="popup-nft-id"></span>)</h3>
+                    
+                    <form id="form-transferencia">
+                        <input id="direccion-destino" type="text" required pattern="^0x[a-fA-F0-9]{40}$" placeholder="Dirección Destino" data-i18n-placeholder="transferencia.dirDestino">
+                        <input id="cantidad-transferir" type="number" required min="1" step="1" placeholder="Cantidad" data-i18n-placeholder="transferencia.cantidad">
+                        <button type="submit" data-i18n="transferencia.enviar">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+            <section id="galeria-nfts" class="grid-container"></section>
+
+            <section class="paginador">
+                <div class="paginador-container">
+                    <!-- Primera página -->
+                    <button id="btn-primera" class="paginador-btn paginador-flecha-doble" aria-label="Primera página">
+                        <span class="paginador-flecha izquierda"></span>
+                        <span class="paginador-flecha izquierda"></span>
+                    </button>
+                    
+                    <!-- Página anterior -->
+                    <button id="btn-anterior" class="paginador-btn paginador-flecha-simple" aria-label="Página anterior">
+                        <span class="paginador-flecha izquierda"></span>
+                    </button>
+                    
+                    <!-- Indicador de página -->
+                    <div class="paginador-contador">
+                        <span id="pagina-actual">1</span> / <span id="total-paginas">1</span>
+                    </div>
+                    
+                    <!-- Página siguiente -->
+                    <button id="btn-siguiente" class="paginador-btn paginador-flecha-simple" aria-label="Página siguiente">
+                        <span class="paginador-flecha derecha"></span>
+                    </button>
+                    
+                    <!-- Última página -->
+                    <button id="btn-ultima" class="paginador-btn paginador-flecha-doble" aria-label="Última página">
+                        <span class="paginador-flecha derecha"></span>
+                        <span class="paginador-flecha derecha"></span>
+                    </button>
+                </div>
+
+                <div id="div-filtro-paginador">
+                    <label for="filtro-paginador" data-i18n="filtros.nftPorPagina">NFTs por página:</label>
+                    <select id="filtro-paginador" class="filtro">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="estadisticas">
+                <div id="estadisticas-container" class="estadisticas-container hidden"></div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer.p-1">© 2025 AMONEDACION ARGENTINA. Todos los derechos reservados.</p>
+        <p><a href="mailto:info@amonedacion-argentina.com">info@amonedacion-argentina.com</a></p>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/ethers.min.js"></script>
+    <script src="../js/toogle.js"></script>
+    <script src="js/nfts.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/ipfs.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/transfer.js"></script>
 </body>
 </html>
