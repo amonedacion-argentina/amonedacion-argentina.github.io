@@ -9,7 +9,7 @@ const App = {
         ],
         IPFS_HASH: 'QmaekDHHZK5ZwUx2zLnMhzPfhFeoiZp3TRtEQMoMYHVy7R',
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
-        RARIBLE_URL: 'https://rarible.com/ethereum/collections/',
+        RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
         LOOKSRARE_URL: 'https://looksrare.org/es/collections/',
         MAGICEDEN_URL: 'https://magiceden.io/item-details/ethereum/',
