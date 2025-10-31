@@ -222,9 +222,9 @@ function actualizarCardNFT(nft, elemento) {
             case 'OPENSEA':
                 url = `${App.config.OPENSEA_URL}${App.config.CONTRATO}/${nft.id}`;
                 break;
-            //case 'RARIBLE':
-            //    url = `${App.config.RARIBLE_URL}${App.config.CONTRATO}:${nft.id}`;
-            //    break;
+            case 'RARIBLE':
+                url = `${App.config.RARIBLE_URL}${App.config.CONTRATO}:${nft.id}`;
+                break;
             case 'OKX':
                 url = `${App.config.OKX_URL}${App.config.CONTRATO}/${nft.id}`;
                 break;
