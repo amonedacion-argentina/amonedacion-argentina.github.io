@@ -231,9 +231,9 @@ function actualizarCardNFT(nft, elemento) {
             case 'LOOKSRARE':
                 url = `${App.config.LOOKSRARE_URL}${App.config.CONTRATO}/${nft.id}`;
                 break;
-            case 'MAGICEDEN':
-                url = `${App.config.MAGICEDEN_URL}${App.config.CONTRATO}/${nft.id}`;
-                break;
+            //case 'MAGICEDEN':
+            //    url = `${App.config.MAGICEDEN_URL}${App.config.CONTRATO}/${nft.id}`;
+            //    break;
             default:
                 url = '#';
         }

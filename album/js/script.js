@@ -12,13 +12,13 @@ const App = {
         RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
         LOOKSRARE_URL: 'https://looksrare.org/es/collections/',
-        MAGICEDEN_URL: 'https://magiceden.io/item-details/ethereum/',
+        //MAGICEDEN_URL: 'https://magiceden.io/item-details/ethereum/',
         PLATAFORMAS: {
             OPENSEA: 'OpenSea',
             RARIBLE: 'Rarible',
             OKX: 'OKX NFT',
-            LOOKSRARE: 'LooksRare',
-            MAGICEDEN: 'Magic Eden'
+            LOOKSRARE: 'LooksRare'/*,
+            MAGICEDEN: 'Magic Eden'*/
         },
         ordenAtributos: [
         'AH#',
