@@ -7,7 +7,7 @@ const App = {
             'https://gateway.pinata.cloud/ipfs/',
             'https://dweb.link/ipfs/'
         ],
-        IPFS_HASH: 'QmVTjuDQv2cUyZjeGAXpnbrcL1gGm9UMQJKGU7APscuTxP',
+        IPFS_HASH: 'QmVuKgQPv9dr2tkw2AHNAmnHSuq6PArGZ5AZ5gFSxmSRRg',
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
         RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
