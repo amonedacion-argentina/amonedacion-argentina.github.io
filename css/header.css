@@ -10,7 +10,7 @@ header {
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 320px;
+  height: clamp(180px, 35vw, 320px);
 }
 #fondo {
   position: absolute;
@@ -22,7 +22,7 @@ header {
   z-index: 0;
 }
 #presentacion{
-  margin: 35px auto 35px 3% ;
+  margin: auto auto 20px 1%;
   width: 500px;
   display: flex;
   flex-wrap: wrap;
