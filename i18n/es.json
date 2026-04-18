@@ -17,7 +17,6 @@
     "catalogo": "Catálogo de Monedas",
     "whitepaper": "Whitepaper",
     "marketplaces": "Mercados",
-    "galerias": "Galerías NFT",
     "analisis": "Análisis NFT",
     "redes": "Redes Sociales",
     "contacto": "Contacto"
@@ -176,10 +175,6 @@
     "titulo-2": "Mercado de Monedas Físicas",
     "p-2": "Asimismo, podrá explorar la oferta de monedas físicas disponibles para la venta en MercadoLibre Argentina:"
   },
-  "galerias": {
-    "titulo": "Galerías NFT",
-    "p-1": "Plataformas especializadas donde <strong>AMONEDACION ARGENTINA</strong> exhibe sus NFTs para coleccionistas y aficionados del arte digital:"
-  },
   "analisis": {
     "titulo": "Análisis NFT",
     "p-1": "<strong>AMONEDACION ARGENTINA</strong> pone a su disposición una selección de plataformas especializadas, diseñadas para usuarios avanzados, que facilitan el seguimiento exhaustivo y el análisis detallado de su colección NFT.",
@@ -188,8 +183,10 @@
   "redes": {
     "titulo": "Redes Sociales",
     "p-1": "Conéctese a través de las redes sociales oficiales para mantenerse informado sobre las últimas novedades y eventos:",
+    "galerias": "Galerías NFT",
+    "p-2": "Plataformas especializadas donde <strong>AMONEDACION ARGENTINA</strong> exhibe sus NFTs para coleccionistas y aficionados del arte digital:",
     "misiones": "Misiones y Recompensas",
-    "p-2": "Complete desafíos y gane un NFT de <strong>AMONEDACION ARGENTINA</strong>:",
+    "p-3": "Complete desafíos y gane un NFT de <strong>AMONEDACION ARGENTINA</strong>:",
     "contacto": "Para consultas o información adicional, puede contactarse al correo <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
   "disponible": "Disponible",

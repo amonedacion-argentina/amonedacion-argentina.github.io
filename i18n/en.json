@@ -17,7 +17,6 @@
     "catalogo": "Coin Catalog",
     "whitepaper": "Whitepaper",
     "marketplaces": "Marketplaces",
-    "galerias": "NFT Galleries",
     "analisis": "NFT Analytics",
     "redes": "Social Media",
     "contacto": "Contact"
@@ -176,10 +175,6 @@
     "titulo-2": "Physical Coins Market",
     "p-2": "You may also explore the selection of physical coins available for purchase on MercadoLibre Argentina:"
   },
-  "galerias": {
-    "titulo": "NFT Galleries",
-    "p-1": "Specialized platforms where <strong>AMONEDACION ARGENTINA</strong> showcases its NFTs for collectors and digital art enthusiasts:"
-  },
   "analisis": {
     "titulo": "NFT Analytics",
     "p-1": "<strong>AMONEDACION ARGENTINA</strong> provides you with access to a selection of specialized platforms designed for advanced users, enabling comprehensive tracking and detailed analysis of your NFT collection.",
@@ -188,8 +183,10 @@
   "redes": {
     "titulo": "Social Media",
     "p-1": "Connect via the official social media channels to stay informed about the latest news and events:",
+    "galerias": "NFT Galleries",
+    "p-2": "Specialized platforms where <strong>AMONEDACION ARGENTINA</strong> showcases its NFTs for collectors and digital art enthusiasts:",
     "misiones": "Quests and Rewards",
-    "p-2": "Complete challenges and earn an NFT from <strong>AMONEDACION ARGENTINA</strong>:",
+    "p-3": "Complete challenges and earn an NFT from <strong>AMONEDACION ARGENTINA</strong>:",
     "contacto": "For inquiries or additional information, please direct correspondence to <a href='mailto:info@amonedacion-argentina.com' id='contacto-email'>info@amonedacion-argentina.com</a>."
   },
   "disponible": "Available",
