@@ -54,3 +54,4 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", handleHash);
   handleHash();
 });
+document.getElementById("anio-footer").textContent = new Date().getFullYear();
