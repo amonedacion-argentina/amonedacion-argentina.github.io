@@ -3,30 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tutoriales desde celular | AMONEDACION ARGENTINA</title>
+  <meta name="description" content="" data-i18n="meta.description" />
+  <meta name="keywords" content="" data-i18n="meta.keywords" />
+  <title>AMONEDACION ARGENTINA | Tutoriales desde celular</title>
   <link rel="icon" href="../../img/logo.webp" type="image/webp">
   <link rel="stylesheet" href="../../css/styles.css" />
   <link rel="stylesheet" href="../../css/footer.css" />
   <link rel="stylesheet" href="../../css/header.css" />
 </head>
 <body>
-
   <header>
     <div class="header-container">
       <img src="../../img/fondo.webp" alt="AMONEDACION ARGENTINA Fondo" id="fondo" />
     </div>
+    <div class="lang-container">
+        <img src="../../img/globo.png" alt="Idioma" class="lang-icon" />
+        <select id="lang-select" aria-label="Seleccionar idioma">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+    </div>
   </header>
 
-  <nav>
+    <nav>
     <ul id="nav-list">
-      <li><a href="../../#inicio" class="nav-btn">Inicio</a></li>
-      <li><a href="../../#album" class="nav-btn">Álbum NFT</a></li>
-      <li><a href="../../#autor" class="nav-btn">Autor</a></li>
-      <li><a href="../../#catalogo" class="nav-btn">Catálogo</a></li>
-      <li><a href="../../#whitepaper" class="nav-btn">Whitepaper</a></li>
-      <li><a href="../../#marketplaces" class="nav-btn">Mercados</a></li>
-      <li><a href="../../#analisis" class="nav-btn">Análisis NFT</a></li>
-      <li><a href="../../#redes" class="nav-btn">Redes Sociales</a></li>
+      <li><button data-section="inicio" class="nav-btn active" data-i18n="nav.inicio">Inicio</button></li>
+      <li><button data-section="album" class="nav-btn" data-i18n="nav.album">Álbum NFT</button></li>
+      <li><button data-section="autor" class="nav-btn" data-i18n="nav.autor">Autor</button></li>
+      <li><button data-section="catalogo" class="nav-btn" data-i18n="nav.catalogo">Catálogo de Monedas</button></li>
+      <li><button data-section="whitepaper" class="nav-btn" data-i18n="nav.whitepaper">Whitepaper</button></li>
+      <li><button data-section="marketplaces" class="nav-btn" data-i18n="nav.marketplaces">Mercados</button></li>
+      <li><button data-section="analisis" class="nav-btn" data-i18n="nav.analisis">Análisis NFT</button></li>
+      <li><button data-section="redes" class="nav-btn" data-i18n="nav.redes">Redes Sociales</button></li>
     </ul>
   </nav>
 
@@ -35,8 +44,7 @@
       <h1>📱 Tutoriales desde celular</h1>
 
       <p>
-        Aprendé paso a paso cómo crear tu billetera MetaMask,
-        transferir ETH y comprar tu NFT desde tu teléfono.
+        Aprendé paso a paso cómo crear tu billetera MetaMask, transferir ETH y comprar tu NFT desde tu teléfono.
       </p>
 
       <ul class="link-list">
