@@ -30,4 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Actualiza el año del footer
+  const anioFooter = document.getElementById("anio-footer");
+  if (anioFooter) {
+    anioFooter.textContent = new Date().getFullYear();
+  }
 });
