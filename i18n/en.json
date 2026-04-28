@@ -8,7 +8,7 @@
     "titulo": "AMONEDACION<br>ARGENTINA"
   },
   "footer": {
-    "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
+    "p-1": "© <span id='anio-footer'> AMONEDACION ARGENTINA. All rights reserved."
   },
   "nav": {
     "inicio": "Home",
