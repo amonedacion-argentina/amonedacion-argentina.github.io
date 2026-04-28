@@ -16,18 +16,18 @@
     </div>
   </header>
 
-  <nav>
-    <ul id="nav-list">
-      <li><button data-section="inicio" class="nav-btn">Inicio</button></li>
-      <li><button data-section="album" class="nav-btn">Álbum NFT</button></li>
-      <li><button data-section="autor" class="nav-btn">Autor</button></li>
-      <li><button data-section="catalogo" class="nav-btn">Catálogo de Monedas</button></li>
-      <li><button data-section="whitepaper" class="nav-btn">Whitepaper</button></li>
-      <li><button data-section="marketplaces" class="nav-btn">Mercados</button></li>
-      <li><button data-section="analisis" class="nav-btn">Análisis NFT</button></li>
-      <li><button data-section="redes" class="nav-btn">Redes Sociales</button></li>
-    </ul>
-  </nav>
+      <nav>
+        <ul id="nav-list">
+            <li><a href="../../#inicio" class="nav-btn">Inicio</a></li>
+            <li><a href="../../album" class="nav-btn">Álbum NFT</a></li>
+            <li><a href="../../#autor" class="nav-btn">Autor</a></li>
+            <li><a href="../../#catalogo" class="nav-btn">Catálogo de Monedas</a></li>
+            <li><a href="../../#whitepaper" class="nav-btn">Whitepaper</a></li>
+            <li><a href="../../#marketplaces" class="nav-btn">Mercados</a></li>
+            <li><a href="../../#analisis" class="nav-btn">Análisis NFT</a></li>
+            <li><a href="../../#redes" class="nav-btn">Redes Sociales</a></li>
+        </ul>
+      </nav>
 
   <main>
     <section class="section active">
@@ -66,4 +66,12 @@
 
     <script src="../../js/toogle.js"></script>
 </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const anioFooter = document.getElementById("anio-footer");
+        if (anioFooter) {
+            anioFooter.textContent = new Date().getFullYear();
+        }
+        });
+    </script>
 </html>
