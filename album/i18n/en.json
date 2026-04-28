@@ -10,7 +10,7 @@
     "conectar":"Connect"
   },
   "footer": {
-    "p-1": "© 2025 AMONEDACION ARGENTINA. All rights reserved."
+    "p-1": "© <span id='anio-footer'> AMONEDACION ARGENTINA. All rights reserved."
   },
   "error": {
     "wallet": "Error connecting the wallet.",
