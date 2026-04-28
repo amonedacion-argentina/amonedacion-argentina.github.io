@@ -51,7 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Actualiza el año del footer
+  const anioFooter = document.getElementById("anio-footer");
+  if (anioFooter) {
+    anioFooter.textContent = new Date().getFullYear();
+  }
+
   window.addEventListener("popstate", handleHash);
   handleHash();
 });
-document.getElementById("anio-footer").textContent = new Date().getFullYear();
