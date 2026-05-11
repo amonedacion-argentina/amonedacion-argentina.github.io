@@ -7,7 +7,7 @@ const App = {
             'https://gateway.pinata.cloud/ipfs/',
             'https://dweb.link/ipfs/'
         ],
-        IPFS_HASH: 'QmWUjJeKywsyDqnT9YjC5FpLkoNUKk2XEJWYNVY9hz7Pzy',
+        IPFS_HASH: '', // Se actualizará automáticamente al iniciar la app
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
         RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
@@ -73,6 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 async function inicializarApp() {
     mostrarLoading(true);
     try {
+
+        // Actualiza el IPFS_HASH desde el contrato.
+        await actualizarIpfsHash();
+
         await Promise.all([
             cargarDatosNFTs(),
             // Espera a que i18n esté listo

@@ -114,3 +114,37 @@ async function precargarMetadatas() {
     });
     await Promise.all(promesas);
 }
+
+/**
+ * Consulta la función uri(1) del contrato para obtener el IPFS_HASH actualizado.
+ */
+async function actualizarIpfsHash() {
+    try {
+        if (!window.ethereum) return;
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const contrato = new ethers.Contract(
+            App.config.CONTRATO,
+            ['function uri(uint256) view returns (string)'],
+            provider
+        );
+
+        // Llama a uri(1) -> devuelve "ipfs://QmesZ4g8n8XebqWtSruhSALCZdVF9WUEtTbvRVxMjmxc76/{id}"
+        let uriCompleta = await contrato.uri(1);
+        
+        if (uriCompleta) {
+            // Quita el prefijo 'ipfs://' si existe
+            let hashLimpio = uriCompleta.replace('ipfs://', '');
+            
+            // Quita el sufijo '/{id}' o cualquier cosa que venga después del hash
+            hashLimpio = hashLimpio.split('/')[0];
+            
+            if (hashLimpio) {
+                App.config.IPFS_HASH = hashLimpio;
+                console.log('IPFS_HASH actualizado con éxito:', hashLimpio);
+            }
+        }
+    } catch (error) {
+        console.error('Error al actualizar IPFS_HASH:', error);
+    }
+}
