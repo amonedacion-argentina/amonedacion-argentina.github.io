@@ -1,18 +1,10 @@
-// Completa metadata faltante
+// Completa metadata faltante (actualmente los datos vienen corregidos de origen)
 function completarMetadataFaltante(nft) {
-        if (nft.id == 50) {
-            nft.metadata.attributes.push({
-                trait_type: 'CANTO',
-                value: '15 e/cm.'
-            });
-        }
-
-        if (nft.id == 73) {
-            nft.metadata.attributes.push({
-                trait_type: 'CANTO',
-                value: 'Liso'
-            });
-        }
+    /*
+        Esta función queda disponible para correcciones rápidas sin resubir a IPFS.
+        Ejemplo: 
+        if (nft.id == 100) { nft.metadata.attributes.push({trait_type: 'X', value: 'Y'}); }
+    */
 }
 
 // Obtiene la metadata de un NFT desde IPFS (o desde caché local)
