@@ -76,6 +76,45 @@ async function getMetadaNFT(nft, elemento) {
 // Obtiene la metadata de todos los NFT desde IPFS (o desde caché local)
 async function precargarMetadatas() {
     const nftsSinMetadata = App.estado.nfts.filter(nft => !nft.metadata);
+    const lote = 30;
+
+    for (let i = 0; i < nftsSinMetadata.length; i += lote) {
+        const grupo = nftsSinMetadata.slice(i, i + lote);
+
+        await Promise.all(
+            grupo.map(async (nft) => {
+                const cacheKey = `nft_${nft.id}_metadata`;
+                const cachedData = localStorage.getItem(cacheKey);
+
+                if (cachedData) {
+                    nft.metadata = JSON.parse(cachedData);
+                    completarMetadataFaltante(nft);
+                    return;
+                }
+
+                // Si no hay cache, descarga desde IPFS
+                for (const gateway of App.config.IPFS_GATEWAY) {
+                    try {
+                        const url = `${gateway}${App.config.IPFS_HASH}/${nft.id}`;
+                        const response = await fetch(url);
+
+                        if (response.ok) {
+                            nft.metadata = await response.json();
+                            completarMetadataFaltante(nft);
+                            localStorage.setItem(cacheKey, JSON.stringify(nft.metadata));
+                            break;
+                        }
+                    } catch (error) {
+                        console.warn(`IPFS error (${gateway}) para NFT ${nft.id}:`, error);
+                    }
+                }
+            })
+        );
+    }
+}
+/* Reemplazado por carga lenta sin caché:
+async function precargarMetadatas() {
+    const nftsSinMetadata = App.estado.nfts.filter(nft => !nft.metadata);
 
     const promesas = nftsSinMetadata.map(async (nft) => {
         const cacheKey = `nft_${nft.id}_metadata`;
@@ -106,6 +145,7 @@ async function precargarMetadatas() {
     });
     await Promise.all(promesas);
 }
+*/
 
 /**
  * Consulta la función uri(1) del contrato para obtener el IPFS_HASH actualizado.
