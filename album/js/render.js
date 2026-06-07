@@ -129,8 +129,7 @@ function crearElementoNFT(nft) {
 
     nftElement.innerHTML = `
         <div class="nft-imagen-container ${nft.enPropiedad ? 'propio' : 'no-propio'}">
-            <img src="${imagenSrc}" alt="NFT ${nft.id}" 
-                 class="nft-imagen ${nft.enPropiedad ? 'nft-propio' : ''}">
+            <img src="${imagenSrc}" loading="lazy" decoding="async" alt="NFT ${nft.id}" class="nft-imagen ${nft.enPropiedad ? 'nft-propio' : ''}">
             ${nft.enPropiedad ? `<div class="nft-cantidad">x${nft.cantidad}</div>
                                 <div class="div-transferir" onclick="abrirPopupTransferencia(${nft.id})" title="${i18n.transferencia?.transferir || 'Transferir'}">
                                     <img src="img/transferir.png" alt="${i18n.transferencia?.transferir || 'Transferir'}">
