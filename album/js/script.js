@@ -7,7 +7,7 @@ const App = {
             'https://gateway.pinata.cloud/ipfs/',
             'https://dweb.link/ipfs/'
         ],
-        IPFS_HASH: 'QmPiKsCUz7UcLDvRDBGv7G1R12p5gnhSkyxCGhWGiQGVSX', // Este sirve para módo incognito o sin Metamask (sino se actualiza automáticamente al iniciar la app).
+        IPFS_HASH: 'QmRKFomj5XXJb5MVhHUSbkmUZHnkzUnn13ccxtqrcFy5o8', // Este sirve para módo incognito o sin Metamask (sino se actualiza automáticamente al iniciar la app).
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
         RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
