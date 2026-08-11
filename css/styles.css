@@ -88,12 +88,12 @@ p {
   margin-bottom: 0.2rem;
   color: #154360;
 }
-
 .contenido-wp, .roadmap {
   background-color: #f0f0f0;
   padding: 0.5rem 1.5rem;
   border-radius: 10px;
   border: 1px solid #ddd;
+  margin-bottom: 1rem;
 }
 .fase {
   margin: 1.2rem auto;
@@ -106,9 +106,6 @@ p {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: #000;
-}
-.roadmap, #whitepaper2 {
-  margin-top: 1rem;
 }
 #whitepaper2 .btn {
   display: block;
