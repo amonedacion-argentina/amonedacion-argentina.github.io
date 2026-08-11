@@ -76,22 +76,27 @@ p {
   list-style: disc;
   margin-left: 2rem;
 }
+.whitepaper-container .fecha {
+  margin-bottom: 1rem;
+  font-style: italic;
+}
 .whitepaper-container li {
   margin-bottom: 0.5rem;
 }
 .whitepaper-container h3 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
   color: #154360;
 }
-.contenido-wp, .roadmap, .economia {
+
+.contenido-wp, .roadmap {
   background-color: #f0f0f0;
   padding: 0.5rem 1.5rem;
   border-radius: 10px;
   border: 1px solid #ddd;
 }
 .fase {
-  margin-bottom: 1.5rem;
+  margin: 1.2rem auto;
   padding: 0.5rem 1rem;
   border-left: 4px solid #555;
   background-color: #fff;
@@ -102,11 +107,59 @@ p {
   margin-bottom: 0.5rem;
   color: #000;
 }
-.roadmap {
+.roadmap, #whitepaper2 {
   margin-top: 1rem;
 }
-.economia {
-  margin: 1rem 0;
+#whitepaper2 .btn {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1rem auto;
+}
+.roadmap-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .roadmap-item {
+    align-items: flex-start;
+  }
+  .roadmap-status {
+    margin-left: 0;
+  }
+}
+.roadmap-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.roadmap-status.completado::before {
+    content: "✓";
+}
+.roadmap-status.en-desarrollo::before {
+    content: "↻";
+}
+.roadmap-status.pendiente::before {
+    content: "○";
+}
+.roadmap-status.completado {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+.roadmap-status.en-desarrollo {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+.roadmap-status.pendiente {
+    background: #eeeeee;
+    color: #757575;
 }
 
 /* LISTAS */
