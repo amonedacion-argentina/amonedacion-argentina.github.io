@@ -1,0 +1,50 @@
+name: Sincronizar cache de metadata IPFS
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Revisa el CID una vez por día. Si cambió, descarga la metadata nueva.
+    - cron: '17 3 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-ipfs-cache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Sincronizar metadata desde IPFS
+        run: node .github/scripts/sync-ipfs-cache.mjs
+
+      - name: Comprobar cambios
+        id: changes
+        run: |
+          if git diff --quiet -- album/json/ipfs-cache; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publicar cache actualizada
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add album/json/ipfs-cache
+          git commit -m "Actualiza cache de metadata IPFS"
+          git push
+
+      - name: Sin cambios
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "La cache ya está sincronizada con el CID actual."
