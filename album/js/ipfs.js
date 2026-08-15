@@ -2,50 +2,82 @@
 function completarMetadataFaltante(nft) {
     /*
         Esta función queda disponible para correcciones rápidas sin resubir a IPFS.
-        Ejemplo: 
-        if (nft.id == 100) { nft.metadata.attributes.push({trait_type: 'X', value: 'Y'}); }
+        Ejemplo:
+        if (nft.id == 100) {
+            nft.metadata.attributes.push({ trait_type: 'X', value: 'Y' });
+        }
     */
 }
 
-// Agrega un timeout al fetch de cada IPFS, para que intente con otro en caso de demoras.
+// Agrega un timeout al fetch de cada fuente para que intente con otra en caso de demora.
 async function fetchConTimeout(url) {
     const controller = new AbortController();
-    const timeoutMs = 3000; // 3 segundos.
+    const timeoutMs = 3000;
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
         return await fetch(url, {
-            signal: controller.signal
+            signal: controller.signal,
+            headers: {
+                'Accept': 'application/json'
+            }
         });
     } finally {
         clearTimeout(timeoutId);
     }
 }
 
-// Obtiene la metadata de un NFT desde IPFS (o desde caché local)
+// Genera el path de la metadata en la cache publicada por GitHub Pages.
+function getMetadataCacheUrl(tokenId) {
+    return `json/ipfs-cache/${tokenId}.json`;
+}
+
+// Obtiene metadata: 1. localStorage 2. ipfs-cache 3. gateways IPFS.
 async function getMetadaNFT(nft, elemento) {
     nft.cargandoMetadata = true;
-    
+
     if (elemento) {
         const spinner = elemento.querySelector('.spinner.pequeno');
         if (spinner) spinner.classList.remove('hidden');
     }
-    
+
     try {
-        // Verifica caché local primero
-        const cacheKey = `nft_${nft.id}_metadata`;
+        const cacheKey = `nft_${App.config.IPFS_HASH}_${nft.id}_metadata`;
         const cachedData = localStorage.getItem(cacheKey);
-        
+
         if (cachedData) {
-            nft.metadata = JSON.parse(cachedData);
-            completarMetadataFaltante(nft);
-        } else {
-            // Intenta con cada gateway hasta tener éxito
+            try {
+                nft.metadata = JSON.parse(cachedData);
+                completarMetadataFaltante(nft);
+            } catch (error) {
+                console.warn(`Metadata corrupta en localStorage para NFT ${nft.id}.`);
+                localStorage.removeItem(cacheKey);
+            }
+        }
+
+        // Segunda capa: cache publicada en GitHub Pages.
+        if (!nft.metadata) {
+            try {
+                const cacheUrl = getMetadataCacheUrl(nft.id);
+                const response = await fetchConTimeout(cacheUrl);
+
+                if (response.ok) {
+                    nft.metadata = await response.json();
+                    completarMetadataFaltante(nft);
+                    localStorage.setItem(cacheKey, JSON.stringify(nft.metadata));
+                }
+            } catch (error) {
+                console.warn(`Cache del sitio no disponible para NFT ${nft.id}:`, error);
+            }
+        }
+
+        // Tercera capa: gateways IPFS.
+        if (!nft.metadata) {
             for (const gateway of App.config.IPFS_GATEWAY) {
                 try {
                     const url = `${gateway}${App.config.IPFS_HASH}/${nft.id}`;
                     const response = await fetchConTimeout(url);
-                    
+
                     if (response.ok) {
                         nft.metadata = await response.json();
                         completarMetadataFaltante(nft);
@@ -56,13 +88,13 @@ async function getMetadaNFT(nft, elemento) {
                     console.warn(`Error con gateway ${gateway}:`, error);
                 }
             }
-            
-            if (!nft.metadata) {
-                throw new Error('No se pudieron obtener los metadatos desde ningún gateway.');
-            }
         }
 
-        // Reemplaza imagen gris por versión local propia si el NFT es del usuario
+        if (!nft.metadata) {
+            throw new Error(`No se pudieron obtener los metadatos desde ningún origen del NFT ${nft.id}.`);
+        }
+
+        // Reemplaza imagen gris por versión local propia si el NFT es del usuario.
         if (App.estado.walletConectada && nft.enPropiedad) {
             const nuevaUrl = `img/monedas-propias/${nft.id}.webp`;
             const imgElement = elemento?.querySelector('.nft-imagen');
@@ -70,14 +102,17 @@ async function getMetadaNFT(nft, elemento) {
                 imgElement.src = nuevaUrl;
             }
         }
-    
+
         if (elemento) {
             actualizarCardNFT(nft, elemento);
         }
     } catch (error) {
         console.error(`Error al obtener los metadatos del NFT ${nft.id}:`, error);
         if (elemento) {
-            elemento.querySelector('.nft-nombre').textContent = `${App.estado.i18n?.error?.obtenerNFT}${nft.id}`;
+            const nombre = elemento.querySelector('.nft-nombre');
+            if (nombre) {
+                nombre.textContent = `${App.estado.i18n?.error?.obtenerNFT || 'Error NFT #'}${nft.id}`;
+            }
         }
     } finally {
         nft.cargandoMetadata = false;
@@ -88,7 +123,8 @@ async function getMetadaNFT(nft, elemento) {
     }
 }
 
-// Obtiene la metadata de todos los NFT por lotes desde IPFS (o desde caché local)
+// Obtiene la metadata de todos los NFT por lotes.
+// Orden: localStorage -> ipfs-cache -> IPFS.
 async function precargarMetadatas() {
     const nftsSinMetadata = App.estado.nfts.filter(nft => !nft.metadata);
     const lote = 30;
@@ -98,16 +134,35 @@ async function precargarMetadatas() {
 
         await Promise.all(
             grupo.map(async (nft) => {
-                const cacheKey = `nft_${nft.id}_metadata`;
+                const cacheKey = `nft_${App.config.IPFS_HASH}_${nft.id}_metadata`;
                 const cachedData = localStorage.getItem(cacheKey);
 
                 if (cachedData) {
-                    nft.metadata = JSON.parse(cachedData);
-                    completarMetadataFaltante(nft);
-                    return;
+                    try {
+                        nft.metadata = JSON.parse(cachedData);
+                        completarMetadataFaltante(nft);
+                        return;
+                    } catch (error) {
+                        localStorage.removeItem(cacheKey);
+                    }
                 }
 
-                // Si no hay cache, descarga desde IPFS
+                // Segunda capa: cache publicada en GitHub Pages.
+                try {
+                    const cacheUrl = getMetadataCacheUrl(nft.id);
+                    const response = await fetchConTimeout(cacheUrl);
+
+                    if (response.ok) {
+                        nft.metadata = await response.json();
+                        completarMetadataFaltante(nft);
+                        localStorage.setItem(cacheKey, JSON.stringify(nft.metadata));
+                        return;
+                    }
+                } catch (error) {
+                    console.warn(`Cache no disponible para NFT ${nft.id}:`, error);
+                }
+
+                // Tercera capa: descarga desde IPFS.
                 for (const gateway of App.config.IPFS_GATEWAY) {
                     try {
                         const url = `${gateway}${App.config.IPFS_HASH}/${nft.id}`;
@@ -129,7 +184,7 @@ async function precargarMetadatas() {
 }
 
 /**
- * Consulta la función uri(1) del contrato para obtener el IPFS_HASH actualizado.
+ * Consulta uri(1) del contrato para obtener el IPFS_HASH actualizado.
  */
 async function actualizarIpfsHash() {
     try {
@@ -142,16 +197,12 @@ async function actualizarIpfsHash() {
             provider
         );
 
-        // Llama a uri(1) -> devuelve "ipfs://QmesZ4g8n8XebqWtSruhSALCZdVF9WUEtTbvRVxMjmxc76/{id}"
-        let uriCompleta = await contrato.uri(1);
-        
+        const uriCompleta = await contrato.uri(1);
+
         if (uriCompleta) {
-            // Quita el prefijo 'ipfs://' si existe
             let hashLimpio = uriCompleta.replace('ipfs://', '');
-            
-            // Quita el sufijo '/{id}' o cualquier cosa que venga después del hash
             hashLimpio = hashLimpio.split('/')[0];
-            
+
             if (hashLimpio) {
                 App.config.IPFS_HASH = hashLimpio;
                 console.log('IPFS_HASH actualizado con éxito:', hashLimpio);
