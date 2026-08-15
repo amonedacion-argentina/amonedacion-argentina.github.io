@@ -7,7 +7,8 @@ const App = {
             'https://gateway.pinata.cloud/ipfs/',
             'https://dweb.link/ipfs/'
         ],
-        IPFS_HASH: 'bafybeiemtwknixawryyums3jh4hqmwm2an6pe5g4vke3zy5oouljm5im3u', // Este sirve para módo incognito o sin Metamask (sino se actualiza automáticamente al iniciar la app).
+        CACHE_METADATA: '../json/ipfs-cache/',
+        CID: 'bafybeiemtwknixawryyums3jh4hqmwm2an6pe5g4vke3zy5oouljm5im3u', // Este sirve para módo incognito o sin Metamask (sino se actualiza el IPFS HASH automáticamente al iniciar la app).
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
         RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
@@ -74,7 +75,7 @@ async function inicializarApp() {
     mostrarLoading(true);
     try {
 
-        // Actualiza el IPFS_HASH desde el contrato.
+        // Actualiza el CID (IPFS HASH) desde el contrato.
         await actualizarIpfsHash();
 
         await Promise.all([
