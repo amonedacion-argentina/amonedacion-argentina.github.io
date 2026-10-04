@@ -8,7 +8,7 @@ const App = {
             'https://dweb.link/ipfs/'
         ],
         CACHE_METADATA: './json/ipfs-cache/',
-        CID: 'bafybeigqsa7xbiwbfcb2xhbka7dieesxckgka53fcjxu5uldglbamprghy', // Este sirve para módo incognito o sin Metamask (sino se actualiza el IPFS HASH automáticamente al iniciar la app).
+        CID: 'bafybeigm45sx7xlzhxty3r3jaocmomlvyfe344huhfyepkqmdjsydxsecu', // Este sirve para módo incognito o sin Metamask (sino se actualiza el IPFS HASH automáticamente al iniciar la app).
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
         RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
