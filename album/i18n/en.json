@@ -199,6 +199,8 @@
     "Números gruesos.\nTorre ancha.\nPuerta con tablero.":"Bold numerals.\nWide tower.\nPaneled doorway.",
     "9 abierto.":"Open 9.",
     "9 cerrado.":"Closed 9.",
+    "9 abierto. 4 con cola.":"Open 9.\n4 with tail.",
+    "9 cerrado. 4 sin cola.":"Closed 9.\n4 without tail.",
     "Ojos 2006. \nGorro con pompón.":"2006 Eyes.\nHat with Pom-pom.",
     "Números gruesos.": "Bold numerals.",
     "Números finos.": "Thin numerals.",
