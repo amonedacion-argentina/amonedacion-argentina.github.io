@@ -8,17 +8,17 @@ const App = {
             'https://dweb.link/ipfs/'
         ],
         CACHE_METADATA: './json/ipfs-cache/',
-        CID: 'bafybeigm45sx7xlzhxty3r3jaocmomlvyfe344huhfyepkqmdjsydxsecu', // Este sirve para módo incognito o sin Metamask (sino se actualiza el IPFS HASH automáticamente al iniciar la app).
+        CID: 'bafybeigm45sx7xlzhxty3r3jaocmomlvyfe344huhfyepkqmdjsydxsecu', // Este sirve para modo incognito o sin Metamask (sino se actualiza el IPFS HASH automáticamente al iniciar la app).
         OPENSEA_URL: 'https://opensea.io/assets/ethereum/',
-        RARIBLE_URL: 'https://rarible.com/ethereum/items/',
         OKX_URL: 'https://web3.okx.com/es-es/nft/asset/eth/',
-        LOOKSRARE_URL: 'https://looksrare.org/es/collections/',
+        //RARIBLE_URL: 'https://rarible.com/ethereum/items/',
+        //LOOKSRARE_URL: 'https://looksrare.org/es/collections/',
         //MAGICEDEN_URL: 'https://magiceden.io/item-details/ethereum/',
         PLATAFORMAS: {
             OPENSEA: 'OpenSea',
+            OKX: 'OKX NFT'/*,
             RARIBLE: 'Rarible',
-            OKX: 'OKX NFT',
-            LOOKSRARE: 'LooksRare'/*,
+            LOOKSRARE: 'LooksRare',
             MAGICEDEN: 'Magic Eden'*/
         },
         ordenAtributos: [
