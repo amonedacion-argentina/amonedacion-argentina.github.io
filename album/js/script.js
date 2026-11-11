@@ -3,6 +3,7 @@ const App = {
     config: {
         CONTRATO: '0x199f5418551db3afa002470c11c2f7eba5154a43',
         IPFS_GATEWAY: [
+            'https://ipfs2.seadn.io/ipfs/',
             'https://ipfs.io/ipfs/',
             'https://gateway.pinata.cloud/ipfs/',
             'https://dweb.link/ipfs/'
